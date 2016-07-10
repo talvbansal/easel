@@ -1,0 +1,31 @@
+// Mixins
+
+.transition-all() {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.background-cover() {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.serif() {
+	font-family: 'Lora', 'Times New Roman', serif;
+}
+
+.sans-serif () {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'Unthrift First Personal';
+  src: url('/fonts/unthriftfirstpersonal.eot'); /* IE9 Compat Modes */
+  src: url('/fonts/unthriftfirstpersonal.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/unthriftfirstpersonal.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/fonts/unthriftfirstpersonal.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/unthriftfirstpersonal.svg') format('svg'); /* Legacy iOS */
+}

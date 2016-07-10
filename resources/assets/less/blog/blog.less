@@ -1,0 +1,102 @@
+@import "../bootstrap/bootstrap";
+@import "../clean-blog/clean-blog";
+@import "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,900italic,900,700italic,700,600italic,600,400italic,300,200italic,200,300italic";
+@import "//fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900";
+
+/*
+|--------------------------------------------------------------------------
+| Set custom styles for the blog here.
+|--------------------------------------------------------------------------
+*/
+
+.dsq-brlink {
+  display: none;
+}
+
+.tag-link {
+  text-align: center;
+  margin-top: -25px;
+  margin-bottom: -5px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.tag-subtitle {
+  font-style: italic;
+  color: @white-faded;
+  margin-top: 10px !important;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  text-align: center;
+}
+
+.intro-header .post-heading .meta a,
+article a {
+  text-decoration: underline;
+}
+
+// Adjust position of captions
+.caption-title {
+  margin-bottom: 5px;
+}
+
+.caption-title + p {
+  margin-top: 0;
+}
+
+// Change the styling of dt/dd elements
+dt {
+  margin-bottom: 5px;
+}
+
+dd {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+pre {
+  border: none;
+  background-color: @gist-background;
+  border-radius: 3px !important;
+  font-size: 13px !important;
+  font-family: 'Source Code Pro' !important;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.121569) 0px 1px 1px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.121569) 0px 1px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.121569) 0px 1px 1px 0px;
+
+  code {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    color: black !important;
+}
+
+}
+
+.entry-content {
+  padding: 0 !important;
+}
+
+code {
+  color: rgb(253, 103, 105) !important;
+  border: none;
+  background-color: @gist-background;
+  border-radius: 3px !important;
+  font-size: 11px !important;
+  font-family: 'Source Code Pro' !important;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.121569) 0px 1px 1px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.121569) 0px 1px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.121569) 0px 1px 1px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  // Smaller styles go here
+}

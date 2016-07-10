@@ -1,1 +1,1 @@
-# easel
+# Easel
