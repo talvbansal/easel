@@ -18,7 +18,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $user = \User::findOrFail(1);
+        $user = User::findOrFail(1);
         $tag = $request->get('tag');
         $data = $this->dispatch(new BlogIndexData($tag));
         $layout = $tag ? Tag::layout($tag)->first() : 'frontend.blog.index';
