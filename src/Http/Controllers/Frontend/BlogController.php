@@ -14,6 +14,8 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -21,13 +23,16 @@ class BlogController extends Controller
         $user = User::findOrFail(1);
         $tag = $request->get('tag');
         $data = $this->dispatch(new BlogIndexData($tag));
-        $layout = $tag ? Tag::layout($tag)->first() : 'frontend.blog.index';
+        $layout = $tag ? Tag::layout($tag)->first() : 'vendor.easel.frontend.blog.index';
 
         return view($layout, $data)->with(compact('user'));
     }
 
     /**
      * Display the specified resource.
+     *
+     * @param         $slug
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
      */

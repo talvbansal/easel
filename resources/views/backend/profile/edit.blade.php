@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('vendor.easel.backend.layout')
 
 @section('title')
     <title>{{ config('blog.title') }} | Edit Profile</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('backend.partials.sidebar-navigation')
+        @include('vendor.easel.backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container container-alt">
@@ -20,7 +20,7 @@
 
                 <div class="card" id="profile-main">
 
-                    @include('backend.profile.partials.sidebar')
+                    @include('vendor.easel.backend.profile.partials.sidebar')
 
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">
@@ -35,9 +35,9 @@
                             <div class="pmb-block">
                                 <div class="pmbb-header">
 
-                                    @include('shared.errors')
+                                    @include('vendor.easel.shared.errors')
 
-                                    @include('shared.success')
+                                    @include('vendor.easel.shared.success')
 
                                     <h2><i class="zmdi zmdi-equalizer m-r-10"></i> Summary</h2>
                                 </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="pmbb-body p-l-30">
 
-                                    @include('backend.profile.partials.form.basic-information')
+                                    @include('vendor.easel.backend.profile.partials.form.basic-information')
 
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="pmbb-body p-l-30">
 
-                                    @include('backend.profile.partials.form.contact-information')
+                                    @include('vendor.easel.backend.profile.partials.form.contact-information')
 
                                 </div>
                                 <div class="form-group m-l-30">

@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('vendor.easel.backend.layout')
 
 @section('title')
     <title>{{ config('blog.title') }} | Edit Post</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('backend.partials.sidebar-navigation')
+        @include('vendor.easel.backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container">
@@ -31,9 +31,9 @@
                             </li>
                         </ul>
 
-                        @include('shared.errors')
+                        @include('vendor.easel.shared.errors')
 
-                        @include('shared.success')
+                        @include('vendor.easel.shared.success')
 
                         <h2>
                             Edit <em>{{ $title }}</em>
@@ -64,15 +64,15 @@
         </section>
     </section>
 
-    @include('backend.post.partials.modals.delete')
+    @include('vendor.easel.backend.post.partials.modals.delete')
 @stop
 
 @section('unique-js')
-    @include('backend.post.partials.summernote')
+    @include('vendor.easel.backend.post.partials.summernote')
     {!! JsValidator::formRequest('App\Http\Requests\PostUpdateRequest', '#postUpdate'); !!}
 
     @if(Session::get('_update-post'))
-        @include('backend.post.partials.notifications.update-post')
+        @include('vendor.easel.backend.post.partials.notifications.update-post')
         {{ \Session::forget('_update-post') }}
     @endif
 

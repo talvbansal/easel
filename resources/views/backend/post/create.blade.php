@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('vendor.easel.backend.layout')
 
 @section('title')
     <title>{{ config('blog.title') }} | New Post</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('backend.partials.sidebar-navigation')
+        @include('vendor.easel.backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container">
@@ -19,9 +19,9 @@
                             <li class="active">New Post</li>
                         </ol>
 
-                        @include('shared.errors')
+                        @include('vendor.easel.shared.errors')
 
-                        @include('shared.success')
+                        @include('vendor.easel.shared.success')
 
                         <h2>Create a New Post</h2>
                     </div>
@@ -29,7 +29,7 @@
                         <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('admin.post.store') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            @include('backend.post.partials.form')
+                            @include('vendor.easel.backend.post.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
@@ -45,11 +45,11 @@
 @stop
 
 @section('unique-js')
-    @include('backend.post.partials.summernote')
+    @include('vendor.easel.backend.post.partials.summernote')
 
-    {!! JsValidator::formRequest('App\Http\Requests\PostCreateRequest', '#postCreate'); !!}
+    {!! JsValidator::formRequest('App\Http\Requests\PostCreateRequest', '#postCreate') !!}
 
-    @include('backend.shared.notifications.protip')
+    @include('vendor.easel.backend.shared.notifications.protip')
 
     <script>
         $(function () {

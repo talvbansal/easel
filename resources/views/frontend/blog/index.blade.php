@@ -1,4 +1,4 @@
-@extends('easel::frontend.layout')
+@extends('vendor.easel.frontend.layout')
 
 @section('title')
     <title>{{ $tag->title or config('blog.title') }}</title>

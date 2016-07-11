@@ -13,10 +13,16 @@ use Illuminate\Support\ServiceProvider;
 class EaselServiceProvider extends ServiceProvider
 {
 
+    /**
+     *
+     */
     public function boot(){
+
+        $this->mergeConfigFrom(EASEL_BASE_PATH . '/config/easel.php', 'blog');
 
         $this->defineRoutes();
         $this->defineResources();
+        $this->defineMigrations();
 
     }
 
@@ -46,5 +52,26 @@ class EaselServiceProvider extends ServiceProvider
 
     private function defineResources()
     {
+        //$this->loadViewsFrom(EASEL_BASE_PATH . '/resources/views', 'easel');
+
+        $this->publishes([
+            EASEL_BASE_PATH . '/resources/views' => base_path('resources/views/vendor/easel'),
+        ]);
+    }
+
+    private function defineMigrations()
+    {
+        $this->publishes([
+            EASEL_BASE_PATH . '/database/migrations/' => database_path('migrations')
+        ], 'migrations');
+
+        $this->publishes([
+            EASEL_BASE_PATH . '/database/seeds/' => database_path('seeds')
+        ], 'seeds');
+
+        $this->publishes([
+            EASEL_BASE_PATH . '/database/factories/' => database_path('factories')
+        ], 'factories');
+
     }
 }

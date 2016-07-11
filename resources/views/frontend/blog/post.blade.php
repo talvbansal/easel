@@ -1,4 +1,4 @@
-@extends('easel::frontend.layout', [
+@extends('vendor.easel.frontend.layout', [
   'title' => $post->title,
   'meta_description' => $post->meta_description ?: config('blog.description'),
 ])

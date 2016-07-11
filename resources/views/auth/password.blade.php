@@ -1,4 +1,4 @@
-@extends('easel::backend.layout')
+@extends('vendor.easel.backend.layout')
 
 @section('title')
     <title>{{ config('blog.title') }} | Reset Password</title>
