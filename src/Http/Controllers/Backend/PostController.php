@@ -2,9 +2,9 @@
 namespace Easel\Http\Controllers\Backend;
 
 use Session;
+use App\Http\Controllers\Controller;
 use Easel\Models\Post;
 use Easel\Jobs\PostFormFields;
-use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\PostCreateRequest;
 use Easel\Http\Requests\PostUpdateRequest;
 
@@ -26,7 +26,7 @@ class PostController extends Controller
             $post->subtitle = mb_strimwidth($post->subtitle, 0, self::TRIM_WIDTH, self::TRIM_MARKER);
         }
 
-        return view('backend.post.index', compact('data'));
+        return view('vendor.easel.backend.post.index', compact('data'));
     }
 
     /**
@@ -37,7 +37,7 @@ class PostController extends Controller
     public function create()
     {
         $data = $this->dispatch(new PostFormFields());
-        return view('backend.post.create', $data);
+        return view('vendor.easel.backend.post.create', $data);
     }
 
     /**
@@ -66,7 +66,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $data = $this->dispatch(new PostFormFields($id));
-        return view('backend.post.edit', $data);
+        return view('vendor.easel.backend.post.edit', $data);
     }
 
     /**

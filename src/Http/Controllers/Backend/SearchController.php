@@ -6,7 +6,7 @@ use Easel\Models\Tag;
 use Easel\Models\Post;
 use Easel\Http\Requests;
 use Illuminate\Http\Request;
-use Easel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {

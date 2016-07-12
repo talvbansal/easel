@@ -7,7 +7,7 @@ use Easel\Models\Post;
 use Easel\Http\Requests;
 use Easel\Jobs\BlogIndexData;
 use Illuminate\Http\Request;
-use Easel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
 {

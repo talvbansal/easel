@@ -7,7 +7,7 @@ use \Session;
 use Easel\Models\User;
 use Easel\Http\Requests;
 use Illuminate\Http\Request;
-use Easel\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Easel\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller

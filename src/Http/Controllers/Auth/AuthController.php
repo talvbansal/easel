@@ -4,7 +4,7 @@ namespace Easel\Http\Controllers\Auth;
 use Session;
 use Validator;
 use JsValidator;
-use App\Models\User;
+use Easel\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -60,7 +60,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return \User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
