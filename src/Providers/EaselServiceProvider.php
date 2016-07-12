@@ -57,6 +57,11 @@ class EaselServiceProvider extends ServiceProvider
         $this->publishes([
             EASEL_BASE_PATH . '/resources/views' => base_path('resources/views/vendor/easel'),
         ]);
+        
+        $this->publishes([
+            EASEL_BASE_PATH . '/public' => base_path('public')
+        ]);
+
     }
 
     private function defineMigrations()
