@@ -12,11 +12,11 @@ return [
     | on sites such as Facebook and Twitter.
     |
     */
-    'name'            => 'Canvas',
-    'title'           => 'Canvas',
-    'subtitle'        => 'Minimal Blogging App',
-    'description'     => 'Blog',
-    'author'          => 'Todd Austin',
+    'name'            => 'Easel',
+    'title'           => 'Easel : a place for Canvas',
+    'subtitle'        => 'Minimal Blogging Package',
+    'description'     => 'Blog package for laravel apps',
+    'author'          => 'Talv Bansal',
 
     /*
     |--------------------------------------------------------------------------

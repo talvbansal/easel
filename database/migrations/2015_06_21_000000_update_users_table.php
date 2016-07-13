@@ -19,9 +19,7 @@ class UpdateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('display_name');
             $table->string('url')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('github')->nullable();
+            $table->json('social_media')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
@@ -42,24 +40,24 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function( Blueprint $table ){
-            $table->string('name');
+
 
             $table->dropColumn('first_name');
             $table->dropColumn('last_name');
             $table->dropColumn('display_name');
             $table->dropColumn('url');
-            $table->dropColumn('twitter');
-            $table->dropColumn('facebook');
-            $table->dropColumn('github');
+            $table->dropColumn('social_media');
             $table->dropColumn('address');
             $table->dropColumn('city');
             $table->dropColumn('country');
             $table->dropColumn('bio');
             $table->dropColumn('job');
             $table->dropColumn('phone');
-            $table->dropColumn('gender', 140);
-            $table->dropColumn('relationship', 140);
+            $table->dropColumn('gender');
+            $table->dropColumn('relationship');
             $table->dropColumn('birthday');
+
+            $table->string('name');
         });
     }
 }

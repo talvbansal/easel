@@ -1,13 +1,12 @@
 <?php
 namespace Easel\Http\Controllers\Frontend;
 
-use Easel\Models\Tag;
-use Easel\Models\User;
-use Easel\Models\Post;
+use App\Http\Controllers\Controller;
 use Easel\Http\Requests;
 use Easel\Jobs\BlogIndexData;
+use Easel\Models\Post;
+use Easel\Models\Tag;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
 {
@@ -20,12 +19,11 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $user = User::findOrFail(1);
-        $tag = $request->get('tag');
-        $data = $this->dispatch(new BlogIndexData($tag));
+        $tag    = $request->get('tag');
+        $data   = $this->dispatch(new BlogIndexData($tag));
         $layout = $tag ? Tag::layout($tag)->first() : 'vendor.easel.frontend.blog.index';
 
-        return view($layout, $data)->with(compact('user'));
+        return view($layout, $data);
     }
 
     /**
@@ -38,14 +36,13 @@ class BlogController extends Controller
      */
     public function showPost($slug, Request $request)
     {
-        $user = User::findOrFail(1);
-        $post = Post::with('tags')->whereSlug($slug)->firstOrFail();
-        $tag = $request->get('tag');
+        $post  = Post::with('tags')->whereSlug($slug)->firstOrFail();
+        $tag   = $request->get('tag');
         $title = $post->title;
         if ($tag) {
             $tag = Tag::whereTag($tag)->firstOrFail();
         }
 
-        return view($post->layout, compact('post', 'tag', 'slug', 'title', 'user'));
+        return view($post->layout, compact('post', 'tag', 'slug', 'title'));
     }
 }

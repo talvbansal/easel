@@ -2,7 +2,6 @@
 
 use Easel\Models\Tag;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class TagTableSeeder extends Seeder
 {

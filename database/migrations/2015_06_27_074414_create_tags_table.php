@@ -18,7 +18,7 @@ class CreateTagsTable extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->string('meta_description');
-            $table->string('layout')->default('frontend.blog.index');
+            $table->string('layout')->default('vendor.easel.frontend.blog.index');
             $table->boolean('reverse_direction');
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('page_image')->nullable();
             $table->string('meta_description')->nullable();
             $table->boolean('is_draft')->default(false);
-            $table->string('layout')->default('easel::frontend.blog.post');
+            $table->string('layout')->default('vendor.easel.frontend.blog.post');
             $table->timestamps();
             $table->timestamp('published_at')->index();
         });
