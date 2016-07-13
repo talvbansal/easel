@@ -1,7 +1,7 @@
 Welcome to Easel! I'm your first post demonstrating Markdown integration. Don't delete me, I'm very helpful! If you do delete me though, I can be recovered. Just grab me from:
 
 ```
-/vendor/talv86/easel/resources/views/shared/helpers/welcome.blade.php
+resources/vendor/easel/views/shared/helpers/welcome.blade.php
 ```
 
 <div class="section-divider"></div>
