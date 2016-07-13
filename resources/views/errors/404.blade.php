@@ -7,7 +7,7 @@
         <meta name="author" content="{{ config('blog.author') }}">
         <meta name="viewport" content="user-scalable=no">
 
-        <title>Canvas | Page not found</title>
+        <title>Easel | Page not found</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 

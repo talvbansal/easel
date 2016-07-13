@@ -26,6 +26,8 @@ class AuthController extends Controller
     protected $redirectAfterLogout = '/auth/login';
 
     protected $redirectTo = '/admin/post';
+    
+    protected $loginView = 'vendor.easel.auth.login';
 
     /**
      * Create a new authentication controller instance.

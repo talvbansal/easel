@@ -19,7 +19,7 @@
                     <div class="card-body card-padding" id="login-ch">
                         <p class="f-20 f-300 text-center">Please sign in to continue</p>
 
-                        @include('auth.partials.login-form')
+                        @include('vendor.easel.auth.partials.login-form')
                         <br>
                     </div>
                 </div>
@@ -30,5 +30,5 @@
 @endsection
 
 @section('unique-js')
-    {!! JsValidator::formRequest('App\Http\Requests\LoginRequest', '#login'); !!}
+    {!! JsValidator::formRequest(\Easel\Http\Requests\LoginRequest::class, '#login') !!}
 @stop

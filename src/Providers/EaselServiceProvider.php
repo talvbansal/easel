@@ -8,7 +8,10 @@
 
 namespace Easel\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade;
+use Proengsoft\JsValidation\JsValidationServiceProvider;
 
 class EaselServiceProvider extends ServiceProvider
 {
@@ -16,14 +19,13 @@ class EaselServiceProvider extends ServiceProvider
     /**
      *
      */
-    public function boot(){
-
+    public function boot()
+    {
         $this->mergeConfigFrom(EASEL_BASE_PATH . '/config/easel.php', 'blog');
 
         $this->defineRoutes();
         $this->defineResources();
         $this->defineMigrations();
-
     }
 
     /**
@@ -33,17 +35,32 @@ class EaselServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //define package base path
         if ( ! defined('EASEL_BASE_PATH')) {
             define('EASEL_BASE_PATH', realpath(__DIR__ . '/../../'));
         }
+
+        //register service providers
+        $this->app->register( JsValidationServiceProvider::class );
+
+        //load facade
+        $loader = AliasLoader::getInstance();
+        $loader->alias('JsValidator', JsValidatorFacade::class);
+    }
+
+    public function provides()
+    {
+        return [
+            JsValidationServiceProvider::class,
+        ];
     }
 
     private function defineRoutes()
     {
         if ( ! $this->app->routesAreCached()) {
 
-            \Route::group(['namespace' => 'Easel\Http\Controllers'],
-                function( $router ){
+            \Route::group([ 'namespace' => 'Easel\Http\Controllers' ],
+                function ($router) {
                     require EASEL_BASE_PATH . '/src/Http/routes.php';
                 }
             );
@@ -52,16 +69,13 @@ class EaselServiceProvider extends ServiceProvider
 
     private function defineResources()
     {
-        //$this->loadViewsFrom(EASEL_BASE_PATH . '/resources/views', 'easel');
-
         $this->publishes([
             EASEL_BASE_PATH . '/resources/views' => base_path('resources/views/vendor/easel'),
         ]);
-        
+
         $this->publishes([
             EASEL_BASE_PATH . '/public' => base_path('public')
         ]);
-
     }
 
     private function defineMigrations()

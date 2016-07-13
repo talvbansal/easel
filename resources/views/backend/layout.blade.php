@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('shared.meta-tags')
+        @include('vendor.easel.shared.meta-tags')
 
         @yield('title')
 
-        @include('backend.partials.backend-css')
+        @include('vendor.easel.backend.partials.backend-css')
     </head>
     <body @if(Auth::check()) class="toggled sw-toggled" @endif>
         @if (Auth::guest())
@@ -14,19 +14,19 @@
 
         @else
 
-            @include('backend.partials.header')
+            @include('vendor.easel.backend.partials.header')
 
             @yield('content')
 
-            @include('shared.page-loader')
+            @include('vendor.easel.shared.page-loader')
 
         @endif
 
-        @include('backend.partials.footer')
+        @include('vendor.easel.backend.partials.footer')
 
-        @include('backend.partials.backend-js')
+        @include('vendor.easel.backend.partials.backend-js')
 
-        @include('backend.partials.search-js')
+        @include('vendor.easel.backend.partials.search-js')
 
         @yield('unique-js')
 

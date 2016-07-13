@@ -1,4 +1,4 @@
-Welcome to Canvas! I'm your first post demonstrating Markdown integration. Don't delete me, I'm very helpful! If you do delete me though, I can be recovered. Just grab me from:
+Welcome to Easel! I'm your first post demonstrating Markdown integration. Don't delete me, I'm very helpful! If you do delete me though, I can be recovered. Just grab me from:
 
 ```
 resources/views/shared/helpers/welcome.blade.php
@@ -93,18 +93,18 @@ Database Password   | `secret`
 If your ``code has `backticks` `` that need to be displayed, you can use double backticks:
 ```` ``Code with `backticks` `` ````  (mind the spaces preceding the final set of backticks)
 
-GitHub's fenced code blocks are supported in Canvas:
+GitHub's fenced code blocks are supported in Easel:
 
 ```
 namespace App;
 
-class Blog extends Canvas
+class Blog extends Easel
 {
 
     /**
     * Dreaming of something more?
     *
-    * @with Canvas
+    * @with Easel
     */
     public function create()
     {
@@ -197,7 +197,7 @@ If you type three asterisks `***`, you will get a horizontal rule. Three dashes 
 ## Markdown Extra
 ---
 
-Canvas supports **Markdown Extra**, which extends traditional **Markdown** syntax with some nice features. If you need some help or just want a refresher, read more about [Markdown syntax](https://daringfireball.net/projects/markdown/syntax) and [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/).
+Easel supports **Markdown Extra**, which extends traditional **Markdown** syntax with some nice features. If you need some help or just want a refresher, read more about [Markdown syntax](https://daringfireball.net/projects/markdown/syntax) and [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/).
 
 <div class="section-divider"></div>
 
