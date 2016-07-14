@@ -52,7 +52,7 @@ class PostController extends Controller
         $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
-        Session::set('_new-post', trans('messages.create_success', ['entity' => 'post']));
+        Session::set('_new-post', trans('easel::messages.create_success', ['entity' => 'post']));
         return redirect()->route('admin.post.index');
     }
 
@@ -84,7 +84,7 @@ class PostController extends Controller
         $post->save();
         $post->syncTags($request->get('tags', []));
 
-        Session::set('_update-post', trans('messages.update_success', ['entity' => 'Post']));
+        Session::set('_update-post', trans('easel::messages.update_success', ['entity' => 'Post']));
         return redirect("/admin/post/$id/edit");
     }
 
@@ -101,7 +101,7 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
-        Session::set('_delete-post', trans('messages.delete_success', ['entity' => 'Post']));
+        Session::set('_delete-post', trans('easel::messages.delete_success', ['entity' => 'Post']));
         return redirect()->route('admin.post.index');
     }
 }

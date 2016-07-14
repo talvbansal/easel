@@ -21,6 +21,6 @@ class SearchController extends Controller
         $posts = \Post::where('title', 'LIKE', '%'.$params.'%')->get();
         $tags = \Tag::where('title', 'LIKE', '%'.$params.'%')->get();
 
-        return view('backend.search.index', compact('params', 'posts', 'tags'));
+        return view('vendor.easel.backend.search.index', compact('params', 'posts', 'tags'));
     }
 }

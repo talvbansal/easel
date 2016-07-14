@@ -15,7 +15,7 @@ class AdminRoutesTest extends TestCase
     /**
      * The user model.
      * 
-     * @var App\Models\User
+     * @var Easel\Models\User
      */
     private $user;
 
@@ -28,7 +28,7 @@ class AdminRoutesTest extends TestCase
     public function createUser()
     {
 
-        $this->user = factory(App\Models\User::class)->create();
+        $this->user = factory(Easel\Models\User::class)->create();
 
     }
 

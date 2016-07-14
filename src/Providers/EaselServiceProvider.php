@@ -21,7 +21,16 @@ class EaselServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //create a new config file for the user to update
+        $this->publishes([
+            EASEL_BASE_PATH . '/config/easel.php' => config_path('easel.php'),
+        ]);
+
+        //merge in any missing fields to the users config file in the instance of a new config key
         $this->mergeConfigFrom(EASEL_BASE_PATH . '/config/easel.php', 'blog');
+
+        //load language files
+        $this->loadTranslationsFrom(EASEL_BASE_PATH . '/resources/lang', 'easel');
 
         $this->defineRoutes();
         $this->defineResources();

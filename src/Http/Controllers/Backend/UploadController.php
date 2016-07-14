@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Backend;
+namespace Easel\Http\Controllers\Backend;
 
 use Session;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class UploadController extends Controller
         $folder = $request->get('folder');
         $data = $this->manager->folderInfo($folder);
 
-        return view('backend.upload.index', $data);
+        return view('vendor.easel.backend.upload.index', $data);
     }
 
     /**
@@ -47,10 +47,10 @@ class UploadController extends Controller
         $result = $this->manager->createDirectory($folder);
 
         if ($result === true) {
-            Session::set('_new-folder', trans('messages.create_success', ['entity' => 'folder']));
+            Session::set('_new-folder', trans('easel::messages.create_success', ['entity' => 'folder']));
             return redirect()->back();
         } else {
-            $error = $result ?: trans('messages.create_error', ['entity' => 'directory']);
+            $error = $result ?: trans('easel::messages.create_error', ['entity' => 'directory']);
             return redirect()->back()->withErrors([$error]);
         }
     }
@@ -69,7 +69,7 @@ class UploadController extends Controller
         $result = $this->manager->deleteDirectory($folder);
 
         if ($result === true) {
-            Session::set('_delete-folder', trans('messages.delete_success', ['entity' => 'Folder']));
+            Session::set('_delete-folder', trans('easel::messages.delete_success', ['entity' => 'Folder']));
             return redirect()->back();
         } else {
             $error = $result ?: trans('messages.delete_error', ['entity' => 'directory']);
@@ -94,10 +94,10 @@ class UploadController extends Controller
         $result = $this->manager->saveFile($path, $content);
 
         if ($result === true) {
-            Session::set('_new-file', trans('messages.upload_success', ['entity' => 'file']));
+            Session::set('_new-file', trans('easel::messages.upload_success', ['entity' => 'file']));
             return redirect()->back();
         } else {
-            $error = $result ?: trans('messages.upload_error', ['entity' => 'file']);
+            $error = $result ?: trans('easel::messages.upload_error', ['entity' => 'file']);
             return redirect()->back()->withErrors([$error]);
         }
     }
@@ -116,10 +116,10 @@ class UploadController extends Controller
         $result = $this->manager->deleteFile($path);
 
         if ($result === true) {
-            Session::set('_delete-file', trans('messages.delete_success', ['entity' => 'File']));
+            Session::set('_delete-file', trans('easel::messages.delete_success', ['entity' => 'File']));
             return redirect()->back();
         } else {
-            $error = $result ?: trans('messages.delete_error', ['entity' => 'file']);
+            $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'file']);
             return redirect()->back()->withErrors([$error]);
         }
     }

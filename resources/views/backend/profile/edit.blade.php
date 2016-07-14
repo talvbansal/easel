@@ -13,8 +13,8 @@
             <div class="container container-alt">
 
                 <div class="block-header">
-                    <h2>{{ Auth::user()->display_name }}
-                        <small>{{ Auth::user()->job }}, {{ Auth::user()->city }}, {{ Auth::user()->country }}</small>
+                    <h2>{{ $user->display_name }}
+                        <small>{{ $user->job }}, {{ $user->city }}, {{ $user->country }}</small>
                     </h2>
                 </div>
 
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="pmbb-body p-l-30">
 
-                                    @include('backend.profile.partials.form.summary')
+                                    @include('vendor.easel.backend.profile.partials.form.summary')
 
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('App\Http\Requests\ProfileUpdateRequest', '#profileUpdate'); !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\ProfileUpdateRequest', '#profileUpdate') !!}
 
     @if(Session::get('_profile'))
         @include('backend.profile.partials.notifications.update-profile')
