@@ -22,7 +22,8 @@
     "dflydev/apache-mime-types": "^1.0",
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
-    "proengsoft/laravel-jsvalidation": "1.0.*"
+    "proengsoft/laravel-jsvalidation": "1.0.*",
+    "laravelcollective/html": "^5.2"
   },
   "require-dev": {
     "symfony/dom-crawler": "~3.0",

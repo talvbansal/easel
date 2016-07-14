@@ -61,6 +61,7 @@
 <div class="form-group">
     <div class="fg-line">
         <label class="fg-label">Relationship Status</label>
+
         <select name="relationship" id="relationship" class="selectpicker">
             <option @if ($user->relationship === null) selected @endif value="">Please select one</option>
             <option @if ($user->relationship === 'Single') selected @endif value="Single">Single</option>

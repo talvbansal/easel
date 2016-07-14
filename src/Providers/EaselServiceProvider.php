@@ -8,6 +8,9 @@
 
 namespace Easel\Providers;
 
+use Collective\Html\FormFacade;
+use Collective\Html\HtmlFacade;
+use Collective\Html\HtmlServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
@@ -51,17 +54,13 @@ class EaselServiceProvider extends ServiceProvider
 
         //register service providers
         $this->app->register( JsValidationServiceProvider::class );
+        $this->app->register( \Collective\Html\HtmlServiceProvider::class );
 
         //load facade
         $loader = AliasLoader::getInstance();
         $loader->alias('JsValidator', JsValidatorFacade::class);
-    }
-
-    public function provides()
-    {
-        return [
-            JsValidationServiceProvider::class,
-        ];
+        $loader->alias('Form', FormFacade::class);
+        $loader->alias('Html', HtmlFacade::class);
     }
 
     private function defineRoutes()
