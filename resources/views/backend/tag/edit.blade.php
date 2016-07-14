@@ -14,8 +14,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="/admin">Home</a></li>
-                            <li><a href="/admin/tag">Tags</a></li>
+                            <li><a href="{{ url('/admin') }}">Home</a></li>
+                            <li><a href="{{ url('/admin/tag') }}">Tags</a></li>
                             <li class="active">Edit Tag</li>
                         </ol>
                         <ul class="actions">
@@ -38,19 +38,13 @@
                         <h2>
                             Edit <em>{{ $data['title'] }}</em>
                             <small>
-                                @if(isset($updated_at))
-                                    Last edited on {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['$updated_at'])->format('M d, Y') }} at {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['$updated_at'])->format('g:i A') }}
-                                @else
-                                    Last edited on {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['created_at'])->format('M d, Y') }} at {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['created_at'])->format('g:i A') }}
-                                @endif
+                                Last edited on {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['updated_at'])->format('M d, Y') }} at {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['updated_at'])->format('g:i A') }}
                             </small>
                         </h2>
 
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="/admin/tag/{{ $data['id'] }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="_method" value="PUT">
+                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'method' => 'put', 'id' => 'tagUpdate', 'url' => '/admin/tag/' . $data['id'] ]) !!}
                             <input type="hidden" name="id" value="{{ $data['id'] }}">
 
                             @include('vendor.easel.backend.tag.partials.form')
@@ -63,7 +57,7 @@
                                     <i class="zmdi zmdi-delete"></i> Delete
                                 </button>
                             </div>
-                        </form>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>
@@ -74,7 +68,7 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('App\Http\Requests\TagUpdateRequest', '#tagUpdate'); !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\TagUpdateRequest', '#tagUpdate') !!}
 
     @if(Session::get('_update-tag'))
         @include('vendor.easel.backend.tag.partials.notifications.update')

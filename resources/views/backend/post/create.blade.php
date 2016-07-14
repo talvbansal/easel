@@ -26,17 +26,19 @@
                         <h2>Create a New Post</h2>
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('admin.post.store') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'postCreate', 'url' => 'admin/post/' ]) !!}
 
                             @include('vendor.easel.backend.post.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
                                 &nbsp;
-                                <a href="/admin/post"><button type="button" class="btn btn-link">Cancel</button></a>
+                                <a href="/admin/post">
+                                    <button type="button" class="btn btn-link">Cancel</button>
+                                </a>
                             </div>
-                        </form>
+
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
 @section('unique-js')
     @include('vendor.easel.backend.post.partials.summernote')
 
-    {!! JsValidator::formRequest('App\Http\Requests\PostCreateRequest', '#postCreate') !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\PostCreateRequest', '#postCreate') !!}
 
     @include('vendor.easel.backend.shared.notifications.protip')
 

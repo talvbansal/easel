@@ -42,11 +42,9 @@
 
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{{ route('admin.post.update', $id) }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="_method" value="PUT">
+                        {!! Form::open(['class' => 'keyboard-save', 'id' => 'postUpdate', 'method' => 'put', 'url' => route('admin.post.update', $id)]) !!}
 
-                            @include('backend.post.partials.form')
+                            @include('vendor.easel.backend.post.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
@@ -57,7 +55,7 @@
                                     <i class="zmdi zmdi-delete"></i> Delete
                                 </button>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -69,7 +67,7 @@
 
 @section('unique-js')
     @include('vendor.easel.backend.post.partials.summernote')
-    {!! JsValidator::formRequest('App\Http\Requests\PostUpdateRequest', '#postUpdate'); !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#postUpdate') !!}
 
     @if(Session::get('_update-post'))
         @include('vendor.easel.backend.post.partials.notifications.update-post')

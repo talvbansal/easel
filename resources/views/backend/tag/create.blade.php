@@ -14,8 +14,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="/admin">Home</a></li>
-                            <li><a href="/admin/tag">Tags</a></li>
+                            <li><a href="{{ url('/admin') }}">Home</a></li>
+                            <li><a href="{{ url('/admin/tag') }}">Tags</a></li>
                             <li class="active">New Tag</li>
                         </ol>
                         <ul class="actions">
@@ -39,17 +39,17 @@
 
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="/admin/tag">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'tagUpdate', 'url' => '/admin/tag']) !!}
 
-                            @include('backend.tag.partials.form')
+                            @include('vendor.easel.backend.tag.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
                                 &nbsp;
-                                <a href="/admin/tag"><button type="button" class="btn btn-link">Cancel</button></a>
+                                <a href="{{ url('/admin/tag') }}"><button type="button" class="btn btn-link">Cancel</button></a>
                             </div>
-                        </form>
+
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('App\Http\Requests\TagCreateRequest', '#tagUpdate'); !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\TagCreateRequest', '#tagUpdate') !!}
 
     @include('vendor.easel.backend.shared.notifications.protip')
 @stop

@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="/admin">Home</a></li>
+                            <li><a href="{{ url('/admin') }}">Home</a></li>
                             <li class="active">Posts</li>
                         </ol>
                         <ul class="actions">
@@ -33,7 +33,7 @@
                         @include('vendor.easel.shared.success')
 
                         <h2>Manage Posts&nbsp;
-                            <a href="/admin/post/create"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new post"></i></a>
+                            <a href="{{ route('admin.post.create') }}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new post"></i></a>
 
                             <small>This page provides a comprehensive overview of all current blog posts. Click the edit or preview links next to each post to modify specific details, publish a post or view any changes from the browser.</small>
                         </h2>
@@ -58,7 +58,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->subtitle }}</td>
                                         <td>{{ $post->slug }}</td>
-                                        <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->published_at)->format('M d, Y') }}</td>
+                                        <td>{{ $post->published_at->format('M d, Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

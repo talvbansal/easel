@@ -1,5 +1,5 @@
 <?php
-namespace Easel\Jobs;
+namespace Easel\Http\Jobs;
 
 use Carbon\Carbon;
 use Easel\Models\Tag;

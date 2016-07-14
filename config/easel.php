@@ -13,7 +13,7 @@ return [
     |
     */
     'name'            => 'Easel',
-    'title'           => 'Easel : a place for Canvas',
+    'title'           => 'Easel for your Canvas',
     'subtitle'        => 'Minimal Blogging Package',
     'description'     => 'Blog package for laravel apps',
     'author'          => 'Talv Bansal',

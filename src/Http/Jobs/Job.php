@@ -1,6 +1,6 @@
 <?php
 
-namespace Easel\Jobs;
+namespace Easel\Http\Jobs;
 
 use Illuminate\Bus\Queueable;
 
