@@ -11,8 +11,8 @@
             <div class="container container-alt">
 
                 <div class="block-header">
-                    <h2>{{ $data['display_name'] }}
-                        <small>{{ $data['job'] }}, {{ $data['city'] }}, {{ $data['country'] }}</small>
+                    <h2>{{ $user->display_name }}
+                        <small>{{ $user->job }}, {{ $user->city }}, {{ $user->country }}</small>
                     </h2>
                 </div>
 
@@ -22,17 +22,17 @@
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">
                             <li class="active"><a href="/admin/profile">Profile</a></li>
-                            <li><a href="/admin/profile/{{ $data['id'] }}/edit">Settings</a></li>
+                            <li><a href="/admin/profile/{{ $user->id }}/edit">Settings</a></li>
                         </ul>
 
-                        @if(isset($data['bio']) && !empty($data['bio']))
+                        @if(isset($user->bio) && !empty($user->bio))
                             <div class="pmb-block">
                                 <div class="pmbb-header">
                                     <h2><i class="zmdi zmdi-equalizer m-r-10"></i> Summary</h2>
                                 </div>
                                 <div class="pmbb-body p-l-30">
                                     <div class="pmbb-view">
-                                        {{ $data['bio'] }}
+                                        {{ $user->bio }}
                                     </div>
                                 </div>
                             </div>
@@ -46,24 +46,24 @@
                                 <div class="pmbb-view">
                                     <dl class="dl-horizontal">
                                         <dt>Full Name</dt>
-                                        <dd>{{ $data['first_name'] . ' ' . $data['last_name']}}</dd>
+                                        <dd>{{ $user->first_name . ' ' . $user->last_name}}</dd>
                                     </dl>
-                                    @if(isset($data['gender']) && !empty($data['gender']))
+                                    @if(isset($user->gender) && !empty($user->gender))
                                         <dl class="dl-horizontal">
                                             <dt>Gender</dt>
-                                            <dd>{{ $data['gender'] }}</dd>
+                                            <dd>{{ $user->gender }}</dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['birthday']) && !empty($data['birthday']))
+                                    @if(isset($user->birthday) && !empty($user->birthday))
                                         <dl class="dl-horizontal">
                                             <dt>Birthday</dt>
-                                            <dd>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $data['birthday'])->format('M d, Y') }}</dd>
+                                            <dd>{{ $user->birthday->format('M d, Y') }}</dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['relationship']) && !empty($data['relationship']) )
+                                    @if(isset($user->relationship) && !empty($user->relationship) )
                                         <dl class="dl-horizontal">
                                             <dt>Relationship Status</dt>
-                                            <dd>{{ $data['relationship'] }}</dd>
+                                            <dd>{{ $user->relationship }}</dd>
                                         </dl>
                                     @endif
                                 </div>
@@ -76,50 +76,50 @@
                             </div>
                             <div class="pmbb-body p-l-30">
                                 <div class="pmbb-view">
-                                    @if(isset($data['phone']) && strlen($data['phone']))
+                                    @if(isset($user->phone) && strlen($user->phone))
                                         <dl class="dl-horizontal">
                                             <dt>Mobile Phone</dt>
-                                            <dd>{{ $data['phone'] }}</dd>
+                                            <dd>{{ $user->phone }}</dd>
                                         </dl>
                                     @endif
                                     <dl class="dl-horizontal">
                                         <dt>Email Address</dt>
-                                        <dd>{{ $data['email'] }}</dd>
+                                        <dd>{{ $user->email }}</dd>
                                     </dl>
-                                    @if(isset($data['twitter']) && strlen($data['twitter']))
+                                    @if(isset($user->twitter) && strlen($user->twitter))
                                         <dl class="dl-horizontal">
                                             <dt>Twitter</dt>
-                                            <dd><a href="http://twitter.com/{{ $data['twitter'] }}" target="_blank">{{ '@' . $data['twitter'] }}</a></dd>
+                                            <dd><a href="http://twitter.com/{{ $user->twitter }}" target="_blank">{{ '@' . $user->twitter }}</a></dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['facebook']) && strlen($data['facebook']))
+                                    @if(isset($user->facebook) && strlen($user->facebook))
                                         <dl class="dl-horizontal">
                                             <dt>Facebook</dt>
-                                            <dd><a href="http://facebook.com/{{ $data['facebook'] }}" target="_blank">{{ $data['facebook'] }}</a></dd>
+                                            <dd><a href="http://facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['github']) && strlen($data['github']))
+                                    @if(isset($user->github) && strlen($user->github))
                                         <dl class="dl-horizontal">
                                             <dt>GitHub</dt>
-                                            <dd><a href="http://github.com/{{ $data['github'] }}" target="_blank">{{ $data['github'] }}</a></dd>
+                                            <dd><a href="http://github.com/{{ $user->github }}" target="_blank">{{ $user->github }}</a></dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['address']) && !empty($data['address']))
+                                    @if(isset($user->address) && !empty($user->address))
                                         <dl class="dl-horizontal">
                                             <dt>Address</dt>
-                                            <dd>{{ $data['address'] }}</dd>
+                                            <dd>{{ $user->address }}</dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['city']) && !empty($data['city']))
+                                    @if(isset($user->city) && !empty($user->city))
                                         <dl class="dl-horizontal">
                                             <dt>City</dt>
-                                            <dd>{{ $data['city'] }}</dd>
+                                            <dd>{{ $user->city }}</dd>
                                         </dl>
                                     @endif
-                                    @if(isset($data['country']) && !empty($data['country']))
+                                    @if(isset($user->country) && !empty($user->country))
                                         <dl class="dl-horizontal">
                                             <dt>Country</dt>
-                                            <dd>{{ $data['country'] }}</dd>
+                                            <dd>{{ $user->country }}</dd>
                                         </dl>
                                     @endif
                                 </div>

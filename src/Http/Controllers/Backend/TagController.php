@@ -38,7 +38,7 @@ class TagController extends Controller
             $tag->subtitle = mb_strimwidth($tag->subtitle, 0, self::TRIM_WIDTH, self::TRIM_MARKER);
         }
 
-        return view('backend.tag.index', compact('data'));
+        return view('vendor.easel.backend.tag.index', compact('data'));
     }
 
     /**
@@ -54,7 +54,7 @@ class TagController extends Controller
             $data[$field] = old($field, $default);
         }
 
-        return view('backend.tag.create', compact('data'));
+        return view('vendor.easel.backend.tag.create', compact('data'));
     }
 
     /**
@@ -70,7 +70,7 @@ class TagController extends Controller
         $tag->fill($request->toArray())->save();
         $tag->save();
 
-        Session::set('_new-tag', trans('messages.create_success', ['entity' => 'tag']));
+        Session::set('_new-tag', trans('easel::messages.create_success', ['entity' => 'tag']));
         return redirect('/admin/tag');
     }
 
@@ -89,7 +89,7 @@ class TagController extends Controller
             $data[$field] = old($field, $tag->$field);
         }
 
-        return view('backend.tag.edit', compact('data'));
+        return view('vendor.easel.backend.tag.edit', compact('data'));
     }
 
     /**
@@ -106,7 +106,7 @@ class TagController extends Controller
         $tag->fill($request->toArray())->save();
         $tag->save();
 
-        Session::set('_update-tag', trans('messages.update_success', ['entity' => 'Tag']));
+        Session::set('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
         return redirect("/admin/tag/$id/edit");
     }
 
@@ -122,7 +122,7 @@ class TagController extends Controller
         $tag = Tag::findOrFail($id);
         $tag->delete();
 
-        Session::set('_delete-tag', trans('messages.delete_success', ['entity' => 'Tag']));
+        Session::set('_delete-tag', trans('easel::messages.delete_success', ['entity' => 'Tag']));
         return redirect('/admin/tag');
     }
 }

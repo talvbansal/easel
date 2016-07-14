@@ -1,6 +1,7 @@
 <?php
 namespace Easel\Http\Controllers\Auth;
 
+use Easel\Models\BlogUserInterface;
 use Session;
 use Validator;
 use JsValidator;
@@ -54,21 +55,6 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
     public function getRegister()
     {
         return redirect('/');
@@ -79,9 +65,9 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function authenticated(\Illuminate\Http\Request $request, User $user)
+    public function authenticated(\Illuminate\Http\Request $request, BlogUserInterface $user)
     {
-        \Session::set('_login', trans('messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
+        \Session::set('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
         return redirect()->intended($this->redirectPath());
     }
 }

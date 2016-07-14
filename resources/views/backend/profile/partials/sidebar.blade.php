@@ -2,10 +2,10 @@
     <div class="pmo-pic">
         <div class="p-relative">
             <a href="http://gravatar.com" target="_blank">
-                <img class="img-responsive" src="//www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
+                <img class="img-responsive" src="//www.gravatar.com/avatar/{{ md5($user->email) }}?d=identicon&s=500">
             </a>
             <div class="dropdown pmop-message">
-                <a href="mailto:{{ $data['email'] }}" target="_blank" class="btn bgm-white btn-float z-depth-1">
+                <a href="mailto:{{ $user->email }}" target="_blank" class="btn bgm-white btn-float z-depth-1">
                     <i class="zmdi zmdi-email"></i>
                 </a>
             </div>
@@ -14,8 +14,8 @@
             </a>
         </div>
         <div class="pmo-stat">
-            <h2 class="m-0 c-white">{{ $data['first_name'] }}</h2>
-            Member since {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['created_at'])->format('M d, Y') }}
+            <h2 class="m-0 c-white">{{ $user->first_name }}</h2>
+            Member since {{ $user->created_at->format('M d, Y') }}
         </div>
     </div>
     <div class="pmo-block pmo-contact hidden-xs">
@@ -24,7 +24,7 @@
             @if(isset($data['phone']) && strlen($data['phone']))
                 <li><i class="zmdi zmdi-phone"></i> {{ $data['phone'] }}</li>
             @endif
-            <li><i class="zmdi zmdi-email"></i> <a href="mailto:{{ $data['email'] }}" target="_blank">{{ $data['email'] }}</a></li>
+            <li><i class="zmdi zmdi-email"></i> <a href="mailto:{{ $user->email }}" target="_blank">{{ $user->email }}</a></li>
             @if(isset($data['twitter']) && strlen($data['twitter']))
                 <li><i class="zmdi zmdi-twitter-box"></i> <a href="http://twitter.com/{{ $data['twitter'] }}" target="_blank">{{'@'.$data['twitter'] }}</a></li>
             @endif

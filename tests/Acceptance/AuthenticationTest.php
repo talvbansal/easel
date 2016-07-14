@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
     /**
      * The user model.
      *
-     * @var App\Users\User
+     * @var \Easel\Models\User
      */
     private $user;
 
@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
     public function createUser()
     {
 
-        $this->user = factory(App\Models\User::class)->create();
+        $this->user = factory(Easel\Models\User::class)->create();
 
     }
 

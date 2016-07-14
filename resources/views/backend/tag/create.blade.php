@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('vendor.easel.backend.layout')
 
 @section('title')
     <title>{{ config('blog.title') }} | New Tag</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('backend.partials.sidebar-navigation')
+        @include('vendor.easel.backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container">
@@ -31,9 +31,9 @@
                             </li>
                         </ul>
 
-                        @include('shared.errors')
+                        @include('vendor.easel.shared.errors')
 
-                        @include('shared.success')
+                        @include('vendor.easel.shared.success')
 
                         <h2>Create a New Tag</h2>
 
@@ -60,5 +60,5 @@
 @section('unique-js')
     {!! JsValidator::formRequest('App\Http\Requests\TagCreateRequest', '#tagUpdate'); !!}
 
-    @include('backend.shared.notifications.protip')
+    @include('vendor.easel.backend.shared.notifications.protip')
 @stop

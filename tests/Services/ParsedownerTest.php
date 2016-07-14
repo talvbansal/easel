@@ -6,7 +6,7 @@ class ParsedownerTest extends PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->parsedowner = new \App\Services\Parsedowner();
+        $this->parsedowner = new Easel\Services\Parsedowner();
     }
 
     /**

@@ -9,3 +9,5 @@ To migrate and seed the database run the following command
  
 You will need to add the Easel service provider to you config/app.php file
 - \Easel\Providers\EaselServiceProvider::class,
+
+You'll also need to make your User model implement the "Easel\Models\BlogUserInterface"
