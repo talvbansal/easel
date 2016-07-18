@@ -19,7 +19,6 @@ class InstallCommand extends Command
      */
     protected $signature = 'easel:install
         {--seed : Seed the database when installing}
-        {--force : Force install Easel even it has already been installed}
     ';
 
     /**
@@ -34,11 +33,6 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if( $this->hasEaselBeenInstalled() && ! $this->option('force') )
-        {
-            return $this->comment('Easel is already installed, if you want to update it run php artisan easel:update');
-        }
-
         $this->line('Setting Up Easel <info>✔</info>');
 
         $this->createConfig();
