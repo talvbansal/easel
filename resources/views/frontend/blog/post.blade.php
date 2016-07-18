@@ -32,7 +32,7 @@
                         </div>
                     @endif
                     <p class="post-page-meta">
-                        {{ \Carbon\Carbon::parse($post->published_at)->toFormattedDateString() }}
+                        {{ $post->published_at->toFormattedDateString() }}
                         @if ($post->tags->count())
                             in
                             {!! join(', ', $post->tagLinks()) !!}

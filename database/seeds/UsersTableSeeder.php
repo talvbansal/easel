@@ -52,11 +52,11 @@ class UsersTableSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
             'phone'        => '(000) 111-0000',
-            'email'        => 'admin@' . seoUrl(config('blog.title')) . '.com',
+            'email'        => 'admin@' . seoUrl(config('blog.name')) . '.com',
             'social_media' => json_encode([
-                'twitter'  => 'https://twitter.com/' . seoUrl(config('blog.title')),
-                'facebook' => 'https://facebook.com/' . seoUrl(config('blog.title')),
-                'github'   => 'https://github.com/' . seoUrl(config('blog.title')),
+                'twitter'  => 'https://twitter.com/' . seoUrl(config('blog.name')),
+                'facebook' => 'https://facebook.com/' . seoUrl(config('blog.name')),
+                'github'   => 'https://github.com/' . seoUrl(config('blog.name')),
             ]),
             'address'      => '1200 Canvas Way',
             'city'         => 'Birmingham',
@@ -67,7 +67,7 @@ class UsersTableSeeder extends Seeder
             | Misc Information
             |--------------------------------------------------------------------------
             */
-            'url'          => 'www.' . seoUrl(config('blog.title')) . '.com',
+            'url'          => 'www.' . seoUrl(config('blog.name')) . '.com',
             'password'     => bcrypt('password'),
 
             /*

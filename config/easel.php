@@ -48,4 +48,22 @@ return [
         'webpath'       => '/uploads/',
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    |
+    |--------------------------------------------------------------------------
+    |
+    | This option points to a folder that you can store templates for your
+    | blog posts. Each file within that folder will be included in the
+    | drop down box on the layout section of the post editor page.
+    | If the given path doesn't exist then only the default
+    | layout will be shown.
+    |
+    */
+    'layouts' => [
+        'default' => 'vendor.easel.frontend.blog.post',
+        'posts'   => env('POST_LAYOUTS', 'layouts.posts'),
+    ]
+
 ];

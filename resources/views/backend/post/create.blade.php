@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
                                 &nbsp;
-                                <a href="/admin/post">
+                                <a href="{{ url('/admin/post') }}">
                                     <button type="button" class="btn btn-link">Cancel</button>
                                 </a>
                             </div>

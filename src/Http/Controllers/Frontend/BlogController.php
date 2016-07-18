@@ -3,7 +3,7 @@ namespace Easel\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Easel\Http\Requests;
-use Easel\Jobs\BlogIndexData;
+use Easel\Http\Jobs\BlogIndexData;
 use Easel\Models\Post;
 use Easel\Models\Tag;
 use Illuminate\Http\Request;

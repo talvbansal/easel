@@ -4,6 +4,7 @@ namespace Easel\Http\Jobs;
 use Carbon\Carbon;
 use Easel\Models\Tag;
 use Easel\Models\Post;
+use Illuminate\Support\Collection;
 
 class PostFormFields extends Job
 {
@@ -29,7 +30,7 @@ class PostFormFields extends Job
         'publish_time' => '',
         'published_at' => '',
         'updated_at' => '',
-        'layout' => 'frontend.blog.post',
+        'layout' => '',
         'tags' => [],
     ];
 
@@ -46,7 +47,7 @@ class PostFormFields extends Job
     /**
      * Execute the command.
      *
-     * @return array of fieldnames => values
+     * @return array of field names => values
      */
     public function handle()
     {
@@ -63,7 +64,10 @@ class PostFormFields extends Job
         }
         return array_merge(
             $fields,
-            ['allTags' => Tag::lists('tag')->all()]
+            [
+                'allTags' => Tag::lists('tag')->all(),
+                'layouts' => $this->getPostLayouts()
+            ]
         );
     }
 
@@ -85,4 +89,44 @@ class PostFormFields extends Job
         $fields['tags'] = $post->tags()->lists('tag')->all();
         return $fields;
     }
+
+
+    /**
+     * @return Collection
+     */
+    private function getPostLayouts()
+    {
+        $defaultLayout = config('easel.layouts.default');
+        $layoutsFolder = config('easel.layouts.posts');
+
+        $resources = base_path( ) . '/resources/views/' . str_replace('.', '/', $layoutsFolder);
+        if( ! is_dir( $resources ) )
+        {
+            return collect(['default' => $defaultLayout]);
+        }
+
+        $files = scandir( $resources );
+        unset( $files[0], $files[1] );
+
+        $files = new Collection($files);
+
+        $files = $files->map(function( $file ) use( $layoutsFolder ) {
+            $parts = explode('.', $file);
+            $filename = $parts[0];
+            return $layoutsFolder . '.' . $filename;
+        });
+
+        $layouts = collect();
+        foreach( $files as $key => $value )
+        {
+            $key = last( explode('.', $value) );
+            $layouts[ $value ] = $key;
+        }
+
+        $layouts->prepend('default', $defaultLayout);
+
+        return $layouts;
+    }
+
+
 }

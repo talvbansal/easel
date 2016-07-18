@@ -98,8 +98,8 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Layout</label>
-      <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}" placeholder="Layout">
+        <label for="layout" class="fg-label">Layout</label>
+        {!! Form::select('layout', $layouts, $layout, ['class' => 'form-control']) !!}
     </div>
 </div>
 

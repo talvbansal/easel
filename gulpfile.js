@@ -10,7 +10,6 @@ elixir(function (mix) {
     mix.copy('resources/assets/vendor/', 'public/vendor')
 
     // Raw CSS Files
-    mix.copy('resources/assets/css/bootstrap-datetimepicker.css', 'public/css/bootstrap-datetimepicker.min.css');
     mix.copy('resources/assets/css/chosen.min.css', 'public/css/chosen.min.css');
     mix.copy('resources/assets/css/summernote.css', 'public/css/summernote.css');
     mix.copy('resources/assets/css/jquery.bootgrid.min.css', 'public/css/jquery.bootgrid.min.css');
@@ -41,6 +40,4 @@ elixir(function (mix) {
     mix.copy('resources/assets/js/functions.js', 'public/js/functions.js');
     mix.copy('resources/assets/js/bootstrap-growl.min.js', 'public/js/bootstrap-growl.min.js');
     mix.copy('resources/assets/js/fileinput.min.js', 'public/js/fileinput.min.js');
-    mix.copy('resources/assets/js/bootstrap-datetimepicker.min.js', 'public/js/bootstrap-datetimepicker.min.js');
-    
 });
