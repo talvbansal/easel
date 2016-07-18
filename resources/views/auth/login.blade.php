@@ -12,7 +12,7 @@
                     <br>
                     <div class="card-header">
                         <div class="text-center">
-                            <img src="{{ asset('images/canvas-logo.gif') }}" style="width: 120px">
+                            <h1 class="brand dark">Easel</h1>
                         </div>
                     </div>
 

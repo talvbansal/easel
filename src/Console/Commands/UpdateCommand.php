@@ -39,6 +39,7 @@ class UpdateCommand extends Command
         $this->line('Updating Easel <info>✔</info>');
 
         $this->installNewViews();
+        $this->publishAssets();
 
         $this->comment('You are now running the latest version of Easel. Enjoy!');
     }
@@ -111,6 +112,19 @@ class UpdateCommand extends Command
     private function publishedViewPath($view)
     {
         return resource_path('views/vendor/easel/' . $this->relativeViewPath($view) );
+    }
+
+
+    /**
+     * publish initial views, css, js, images and database files
+     */
+    private function publishAssets()
+    {
+        $this->line('Publishing assets...');
+        \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
+        $this->line('Assets published! <info>✔</info>');
+
+        exec('composer dump-autoload');
     }
 
 }
