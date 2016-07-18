@@ -6,6 +6,10 @@ namespace Easel\Console\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * Class InstallCommand
+ * @package Easel\Console\Commands
+ */
 class InstallCommand extends Command
 {
     /**
@@ -31,6 +35,7 @@ class InstallCommand extends Command
 
         $this->createConfig();
         $this->createUploadsSymlink();
+        $this->publishAssets();
         $this->migrateData();
 
         //finally
@@ -38,6 +43,9 @@ class InstallCommand extends Command
         $this->comment('Easel installed. Happy blogging!');
     }
 
+    /**
+     * create a symlink so that files from storage/app/public can be accessed from public/storage
+     */
     private function createUploadsSymlink()
     {
         $this->line('Trying to create public folder symlink...');
@@ -54,14 +62,34 @@ class InstallCommand extends Command
         }
     }
 
+    /**
+     * copy config file into main project
+     */
     private function createConfig()
     {
         $this->line('Config files created! <info>✔</info>');
         copy( EASEL_BASE_PATH . '/config/easel.php', config_path('easel.php') );
     }
 
+    /**
+     * publish initial views, css, js, images and database files
+     */
+    private function publishAssets()
+    {
+        $this->line('Publishing assets...');
+        \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
+        $this->line('Assets published! <info>✔</info>');
+    }
+
+    /**
+     * run new migrations and then seed the db
+     */
     private function migrateData()
     {
-
+        $this->line('Running migrations...');
+        \Artisan::call('migrate', ['--seed' => true]);
+        $this->line('Database updated and seeded! <info>✔</info>');
     }
+
+
 }

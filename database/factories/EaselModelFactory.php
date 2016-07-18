@@ -22,11 +22,11 @@
 $factory->define(Easel\Models\Post::class, function ($faker) {
   return [
     'title'             => 'Hello world',
-    'subtitle'          => 'Canvas is a minimal blogging application for developers. Canvas attempts to make blogging simple and enjoyable by utilizing the latest technologies and keeping the administration as simple as possible with the primary focus on writing.',
+    'subtitle'          => 'Easel is a blogging package for Laravel',
     'page_image'        => 'placeholder.png',
     'content_raw'       => view('vendor.easel.shared.helpers.welcome'),
     'published_at'      => Carbon\Carbon::now(),
-    'meta_description'  => 'Let\'s get you up and running with Canvas!',
+    'meta_description'  => 'Let\'s get you up and running with Easel!',
     'is_draft'          => false,
   ];
 });
@@ -43,7 +43,7 @@ $factory->define(Easel\Models\Tag::class, function ($faker) {
   return [
     'tag'               => 'Getting Started',
     'title'             => 'Getting Started',
-    'subtitle'          => 'Getting started with Canvas',
+    'subtitle'          => 'Getting started with Easel',
     'meta_description'  => 'Meta content for this tag.',
     'reverse_direction' => false,
     'created_at'        => Carbon\Carbon::now(),

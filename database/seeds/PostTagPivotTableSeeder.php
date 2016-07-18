@@ -9,6 +9,9 @@ class PostTagPivotTableSeeder extends Seeder
     */
     public function run()
     {
+
+        \DB::table('post_tag_pivot')->truncate();
+
         \DB::table('post_tag_pivot')->insert([
             'post_id' => 1,
             'tag_id'  => 1,
