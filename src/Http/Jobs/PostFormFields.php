@@ -112,28 +112,20 @@ class PostFormFields extends Job
         $files = scandir($layoutsFullPath);
         unset( $files[0], $files[1] );
 
-        $files = new Collection($files);
+        $files = ( new Collection($files) )->filter(function ($file) use ($layoutsFullPath) {
 
-        $files = $files->filter(function ($file) use ($layoutsFullPath) {
             return is_file($layoutsFullPath . '/' . $file) && ends_with($file, '.blade.php');
 
-        })->map(function ($file) use ($layoutsFolder) {
-            $parts    = explode('.', $file);
-            $filename = $parts[0];
+        })->reduce(function ($files, $file) use ($layoutsFolder) {
+            $fileName       = explode('.', $file)[0];
+            $fullLayoutName = $layoutsFolder . '.' . $fileName;
 
-            return $layoutsFolder . '.' . $filename;
+            return [ $fullLayoutName => $fileName ];
 
         });
 
-        $layouts = collect();
-        foreach ($files as $key => $value) {
-            $key               = last(explode('.', $value));
-            $layouts[ $value ] = $key;
-        }
-
-        $layouts->prepend('default', $defaultLayout);
-
-        return $layouts;
+        //add the default view
+        return array_prepend($files, 'default', $defaultLayout);
     }
 
 
