@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta property="og:type" content="blog">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="author" content="{{ config('blog.author') }}">
+        <meta name="author" content="{{ config('easel.author') }}">
         <meta name="viewport" content="user-scalable=no">
 
         <title>Easel | Be right back</title>

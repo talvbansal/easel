@@ -25,7 +25,7 @@ class UploadsManager
      */
     public function __construct(PhpRepository $mimeDetect)
     {
-        $this->disk = Storage::disk(config('blog.uploads.storage'));
+        $this->disk = Storage::disk(config('easel.uploads.storage'));
         $this->mimeDetect = $mimeDetect;
     }
 
@@ -109,7 +109,7 @@ class UploadsManager
      */
     public function fileWebpath($path)
     {
-        $path = rtrim(config('blog.uploads.webpath'), '/') . '/' .
+        $path = rtrim(config('easel.uploads.webpath'), '/') . '/' .
             ltrim($path, '/');
         return url($path);
     }

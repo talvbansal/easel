@@ -19,7 +19,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $blog = config('blog');
+        $blog = config('easel.);
 
         return view('vendor.easel.backend.profile.index', [ 'data' => $blog, 'user' => $user ]);
     }
@@ -34,7 +34,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $user = User::where('id', $id)->firstOrFail();
-        $blog = config('blog');
+        $blog = config('easel.);
 
         return view('vendor.easel.backend.profile.edit', [ 'data' => $blog, 'user' => $user ]);
     }

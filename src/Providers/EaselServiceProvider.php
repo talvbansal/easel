@@ -11,6 +11,8 @@ namespace Easel\Providers;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
+use Easel\Console\Commands\InstallCommand;
+use Easel\Console\Commands\UpdateCommand;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
@@ -24,20 +26,15 @@ class EaselServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //create a new config file for the user to update
-        $this->publishes([
-            EASEL_BASE_PATH . '/config/easel.php' => config_path('easel.php'),
-        ]);
-
-        //merge in any missing fields to the users config file in the instance of a new config key
-        $this->mergeConfigFrom(EASEL_BASE_PATH . '/config/easel.php', 'blog');
-
         //load language files
         $this->loadTranslationsFrom(EASEL_BASE_PATH . '/resources/lang', 'easel');
 
         $this->defineRoutes();
-        $this->defineResources();
-        $this->defineMigrations();
+
+        if( $this->app->runningInConsole() ) {
+            $this->defineResources();
+            $this->defineMigrations();
+        }
     }
 
     /**
@@ -52,25 +49,15 @@ class EaselServiceProvider extends ServiceProvider
             define('EASEL_BASE_PATH', realpath(__DIR__ . '/../../'));
         }
 
-        //register service providers
-        $this->app->register( JsValidationServiceProvider::class );
-        $this->app->register( HtmlServiceProvider::class );
-
-        //load facades
-        $loader = AliasLoader::getInstance();
-        $loader->alias('JsValidator', JsValidatorFacade::class);
-        $loader->alias('Form', FormFacade::class);
-        $loader->alias('Html', HtmlFacade::class);
-
-
-        //this doesn't really need to be run on every request so maybe this should be extracted out to some sort of install command
-        try {
-            symlink(storage_path('app/public'), public_path('storage'));
-        }catch ( \Exception $e )
+        if( $this->app->runningInConsole() )
         {
-            //the symlink creation failed, maybe it already exists
+            $this->commands([
+                InstallCommand::class,
+                UpdateCommand::class
+            ]);
         }
 
+        $this->registerServices();
     }
 
     private function defineRoutes()
@@ -114,5 +101,18 @@ class EaselServiceProvider extends ServiceProvider
             EASEL_BASE_PATH . '/database/factories/' => database_path('factories')
         ], 'factories');
 
+    }
+
+    private function registerServices()
+    {
+        //register service providers
+        $this->app->register(JsValidationServiceProvider::class);
+        $this->app->register(HtmlServiceProvider::class);
+
+        //load facades
+        $loader = AliasLoader::getInstance();
+        $loader->alias('JsValidator', JsValidatorFacade::class);
+        $loader->alias('Form', FormFacade::class);
+        $loader->alias('Html', HtmlFacade::class);
     }
 }
