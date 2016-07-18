@@ -56,7 +56,7 @@ class EaselServiceProvider extends ServiceProvider
         $this->app->register( JsValidationServiceProvider::class );
         $this->app->register( \Collective\Html\HtmlServiceProvider::class );
 
-        //load facade
+        //load facades
         $loader = AliasLoader::getInstance();
         $loader->alias('JsValidator', JsValidatorFacade::class);
         $loader->alias('Form', FormFacade::class);
@@ -83,6 +83,10 @@ class EaselServiceProvider extends ServiceProvider
 
         $this->publishes([
             EASEL_BASE_PATH . '/public' => base_path('public')
+        ]);
+
+        $this->publishes([
+            EASEL_BASE_PATH . '/resources/assets/uploads' => public_path('uploads'),
         ]);
     }
 
