@@ -18,7 +18,8 @@ class InstallCommand extends Command
      * @var string
      */
     protected $signature = 'easel:install
-        {--seed : seed the database when installing }
+        {--seed : Seed the database when installing}
+        {--force : Force install Easel even it has already been installed}
     ';
 
     /**
@@ -33,6 +34,11 @@ class InstallCommand extends Command
      */
     public function handle()
     {
+        if( $this->hasEaselBeenInstalled() && ! $this->option('force') )
+        {
+            return $this->comment('Easel is already installed, if you want to update it run php artisan easel:update');
+        }
+
         $this->line('Setting Up Easel <info>✔</info>');
 
         $this->createConfig();
@@ -104,6 +110,17 @@ class InstallCommand extends Command
         }else{
             $this->comment('The database was not seeded make sure you create your user manually');
         }
+    }
+
+    /**
+     * check if easel is in the composer
+     * @return bool
+     */
+    private function hasEaselBeenInstalled()
+    {
+        $composer = json_decode(file_get_contents(base_path('composer.json')), true);
+
+        return isset($composer['require']['talv86/easel']);
     }
 
 

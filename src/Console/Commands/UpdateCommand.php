@@ -22,7 +22,7 @@ class UpdateCommand extends Command
      * @var string
      */
     protected $signature = 'easel:update
-                    {--force : Force update easel overwriting any view changes you might have made}';
+                    {--force : Force update Easel overwriting any view changes you might have made}';
 
     /**
      * description of the command
