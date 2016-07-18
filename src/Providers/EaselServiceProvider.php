@@ -15,6 +15,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
+use \Symfony\Component\Filesystem\Filesystem;
 
 class EaselServiceProvider extends ServiceProvider
 {
@@ -54,13 +55,23 @@ class EaselServiceProvider extends ServiceProvider
 
         //register service providers
         $this->app->register( JsValidationServiceProvider::class );
-        $this->app->register( \Collective\Html\HtmlServiceProvider::class );
+        $this->app->register( HtmlServiceProvider::class );
 
         //load facades
         $loader = AliasLoader::getInstance();
         $loader->alias('JsValidator', JsValidatorFacade::class);
         $loader->alias('Form', FormFacade::class);
         $loader->alias('Html', HtmlFacade::class);
+
+
+        //this doesn't really need to be run on every request so maybe this should be extracted out to some sort of install command
+        try {
+            symlink(storage_path('app/public'), public_path('storage'));
+        }catch ( \Exception $e )
+        {
+            //the symlink creation failed, maybe it already exists
+        }
+
     }
 
     private function defineRoutes()
@@ -86,7 +97,7 @@ class EaselServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            EASEL_BASE_PATH . '/resources/assets/uploads' => public_path('uploads'),
+            EASEL_BASE_PATH . '/resources/assets/storage' => public_path('storage'),
         ]);
     }
 

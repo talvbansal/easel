@@ -18,6 +18,11 @@ class UploadsManager
      */
     protected $mimeDetect;
 
+    /**
+     * UploadsManager constructor.
+     *
+     * @param PhpRepository $mimeDetect
+     */
     public function __construct(PhpRepository $mimeDetect)
     {
         $this->disk = Storage::disk(config('blog.uploads.storage'));

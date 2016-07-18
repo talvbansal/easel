@@ -13,9 +13,9 @@ return [
     |
     */
     'name'            => 'Easel',
-    'title'           => 'Easel for your Canvas',
+    'title'           => 'Easel',
     'subtitle'        => 'Minimal Blogging Package',
-    'description'     => 'Blog package for laravel apps',
+    'description'     => 'Blogging package for laravel apps',
     'author'          => 'Talv Bansal',
 
     /*
@@ -44,8 +44,8 @@ return [
     |
     */
     'uploads'         => [
-        'storage'       => 'local',
-        'webpath'       => '/uploads/',
+        'storage'       => 'public',
+        'webpath'       => '/storage/',
     ],
 
 

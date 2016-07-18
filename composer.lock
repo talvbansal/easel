@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "61342b0e53759bfd84efb09b619bdd50",
-    "content-hash": "b8410fd2d4691b0488ddaece004043b6",
+    "hash": "98cf2fa7faef708cb03ca1d3615664f3",
+    "content-hash": "f5b4a1f7bb588ff212b66597113c9baf",
     "packages": [
         {
             "name": "bestmomo/scafold",
@@ -792,12 +792,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "d567b2b961dd051063976c5246457b04d5dc29af"
+                "reference": "3adf6b789b1e053313c0bdb817882d296a0b5e0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/d567b2b961dd051063976c5246457b04d5dc29af",
-                "reference": "d567b2b961dd051063976c5246457b04d5dc29af",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/3adf6b789b1e053313c0bdb817882d296a0b5e0e",
+                "reference": "3adf6b789b1e053313c0bdb817882d296a0b5e0e",
                 "shasum": ""
             },
             "require": {
@@ -834,7 +834,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "http://laravel.com",
-            "time": "2016-07-08 20:11:36"
+            "time": "2016-07-18 10:55:47"
         },
         {
             "name": "illuminate/http",
@@ -1147,12 +1147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "a51f04047f014339b462dfd0d91c70eeda049f03"
+                "reference": "04281973d99af2d97454c65d896340f8694fdb29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/a51f04047f014339b462dfd0d91c70eeda049f03",
-                "reference": "a51f04047f014339b462dfd0d91c70eeda049f03",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/04281973d99af2d97454c65d896340f8694fdb29",
+                "reference": "04281973d99af2d97454c65d896340f8694fdb29",
                 "shasum": ""
             },
             "require": {
@@ -1187,7 +1187,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "http://laravel.com",
-            "time": "2016-07-12 13:55:49"
+            "time": "2016-07-18 11:06:57"
         },
         {
             "name": "laravelcollective/html",
@@ -1564,6 +1564,55 @@
                 }
             ],
             "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:43:10"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "45e9008bc169ab89cc031bf723219092838b0b3d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/45e9008bc169ab89cc031bf723219092838b0b3d",
+                "reference": "45e9008bc169ab89cc031bf723219092838b0b3d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
             "time": "2016-06-29 05:43:10"
         },
