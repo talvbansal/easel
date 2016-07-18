@@ -81,6 +81,8 @@ class InstallCommand extends Command
         $this->line('Publishing assets...');
         \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
         $this->line('Assets published! <info>✔</info>');
+
+        exec('composer dump-autoload');
     }
 
     /**
