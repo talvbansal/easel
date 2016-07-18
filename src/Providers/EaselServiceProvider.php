@@ -15,7 +15,6 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
-use \Symfony\Component\Filesystem\Filesystem;
 
 class EaselServiceProvider extends ServiceProvider
 {
