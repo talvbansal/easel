@@ -30,13 +30,13 @@
       $("#page-image-preview").attr("src", function () {
           var value = $("#page_image").val();
           if (!value) {
-              value = {!! json_encode(config('blog.page_image')) !!};
+              value = {!! json_encode(config('easel.page_image')) !!};
               if (value == null) {
                   value = '';
               }
           }
           if (value.substr(0, 4) != 'http' && value.substr(0, 1) != '/') {
-              value = {!! json_encode(config('blog.uploads.webpath')) !!} +'/' + value;
+              value = {!! json_encode(config('easel.uploads.webpath')) !!} +'/' + value;
           }
           return value;
       });

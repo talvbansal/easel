@@ -1,6 +1,6 @@
 @extends('vendor.easel.frontend.layout', [
   'title' => $post->title,
-  'meta_description' => $post->meta_description ?: config('blog.description'),
+  'meta_description' => $post->meta_description ?: config('easel.description'),
 ])
 
 @if ($post->page_image)
@@ -18,7 +18,7 @@
 @stop
 
 @section('title')
-    <title>{{ $title or config('blog.title') }}</title>
+    <title>{{ $title or config('easel.title') }}</title>
 @stop
 
 @section('content')

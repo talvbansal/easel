@@ -3,7 +3,7 @@
     <div id="disqus_thread"></div>
 
     <script type="text/javascript">
-        var disqus_shortname = '{{ config('blog.disqus_name') }}';
+        var disqus_shortname = '{{ config('easel.disqus_name') }}';
         var disqus_identifier = 'blog-{{ $slug }}';
         (function () {
             var dsq = document.createElement('script');

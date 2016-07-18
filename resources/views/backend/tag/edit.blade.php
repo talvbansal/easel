@@ -1,7 +1,7 @@
 @extends('vendor.easel.backend.layout')
 
 @section('title')
-    <title>{{ config('blog.title') }} | Edit Tag</title>
+    <title>{{ config('easel.title') }} | Edit Tag</title>
 @stop
 
 @section('content')

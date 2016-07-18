@@ -1,7 +1,7 @@
 @extends('vendor.easel.backend.layout')
 
 @section('title')
-    <title>{{ config('blog.title') }} | Reset Password</title>
+    <title>{{ config('easel.title') }} | Reset Password</title>
 @stop
 
 @section('content')

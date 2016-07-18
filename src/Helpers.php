@@ -63,10 +63,10 @@ function checked($value)
 function page_image($value = null)
 {
     if (empty($value)) {
-        $value = config('blog.page_image');
+        $value = config('easel.page_image');
     }
     if (!starts_with($value, 'http') && $value[0] !== '/') {
-        $value = config('blog.uploads.webpath') . '/' . $value;
+        $value = config('easel.uploads.webpath') . '/' . $value;
     }
     return $value;
 }
