@@ -17,7 +17,9 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'easel:install';
+    protected $signature = 'easel:install
+        {--seed : seed the database when installing }
+    ';
 
     /**
      * description of the command
@@ -39,7 +41,7 @@ class InstallCommand extends Command
         $this->migrateData();
 
         //finally
-        $this->comment('<info>Almost ready! Make sure to make your user model implement Easel\Models\BlogUserInterface!</info>');
+        $this->comment('<info>Almost ready! Make sure to make your user model implements Easel\Models\BlogUserInterface!</info>');
         $this->comment('Easel installed. Happy blogging!');
     }
 
@@ -87,8 +89,21 @@ class InstallCommand extends Command
     private function migrateData()
     {
         $this->line('Running migrations...');
-        \Artisan::call('migrate', ['--seed' => true]);
-        $this->line('Database updated and seeded! <info>✔</info>');
+
+        $options = [];
+        if( $this->option('seed') ){
+            $options['--seed'] = true;
+
+        }
+
+        \Artisan::call('migrate', $options );
+        $this->line('Database updated! <info>✔</info>');
+
+        if( $this->option('seed') ) {
+            $this->line('Database seeded! <info>✔</info>');
+        }else{
+            $this->comment('The database was not seeded make sure you create your user manually');
+        }
     }
 
 
