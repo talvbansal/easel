@@ -41,7 +41,7 @@ class PostCreateRequest extends Request
             'content_raw' => $this->get('content'),
             'meta_description' => $this->meta_description,
             'is_draft' => (bool)$this->is_draft,
-            'published_at' => Carbon::createFromFormat('d-m-Y H:i:s', $this->published_at)->format('Y-m-d H:i:s'),
+            'published_at' => Carbon::createFromFormat('d/m/Y H:i:s', $this->published_at)->format('Y-m-d H:i:s'),
             'layout' => $this->layout,
         ];
     }

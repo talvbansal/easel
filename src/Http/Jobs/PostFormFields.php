@@ -56,6 +56,7 @@ class PostFormFields extends Job
             $fields = $this->fieldsFromModel($this->id, $fields);
         } else {
             $when                   = Carbon::now()->addHour();
+            $fields['published_at'] = $when;
             $fields['publish_date'] = $when->format('M-j-Y');
             $fields['publish_time'] = $when->format('g:i A');
         }
