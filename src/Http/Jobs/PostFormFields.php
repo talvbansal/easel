@@ -2,8 +2,8 @@
 namespace Easel\Http\Jobs;
 
 use Carbon\Carbon;
-use Easel\Models\Tag;
 use Easel\Models\Post;
+use Easel\Models\Tag;
 use Illuminate\Support\Collection;
 
 class PostFormFields extends Job
@@ -20,18 +20,18 @@ class PostFormFields extends Job
      * @var array
      */
     protected $fieldList = [
-        'title' => '',
-        'subtitle' => '',
-        'page_image' => '',
-        'content' => '',
+        'title'            => '',
+        'subtitle'         => '',
+        'page_image'       => '',
+        'content'          => '',
         'meta_description' => '',
-        'is_draft' => "0",
-        'publish_date' => '',
-        'publish_time' => '',
-        'published_at' => '',
-        'updated_at' => '',
-        'layout' => '',
-        'tags' => [],
+        'is_draft'         => "0",
+        'publish_date'     => '',
+        'publish_time'     => '',
+        'published_at'     => '',
+        'updated_at'       => '',
+        'layout'           => '',
+        'tags'             => [ ],
     ];
 
     /**
@@ -55,13 +55,14 @@ class PostFormFields extends Job
         if ($this->id) {
             $fields = $this->fieldsFromModel($this->id, $fields);
         } else {
-            $when = Carbon::now()->addHour();
+            $when                   = Carbon::now()->addHour();
             $fields['publish_date'] = $when->format('M-j-Y');
             $fields['publish_time'] = $when->format('g:i A');
         }
         foreach ($fields as $fieldName => $fieldValue) {
-            $fields[$fieldName] = old($fieldName, $fieldValue);
+            $fields[ $fieldName ] = old($fieldName, $fieldValue);
         }
+
         return array_merge(
             $fields,
             [
@@ -75,23 +76,26 @@ class PostFormFields extends Job
      * Return the field values from the model
      *
      * @param integer $id
-     * @param array $fields
+     * @param array   $fields
+     *
      * @return array
      */
     protected function fieldsFromModel($id, array $fields)
     {
-        $post = Post::findOrFail($id);
-        $fieldNames = array_keys(array_except($fields, ['tags']));
-        $fields = ['id' => $id];
+        $post       = Post::findOrFail($id);
+        $fieldNames = array_keys(array_except($fields, [ 'tags' ]));
+        $fields     = [ 'id' => $id ];
         foreach ($fieldNames as $field) {
-            $fields[$field] = $post->{$field};
+            $fields[ $field ] = $post->{$field};
         }
         $fields['tags'] = $post->tags()->lists('tag')->all();
+
         return $fields;
     }
 
 
     /**
+     * get a collection of views that can be used as templates for blog posts
      * @return Collection
      */
     private function getPostLayouts()
@@ -99,27 +103,30 @@ class PostFormFields extends Job
         $defaultLayout = config('easel.layouts.default');
         $layoutsFolder = config('easel.layouts.posts');
 
-        $resources = base_path( ) . '/resources/views/' . str_replace('.', '/', $layoutsFolder);
-        if( ! is_dir( $resources ) )
-        {
-            return collect(['default' => $defaultLayout]);
+        $layoutsFullPath = base_path() . '/resources/views/' . str_replace('.', '/', $layoutsFolder);
+        if ( ! is_dir($layoutsFullPath)) {
+            return collect([ 'default' => $defaultLayout ]);
         }
 
-        $files = scandir( $resources );
+        $files = scandir($layoutsFullPath);
         unset( $files[0], $files[1] );
 
         $files = new Collection($files);
 
-        $files = $files->map(function( $file ) use( $layoutsFolder ) {
-            $parts = explode('.', $file);
+        $files = $files->filter(function ($file) use ($layoutsFullPath) {
+            return is_file($layoutsFullPath . '/' . $file) && ends_with($file, '.blade.php');
+
+        })->map(function ($file) use ($layoutsFolder) {
+            $parts    = explode('.', $file);
             $filename = $parts[0];
+
             return $layoutsFolder . '.' . $filename;
+
         });
 
         $layouts = collect();
-        foreach( $files as $key => $value )
-        {
-            $key = last( explode('.', $value) );
+        foreach ($files as $key => $value) {
+            $key               = last(explode('.', $value));
             $layouts[ $value ] = $key;
         }
 
