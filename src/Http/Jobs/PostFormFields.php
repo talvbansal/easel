@@ -104,9 +104,9 @@ class PostFormFields extends Job
         $defaultLayout = config('easel.layouts.default');
         $layoutsFolder = config('easel.layouts.posts');
 
-        $layoutsFullPath = base_path() . '/resources/views/' . str_replace('.', '/', $layoutsFolder);
+        $layoutsFullPath = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/' . $layoutsFolder)) ;
         if ( ! is_dir($layoutsFullPath)) {
-            return collect([ 'default' => $defaultLayout ]);
+            return collect([ $defaultLayout => 'default' ]);
         }
 
         $files = scandir($layoutsFullPath);
@@ -121,11 +121,10 @@ class PostFormFields extends Job
             $fullLayoutName = $layoutsFolder . '.' . $fileName;
 
             return [ $fullLayoutName => $fileName ];
-
         });
 
         //add the default view
-        return array_prepend($files, 'default', $defaultLayout);
+        return collect( $files )->prepend( 'default', $defaultLayout );
     }
 
 
