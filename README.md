@@ -4,6 +4,12 @@
 [![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
 
 ### Post install commands
+
+To register the easy install and update commands as well as registering the new routes for Easel to work, you will need to add the Easel service provider to you config/app.php file
+```
+\Easel\Providers\EaselServiceProvider::class,
+```
+
 To include the migrations, seeds and factories required for easel run the following command to publish all the required assets, migration and seed files
 ```
 php artisan easel:install --seed
@@ -15,11 +21,7 @@ Whenever an update to easel is made internal files will automatically be updated
 php artisan easel:update --force
 ```
 The optional force parameter will overwrite any views that have already been published
- 
-You will need to add the Easel service provider to you config/app.php file
-```
-\Easel\Providers\EaselServiceProvider::class,
-```
+
 
 ### User Models
 Easel allows you to use the built in user model which is Easel\Models\User or you can use your own custom model. If you want to use your own model you'll need to make the following changes: 
