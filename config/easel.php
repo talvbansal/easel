@@ -12,24 +12,26 @@ return [
     | on sites such as Facebook and Twitter.
     |
     */
-    'name'            => 'Easel',
-    'title'           => 'Easel',
-    'subtitle'        => 'Minimal Blogging Package',
-    'description'     => 'Blogging package for laravel apps',
-    'author'          => 'Talv Bansal',
+    'name'           => 'Easel',
+    'title'          => 'Easel',
+    'subtitle'       => 'Minimal Blogging Package',
+    'description'    => 'Blogging package for laravel apps',
+    'author'         => 'Talv Bansal',
 
     /*
     |--------------------------------------------------------------------------
     | Blog Post Configuration
     |--------------------------------------------------------------------------
     |
-    | Pretty self-explanatory here. Indicate how many posts you would like
-    | to appear on each page. If you are using Disqus, provide the
-    | identifier here or in your .env
+    | Here you can configure the base uri where the blog should respond.
+    | Indicate how many posts you would like to appear on each page.
+    | If you are using Disqus, provide the identifier here or in
+    | your host application's .env file
     |
     */
-    'posts_per_page'  => 6,
-    'disqus_name' => env('DISQUS_NAME', 'YOUR_UNIQUE_SHORTNAME'),
+    'blog_base_url'  => env('BLOG_BASE_URL', '/blog'),
+    'disqus_name'    => env('BLOG_DISQUS_NAME', 'YOUR_UNIQUE_SHORTNAME'),
+    'posts_per_page' => 6,
 
     /*
     |--------------------------------------------------------------------------
@@ -40,12 +42,12 @@ return [
     | as a reminder, your uploads directory MUST be writable by the
     | web server for the uploading to function properly.
     |
-    | Supported: "local"
+    | Supported: "public"
     |
     */
-    'uploads'         => [
-        'storage'       => 'public',
-        'webpath'       => '/storage/',
+    'uploads'        => [
+        'storage' => 'public',
+        'webpath' => '/storage/',
     ],
 
 
@@ -61,9 +63,9 @@ return [
     | layout will be shown.
     |
     */
-    'layouts' => [
+    'layouts'        => [
         'default' => 'vendor.easel.frontend.blog.post',
-        'posts'   => env('POST_LAYOUTS', 'layouts.posts'),
+        'posts'   => env('BLOG_POST_LAYOUTS', 'layouts.posts'),
     ]
 
 ];

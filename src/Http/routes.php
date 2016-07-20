@@ -5,9 +5,10 @@ Route::group(['middleware' => ['web']], function () {
     | Blog Routes
     |--------------------------------------------------------------------------
     */
-    Route::get('/', 'Frontend\BlogController@index');
-    Route::get('blog', 'Frontend\BlogController@index');
-    Route::get('blog/{slug}', 'Frontend\BlogController@showPost');
+    Route::group(['prefix' => config('easel.blog_base_url')], function(){
+        Route::get('/', 'Frontend\BlogController@index');
+        Route::get('/{slug}', 'Frontend\BlogController@showPost');
+    });
 
     /*
     |--------------------------------------------------------------------------
