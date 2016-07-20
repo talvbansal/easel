@@ -113,7 +113,7 @@ class Post extends Model
      */
     public function url(Tag $tag = null)
     {
-        $url = url('blog/' . $this->slug);
+        $url = url( config('easel.blog_base_url') . $this->slug);
         if ($tag) {
             $url .= '?tag=' . urlencode($tag->tag);
         }
@@ -126,8 +126,13 @@ class Post extends Model
      * @param string $base
      * @return array
      */
-    public function tagLinks($base = '/blog?tag=%TAG%')
+    public function tagLinks($base = null)
     {
+        if( $base === null )
+        {
+            $base = config('easel.blog_base_url') . '?tag=%TAG%';
+        }
+
         $tags = $this->tags()->lists('tag');
         $return = [];
         foreach ($tags as $tag) {
