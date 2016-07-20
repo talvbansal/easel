@@ -62,6 +62,11 @@ class EaselServiceProvider extends ServiceProvider
         }
 
         $this->registerServices();
+
+        // Merge any new config items into the existing config file
+        $this->mergeConfigFrom(
+            EASEL_BASE_PATH . '/config/easel.php', 'easel'
+        );
     }
 
     /**
