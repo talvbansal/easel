@@ -1,6 +1,8 @@
 # Easel
 
-### Post require commands
+[![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
+
+### Post install commands
 To include the migrations, seeds and factories required for easel run the following command to publish all the required assets, migration and seed files
 - php artisan easel:install --force
  
