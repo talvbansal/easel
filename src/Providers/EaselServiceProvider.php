@@ -102,7 +102,7 @@ class EaselServiceProvider extends ServiceProvider
      */
     private function defineMigrations()
     {
-        $this->publishes([
+        /*$this->publishes([
             EASEL_BASE_PATH . '/database/migrations/' => database_path('migrations')
         ], 'migrations');
 
@@ -112,7 +112,7 @@ class EaselServiceProvider extends ServiceProvider
 
         $this->publishes([
             EASEL_BASE_PATH . '/database/factories/' => database_path('factories')
-        ], 'factories');
+        ], 'factories');*/
 
     }
 
