@@ -34,14 +34,39 @@ class User extends Model implements \Easel\Models\BlogUserInterface{
 }
 ```
 
-### Setting a views folder for your blog posts
-When creating a blog post you can use the default layout for easel but that probably won't fit in with you existing application. 
-You may also need different views for different blog posts, easel has you covered just add a new key to your .env file called POST_LAYOUTS. then give it the path to a folder within your resources/views folder
+### Customising the url prefix for the blog
+By default you can access the public blog listing at the following routes:
+```
+/blog
+/blog/{blog-post-slug}
+```
+You might want the blog to accessed from a different URI.
+Easel lets you configure that by adding the following key to your .env file BLOG_BASE_URL
 
 For example
 
 ```
-POST_LAYOUTS=layouts.posts
+BLOG_BASE_URL=/myblog
+```
+Will make your blog respond at 
+```
+/myblog
+/myblog/{blog-post-slug}
+```
+
+If you want the blog to respond at the / route you will need to add a new route to your routes.php file as follows:
+```
+Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
+```
+
+### Setting a views folder for your blog posts
+When creating a blog post you can use the default layout for easel but that probably won't fit in with you existing application. 
+You may also need different views for different blog posts, easel has you covered just add a new key to your .env file called BLOG_POST_LAYOUTS. then give it the path to a folder within your resources/views folder
+
+For example
+
+```
+BLOG_POST_LAYOUTS=layouts.posts
 ```
 
 Will point to the following folder
@@ -50,5 +75,5 @@ Will point to the following folder
 {project}/resources/views/layouts/posts
 ```
 
-Every blade template within that folder will then be listed on the post creation page as a potential layout for that post. Subfolders within the POST_LAYOUTS folder will not be listed allowing you to store partials for your templates within a single folder.
+Every blade template within that folder will then be listed on the post creation page as a potential layout for that post. Subfolders within the BLOG_POST_LAYOUTS folder will not be listed allowing you to store partials for your templates within a single folder.
 
