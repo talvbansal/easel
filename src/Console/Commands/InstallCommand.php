@@ -36,10 +36,10 @@ class InstallCommand extends Command
         $this->line('Setting Up Easel <info>✔</info>');
 
         $this->createConfig();
-        $this->createUploadsSymlink();
         $this->publishAssets();
         $this->migrateData();
 
+        $this->createUploadsSymlink();
         //finally
         $this->comment('<info>Almost ready! Make sure to make your user model implements Easel\Models\BlogUserInterface!</info>');
         $this->comment('Easel installed. Happy blogging!');
@@ -79,7 +79,7 @@ class InstallCommand extends Command
     private function publishAssets()
     {
         $this->line('Publishing assets...');
-        \Artisan::call('vendor:publish', ['--provider' => "\\Easel\\Providers\\EaselServiceProvider", '--force' => true] );
+        \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
         $this->line('Assets published! <info>✔</info>');
 
         exec('composer dump-autoload');
