@@ -30,10 +30,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     public function tearDown()
     {
-        $this->artisan('migrate:rollback', [
-            '--database' => 'test',
-        ]);
-
         parent::tearDown();
     }
 

@@ -101,7 +101,7 @@ class UpdateUsersTable extends Migration
 
             foreach ($columns as $column) {
                 if (Schema::hasColumn('users', $column)) {
-                    //$table->dropColumn( $column );
+                    $table->dropColumn( $column );
                 }
             }
 
