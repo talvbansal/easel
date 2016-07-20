@@ -10,7 +10,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class AdminRoutesTest extends TestCase
 {
-    use InteractsWithDatabase;
 
     /**
      * The user model.
@@ -27,9 +26,7 @@ class AdminRoutesTest extends TestCase
      */
     public function createUser()
     {
-
-        $this->user = factory(Easel\Models\User::class)->create();
-
+        $this->user = factory(\Easel\Models\User::class)->create();
     }
 
     /**
@@ -61,7 +58,6 @@ class AdminRoutesTest extends TestCase
      */
     public function testUploadsPageResponseCode()
     {
-
         $response = $this->actingAs($this->user)->call('GET', '/admin/upload');
         $this->assertEquals(200, $response->status());
     }

@@ -12,12 +12,23 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
+
+        // When unit testing we need to create a table for users since there will be no users table to alter
+        if ( ! Schema::hasTable('users')) {
+            Schema::create('users', function ( Blueprint $table ) {
+                $table->increments('id');
+                $table->string('email')->unique()->nullable();
+                $table->string('password')->nullable();
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        }
+
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('name');
 
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('display_name');
+            $table->string('display_name')->nullable();
             $table->string('url')->nullable();
             $table->json('social_media')->nullable();
             $table->string('address')->nullable();
@@ -41,23 +52,16 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function( Blueprint $table ){
 
+            $columns = ['first_name', 'last_name', 'display_name', 'url', 'social_media', 'address', 'city', 'country', 'bio', 'job', 'phone', 'gender', 'relationship', 'birthday'];
 
-            $table->dropColumn('first_name');
-            $table->dropColumn('last_name');
-            $table->dropColumn('display_name');
-            $table->dropColumn('url');
-            $table->dropColumn('social_media');
-            $table->dropColumn('address');
-            $table->dropColumn('city');
-            $table->dropColumn('country');
-            $table->dropColumn('bio');
-            $table->dropColumn('job');
-            $table->dropColumn('phone');
-            $table->dropColumn('gender');
-            $table->dropColumn('relationship');
-            $table->dropColumn('birthday');
+            foreach ($columns as $column )
+            {
+                if( Schema::hasColumn('users', $column) )
+                {
+                    //$table->dropColumn( $column );
+                }
+            }
 
-            $table->string('name');
         });
     }
 }

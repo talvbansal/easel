@@ -5,7 +5,7 @@ use Session;
 use Easel\Models\Tag;
 use Easel\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\TagUpdateRequest;
 use Easel\Http\Requests\TagCreateRequest;
 

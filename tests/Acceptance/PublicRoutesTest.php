@@ -1,4 +1,5 @@
 <?php
+use Easel\Models\User;
 
 /**
  * Class PublicRoutesTest
@@ -8,8 +9,6 @@
 class PublicRoutesTest extends TestCase
 {
 
-    use InteractsWithDatabase;
-
     /**
      * Test the response code for the Blog page.
      *
@@ -17,8 +16,7 @@ class PublicRoutesTest extends TestCase
      */
     public function testBlogPageResponseCode()
     {
-
-        factory(\Easel\Models\User::class)->create();
+        factory(User::class)->make();
         $response = $this->call('GET', '/');
         $this->assertEquals(200, $response->status());
     }
@@ -32,16 +30,5 @@ class PublicRoutesTest extends TestCase
     {
         $response = $this->call('GET', '/auth/login');
         $this->assertEquals(200, $response->status());
-    }
-
-    /**
-     * Test the response code for the 404 Error Page.
-     *
-     * @return void
-     */
-    public function test404ErrorPageResponseCode()
-    {
-        $response = $this->call('GET', '/404ErrorPage');
-        $this->assertEquals(404, $response->status());
     }
 }

@@ -18,6 +18,10 @@ use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 
+/**
+ * Class EaselServiceProvider
+ * @package Easel\Providers
+ */
 class EaselServiceProvider extends ServiceProvider
 {
 
@@ -44,11 +48,12 @@ class EaselServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //define package base path
+        // Define package base path
         if ( ! defined('EASEL_BASE_PATH')) {
             define('EASEL_BASE_PATH', realpath(__DIR__ . '/../../'));
         }
 
+        // When running artisan add these commands
         if( $this->app->runningInConsole() )
         {
             $this->commands([
@@ -60,6 +65,9 @@ class EaselServiceProvider extends ServiceProvider
         $this->registerServices();
     }
 
+    /**
+     * Load Easel specific routes
+     */
     private function defineRoutes()
     {
         if ( ! $this->app->routesAreCached()) {
@@ -72,6 +80,9 @@ class EaselServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Publish assets / images / css / js / views to host application
+     */
     private function defineResources()
     {
         $this->publishes([
@@ -87,6 +98,9 @@ class EaselServiceProvider extends ServiceProvider
         ]);
     }
 
+    /**
+     * Publish database migrations / seeds / factories to host application
+     */
     private function defineMigrations()
     {
         $this->publishes([
@@ -103,6 +117,9 @@ class EaselServiceProvider extends ServiceProvider
 
     }
 
+    /**
+     * Load this packages dependant service providers and facades
+     */
     private function registerServices()
     {
         //register service providers

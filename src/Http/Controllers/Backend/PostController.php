@@ -2,7 +2,7 @@
 namespace Easel\Http\Controllers\Backend;
 
 use Session;
-use App\Http\Controllers\Controller;
+use Easel\Http\Controllers\Controller;
 use Easel\Models\Post;
 use Easel\Http\Jobs\PostFormFields;
 use Easel\Http\Requests\PostCreateRequest;

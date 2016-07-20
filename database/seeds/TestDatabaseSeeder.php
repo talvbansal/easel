@@ -11,6 +11,7 @@ class TestDatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call('UsersTableSeeder');
         $this->call('PostTableSeeder');
         $this->call('TagTableSeeder');
         $this->call('PostTagPivotTableSeeder');

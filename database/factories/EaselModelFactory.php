@@ -19,7 +19,7 @@
 | Create the Welcome post in the database.
 |
 */
-$factory->define(Easel\Models\Post::class, function ($faker) {
+$factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
   return [
     'title'             => 'Hello world',
     'subtitle'          => 'Easel is a blogging package for Laravel',
@@ -39,7 +39,7 @@ $factory->define(Easel\Models\Post::class, function ($faker) {
 | Create tags for the Welcome post in the database.
 |
 */
-$factory->define(Easel\Models\Tag::class, function ($faker) {
+$factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
   return [
     'tag'               => 'Getting Started',
     'title'             => 'Getting Started',
@@ -58,7 +58,7 @@ $factory->define(Easel\Models\Tag::class, function ($faker) {
 | Create a user model in the database.
 |
 */
-$factory->define(Easel\Models\User::class, function(Faker\Generator $faker) {
+$factory->define(Easel\Models\User::class, function (Faker\Generator $faker) {
 
     return [
         'first_name'    => $first = $faker->firstName,
@@ -67,7 +67,7 @@ $factory->define(Easel\Models\User::class, function(Faker\Generator $faker) {
         'job'           => $faker->jobTitle,
         'birthday'      => $faker->date('Y-m-d'),
         'email'         => $faker->safeEmail,
-        'social_media'  => json_encode(['twitter' => $faker->userName, 'facebook' => $faker->userName ]),
+        'social_media'  => json_encode(['twitter' => 'http://twitter.com/'.$faker->userName, 'facebook' => 'http://facebook.com/'.$faker->userName ]),
         'address'       => $faker->streetAddress,
         'city'          => $faker->city,
         'country'       => $faker->countryCode,

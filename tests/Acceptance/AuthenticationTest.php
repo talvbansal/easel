@@ -8,7 +8,6 @@
 class AuthenticationTest extends TestCase
 {
 
-    use InteractsWithDatabase;
 
     /**
      * The user model.
@@ -25,9 +24,7 @@ class AuthenticationTest extends TestCase
      */
     public function createUser()
     {
-
         $this->user = factory(Easel\Models\User::class)->create();
-
     }
 
     /**
@@ -57,7 +54,7 @@ class AuthenticationTest extends TestCase
         $this->actingAs($this->user)
              ->visit('/admin/post')
              ->click('logout')
-             ->seePageis('/auth/login')
+             ->seePageIs('/auth/login')
              ->dontSeeIsAuthenticated();
     }
 

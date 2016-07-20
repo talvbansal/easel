@@ -1,15 +1,19 @@
 <?php
 namespace Easel\Http\Controllers\Auth;
 
+use Easel\Http\Controllers\Controller;
 use Easel\Models\BlogUserInterface;
+use Illuminate\Http\Request;
 use Session;
 use Validator;
 use JsValidator;
-use Easel\Models\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+/**
+ * Class AuthController
+ * @package Easel\Http\Controllers\Auth
+ */
 class AuthController extends Controller
 {
     /*
@@ -24,16 +28,23 @@ class AuthController extends Controller
     */
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    /**
+     * @var string
+     */
     protected $redirectAfterLogout = '/auth/login';
 
+    /**
+     * @var string
+     */
     protected $redirectTo = '/admin/post';
-    
+
+    /**
+     * @var string
+     */
     protected $loginView = 'vendor.easel.auth.login';
 
     /**
      * Create a new authentication controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -55,17 +66,29 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function getRegister()
     {
         return redirect('/');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function postRegister()
     {
         return redirect('/');
     }
 
-    public function authenticated(\Illuminate\Http\Request $request, BlogUserInterface $user)
+    /**
+     * @param Request           $request
+     * @param BlogUserInterface $user
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function authenticated(Request $request, BlogUserInterface $user)
     {
         \Session::set('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
         return redirect()->intended($this->redirectPath());

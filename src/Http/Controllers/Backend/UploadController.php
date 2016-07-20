@@ -5,7 +5,7 @@ use Session;
 use Illuminate\Http\Request;
 use Easel\Services\UploadsManager;
 use Illuminate\Support\Facades\File;
-use App\Http\Controllers\Controller;
+use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\UploadFileRequest;
 use Easel\Http\Requests\UploadNewFolderRequest;
 

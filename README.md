@@ -2,15 +2,15 @@
 
 ### Post require commands
 To include the migrations, seeds and factories required for easel run the following command to publish all the required assets, migration and seed files
-- php artisan vendor:publish --provider="Easel\Providers\EaselServiceProvider"
+- php artisan easel:install --force
  
-To migrate and seed the database run the following command
-- php artisan migrate --seed
+Whenever an update to easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be republished with the following command
+- php artisan easel:update --force
  
 You will need to add the Easel service provider to you config/app.php file
 - \Easel\Providers\EaselServiceProvider::class,
 
-You'll also need to make your User model implement the "Easel\Models\BlogUserInterface"
+You'll also need to make your User model implement the "Easel\Models\BlogUserInterface" and then add 'birthday' to the $dates property of the user model
 
 ### Setting a views folder for your blog posts
 When creating a blog post you can use the default layout for easel but that probably won't fit in with you existing application. 

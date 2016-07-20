@@ -23,7 +23,9 @@
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
     "proengsoft/laravel-jsvalidation": "1.0.*",
-    "laravelcollective/html": "^5.2"
+    "laravelcollective/html": "^5.2",
+    "illuminate/support": "^5.2",
+    "illuminate/routing": "^5.2"
   },
   "require-dev": {
     "symfony/dom-crawler": "~3.0",
@@ -31,14 +33,23 @@
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1"
+    "phpspec/phpspec": "~2.1",
+    "orchestra/testbench": "~3.2"
   },
   "autoload": {
+    "classmap": [
+      "database"
+    ],
     "psr-4": {
       "Easel\\": "src/"
     },
     "files": [
       "src/Helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
     ]
   },
   "minimum-stability": "dev"

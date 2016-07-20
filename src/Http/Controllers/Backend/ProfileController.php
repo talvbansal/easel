@@ -2,11 +2,9 @@
 
 namespace Easel\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use Easel\Http\Controllers\Controller;
 use Auth;
-use Easel\Http\Requests;
 use Easel\Http\Requests\ProfileUpdateRequest;
-use Easel\Models\User;
 use Session;
 
 class ProfileController extends Controller
@@ -19,7 +17,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $blog = config('easel.);
+        $blog = config('easel.title');
 
         return view('vendor.easel.backend.profile.index', [ 'data' => $blog, 'user' => $user ]);
     }
@@ -34,7 +32,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $user = User::where('id', $id)->firstOrFail();
-        $blog = config('easel.);
+        $blog = config('easel.title');
 
         return view('vendor.easel.backend.profile.edit', [ 'data' => $blog, 'user' => $user ]);
     }

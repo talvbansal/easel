@@ -1,7 +1,7 @@
 <?php
 namespace Easel\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests;
 use Easel\Http\Jobs\BlogIndexData;
 use Easel\Models\Post;
