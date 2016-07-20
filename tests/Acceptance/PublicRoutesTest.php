@@ -17,7 +17,7 @@ class PublicRoutesTest extends TestCase
     public function testBlogPageResponseCode()
     {
         factory(User::class)->make();
-        $response = $this->call('GET', '/');
+        $response = $this->call('GET', config('easel.blog_base_url') );
         $this->assertEquals(200, $response->status());
     }
 
