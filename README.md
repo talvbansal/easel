@@ -10,7 +10,14 @@ Whenever an update to easel is made internal files will automatically be updated
 You will need to add the Easel service provider to you config/app.php file
 - \Easel\Providers\EaselServiceProvider::class,
 
-You'll also need to make your User model implement the "Easel\Models\BlogUserInterface" and then add 'birthday' to the $dates property of the user model
+You'll also need to make your User model implement the "Easel\Models\BlogUserInterface" 
+
+You will also need to add the key 'birthday' to the $dates property of your user model
+```
+class User extends Model implements \Easel\Models\BlogUserInterface{
+    protected $dates = ['birthday'];
+}
+```
 
 ### Setting a views folder for your blog posts
 When creating a blog post you can use the default layout for easel but that probably won't fit in with you existing application. 
