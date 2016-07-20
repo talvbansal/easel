@@ -24,7 +24,6 @@ use Proengsoft\JsValidation\JsValidationServiceProvider;
  */
 class EaselServiceProvider extends ServiceProvider
 {
-
     /**
      *
      */

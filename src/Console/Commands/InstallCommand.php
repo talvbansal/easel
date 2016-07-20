@@ -79,7 +79,7 @@ class InstallCommand extends Command
     private function publishAssets()
     {
         $this->line('Publishing assets...');
-        \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
+        \Artisan::call('vendor:publish', ['--provider' => "\\Easel\\Providers\\EaselServiceProvider", '--force' => true] );
         $this->line('Assets published! <info>✔</info>');
 
         exec('composer dump-autoload');
@@ -107,17 +107,4 @@ class InstallCommand extends Command
             $this->comment('The database was not seeded make sure you create your user manually');
         }
     }
-
-    /**
-     * check if easel is in the composer
-     * @return bool
-     */
-    private function hasEaselBeenInstalled()
-    {
-        $composer = json_decode(file_get_contents(base_path('composer.json')), true);
-
-        return isset($composer['require']['talv86/easel']);
-    }
-
-
 }

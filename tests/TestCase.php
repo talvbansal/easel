@@ -1,7 +1,6 @@
 <?php
 
 use Easel\Providers\EaselServiceProvider;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Class TestCase
@@ -15,8 +14,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected $baseUrl = 'http://localhost';
 
-    //use DatabaseMigrations;
-
     public function setUp()
     {
         parent::setUp();
@@ -28,8 +25,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->withFactories(realpath(__DIR__ . '/../database/factories'));
 
-
-        //$this->artisan('easel:install');
+        $this->artisan('easel:install');
     }
 
     public function tearDown()
@@ -71,11 +67,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'strict'   => false
         ]);
 
+        //create temp folder
         $app['config']->set('filesystems.disks.public', [
             'driver' => 'local',
             'root' => $this->getPublicDir(),
         ]);
 
+        //set test user model
         $app['config']->set('auth.providers.users',[
             'driver' => 'eloquent',
             'model'  => \Easel\Models\User::class
