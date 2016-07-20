@@ -473,12 +473,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "272b87213e0203bdf2f438102aed2c7b2919aadf"
+                "reference": "45939c61df532608c67a92733b7cd1e64455abc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/272b87213e0203bdf2f438102aed2c7b2919aadf",
-                "reference": "272b87213e0203bdf2f438102aed2c7b2919aadf",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/45939c61df532608c67a92733b7cd1e64455abc1",
+                "reference": "45939c61df532608c67a92733b7cd1e64455abc1",
                 "shasum": ""
             },
             "require": {
@@ -536,7 +536,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-07-15 21:22:59"
+            "time": "2016-07-20 13:35:22"
         },
         {
             "name": "doctrine/inflector",
@@ -849,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "061614cc5b7127444f411f687125d05e66e0b7f3"
+                "reference": "29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/061614cc5b7127444f411f687125d05e66e0b7f3",
-                "reference": "061614cc5b7127444f411f687125d05e66e0b7f3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2",
+                "reference": "29ba2e310cfeb42ab6545bcd81ff4c2ec1f6b5c2",
                 "shasum": ""
             },
             "require": {
@@ -971,7 +971,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-07-18 16:03:10"
+            "time": "2016-07-20 13:13:06"
         },
         {
             "name": "laravelcollective/html",
@@ -1621,12 +1621,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "4145bec0f5c7264c5ea48300c3bc491b0de69a3b"
+                "reference": "db204cbd5023be7d8325c575089d4d1c3827a3ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/4145bec0f5c7264c5ea48300c3bc491b0de69a3b",
-                "reference": "4145bec0f5c7264c5ea48300c3bc491b0de69a3b",
+                "url": "https://api.github.com/repos/symfony/console/zipball/db204cbd5023be7d8325c575089d4d1c3827a3ca",
+                "reference": "db204cbd5023be7d8325c575089d4d1c3827a3ca",
                 "shasum": ""
             },
             "require": {
@@ -1673,7 +1673,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-01 15:14:41"
+            "time": "2016-07-19 10:44:15"
         },
         {
             "name": "symfony/debug",
@@ -1738,12 +1738,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "6d07e9b202576411d80e70ddc0fd8d6b4c975b78"
+                "reference": "5382f4c882e73c267c80b8edcd482a76ef62bbe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/6d07e9b202576411d80e70ddc0fd8d6b4c975b78",
-                "reference": "6d07e9b202576411d80e70ddc0fd8d6b4c975b78",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/5382f4c882e73c267c80b8edcd482a76ef62bbe2",
+                "reference": "5382f4c882e73c267c80b8edcd482a76ef62bbe2",
                 "shasum": ""
             },
             "require": {
@@ -1790,7 +1790,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:43:10"
+            "time": "2016-07-19 10:47:02"
         },
         {
             "name": "symfony/finder",
@@ -1900,12 +1900,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "557b967f9462ece3343e5c8ae013c693a0d0bb34"
+                "reference": "8ff154783a597777ab111b1eec96cfc2e16deab5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/557b967f9462ece3343e5c8ae013c693a0d0bb34",
-                "reference": "557b967f9462ece3343e5c8ae013c693a0d0bb34",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/8ff154783a597777ab111b1eec96cfc2e16deab5",
+                "reference": "8ff154783a597777ab111b1eec96cfc2e16deab5",
                 "shasum": ""
             },
             "require": {
@@ -1974,7 +1974,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-17 13:54:30"
+            "time": "2016-07-19 10:44:15"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2337,12 +2337,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "9401cb2e58ad9531143d95a0ed02649f1ab87bd3"
+                "reference": "62e2a3f4e2f292004daa7682739df956575e0508"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/9401cb2e58ad9531143d95a0ed02649f1ab87bd3",
-                "reference": "9401cb2e58ad9531143d95a0ed02649f1ab87bd3",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/62e2a3f4e2f292004daa7682739df956575e0508",
+                "reference": "62e2a3f4e2f292004daa7682739df956575e0508",
                 "shasum": ""
             },
             "require": {
@@ -2392,7 +2392,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2016-07-17 13:54:30"
+            "time": "2016-07-19 10:44:15"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3051,12 +3051,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "58a8137754bc24b25740d4281399a4a3596058e0"
+                "reference": "d883566b83ae601a50b38b249e92450dc57cf875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/58a8137754bc24b25740d4281399a4a3596058e0",
-                "reference": "58a8137754bc24b25740d4281399a4a3596058e0",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/d883566b83ae601a50b38b249e92450dc57cf875",
+                "reference": "d883566b83ae601a50b38b249e92450dc57cf875",
                 "shasum": ""
             },
             "require": {
@@ -3105,7 +3105,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-06-07 08:13:47"
+            "time": "2016-07-19 16:08:43"
         },
         {
             "name": "phpunit/php-code-coverage",
