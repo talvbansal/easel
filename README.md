@@ -1,19 +1,30 @@
 # Easel
+#### A minimal blogging package for laravel apps
 
 [![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
 
 ### Post install commands
 To include the migrations, seeds and factories required for easel run the following command to publish all the required assets, migration and seed files
-- php artisan easel:install --force
+```
+php artisan easel:install --seed
+```
+The optional seed parameter will seed your database
  
 Whenever an update to easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be republished with the following command
-- php artisan easel:update --force
+```
+php artisan easel:update --force
+```
+The optional force parameter will overwrite any views that have already been published
  
 You will need to add the Easel service provider to you config/app.php file
-- \Easel\Providers\EaselServiceProvider::class,
+```
+\Easel\Providers\EaselServiceProvider::class,
+```
 
-You'll also need to make your User model implement the "Easel\Models\BlogUserInterface" 
+### User Models
+Easel allows you to use the built in user model which is Easel\Models\User or you can use your own custom model. If you want to use your own model you'll need to make the following changes: 
 
+You will also need to make your User model implement the "Easel\Models\BlogUserInterface" 
 You will also need to add the key 'birthday' to the $dates property of your user model
 ```
 class User extends Model implements \Easel\Models\BlogUserInterface{
@@ -27,10 +38,15 @@ You may also need different views for different blog posts, easel has you covere
 
 For example
 
-```POST_LAYOUTS=layouts.posts```
+```
+POST_LAYOUTS=layouts.posts
+```
 
 Will point to the following folder
 
-```{project}/resources/views/layouts/posts```
+```
+{project}/resources/views/layouts/posts
+```
 
 Every blade template within that folder will then be listed on the post creation page as a potential layout for that post. Subfolders within the POST_LAYOUTS folder will not be listed allowing you to store partials for your templates within a single folder.
+
