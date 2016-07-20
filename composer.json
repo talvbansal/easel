@@ -37,9 +37,6 @@
     "orchestra/testbench": "~3.2"
   },
   "autoload": {
-    "classmap": [
-      "database"
-    ],
     "psr-4": {
       "Easel\\": "src/"
     },
