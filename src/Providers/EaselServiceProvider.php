@@ -98,7 +98,7 @@ class EaselServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            EASEL_BASE_PATH . '/resources/assets/storage' => public_path('storage'),
+            EASEL_BASE_PATH . '/resources/assets/storage' => storage_path('app/public'),
         ]);
     }
 
