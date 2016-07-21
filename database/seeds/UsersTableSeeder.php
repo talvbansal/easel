@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
             | Basic Information
             |--------------------------------------------------------------------------
             */
-            'first_name'   => 'Canvas',
+            'first_name'   => 'Easel',
             'last_name'    => 'Administrator',
             'display_name' => 'Admin',
             'job'          => 'Web Developer',
@@ -58,7 +58,7 @@ class UsersTableSeeder extends Seeder
                 'facebook' => 'https://facebook.com/' . seoUrl(config('easel.name')),
                 'github'   => 'https://github.com/' . seoUrl(config('easel.name')),
             ]),
-            'address'      => '1200 Canvas Way',
+            'address'      => '1200 Easel Way',
             'city'         => 'Birmingham',
             'country'      => 'UK',
 

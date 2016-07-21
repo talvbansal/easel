@@ -77,6 +77,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
+        $data = $this->tagManager->getViewData( $id );
         return view('vendor.easel.backend.tag.edit', compact('data'));
     }
 
