@@ -41,6 +41,7 @@ class PostFormFieldsTest extends TestCase
     }
 
     /**
+     * Allow the private getPostLayouts method to become accessible / invokable
      * @return ReflectionMethod
      */
     private function getPostLayoutsAsPublic()
