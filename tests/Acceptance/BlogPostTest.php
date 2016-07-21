@@ -29,68 +29,36 @@ class BlogPostTest extends TestCase
     }
 
     /**
-     * @return array
-     */
-    private function getPostData()
-    {
-        $title        = 'test blog post';
-        $slug         = 'test-blog-post';
-        $subtitle     = 'test-sub-title';
-        $content      = 'Here is test blog post data';
-        $published_at = \Carbon\Carbon::now();
-        $layout       = config('easel.layouts.default');
-
-        return [ $title, $slug, $subtitle, $content, $published_at, $layout ];
-    }
-
-    /**
-     * @param $title
-     * @param $subtitle
-     * @param $slug
-     * @param $content
-     * @param $published_at
-     * @param $layout
-     *
      * @return \Easel\Models\Post
      */
-    private function createNewPost($title, $subtitle, $slug, $content, $published_at, $layout)
+    private function createPostData()
     {
-        $post               = new \Easel\Models\Post();
-        $post->title        = $title;
-        $post->subtitle     = $subtitle;
-        $post->slug         = $slug;
-        $post->content_raw  = $content;
-        $post->content_html = '<p>' . $content . '</p>';
-        $post->published_at = $published_at->format('Y-m-d h:i:s');
-        $post->layout       = $layout;
-        $post->save();
-
-        return $post;
+        return factory( \Easel\Models\Post::class )->make(['content_raw' => 'test content']);
     }
 
     public function test_a_post_can_be_created()
     {
-        list( $title, $slug, $subtitle, $content, $published_at, $layout ) = $this->getPostData();
+        $post = $this->createPostData();
 
         // Create new post
         $this->actingAs($this->user)->post('admin/post', [
-            'title'        => $title,
-            'slug'         => $slug,
-            'subtitle'     => $subtitle,
-            'content'      => $content,
-            'published_at' => $published_at->format('d/m/Y h:i:s'),
-            'layout'       => $layout
+            'title'        => $post->title,
+            'slug'         => $post->slug,
+            'subtitle'     => $post->subtitle,
+            'content'      => $post->content_raw,
+            'published_at' => $post->published_at->format('d/m/Y h:i:s'),
+            'layout'       => $post->layout
         ]);
 
         // Is it there?
         $this->seeInDatabase('posts', [
-            'title'        => $title,
-            'slug'         => $slug,
-            'subtitle'     => $subtitle,
-            'content_raw'  => $content,
-            'content_html' => '<p>' . $content . '</p>',
-            'published_at' => $published_at->format('Y-m-d h:i:s'),
-            'layout'       => $layout
+            'title'        => $post->title,
+            'slug'         => $post->slug,
+            'subtitle'     => $post->subtitle,
+            'content_raw'  => $post->content,
+            'content_html' => '<p>' . $post->content . '</p>',
+            'published_at' => $post->published_at->format('Y-m-d h:i:s'),
+            'layout'       => $post->layout
         ]);
 
         $this->assertSessionHas('_new-post', trans('easel::messages.create_success', [ 'entity' => 'Post' ]));
@@ -100,31 +68,33 @@ class BlogPostTest extends TestCase
     public function test_a_post_can_be_edited()
     {
         // Create new post
-        list( $title, $slug, $subtitle, $content, $published_at, $layout ) = $this->getPostData();
-        $post = $this->createNewPost($title, $subtitle, $slug, $content, $published_at, $layout);
+        $post = $this->createPostData();
+        $post->save();
+
 
         // Edit the post
         $title   = 'Edited Post title';
         $content = 'We have new content!';
 
+        // Save changes
         $this->actingAs($this->user)->put('admin/post/' . $post->id, [
             'title'        => $title,
-            'slug'         => $slug,
-            'subtitle'     => $subtitle,
+            'slug'         => $post->slug,
+            'subtitle'     => $post->subtitle,
             'content'      => $content,
-            'published_at' => $published_at->format('d/m/Y h:i:s'),
-            'layout'       => $layout
+            'published_at' => $post->published_at->format('d/m/Y h:i:s'),
+            'layout'       => $post->layout
         ]);
 
         // Can we see the changes?
         $this->seeInDatabase('posts', [
             'title'        => $title,
-            'slug'         => $slug,
-            'subtitle'     => $subtitle,
+            'slug'         => $post->slug,
+            'subtitle'     => $post->subtitle,
             'content_raw'  => $content,
             'content_html' => '<p>' . $content . '</p>',
-            'published_at' => $published_at->format('Y-m-d h:i:s'),
-            'layout'       => $layout
+            'published_at' => $post->published_at->format('Y-m-d h:i:s'),
+            'layout'       => $post->layout
         ]);
 
         $this->assertSessionHas('_update-post', trans('easel::messages.update_success', [ 'entity' => 'Post' ]));
@@ -134,8 +104,9 @@ class BlogPostTest extends TestCase
     public function test_a_post_can_be_deleted()
     {
         // Create new post
-        list( $title, $slug, $subtitle, $content, $published_at, $layout ) = $this->getPostData();
-        $post = $this->createNewPost($title, $subtitle, $slug, $content, $published_at, $layout);
+        $post = $this->createPostData();
+        $post->save();
+
         $this->assertTrue( \Easel\Models\Post::count() === 1);
 
         // Delete it!

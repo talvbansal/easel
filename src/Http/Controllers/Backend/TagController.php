@@ -1,29 +1,35 @@
 <?php
 namespace Easel\Http\Controllers\Backend;
 
+use Easel\Services\TagManager;
 use Session;
 use Easel\Models\Tag;
-use Easel\Http\Requests;
-use Illuminate\Http\Request;
 use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\TagUpdateRequest;
 use Easel\Http\Requests\TagCreateRequest;
 
 class TagController extends Controller
 {
-    const TRIM_WIDTH = 40;
-    const TRIM_MARKER = "...";
 
     protected $fields = [
         'tag' => '',
         'title' => '',
         'subtitle' => '',
         'meta_description' => '',
-        'layout' => 'frontend.blog.index',
+        'layout' => 'vendor.frontend.blog.index',
         'reverse_direction' => 0,
         'created_at' => '',
         'updated_at' => '',
     ];
+    /**
+     * @var TagManager
+     */
+    private $tagManager;
+
+    public function __construct( TagManager $tagManager )
+    {
+        $this->tagManager = $tagManager;
+    }
 
     /**
      * Display a listing of the resource
@@ -33,11 +39,6 @@ class TagController extends Controller
     public function index()
     {
         $data = Tag::all();
-
-        foreach ($data as $tag) {
-            $tag->subtitle = mb_strimwidth($tag->subtitle, 0, self::TRIM_WIDTH, self::TRIM_MARKER);
-        }
-
         return view('vendor.easel.backend.tag.index', compact('data'));
     }
 
@@ -48,12 +49,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        $data = [];
-
-        foreach ($this->fields as $field => $default) {
-            $data[$field] = old($field, $default);
-        }
-
+        $data = $this->tagManager->getViewData();
         return view('vendor.easel.backend.tag.create', compact('data'));
     }
 
@@ -66,11 +62,9 @@ class TagController extends Controller
      */
     public function store(TagCreateRequest $request)
     {
-        $tag = new Tag();
-        $tag->fill($request->toArray())->save();
-        $tag->save();
+        $this->tagManager->create( $request->toArray() );
 
-        Session::set('_new-tag', trans('easel::messages.create_success', ['entity' => 'tag']));
+        Session::set('_new-tag', trans('easel::messages.create_success', ['entity' => 'Tag']));
         return redirect('/admin/tag');
     }
 
@@ -83,12 +77,6 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::findOrFail($id);
-        $data = ['id' => $id];
-        foreach (array_keys($this->fields) as $field) {
-            $data[$field] = old($field, $tag->$field);
-        }
-
         return view('vendor.easel.backend.tag.edit', compact('data'));
     }
 
@@ -102,9 +90,7 @@ class TagController extends Controller
      */
     public function update(TagUpdateRequest $request, $id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->fill($request->toArray())->save();
-        $tag->save();
+        $this->tagManager->edit( $id, $request->toArray() );
 
         Session::set('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
         return redirect("/admin/tag/$id/edit");
@@ -119,8 +105,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->delete();
+        $this->tagManager->delete( $id );
 
         Session::set('_delete-tag', trans('easel::messages.delete_success', ['entity' => 'Tag']));
         return redirect('/admin/tag');

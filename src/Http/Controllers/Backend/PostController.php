@@ -10,9 +10,6 @@ use Easel\Http\Requests\PostUpdateRequest;
 
 class PostController extends Controller
 {
-    const TRIM_WIDTH = 40;
-    const TRIM_MARKER = "...";
-
     /**
      * Display a listing of the posts
      *
@@ -44,6 +41,7 @@ class PostController extends Controller
      */
     public function store(PostCreateRequest $request)
     {
+        /** @var Post $post */
         $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
@@ -74,6 +72,7 @@ class PostController extends Controller
      */
     public function update(PostUpdateRequest $request, $id)
     {
+        /** @var Post $post */
         $post = Post::findOrFail($id);
         $post->fill($request->postFillData());
         $post->save();
@@ -92,6 +91,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        /** @var Post $post */
         $post = Post::findOrFail($id);
         $post->tags()->detach();
         $post->delete();

@@ -20,7 +20,7 @@ Whenever an update to easel is made internal files will automatically be updated
 ```
 php artisan easel:update --force
 ```
-The optional force parameter will overwrite any views that have already been published
+The optional force parameter will overwrite any views that have already been published, otherwise only newly created views get published which allows you to customise the existing views
 
 
 ### User Models
