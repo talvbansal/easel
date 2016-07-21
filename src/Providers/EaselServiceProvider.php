@@ -29,7 +29,9 @@ class EaselServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //load language files
+        // Load the view files
+        $this->loadViewsFrom(EASEL_BASE_PATH . '/resources/views', 'easel');
+        // Load language files
         $this->loadTranslationsFrom(EASEL_BASE_PATH . '/resources/lang', 'easel');
 
         $this->defineRoutes();
@@ -86,10 +88,10 @@ class EaselServiceProvider extends ServiceProvider
 
     /**
      * Publish assets / images / css / js / views to host application
+     * This is only when the application is run in the console
      */
     private function defineResources()
     {
-        $this->loadViewsFrom(EASEL_BASE_PATH . '/resources/views', 'easel');
 
         $this->publishes([
             EASEL_BASE_PATH . '/resources/publish' => base_path('resources/views/vendor/easel/'),
@@ -106,6 +108,7 @@ class EaselServiceProvider extends ServiceProvider
 
     /**
      * Publish database migrations / seeds / factories to host application
+     * This is only when the application is run in the console
      */
     private function defineMigrations()
     {
