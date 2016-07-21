@@ -37,7 +37,6 @@
 
 <br>
 
-<?php $layouts = []; $layout; ?>
 <div class="form-group">
     <div class="fg-line">
         <label for="layout" class="fg-label">Layout</label>
