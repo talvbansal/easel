@@ -39,7 +39,7 @@ class TagController extends Controller
     public function index()
     {
         $data = Tag::all();
-        return view('vendor.easel.backend.tag.index', compact('data'));
+        return view('easel::backend.tag.index', compact('data'));
     }
 
     /**
@@ -50,7 +50,7 @@ class TagController extends Controller
     public function create()
     {
         $data = $this->tagManager->getViewData();
-        return view('vendor.easel.backend.tag.create', compact('data'));
+        return view('easel::backend.tag.create', compact('data'));
     }
 
     /**
