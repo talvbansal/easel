@@ -41,7 +41,7 @@
 <div class="form-group">
     <div class="fg-line">
         <label for="layout" class="fg-label">Layout</label>
-        {!! Form::select('layout', $layouts, old('layout', $data['layout']), ['class' => 'form-control']) !!}
+        {!! Form::select('layout', $data['layouts'], old('layout', $data['layout']), ['class' => 'form-control']) !!}
     </div>
 </div>
 
