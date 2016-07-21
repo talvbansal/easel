@@ -1,20 +1,20 @@
 <br>
 
 @if(isset($data['tag']))
-  <div class="form-group">
-      <div class="fg-line">
-        <label class="fg-label">Tag</label>
-        <input type="text" class="form-control" name="tag" id="tag" value="{{ old('tag', $data['tag']) }}" placeholder="Tag">
-      </div>
-  </div>
+    <div class="form-group">
+        <div class="fg-line">
+            <label for="tag" class="fg-label">Tag</label>
+            <input type="text" class="form-control" name="tag" id="tag" value="{{ old('tag', $data['tag']) }}" placeholder="Tag">
+        </div>
+    </div>
 
-  <br>
+    <br>
 @endif
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Title</label>
-      <input type="text" class="form-control" name="title" id="title" value="{{ old('title', $data['title']) }}" placeholder="Title">
+        <label for="title" class="fg-label">Title</label>
+        <input type="text" class="form-control" name="title" id="title" value="{{ old('title', $data['title']) }}" placeholder="Title">
     </div>
 </div>
 
@@ -22,8 +22,8 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Subtitle</label>
-      <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ old('subtitle', $data['subtitle']) }}" placeholder="Subtitle">
+        <label for="subtitle" class="fg-label">Subtitle</label>
+        <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ old('subtitle', $data['subtitle']) }}" placeholder="Subtitle">
     </div>
 </div>
 
@@ -31,7 +31,8 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <textarea class="form-control auto-size" id="meta_description" name="meta_description" placeholder="Meta Description">{{ old('meta_description', $data['meta_description']) }}</textarea>
+        <label for="meta_description" class="fg-label">Meta description</label>
+        <textarea class="form-control auto-size" id="meta_description" name="meta_description" placeholder="Meta Description">{{ old('meta_description', $data['meta_description']) }}</textarea>
     </div>
 </div>
 
