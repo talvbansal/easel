@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Tags</title>
@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
@@ -29,8 +29,8 @@
                             </li>
                         </ul>
 
-                        @include('vendor.easel.shared.errors')
-                        @include('vendor.easel.shared.success')
+                        @include('easel::shared.errors')
+                        @include('easel::shared.success')
 
                         <h2>Manage Tags&nbsp;
                             <a href="/admin/tag/create"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
@@ -77,15 +77,15 @@
 @stop
 
 @section('unique-js')
-    @include('vendor.easel.backend.tag.partials.datatable')
+    @include('easel::backend.tag.partials.datatable')
 
     @if(Session::get('_new-tag'))
-        @include('vendor.easel.backend.tag.partials.notifications.create')
+        @include('easel::backend.tag.partials.notifications.create')
         {{ \Session::forget('_new-tag') }}
     @endif
 
     @if(Session::get('_delete-tag'))
-        @include('vendor.easel.backend.tag.partials.notifications.delete')
+        @include('easel::backend.tag.partials.notifications.delete')
         {{ \Session::forget('_delete-tag') }}
     @endif
 @stop

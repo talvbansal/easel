@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Edit Profile</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container container-alt">
@@ -20,7 +20,7 @@
 
                 <div class="card" id="profile-main">
 
-                    @include('vendor.easel.backend.profile.partials.sidebar')
+                    @include('easel::backend.profile.partials.sidebar')
 
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">
@@ -35,15 +35,15 @@
                             <div class="pmb-block">
                                 <div class="pmbb-header">
 
-                                    @include('vendor.easel.shared.errors')
+                                    @include('easel::shared.errors')
 
-                                    @include('vendor.easel.shared.success')
+                                    @include('easel::shared.success')
 
                                     <h2><i class="zmdi zmdi-equalizer m-r-10"></i> Summary</h2>
                                 </div>
                                 <div class="pmbb-body p-l-30">
 
-                                    @include('vendor.easel.backend.profile.partials.form.summary')
+                                    @include('easel::backend.profile.partials.form.summary')
 
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="pmbb-body p-l-30">
 
-                                    @include('vendor.easel.backend.profile.partials.form.basic-information')
+                                    @include('easel::backend.profile.partials.form.basic-information')
 
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="pmbb-body p-l-30">
 
-                                    @include('vendor.easel.backend.profile.partials.form.contact-information')
+                                    @include('easel::backend.profile.partials.form.contact-information')
 
                                 </div>
                                 <div class="form-group m-l-30">

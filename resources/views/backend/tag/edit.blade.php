@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Edit Tag</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container">
@@ -31,9 +31,9 @@
                             </li>
                         </ul>
 
-                        @include('vendor.easel.shared.errors')
+                        @include('easel::shared.errors')
 
-                        @include('vendor.easel.shared.success')
+                        @include('easel::shared.success')
 
                         <h2>
                             Edit <em>{{ $data['title'] }}</em>
@@ -47,7 +47,7 @@
                         {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'method' => 'put', 'id' => 'tagUpdate', 'url' => '/admin/tag/' . $data['id'] ]) !!}
                             <input type="hidden" name="id" value="{{ $data['id'] }}">
 
-                            @include('vendor.easel.backend.tag.partials.form')
+                            @include('easel::backend.tag.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text">
@@ -64,14 +64,14 @@
         </section>
     </section>
 
-    @include('vendor.easel.backend.tag.partials.modals.delete')
+    @include('easel::backend.tag.partials.modals.delete')
 @stop
 
 @section('unique-js')
     {!! JsValidator::formRequest('Easel\Http\Requests\TagUpdateRequest', '#tagUpdate') !!}
 
     @if(Session::get('_update-tag'))
-        @include('vendor.easel.backend.tag.partials.notifications.update')
+        @include('easel::backend.tag.partials.notifications.update')
         {{ \Session::forget('_update-tag') }}
     @endif
 @stop

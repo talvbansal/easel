@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Search</title>
@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">

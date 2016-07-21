@@ -30,7 +30,7 @@ class UploadController extends Controller
         $folder = $request->get('folder');
         $data = $this->manager->folderInfo($folder);
 
-        return view('vendor.easel.backend.upload.index', $data);
+        return view('easel::backend.upload.index', $data);
     }
 
     /**

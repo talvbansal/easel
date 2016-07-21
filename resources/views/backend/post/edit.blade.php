@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Edit Post</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container">
@@ -31,9 +31,9 @@
                             </li>
                         </ul>
 
-                        @include('vendor.easel.shared.errors')
+                        @include('easel::shared.errors')
 
-                        @include('vendor.easel.shared.success')
+                        @include('easel::shared.success')
 
                         <h2>
                             Edit <em>{{ $title }}</em>
@@ -44,7 +44,7 @@
                     <div class="card-body card-padding">
                         {!! Form::open(['class' => 'keyboard-save', 'id' => 'postUpdate', 'method' => 'put', 'url' => route('admin.post.update', $id)]) !!}
 
-                            @include('vendor.easel.backend.post.partials.form')
+                            @include('easel::backend.post.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
@@ -62,15 +62,15 @@
         </section>
     </section>
 
-    @include('vendor.easel.backend.post.partials.modals.delete')
+    @include('easel::backend.post.partials.modals.delete')
 @stop
 
 @section('unique-js')
-    @include('vendor.easel.backend.post.partials.summernote')
+    @include('easel::backend.post.partials.summernote')
     {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#postUpdate') !!}
 
     @if(Session::get('_update-post'))
-        @include('vendor.easel.backend.post.partials.notifications.update-post')
+        @include('easel::backend.post.partials.notifications.update-post')
         {{ \Session::forget('_update-post') }}
     @endif
 

@@ -89,8 +89,10 @@ class EaselServiceProvider extends ServiceProvider
      */
     private function defineResources()
     {
+        $this->loadViewsFrom(EASEL_BASE_PATH . '/resources/views', 'easel');
+
         $this->publishes([
-            EASEL_BASE_PATH . '/resources/views' => base_path('resources/views/vendor/easel'),
+            EASEL_BASE_PATH . '/resources/publish' => base_path('resources/views/vendor/easel/'),
         ]);
 
         $this->publishes([

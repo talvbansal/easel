@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Profile</title>
@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container container-alt">
 
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card" id="profile-main">
-                    @include('vendor.easel.backend.profile.partials.sidebar')
+                    @include('easel::backend.profile.partials.sidebar')
 
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">

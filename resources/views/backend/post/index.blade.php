@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Posts</title>
@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
@@ -29,8 +29,8 @@
                             </li>
                         </ul>
 
-                        @include('vendor.easel.shared.errors')
-                        @include('vendor.easel.shared.success')
+                        @include('easel::shared.errors')
+                        @include('easel::shared.success')
 
                         <h2>Manage Posts&nbsp;
                             <a href="{{ route('admin.post.create') }}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new post"></i></a>
@@ -72,19 +72,19 @@
 
 @section('unique-js')
     @if(Session::get('_login'))
-        @include('vendor.easel.backend.post.partials.notifications.login')
+        @include('easel::backend.post.partials.notifications.login')
         {{ \Session::forget('_login') }}
     @endif
 
     @if(Session::get('_new-post'))
-        @include('vendor.easel.backend.post.partials.notifications.create-post')
+        @include('easel::backend.post.partials.notifications.create-post')
         {{ \Session::forget('_new-post') }}
     @endif
 
     @if(Session::get('_delete-post'))
-        @include('vendor.easel.backend.post.partials.notifications.delete-post')
+        @include('easel::backend.post.partials.notifications.delete-post')
         {{ \Session::forget('_delete-post') }}
     @endif
 
-    @include('vendor.easel.backend.post.partials.datatable')
+    @include('easel::backend.post.partials.datatable')
 @stop

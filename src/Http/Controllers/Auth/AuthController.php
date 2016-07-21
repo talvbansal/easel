@@ -41,7 +41,7 @@ class AuthController extends Controller
     /**
      * @var string
      */
-    protected $loginView = 'vendor.easel.auth.login';
+    protected $loginView = 'easel::auth.login';
 
     /**
      * Create a new authentication controller instance.
