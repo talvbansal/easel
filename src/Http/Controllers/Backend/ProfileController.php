@@ -31,7 +31,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id', $id)->firstOrFail();
+        $user = Auth::user();
         $blog = config('easel.title');
 
         return view('vendor.easel.backend.profile.edit', [ 'data' => $blog, 'user' => $user ]);
@@ -48,7 +48,6 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request, $id)
     {
         $user = Auth::user();
-        //$user->fill($request->toArray())->save();
         foreach ($request->toArray() as $key => $value) {
             $user->{$key} = ( is_array($value) ) ? json_encode($value) : $value;
         }
