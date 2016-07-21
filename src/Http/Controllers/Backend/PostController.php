@@ -21,11 +21,6 @@ class PostController extends Controller
     public function index()
     {
         $data = Post::all();
-
-        foreach ($data as $post) {
-            $post->subtitle = mb_strimwidth($post->subtitle, 0, self::TRIM_WIDTH, self::TRIM_MARKER);
-        }
-
         return view('vendor.easel.backend.post.index', compact('data'));
     }
 
@@ -52,7 +47,7 @@ class PostController extends Controller
         $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
-        Session::set('_new-post', trans('easel::messages.create_success', ['entity' => 'post']));
+        Session::set('_new-post', trans('easel::messages.create_success', ['entity' => 'Post']));
         return redirect()->route('admin.post.index');
     }
 
@@ -85,7 +80,7 @@ class PostController extends Controller
         $post->syncTags($request->get('tags', []));
 
         Session::set('_update-post', trans('easel::messages.update_success', ['entity' => 'Post']));
-        return redirect("/admin/post/$id/edit");
+        return redirect( '/admin/post/'. $id .'/edit' );
     }
 
     /**

@@ -1,5 +1,5 @@
 {
-  "name": "talv86/easel",
+  "name": "talv86/Easel",
   "description": "A package based off the minimal blogging app 'Canvas' by Todd Austin (commit #3c59c55)",
   "keywords": ["blog", "laravel", "easel", "canvas", "markdown", "developers", "minimal"],
   "license": "MIT",

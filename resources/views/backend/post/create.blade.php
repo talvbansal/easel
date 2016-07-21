@@ -53,12 +53,4 @@
 
     @include('vendor.easel.backend.shared.notifications.protip')
 
-    <script>
-        $(function () {
-            $('.datetime-picker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss',
-                defaultDate: Date.now()
-            });
-        });
-    </script>
 @stop

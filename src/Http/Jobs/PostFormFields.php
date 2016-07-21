@@ -96,7 +96,7 @@ class PostFormFields extends Job
 
 
     /**
-     * get a collection of views that can be used as templates for blog posts
+     * Get a collection of views that can be used as templates for blog posts
      * @return Collection
      */
     private function getPostLayouts()
@@ -104,14 +104,15 @@ class PostFormFields extends Job
         $defaultLayout = config('easel.layouts.default');
         $layoutsFolder = config('easel.layouts.posts');
 
-        //$layoutsFullPath = base_path() . '/resources/views/' . str_replace('.', '/', $layoutsFolder);
         $layoutsFullPath = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/' . $layoutsFolder)) ;
+
+        // If the given path for additional layouts doesn't exist just return the default layout
         if ( ! is_dir($layoutsFullPath)) {
             return collect([ $defaultLayout => 'default' ]);
         }
 
+        // Collect views from the layouts directory then filter them to only show .blade.php files
         $files = scandir($layoutsFullPath);
-        unset( $files[0], $files[1] );
 
         $files = ( new Collection($files) )->filter(function ($file) use ($layoutsFullPath) {
 

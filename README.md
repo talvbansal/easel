@@ -54,13 +54,13 @@ Will make your blog respond at
 /myblog/{blog-post-slug}
 ```
 
-If you want the blog to respond at the / route you will need to add a new route to your routes.php file as follows:
+If you want the blog to respond at the '/' route you will need to add a new route to your routes.php file as follows:
 ```
 Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
 ```
 
 ### Setting a views folder for your blog posts
-When creating a blog post you can use the default layout for easel but that probably won't fit in with you existing application. 
+When creating a blog post you can use the default layout for easel, however it is likely that you'll want to amend the views to suit your application. 
 You may also need different views for different blog posts, easel has you covered just add a new key to your .env file called BLOG_POST_LAYOUTS. then give it the path to a folder within your resources/views folder
 
 For example
