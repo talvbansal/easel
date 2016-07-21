@@ -63,7 +63,6 @@ class BlogPostTest extends TestCase
             'layout'       => $post->layout
         ]);
 
-        $this->assertSessionHas('_new-post', trans('easel::messages.create_success', [ 'entity' => 'Post' ]));
         $this->seePageIs('admin/post');
     }
 
