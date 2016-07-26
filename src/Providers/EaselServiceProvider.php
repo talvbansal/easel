@@ -7,7 +7,6 @@
  */
 namespace Easel\Providers;
 
-use Barryvdh\Elfinder\ElfinderServiceProvider;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
@@ -124,7 +123,6 @@ class EaselServiceProvider extends ServiceProvider
     private function registerServices()
     {
         //register service providers
-        $this->app->register(ElfinderServiceProvider::class);
         $this->app->register(HtmlServiceProvider::class);
         $this->app->register(JsValidationServiceProvider::class);
 
