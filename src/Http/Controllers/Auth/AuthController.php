@@ -1,18 +1,16 @@
 <?php
+
 namespace Easel\Http\Controllers\Auth;
 
 use Easel\Http\Controllers\Controller;
 use Easel\Models\BlogUserInterface;
-use Illuminate\Http\Request;
-use Session;
-use Validator;
-use JsValidator;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
+use Validator;
 
 /**
- * Class AuthController
- * @package Easel\Http\Controllers\Auth
+ * Class AuthController.
  */
 class AuthController extends Controller
 {
@@ -54,14 +52,15 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return \Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -91,6 +90,7 @@ class AuthController extends Controller
     public function authenticated(Request $request, BlogUserInterface $user)
     {
         \Session::set('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
+
         return redirect()->intended($this->redirectPath());
     }
 }

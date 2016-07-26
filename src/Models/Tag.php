@@ -1,4 +1,5 @@
 <?php
+
 namespace Easel\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -38,10 +39,10 @@ class Tag extends Model
         $found = static::whereIn('tag', $tags)->lists('tag')->all();
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
-                'tag' => $tag,
-                'title' => $tag,
-                'subtitle' => 'Subtitle for ' . $tag,
-                'meta_description' => '',
+                'tag'               => $tag,
+                'title'             => $tag,
+                'subtitle'          => 'Subtitle for '.$tag,
+                'meta_description'  => '',
                 'reverse_direction' => false,
             ]);
         }
@@ -52,11 +53,13 @@ class Tag extends Model
      *
      * @param string $tag
      * @param string $default
+     *
      * @return string
      */
     public static function layout($tag, $default = 'easel::blog.layouts.index')
     {
         $layout = static::whereTag($tag)->pluck('layout');
+
         return $layout ?: $default;
     }
 }

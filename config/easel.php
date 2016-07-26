@@ -66,6 +66,6 @@ return [
     'layouts'        => [
         'default' => 'vendor.easel.frontend.blog.post',
         'posts'   => env('BLOG_POST_LAYOUTS', 'layouts.posts'),
-    ]
+    ],
 
 ];

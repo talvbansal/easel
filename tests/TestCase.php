@@ -3,7 +3,7 @@
 use Easel\Providers\EaselServiceProvider;
 
 /**
- * Class TestCase
+ * Class TestCase.
  */
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -20,10 +20,10 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->artisan('migrate', [
             '--database' => 'test',
-            '--realpath' => realpath(__DIR__ . '/../database/migrations'),
+            '--realpath' => realpath(__DIR__.'/../database/migrations'),
         ]);
 
-        $this->withFactories(realpath(__DIR__ . '/../database/factories'));
+        $this->withFactories(realpath(__DIR__.'/../database/factories'));
 
         $this->artisan('easel:install');
     }
@@ -40,19 +40,19 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [ EaselServiceProvider::class ];
+        return [EaselServiceProvider::class];
     }
 
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application $app
+     * @param \Illuminate\Foundation\Application $app
      *
      * @return void
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['path.base'] = realpath(__DIR__ . '../src');
+        $app['path.base'] = realpath(__DIR__.'../src');
 
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'test');
@@ -60,19 +60,19 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
-            'strict'   => false
+            'strict'   => false,
         ]);
 
         //create temp folder
         $app['config']->set('filesystems.disks.public', [
             'driver' => 'local',
-            'root' => $this->getPublicDir(),
+            'root'   => $this->getPublicDir(),
         ]);
 
         //set test user model
-        $app['config']->set('auth.providers.users',[
+        $app['config']->set('auth.providers.users', [
             'driver' => 'eloquent',
-            'model'  => \Easel\Models\User::class
+            'model'  => \Easel\Models\User::class,
         ]);
     }
 
@@ -81,9 +81,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return __DIR__.'/temp'.($suffix == '' ? '' : '/'.$suffix);
     }
 
-    public function getPublicDir( $suffix = '')
+    public function getPublicDir($suffix = '')
     {
         return $this->getTempDirectory().'/app/public'.($suffix == '' ? '' : '/'.$suffix);
     }
-
 }

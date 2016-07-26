@@ -6,8 +6,8 @@ use Illuminate\Database\Seeder;
 class TagTableSeeder extends Seeder
 {
     /**
-    * Seed the tags table with the Welcome tag.
-    */
+     * Seed the tags table with the Welcome tag.
+     */
     public function run()
     {
         Tag::truncate();

@@ -1,4 +1,5 @@
 <?php
+
 namespace Easel\Services;
 
 class Parsedowner

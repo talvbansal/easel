@@ -1,19 +1,16 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class AdminRoutesTest
+ * Class AdminRoutesTest.
  *
  * Test the response code for each administrative route after login.
  */
 class AdminRoutesTest extends TestCase
 {
-
     /**
      * The user model.
-     * 
+     *
      * @var Easel\Models\User
      */
     private $user;
@@ -22,6 +19,7 @@ class AdminRoutesTest extends TestCase
      * Create the user model test subject.
      *
      * @before
+     *
      * @return void
      */
     public function createUser()
