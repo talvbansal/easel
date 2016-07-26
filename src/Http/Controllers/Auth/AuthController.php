@@ -29,7 +29,7 @@ class AuthController extends Controller
     /**
      * @var string
      */
-    protected $redirectAfterLogout = '/auth/login';
+    protected $redirectAfterLogout = '/login';
 
     /**
      * @var string

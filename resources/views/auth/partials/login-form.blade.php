@@ -1,4 +1,4 @@
-<form role="form" id="login" method="POST" action="{{ url('/auth/login') }}">
+<form role="form" id="login" method="POST" action="{{ url('/login') }}">
     {!! csrf_field() !!}
     <div class="form-group fg-line">
         <input type="email" class="form-control"
