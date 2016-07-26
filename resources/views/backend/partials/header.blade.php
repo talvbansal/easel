@@ -1,5 +1,5 @@
 <header id="header" class="clearfix" data-current-skin="blue">
-    <a href="/admin"><h1 class="brand light logo cl-center">Easel</h1></a>
+    <a href="{{ url('/admin') }}"><h1 class="brand light logo cl-center">Easel</h1></a>
     <ul class="header-inner">
         <li id="menu-trigger" data-trigger="#sidebar">
             <div class="line-wrap">
@@ -9,7 +9,7 @@
             </div>
         </li>
         <li class="logo">
-            <a href="/admin"><h1 class="brand light logo logo-sidebar hidden-xs">Easel</h1></a>
+            <a href="{{ url('/admin') }}"><h1 class="brand light logo logo-sidebar hidden-xs">Easel</h1></a>
         </li>
         <li class="pull-right">
             <ul class="top-menu">
@@ -27,7 +27,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{url('/logout')}}"><i class="zmdi zmdi-power"></i> Sign out</a>
+                            <a href="{{ url('/logout') }}"><i class="zmdi zmdi-power"></i> Sign out</a>
                         </li>
                     </ul>
                 </li>
@@ -37,13 +37,12 @@
 
 
     <!-- Top Search Content -->
-    <form role="form" method="GET" id="search" name="search" action="{{ route('admin.search.index') }}">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    {!! Form::open(['method' => 'GET', 'url' => route('admin.search.index'), 'name' => 'search', 'id' => 'search']) !!}
         <div id="top-search-wrap">
             <div class="tsw-inner">
                 <i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
                 <input type="text" placeholder="Search" name="search">
             </div>
         </div>
-    </form>
+    {!! Form::close() !!}
 </header>
