@@ -24,8 +24,8 @@
 
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">
-                            <li><a href="/admin/profile">Profile</a></li>
-                            <li class="active"><a href="/admin/profile/{{ Auth::user()->id }}/edit">Settings</a></li>
+                            <li><a href="{{ url('/admin/profile') }}">Profile</a></li>
+                            <li class="active"><a href="{{ url('/admin/profile/' . Auth::user()->id . '/edit') }}">Settings</a></li>
                         </ul>
 
                         <form class="keyboard-save" role="form" method="POST" id="profileUpdate" action="{{ route('admin.profile.update', Auth::user()->id) }}">
@@ -71,7 +71,7 @@
                                 <div class="form-group m-l-30">
                                     <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
                                     &nbsp;
-                                    <a href="/admin/profile"><button type="button" class="btn btn-link">Cancel</button></a>
+                                    <a href="{{ url('/admin/profile') }}"><button type="button" class="btn btn-link">Cancel</button></a>
                                 </div>
                             </div>
                         </form>

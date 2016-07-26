@@ -23,7 +23,7 @@
                         <br>
                     </div>
                 </div>
-                <p class="text-center"><a href="/"><i class="zmdi zmdi-long-arrow-return"></i> Go back home</a></p>
+                <p class="text-center"><a href="{{ url('/') }}"><i class="zmdi zmdi-long-arrow-return"></i> Go back home</a></p>
             </div>
         </section>
     </section>

@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="/admin">Home</a></li>
+                            <li><a href="{{ url('/admin') }}">Home</a></li>
                             <li class="active">Uploads</li>
                         </ol>
                         <ul class="actions">
@@ -44,7 +44,7 @@
 
                         <ul class="breadcrumb folder-paths">
                             @foreach ($breadcrumbs as $path => $disp)
-                                <li><a href="/admin/upload?folder={{ $path }}">{{ $disp }}</a></li>
+                                <li><a href="{{ url('/admin/upload?folder=' . $path ) }}">{{ $disp }}</a></li>
                             @endforeach
                             <li class="active">{{ $folderName }}</li>
                         </ul>

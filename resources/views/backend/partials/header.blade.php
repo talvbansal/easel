@@ -20,7 +20,7 @@
                     <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">
                         <li class="hidden-xs">
-                            <a target="_blank" href="/"><i class="zmdi zmdi-view-web"></i> View Site </a>
+                            <a target="_blank" href="{{ url('/') }}"><i class="zmdi zmdi-view-web"></i> View Site </a>
                         </li>
                         <li class="hidden-xs">
                             <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
