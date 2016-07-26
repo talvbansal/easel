@@ -1,14 +1,12 @@
 <?php
 
 /**
- * Class AuthenticationTest
+ * Class AuthenticationTest.
  *
  * Test the login and logout functionality of the application.
  */
 class AuthenticationTest extends TestCase
 {
-
-
     /**
      * The user model.
      *
@@ -18,8 +16,9 @@ class AuthenticationTest extends TestCase
 
     /**
      * Create the user model test subject.
-     * 
+     *
      * @before
+     *
      * @return void
      */
     public function createUser()
@@ -34,7 +33,6 @@ class AuthenticationTest extends TestCase
      */
     public function testApplicationLogin()
     {
-
         $this->visit('/auth/login')
              ->type($this->user->email, 'email')
              ->type('password', 'password')
@@ -50,12 +48,10 @@ class AuthenticationTest extends TestCase
      */
     public function testApplicationLogout()
     {
-
         $this->actingAs($this->user)
              ->visit('/admin/post')
              ->click('logout')
              ->seePageIs('/auth/login')
              ->dontSeeIsAuthenticated();
     }
-
 }

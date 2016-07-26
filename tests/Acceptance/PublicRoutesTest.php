@@ -1,14 +1,14 @@
 <?php
+
 use Easel\Models\User;
 
 /**
- * Class PublicRoutesTest
+ * Class PublicRoutesTest.
  *
  * Test the response code for each publicly accessible route.
  */
 class PublicRoutesTest extends TestCase
 {
-
     /**
      * Test the response code for the Blog page.
      *
@@ -17,7 +17,7 @@ class PublicRoutesTest extends TestCase
     public function testBlogPageResponseCode()
     {
         factory(User::class)->make();
-        $response = $this->call('GET', config('easel.blog_base_url') );
+        $response = $this->call('GET', config('easel.blog_base_url'));
         $this->assertEquals(200, $response->status());
     }
 

@@ -1,10 +1,11 @@
 <?php
+
 namespace Easel\Services;
 
 use Carbon\Carbon;
+use Dflydev\ApacheMimeTypes\PhpRepository;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
-use Dflydev\ApacheMimeTypes\PhpRepository;
 
 class UploadsManager
 {
@@ -30,16 +31,17 @@ class UploadsManager
     }
 
     /**
-     * Return files and directories within a folder
+     * Return files and directories within a folder.
      *
      * @param string $folder
+     *
      * @return array of [
-     *    'folder' => 'path to current folder',
-     *    'folderName' => 'name of just current folder',
-     *    'breadCrumbs' => breadcrumb array of [ $path => $foldername ]
-     *    'folders' => array of [ $path => $foldername] of each subfolder
-     *    'files' => array of file details on each file in folder
-     * ]
+     *               'folder' => 'path to current folder',
+     *               'folderName' => 'name of just current folder',
+     *               'breadCrumbs' => breadcrumb array of [ $path => $foldername ]
+     *               'folders' => array of [ $path => $foldername] of each subfolder
+     *               'files' => array of file details on each file in folder
+     *               ]
      */
     public function folderInfo($folder)
     {
@@ -56,19 +58,20 @@ class UploadsManager
         foreach ($this->disk->files($folder) as $path) {
             $files[] = $this->fileDetails($path);
         }
+
         return compact('folder', 'folderName', 'breadcrumbs', 'subfolders', 'files');
     }
 
     /**
-     * Sanitize the folder name
+     * Sanitize the folder name.
      */
     protected function cleanFolder($folder)
     {
-        return '/' . trim(str_replace('..', '', $folder), '/');
+        return '/'.trim(str_replace('..', '', $folder), '/');
     }
 
     /**
-     * Return breadcrumbs to current folder
+     * Return breadcrumbs to current folder.
      */
     protected function breadcrumbs($folder)
     {
@@ -80,9 +83,10 @@ class UploadsManager
         $folders = explode('/', $folder);
         $build = '';
         foreach ($folders as $folder) {
-            $build .= '/' . $folder;
+            $build .= '/'.$folder;
             $crumbs[$build] = $folder;
         }
+
         return $crumbs;
     }
 
@@ -93,13 +97,14 @@ class UploadsManager
      */
     protected function fileDetails($path)
     {
-        $path = '/' . ltrim($path, '/');
+        $path = '/'.ltrim($path, '/');
+
         return [
-            'name' => basename($path),
+            'name'     => basename($path),
             'fullPath' => $path,
-            'webPath' => $this->fileWebpath($path),
+            'webPath'  => $this->fileWebpath($path),
             'mimeType' => $this->fileMimeType($path),
-            'size' => $this->fileSize($path),
+            'size'     => $this->fileSize($path),
             'modified' => $this->fileModified($path),
         ];
     }
@@ -109,8 +114,9 @@ class UploadsManager
      */
     public function fileWebpath($path)
     {
-        $path = rtrim(config('easel.uploads.webpath'), '/') . '/' .
+        $path = rtrim(config('easel.uploads.webpath'), '/').'/'.
             ltrim($path, '/');
+
         return url($path);
     }
 
@@ -151,6 +157,7 @@ class UploadsManager
         if ($this->disk->exists($folder)) {
             return "Folder '$folder' aleady exists.";
         }
+
         return $this->disk->makeDirectory($folder);
     }
 
@@ -165,8 +172,9 @@ class UploadsManager
             $this->disk->files($folder)
         );
         if (!empty($filesFolders)) {
-            return "Directory must be empty to delete it.";
+            return 'Directory must be empty to delete it.';
         }
+
         return $this->disk->deleteDirectory($folder);
     }
 
@@ -177,8 +185,9 @@ class UploadsManager
     {
         $path = $this->cleanFolder($path);
         if (!$this->disk->exists($path)) {
-            return "File does not exist.";
+            return 'File does not exist.';
         }
+
         return $this->disk->delete($path);
     }
 
@@ -189,8 +198,9 @@ class UploadsManager
     {
         $path = $this->cleanFolder($path);
         if ($this->disk->exists($path)) {
-            return "File already exists.";
+            return 'File already exists.';
         }
+
         return $this->disk->put($path, $content);
     }
 }

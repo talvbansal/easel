@@ -1,17 +1,17 @@
 <?php
+
 namespace Easel\Http\Requests;
 
 class LoginRequest extends Request
 {
-
-  /**
+    /**
    * Determine if the user is authorized to make this request.
    *
    * @return bool
    */
   public function authorize()
   {
-    return true;
+      return true;
   }
 
   /**
@@ -21,8 +21,8 @@ class LoginRequest extends Request
    */
   public function rules()
   {
-    return [
-      'email' => 'required',
+      return [
+      'email'    => 'required',
       'password' => 'required',
     ];
   }

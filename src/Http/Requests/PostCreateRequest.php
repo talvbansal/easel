@@ -1,4 +1,5 @@
 <?php
+
 namespace Easel\Http\Requests;
 
 use Carbon\Carbon;
@@ -30,7 +31,7 @@ class PostCreateRequest extends Request
     }
 
     /**
-     * Return the fields and values to create a new post from
+     * Return the fields and values to create a new post from.
      */
     public function postFillData()
     {

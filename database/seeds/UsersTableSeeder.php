@@ -52,11 +52,11 @@ class UsersTableSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
             'phone'        => '(000) 111-0000',
-            'email'        => 'admin@' . seoUrl(config('easel.name')) . '.com',
+            'email'        => 'admin@'.seoUrl(config('easel.name')).'.com',
             'social_media' => json_encode([
-                'twitter'  => 'https://twitter.com/' . seoUrl(config('easel.name')),
-                'facebook' => 'https://facebook.com/' . seoUrl(config('easel.name')),
-                'github'   => 'https://github.com/' . seoUrl(config('easel.name')),
+                'twitter'  => 'https://twitter.com/'.seoUrl(config('easel.name')),
+                'facebook' => 'https://facebook.com/'.seoUrl(config('easel.name')),
+                'github'   => 'https://github.com/'.seoUrl(config('easel.name')),
             ]),
             'address'      => '1200 Easel Way',
             'city'         => 'Birmingham',
@@ -67,7 +67,7 @@ class UsersTableSeeder extends Seeder
             | Misc Information
             |--------------------------------------------------------------------------
             */
-            'url'          => 'www.' . seoUrl(config('easel.name')) . '.com',
+            'url'          => 'www.'.seoUrl(config('easel.name')).'.com',
             'password'     => bcrypt('password'),
 
             /*
@@ -76,7 +76,7 @@ class UsersTableSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
             'created_at'   => Carbon\Carbon::now(),
-            'updated_at'   => Carbon\Carbon::now()
+            'updated_at'   => Carbon\Carbon::now(),
         ]);
     }
 }

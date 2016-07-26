@@ -1,17 +1,17 @@
 <?php
+
 namespace Easel\Http\Requests;
 
 class TagCreateRequest extends Request
 {
-
-  /**
+    /**
    * Determine if the user is authorized to make this request.
    *
    * @return bool
    */
   public function authorize()
   {
-    return true;
+      return true;
   }
 
   /**
@@ -21,11 +21,11 @@ class TagCreateRequest extends Request
    */
   public function rules()
   {
-    return [
-      'tag' => 'required|unique:tags,tag',
-      'title' => 'required',
+      return [
+      'tag'      => 'required|unique:tags,tag',
+      'title'    => 'required',
       'subtitle' => 'required',
-      'layout' => 'required',
+      'layout'   => 'required',
     ];
   }
 }

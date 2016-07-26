@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 10/07/16
- * Time: 16:04
+ * Time: 16:04.
  */
-
 namespace Easel\Providers;
 
 use Collective\Html\FormFacade;
@@ -19,24 +18,20 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 
 /**
- * Class EaselServiceProvider
- * @package Easel\Providers
+ * Class EaselServiceProvider.
  */
 class EaselServiceProvider extends ServiceProvider
 {
-    /**
-     *
-     */
     public function boot()
     {
         // Load the view files
-        $this->loadViewsFrom(EASEL_BASE_PATH . '/resources/views', 'easel');
+        $this->loadViewsFrom(EASEL_BASE_PATH.'/resources/views', 'easel');
         // Load language files
-        $this->loadTranslationsFrom(EASEL_BASE_PATH . '/resources/lang', 'easel');
+        $this->loadTranslationsFrom(EASEL_BASE_PATH.'/resources/lang', 'easel');
 
         $this->defineRoutes();
 
-        if( $this->app->runningInConsole() ) {
+        if ($this->app->runningInConsole()) {
             $this->defineResources();
             $this->defineMigrations();
         }
@@ -50,16 +45,15 @@ class EaselServiceProvider extends ServiceProvider
     public function register()
     {
         // Define package base path
-        if ( ! defined('EASEL_BASE_PATH')) {
-            define('EASEL_BASE_PATH', realpath(__DIR__ . '/../../'));
+        if (!defined('EASEL_BASE_PATH')) {
+            define('EASEL_BASE_PATH', realpath(__DIR__.'/../../'));
         }
 
         // When running artisan add these commands
-        if( $this->app->runningInConsole() )
-        {
+        if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallCommand::class,
-                UpdateCommand::class
+                UpdateCommand::class,
             ]);
         }
 
@@ -67,20 +61,19 @@ class EaselServiceProvider extends ServiceProvider
 
         // Merge any new config items into the existing config file
         $this->mergeConfigFrom(
-            EASEL_BASE_PATH . '/config/easel.php', 'easel'
+            EASEL_BASE_PATH.'/config/easel.php', 'easel'
         );
     }
 
     /**
-     * Load Easel specific routes
+     * Load Easel specific routes.
      */
     private function defineRoutes()
     {
-        if ( ! $this->app->routesAreCached()) {
-
-            \Route::group([ 'namespace' => 'Easel\Http\Controllers' ],
+        if (!$this->app->routesAreCached()) {
+            \Route::group(['namespace' => 'Easel\Http\Controllers'],
                 function ($router) {
-                    require EASEL_BASE_PATH . '/src/Http/routes.php';
+                    require EASEL_BASE_PATH.'/src/Http/routes.php';
                 }
             );
         }
@@ -88,46 +81,44 @@ class EaselServiceProvider extends ServiceProvider
 
     /**
      * Publish assets / images / css / js / views to host application
-     * This is only when the application is run in the console
+     * This is only when the application is run in the console.
      */
     private function defineResources()
     {
-
         $this->publishes([
-            EASEL_BASE_PATH . '/resources/publish' => base_path('resources/views/vendor/easel/'),
+            EASEL_BASE_PATH.'/resources/publish' => base_path('resources/views/vendor/easel/'),
         ]);
 
         $this->publishes([
-            EASEL_BASE_PATH . '/public' => base_path('public')
+            EASEL_BASE_PATH.'/public' => base_path('public'),
         ]);
 
         $this->publishes([
-            EASEL_BASE_PATH . '/resources/assets/storage' => storage_path('app/public'),
+            EASEL_BASE_PATH.'/resources/assets/storage' => storage_path('app/public'),
         ]);
     }
 
     /**
      * Publish database migrations / seeds / factories to host application
-     * This is only when the application is run in the console
+     * This is only when the application is run in the console.
      */
     private function defineMigrations()
     {
         $this->publishes([
-            EASEL_BASE_PATH . '/database/migrations/' => database_path('migrations')
+            EASEL_BASE_PATH.'/database/migrations/' => database_path('migrations'),
         ], 'migrations');
 
         $this->publishes([
-            EASEL_BASE_PATH . '/database/seeds/' => database_path('seeds')
+            EASEL_BASE_PATH.'/database/seeds/' => database_path('seeds'),
         ], 'seeds');
 
         $this->publishes([
-            EASEL_BASE_PATH . '/database/factories/' => database_path('factories')
+            EASEL_BASE_PATH.'/database/factories/' => database_path('factories'),
         ], 'factories');
-
     }
 
     /**
-     * Load this packages dependant service providers and facades
+     * Load this packages dependant service providers and facades.
      */
     private function registerServices()
     {

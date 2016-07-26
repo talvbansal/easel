@@ -1,4 +1,5 @@
 <?php
+
 use Easel\Models\Tag;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
@@ -6,11 +7,10 @@ use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
  * Created by PhpStorm.
  * User: talv
  * Date: 21/07/16
- * Time: 11:54
+ * Time: 11:54.
  */
 class TagsTest extends TestCase
 {
-
     use InteractsWithDatabase;
 
     /**
@@ -22,6 +22,7 @@ class TagsTest extends TestCase
      * Create the user model test subject.
      *
      * @before
+     *
      * @return void
      */
     public function createUser()
@@ -56,7 +57,7 @@ class TagsTest extends TestCase
             'subtitle' => $tag->subtitle,
         ]);
 
-        $this->assertSessionHas('_new-tag', trans('easel::messages.create_success', [ 'entity' => 'Tag' ]));
+        $this->assertSessionHas('_new-tag', trans('easel::messages.create_success', ['entity' => 'Tag']));
         $this->assertRedirectedTo('admin/tag');
     }
 
@@ -70,7 +71,7 @@ class TagsTest extends TestCase
         $title = 'Here is a new tag title that we edited!';
 
         // Save changes
-        $this->actingAs($this->user)->put('admin/tag/' . $tag->id, [
+        $this->actingAs($this->user)->put('admin/tag/'.$tag->id, [
             'tag'      => $tag->tag,
             'title'    => $title,
             'subtitle' => $tag->subtitle,
@@ -81,11 +82,11 @@ class TagsTest extends TestCase
         $this->seeInDatabase('tags', [
             'tag'      => $tag->tag,
             'title'    => $title,
-            'subtitle' => $tag->subtitle
+            'subtitle' => $tag->subtitle,
         ]);
 
-        $this->assertSessionHas('_update-tag', trans('easel::messages.update_success', [ 'entity' => 'Tag' ]));
-        $this->assertRedirectedTo('/admin/tag/' . $tag->id . '/edit');
+        $this->assertSessionHas('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
+        $this->assertRedirectedTo('/admin/tag/'.$tag->id.'/edit');
     }
 
     public function test_a_tag_can_be_deleted()
@@ -95,20 +96,20 @@ class TagsTest extends TestCase
         $tag->save();
 
         // Delete it!
-        $this->actingAs($this->user)->delete('admin/tag/' . $tag->id);
+        $this->actingAs($this->user)->delete('admin/tag/'.$tag->id);
 
         // Is it there?
         $this->assertTrue(Tag::count() === 0);
 
-        $this->assertSessionHas('_delete-tag', trans('easel::messages.delete_success', [ 'entity' => 'Tag' ]));
+        $this->assertSessionHas('_delete-tag', trans('easel::messages.delete_success', ['entity' => 'Tag']));
         $this->assertRedirectedTo('/admin/tag');
     }
 
     public function test_duplicate_tags_cannot_be_made()
     {
         $duplicateName = 'duplicate tag';
-        $firstTag      = factory(Tag::class)->create([ 'tag' => $duplicateName ]);
-        $secondTag     = factory(Tag::class)->make();
+        $firstTag = factory(Tag::class)->create(['tag' => $duplicateName]);
+        $secondTag = factory(Tag::class)->make();
 
         // Create new tag
         $this->actingAs($this->user)->post('admin/tag', [
@@ -119,8 +120,5 @@ class TagsTest extends TestCase
         ]);
 
         $this->assertSessionHasErrors();
-
     }
-
-
 }
