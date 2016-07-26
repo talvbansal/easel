@@ -2,6 +2,8 @@
 #### A minimal blogging package for laravel apps
 
 [![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
+[![Issues](https://img.shields.io/github/issues/talv86/Easel.svg)](https://github.com/talv86/easel/issues)
+[![Downloads](https://poser.pugx.org/talv86/Easel/downloads)](https://packagist.org/packages/talv86/easel)
 
 ### Post install commands
 
