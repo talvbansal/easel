@@ -3,11 +3,9 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 21/07/16
- * Time: 12:40
+ * Time: 12:40.
  */
-
 namespace Easel\Services;
-
 
 use Easel\Models\Tag;
 use Easel\Services\Traits\FindBlogLayouts;
@@ -17,14 +15,14 @@ class TagManager
     use FindBlogLayouts;
 
     protected $fields = [
-        'tag' => '',
-        'title' => '',
-        'subtitle' => '',
-        'meta_description' => '',
-        'layout' => 'vendor.frontend.blog.index',
+        'tag'               => '',
+        'title'             => '',
+        'subtitle'          => '',
+        'meta_description'  => '',
+        'layout'            => 'vendor.frontend.blog.index',
         'reverse_direction' => 0,
-        'created_at' => '',
-        'updated_at' => '',
+        'created_at'        => '',
+        'updated_at'        => '',
     ];
 
     /**
@@ -32,9 +30,11 @@ class TagManager
      *
      * @return bool
      */
-    public function create( array $data ){
+    public function create(array $data)
+    {
         $tag = new Tag();
         $tag->fill($data)->save();
+
         return $tag->save();
     }
 
@@ -44,10 +44,11 @@ class TagManager
      *
      * @return bool
      */
-    public function edit( $id, $data )
+    public function edit($id, $data)
     {
         $tag = Tag::findOrFail($id);
         $tag->fill($data);
+
         return $tag->save();
     }
 
@@ -56,9 +57,9 @@ class TagManager
      *
      * @return int
      */
-    public function delete( $id )
+    public function delete($id)
     {
-        return Tag::destroy( $id );
+        return Tag::destroy($id);
     }
 
     /**
@@ -66,13 +67,12 @@ class TagManager
      *
      * @return array
      */
-    public function getViewData( $id = null)
+    public function getViewData($id = null)
     {
-        if( $id !== null )
-        {
-            /** @var  $data */
-            $data = Tag::findOrFail( $id )->toArray();
-        }else{
+        if ($id !== null) {
+            /** @var $data */
+            $data = Tag::findOrFail($id)->toArray();
+        } else {
             $data = $this->fields;
         }
 
@@ -80,5 +80,4 @@ class TagManager
             'layouts' => $this->getPostLayouts(),
         ]);
     }
-
 }

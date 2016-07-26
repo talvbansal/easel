@@ -1,9 +1,9 @@
 <?php
+
 namespace Easel\Http\Requests;
 
 class ProfileUpdateRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -22,13 +22,13 @@ class ProfileUpdateRequest extends Request
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name'   => 'required',
+            'last_name'    => 'required',
             'display_name' => 'required',
-            'email' => 'required',
-            'job' => 'required',
-            'city' => 'required',
-            'country' => 'required',
+            'email'        => 'required',
+            'job'          => 'required',
+            'city'         => 'required',
+            'country'      => 'required',
         ];
     }
 }

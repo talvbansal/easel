@@ -3,11 +3,9 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 18/07/16
- * Time: 14:37
+ * Time: 14:37.
  */
-
 namespace Easel\Console\Commands;
-
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -15,9 +13,8 @@ use Illuminate\Support\Collection;
 
 class UpdateCommand extends Command
 {
-
     /**
-     * name of the command
+     * name of the command.
      *
      * @var string
      */
@@ -25,14 +22,14 @@ class UpdateCommand extends Command
                     {--force : Force update Easel overwriting any view changes you might have made}';
 
     /**
-     * description of the command
+     * description of the command.
      *
      * @var string
      */
     protected $description = 'Update the easel installation';
 
     /**
-     * Execute the command
+     * Execute the command.
      */
     public function handle()
     {
@@ -44,13 +41,11 @@ class UpdateCommand extends Command
         $this->comment('You are now running the latest version of Easel. Enjoy!');
     }
 
-    /**
-     *
-     */
+
     private function installNewViews()
     {
         $this->line('Updating views <info>✔</info>');
-        $this->getViewsToInstall()->each(function( $view ){
+        $this->getViewsToInstall()->each(function ($view) {
             $this->comment(
                 '    ⇒ View ['.$this->relativeViewPath($view).'] is new. Installing...'
             );
@@ -65,13 +60,14 @@ class UpdateCommand extends Command
     /**
      * Create the view's directory if it doens't exist.
      *
-     * @param  \SplFileInfo  $view
+     * @param \SplFileInfo $view
+     *
      * @return void
      */
     protected function createViewDirectoryIfNecessary($view)
     {
-        if (! is_dir($directory = dirname($this->publishedViewPath($view)))) {
-            (new Filesystem)->makeDirectory(
+        if (!is_dir($directory = dirname($this->publishedViewPath($view)))) {
+            (new Filesystem())->makeDirectory(
                 $directory, $mode = 0755, $recursive = true
             );
         }
@@ -83,11 +79,10 @@ class UpdateCommand extends Command
     private function getViewsToInstall()
     {
         $views = collect(
-            ( new Filesystem )->allFiles(EASEL_BASE_PATH . '/resources/views')
+            ( new Filesystem() )->allFiles(EASEL_BASE_PATH.'/resources/views')
         );
 
-        if( $this->option('force') )
-        {
+        if ($this->option('force')) {
             return $views;
         }
 
@@ -99,7 +94,8 @@ class UpdateCommand extends Command
     /**
      * Get the view path relative to the views directory.
      *
-     * @param  \SplFileInfo  $view
+     * @param \SplFileInfo $view
+     *
      * @return string
      */
     protected function relativeViewPath($view)
@@ -111,20 +107,18 @@ class UpdateCommand extends Command
 
     private function publishedViewPath($view)
     {
-        return resource_path('views/vendor/easel/' . $this->relativeViewPath($view) );
+        return resource_path('views/vendor/easel/'.$this->relativeViewPath($view));
     }
 
-
     /**
-     * publish initial views, css, js, images and database files
+     * publish initial views, css, js, images and database files.
      */
     private function publishAssets()
     {
         $this->line('Publishing assets...');
-        \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
+        \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
         $this->line('Assets published! <info>✔</info>');
 
         exec('composer dump-autoload');
     }
-
 }

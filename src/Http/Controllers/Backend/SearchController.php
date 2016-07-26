@@ -2,10 +2,7 @@
 
 namespace Easel\Http\Controllers\Backend;
 
-use Easel\Models\Tag;
-use Easel\Models\Post;
-use Easel\Http\Requests;
-use Illuminate\Http\Request;use Easel\Http\Controllers\Controller;
+use Easel\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {

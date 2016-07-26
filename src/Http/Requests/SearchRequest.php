@@ -1,17 +1,17 @@
 <?php
+
 namespace Easel\Http\Requests;
 
 class SearchRequest extends Request
 {
-
-  /**
+    /**
    * Determine if the user is authorized to make this request.
    *
    * @return bool
    */
   public function authorize()
   {
-    return true;
+      return true;
   }
 
   /**
@@ -21,7 +21,7 @@ class SearchRequest extends Request
    */
   public function rules()
   {
-    return [
+      return [
       'search' => 'required',
     ];
   }

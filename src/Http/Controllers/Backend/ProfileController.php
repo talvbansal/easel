@@ -2,15 +2,15 @@
 
 namespace Easel\Http\Controllers\Backend;
 
-use Easel\Http\Controllers\Controller;
 use Auth;
+use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\ProfileUpdateRequest;
 use Session;
 
 class ProfileController extends Controller
 {
     /**
-     * Display the user profile page
+     * Display the user profile page.
      *
      * @return \Illuminate\View\View
      */
@@ -19,11 +19,11 @@ class ProfileController extends Controller
         $user = Auth::user();
         $blog = config('easel.title');
 
-        return view('easel::backend.profile.index', [ 'data' => $blog, 'user' => $user ]);
+        return view('easel::backend.profile.index', ['data' => $blog, 'user' => $user]);
     }
 
     /**
-     * Display the user profile edit page
+     * Display the user profile edit page.
      *
      * @param $id
      *
@@ -34,7 +34,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $blog = config('easel.title');
 
-        return view('easel::backend.profile.edit', [ 'data' => $blog, 'user' => $user ]);
+        return view('easel::backend.profile.edit', ['data' => $blog, 'user' => $user]);
     }
 
     /**
@@ -49,11 +49,11 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         foreach ($request->toArray() as $key => $value) {
-            $user->{$key} = ( is_array($value) ) ? json_encode($value) : $value;
+            $user->{$key} = (is_array($value)) ? json_encode($value) : $value;
         }
         $user->save();
 
-        Session::set('_profile', trans('easel::messages.update_success', [ 'entity' => 'Profile' ]));
+        Session::set('_profile', trans('easel::messages.update_success', ['entity' => 'Profile']));
 
         return redirect()->route('admin.profile.edit', $id);
     }

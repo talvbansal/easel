@@ -5,9 +5,9 @@ use Illuminate\Database\Seeder;
 
 class PostTableSeeder extends Seeder
 {
-   /**
-    * Seed the posts table with the Welcome post.
-    */
+    /**
+     * Seed the posts table with the Welcome post.
+     */
     public function run()
     {
         Post::truncate();
