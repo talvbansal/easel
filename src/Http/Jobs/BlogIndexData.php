@@ -1,16 +1,17 @@
 <?php
+
 namespace Easel\Http\Jobs;
 
 use Carbon\Carbon;
-use Easel\Models\Tag;
 use Easel\Models\Post;
+use Easel\Models\Tag;
 
 class BlogIndexData extends Job
 {
     protected $tag;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string|null $tag
      */
@@ -29,11 +30,12 @@ class BlogIndexData extends Job
         if ($this->tag) {
             return $this->tagIndexData($this->tag);
         }
+
         return $this->normalIndexData();
     }
 
     /**
-     * Return data for normal index page
+     * Return data for normal index page.
      *
      * @return array
      */
@@ -44,27 +46,29 @@ class BlogIndexData extends Job
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
             ->simplePaginate(config('easel.posts_per_page'));
+
         return [
-            'title' => config('easel.title'),
-            'subtitle' => config('easel.subtitle'),
-            'posts' => $posts,
-            'page_image' => config('easel.page_image'),
-            'meta_description' => config('easel.description'),
+            'title'             => config('easel.title'),
+            'subtitle'          => config('easel.subtitle'),
+            'posts'             => $posts,
+            'page_image'        => config('easel.page_image'),
+            'meta_description'  => config('easel.description'),
             'reverse_direction' => false,
-            'tag' => null,
+            'tag'               => null,
         ];
     }
 
     /**
-     * Return data for a tag index page
+     * Return data for a tag index page.
      *
      * @param string $tag
+     *
      * @return array
      */
     protected function tagIndexData($tag)
     {
         $tag = Tag::where('tag', $tag)->firstOrFail();
-        $reverse_direction = (bool)$tag->reverse_direction;
+        $reverse_direction = (bool) $tag->reverse_direction;
         $posts = Post::where('published_at', '<=', Carbon::now())
             ->whereHas('tags', function ($q) use ($tag) {
                 $q->where('tag', '=', $tag->tag);
@@ -74,14 +78,15 @@ class BlogIndexData extends Job
             ->simplePaginate(config('easel.posts_per_page'));
         $posts->addQuery('tag', $tag->tag);
         $page_image = $tag->page_image ?: config('easel.page_image');
+
         return [
-            'title' => $tag->title,
-            'subtitle' => $tag->subtitle,
-            'posts' => $posts,
-            'page_image' => $page_image,
-            'tag' => $tag,
+            'title'             => $tag->title,
+            'subtitle'          => $tag->subtitle,
+            'posts'             => $posts,
+            'page_image'        => $page_image,
+            'tag'               => $tag,
             'reverse_direction' => $reverse_direction,
-            'meta_description' => $tag->meta_description ?: \
+            'meta_description'  => $tag->meta_description ?: \
                 config('easel.description'),
         ];
     }

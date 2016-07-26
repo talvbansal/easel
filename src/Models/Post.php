@@ -1,4 +1,5 @@
 <?php
+
 namespace Easel\Models;
 
 use Carbon\Carbon;
@@ -14,7 +15,7 @@ class Post extends Model
      * @var array
      */
     protected $dates = ['published_at'];
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -52,13 +53,14 @@ class Post extends Model
      * Recursive routine to set a unique slug.
      *
      * @param string $title
-     * @param mixed $extra
+     * @param mixed  $extra
      */
     protected function setUniqueSlug($title, $extra)
     {
-        $slug = str_slug($title . '-' . $extra);
+        $slug = str_slug($title.'-'.$extra);
         if (static::whereSlug($slug)->exists()) {
             $this->setUniqueSlug($title, $extra + 1);
+
             return;
         }
         $this->attributes['slug'] = $slug;
@@ -88,6 +90,7 @@ class Post extends Model
             $this->tags()->sync(
                 Tag::whereIn('tag', $tags)->lists('id')->all()
             );
+
             return;
         }
         $this->tags()->detach();
@@ -109,14 +112,16 @@ class Post extends Model
      * Return URL to post.
      *
      * @param Tag $tag
+     *
      * @return string
      */
     public function url(Tag $tag = null)
     {
-        $url = url( config('easel.blog_base_url') . '/' . $this->slug);
+        $url = url(config('easel.blog_base_url').'/'.$this->slug);
         if ($tag) {
-            $url .= '?tag=' . urlencode($tag->tag);
+            $url .= '?tag='.urlencode($tag->tag);
         }
+
         return $url;
     }
 
@@ -124,21 +129,22 @@ class Post extends Model
      * Return an array of tag links.
      *
      * @param string $base
+     *
      * @return array
      */
     public function tagLinks($base = null)
     {
-        if( $base === null )
-        {
-            $base = config('easel.blog_base_url') . '/?tag=%TAG%';
+        if ($base === null) {
+            $base = config('easel.blog_base_url').'/?tag=%TAG%';
         }
 
         $tags = $this->tags()->lists('tag');
         $return = [];
         foreach ($tags as $tag) {
             $url = str_replace('%TAG%', urlencode($tag), $base);
-            $return[] = '<a href="' . url($url) . '">' . e($tag) . '</a>';
+            $return[] = '<a href="'.url($url).'">'.e($tag).'</a>';
         }
+
         return $return;
     }
 
@@ -146,6 +152,7 @@ class Post extends Model
      * Return next post after this one or null.
      *
      * @param Tag $tag
+     *
      * @return Post
      */
     public function newerPost(Tag $tag = null)
@@ -160,6 +167,7 @@ class Post extends Model
                 $q->where('tag', '=', $tag->tag);
             });
         }
+
         return $query->first();
     }
 
@@ -167,6 +175,7 @@ class Post extends Model
      * Return older post before this one or null.
      *
      * @param Tag $tag
+     *
      * @return Post
      */
     public function olderPost(Tag $tag = null)
@@ -180,6 +189,7 @@ class Post extends Model
                 $q->where('tag', '=', $tag->tag);
             });
         }
+
         return $query->first();
     }
 }

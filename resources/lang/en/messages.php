@@ -10,5 +10,5 @@ return [
 
     'create_error'      => 'Sorry! An error occurred creating :entity.',
     'delete_error'      => 'Sorry! An error occurred deleting :entity',
-    'upload_error'      => 'Sorry! An error occurred uploading file.'
+    'upload_error'      => 'Sorry! An error occurred uploading file.',
 ];

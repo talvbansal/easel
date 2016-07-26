@@ -28,7 +28,7 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
         'published_at'     => Carbon\Carbon::now(),
         'meta_description' => 'Let\'s get you up and running with Easel!',
         'is_draft'         => false,
-        'layout'           => config('easel.layouts.default')
+        'layout'           => config('easel.layouts.default'),
     ];
 });
 
@@ -61,16 +61,15 @@ $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
 |
 */
 $factory->define(Easel\Models\User::class, function (Faker\Generator $faker) {
-
     return [
         'first_name'   => $first = $faker->firstName,
         'last_name'    => $last = $faker->lastName,
-        'display_name' => $first . ' ' . $last,
+        'display_name' => $first.' '.$last,
         'job'          => $faker->jobTitle,
         'birthday'     => $faker->date('Y-m-d'),
         'email'        => $faker->safeEmail,
-        'social_media' => json_encode([ 'twitter'  => 'http://twitter.com/' . $faker->userName,
-                                        'facebook' => 'http://facebook.com/' . $faker->userName
+        'social_media' => json_encode(['twitter'   => 'http://twitter.com/'.$faker->userName,
+                                        'facebook' => 'http://facebook.com/'.$faker->userName,
         ]),
         'address'      => $faker->streetAddress,
         'city'         => $faker->city,

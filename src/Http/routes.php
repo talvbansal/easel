@@ -1,11 +1,12 @@
 <?php
+
 Route::group(['middleware' => ['web']], function () {
     /*
     |--------------------------------------------------------------------------
     | Blog Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['prefix' => config('easel.blog_base_url')], function(){
+    Route::group(['prefix' => config('easel.blog_base_url')], function () {
         Route::get('/', 'Frontend\BlogController@index');
         Route::get('/{slug}', 'Frontend\BlogController@showPost');
     });
@@ -22,8 +23,8 @@ Route::group(['middleware' => ['web']], function () {
         'namespace'  => 'Backend',
         'middleware' => 'auth',
     ], function () {
-        Route::resource('admin/post', 'PostController', [ 'except' => 'show' ]);
-        Route::resource('admin/tag', 'TagController', [ 'except' => 'show' ]);
+        Route::resource('admin/post', 'PostController', ['except' => 'show']);
+        Route::resource('admin/tag', 'TagController', ['except' => 'show']);
         Route::get('admin/upload', 'UploadController@index');
         Route::post('admin/upload/file', 'UploadController@uploadFile');
         Route::delete('admin/upload/file', 'UploadController@deleteFile');
@@ -41,5 +42,4 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/login', 'Auth\AuthController@getLogin');
     Route::post('/auth/login', 'Auth\AuthController@postLogin');
     Route::get('/auth/logout', 'Auth\AuthController@getLogout');
-
 });

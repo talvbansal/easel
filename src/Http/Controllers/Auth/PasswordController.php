@@ -1,4 +1,5 @@
 <?php
+
 namespace Easel\Http\Controllers\Auth;
 
 use Easel\Http\Controllers\Controller;

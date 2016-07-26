@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateUsersTableForTest extends Migration
 {
@@ -14,8 +14,8 @@ class CreateUsersTableForTest extends Migration
     {
 
         // When unit testing we need to create a table for users since there will be no users table to alter
-        if ( ! Schema::hasTable('users')) {
-            Schema::create('users', function ( Blueprint $table ) {
+        if (!Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('email')->unique()->nullable();
                 $table->string('password')->nullable();
@@ -23,7 +23,6 @@ class CreateUsersTableForTest extends Migration
                 $table->timestamps();
             });
         }
-
     }
 
     /**
@@ -33,6 +32,5 @@ class CreateUsersTableForTest extends Migration
      */
     public function down()
     {
-
     }
 }

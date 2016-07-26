@@ -1,19 +1,18 @@
 <?php
+
 /**accessible*/
 
 namespace Easel\Console\Commands;
 
-
 use Illuminate\Console\Command;
 
 /**
- * Class InstallCommand
- * @package Easel\Console\Commands
+ * Class InstallCommand.
  */
 class InstallCommand extends Command
 {
     /**
-     * name of the command
+     * name of the command.
      *
      * @var string
      */
@@ -22,14 +21,14 @@ class InstallCommand extends Command
     ';
 
     /**
-     * description of the command
+     * description of the command.
      *
      * @var string
      */
     protected $description = 'Install easel into the application';
 
     /**
-     * Execute the command
+     * Execute the command.
      */
     public function handle()
     {
@@ -46,7 +45,7 @@ class InstallCommand extends Command
     }
 
     /**
-     * create a symlink so that files from storage/app/public can be accessed from public/storage
+     * create a symlink so that files from storage/app/public can be accessed from public/storage.
      */
     private function createUploadsSymlink()
     {
@@ -56,7 +55,7 @@ class InstallCommand extends Command
             $this->line('Symlink created! <info>✔</info>');
         } catch (\Exception $e) {
             //the symlink creation failed, maybe it already exists
-            if ($e->getMessage() == "symlink(): File exists") {
+            if ($e->getMessage() == 'symlink(): File exists') {
                 $this->line('Symlink already exists! <info>✔</info>');
             } else {
                 $this->line('<error>Unable to create symlink! Your uploaded files may not be accessible.</error>');
@@ -65,46 +64,45 @@ class InstallCommand extends Command
     }
 
     /**
-     * copy config file into main project
+     * copy config file into main project.
      */
     private function createConfig()
     {
         $this->line('Config files created! <info>✔</info>');
-        copy( EASEL_BASE_PATH . '/config/easel.php', config_path('easel.php') );
+        copy(EASEL_BASE_PATH.'/config/easel.php', config_path('easel.php'));
     }
 
     /**
-     * publish initial views, css, js, images and database files
+     * publish initial views, css, js, images and database files.
      */
     private function publishAssets()
     {
         $this->line('Publishing assets...');
-        \Artisan::call('vendor:publish', ['--provider' => "Easel\\Providers\\EaselServiceProvider", '--force' => true] );
-        \Artisan::call('vendor:publish', ['--provider' => "Proengsoft\\JsValidation\\JsValidationServiceProvider", '--force' => true, '--tag' => 'public'] );
+        \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
+        \Artisan::call('vendor:publish', ['--provider' => 'Proengsoft\\JsValidation\\JsValidationServiceProvider', '--force' => true, '--tag' => 'public']);
         $this->line('Assets published! <info>✔</info>');
 
         //exec('composer dump-autoload');
     }
 
     /**
-     * run new migrations and then seed the db
+     * run new migrations and then seed the db.
      */
     private function migrateData()
     {
         $this->line('Running migrations...');
 
         $options = [];
-        if( $this->option('seed') ){
+        if ($this->option('seed')) {
             $options['--seed'] = true;
-
         }
 
-        \Artisan::call('migrate', $options );
+        \Artisan::call('migrate', $options);
         $this->line('Database updated! <info>✔</info>');
 
-        if( $this->option('seed') ) {
+        if ($this->option('seed')) {
             $this->line('Database seeded! <info>✔</info>');
-        }else{
+        } else {
             $this->comment('The database was not seeded make sure you create your user manually');
         }
     }

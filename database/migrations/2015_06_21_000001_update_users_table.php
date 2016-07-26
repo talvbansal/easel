@@ -14,7 +14,7 @@ class UpdateUsersTable extends Migration
     {
 
         // When unit testing we need to create a table for users since there will be no users table to alter
-        if ( ! Schema::hasTable('users')) {
+        if (!Schema::hasTable('users')) {
             Schema::create('users', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('email')->unique()->nullable();
@@ -25,49 +25,48 @@ class UpdateUsersTable extends Migration
         }
 
         Schema::table('users', function (Blueprint $table) {
-
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('first_name')->nullable();
             }
 
 
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('last_name')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('display_name')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('url')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->json('social_media')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('address')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('city')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('country')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->text('bio')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('job')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('phone')->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('gender', 140)->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('relationship', 140)->nullable();
             }
-            if ( ! Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'first_name')) {
                 $table->date('birthday')->nullable();
             }
         });
@@ -81,7 +80,6 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-
             $columns = [
                 'first_name',
                 'last_name',
@@ -96,15 +94,14 @@ class UpdateUsersTable extends Migration
                 'phone',
                 'gender',
                 'relationship',
-                'birthday'
+                'birthday',
             ];
 
             foreach ($columns as $column) {
                 if (Schema::hasColumn('users', $column)) {
-                    $table->dropColumn( $column );
+                    $table->dropColumn($column);
                 }
             }
-
         });
     }
 }

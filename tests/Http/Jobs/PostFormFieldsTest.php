@@ -4,19 +4,16 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 20/07/16
- * Time: 17:22
+ * Time: 17:22.
  */
 class PostFormFieldsTest extends TestCase
 {
-
     /**
      * @var \Illuminate\Support\Collection
      */
     private $filesCreated;
 
-    /**
-     *
-     */
+
     public function setUp()
     {
         parent::setUp();
@@ -24,16 +21,13 @@ class PostFormFieldsTest extends TestCase
         $this->filesCreated = collect();
     }
 
-    /**
-     *
-     */
+
     public function tearDown()
     {
-        $this->filesCreated->each(function( $file ) {
+        $this->filesCreated->each(function ($file) {
             try {
                 unlink($file);
             } catch (Exception $e) {
-
             }
         });
 
@@ -41,12 +35,13 @@ class PostFormFieldsTest extends TestCase
     }
 
     /**
-     * Allow the private getPostLayouts method to become accessible / invokable
+     * Allow the private getPostLayouts method to become accessible / invokable.
+     *
      * @return ReflectionMethod
      */
     private function getPostLayoutsAsPublic()
     {
-        $reflection     = new ReflectionClass(\Easel\Http\Jobs\PostFormFields::class);
+        $reflection = new ReflectionClass(\Easel\Http\Jobs\PostFormFields::class);
         $getPostLayouts = $reflection->getMethod('getPostLayouts');
         $getPostLayouts->setAccessible(true);
 
@@ -58,9 +53,10 @@ class PostFormFieldsTest extends TestCase
      *
      * @return bool
      */
-    private function createNewBlogTemplateFile( $fileName )
+    private function createNewBlogTemplateFile($fileName)
     {
-        $path = $this->createPathFromFileName( $fileName );
+        $path = $this->createPathFromFileName($fileName);
+
         return $this->createFile($path);
     }
 
@@ -69,9 +65,9 @@ class PostFormFieldsTest extends TestCase
      *
      * @return string
      */
-    private function createPathFromFileName( $fileName )
+    private function createPathFromFileName($fileName)
     {
-        $path = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/' . config('easel.layouts.posts'))) . '/' . $fileName;
+        $path = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/'.config('easel.layouts.posts'))).'/'.$fileName;
 
         return $path;
     }
@@ -83,12 +79,13 @@ class PostFormFieldsTest extends TestCase
      */
     private function createFile($path)
     {
-        if ( ! file_exists(dirname($path))) {
+        if (!file_exists(dirname($path))) {
             mkdir(dirname($path), 0777, true);
         }
 
-        if( touch($path) ){
-            $this->filesCreated->push( $path );
+        if (touch($path)) {
+            $this->filesCreated->push($path);
+
             return true;
         }
 
@@ -109,9 +106,7 @@ class PostFormFieldsTest extends TestCase
         return $response;
     }
 
-    /**
-     *
-     */
+
     public function test_default_layout_only()
     {
         $response = $this->getLayouts();
@@ -124,9 +119,7 @@ class PostFormFieldsTest extends TestCase
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
     }
 
-    /**
-     *
-     */
+
     public function test_additional_layout()
     {
         $this->createNewBlogTemplateFile('gallery.blade.php');
@@ -139,12 +132,10 @@ class PostFormFieldsTest extends TestCase
         $this->assertTrue($response->contains('gallery'));
         // Are these values in the collection
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
-        $this->assertTrue($response->has( config('easel.layouts.posts') . '.gallery' ));
+        $this->assertTrue($response->has(config('easel.layouts.posts').'.gallery'));
     }
 
-    /**
-     *
-     */
+
     public function test_only_blade_php_files_are_considered_layouts()
     {
         $this->createNewBlogTemplateFile('readme.txt');
@@ -158,12 +149,10 @@ class PostFormFieldsTest extends TestCase
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
     }
 
-    /**
-     *
-     */
+
     public function test_blade_php_files_in_sub_folders_are_ignored()
     {
-        $this->createNewBlogTemplateFile('partials' . DIRECTORY_SEPARATOR . 'header.blade.php');
+        $this->createNewBlogTemplateFile('partials'.DIRECTORY_SEPARATOR.'header.blade.php');
         $response = $this->getLayouts();
 
         // Is there only one layout returned
@@ -173,7 +162,4 @@ class PostFormFieldsTest extends TestCase
         // Is the displayed value in the collection
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
     }
-
-
-
 }
