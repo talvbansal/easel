@@ -41,7 +41,6 @@ class UpdateCommand extends Command
         $this->comment('You are now running the latest version of Easel. Enjoy!');
     }
 
-
     private function installNewViews()
     {
         $this->line('Updating views <info>✔</info>');
