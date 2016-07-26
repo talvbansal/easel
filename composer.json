@@ -23,7 +23,8 @@
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
     "proengsoft/laravel-jsvalidation": "1.0.*",
-    "laravelcollective/html": "^5.2"
+    "laravelcollective/html": "^5.2",
+    "barryvdh/laravel-elfinder": "^0.3.7"
   },
   "require-dev": {
     "symfony/dom-crawler": "~3.0",
