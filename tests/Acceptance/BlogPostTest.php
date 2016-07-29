@@ -35,7 +35,6 @@ class BlogPostTest extends TestCase
     private function createPostData()
     {
         return factory(\Easel\Models\Post::class)->make(['content_raw' => 'test content']);
-
     }
 
     /**

@@ -31,6 +31,7 @@ class PostController extends Controller
     public function create()
     {
         $data = $this->dispatch(new PostFormFields());
+
         return view('easel::backend.post.create', $data);
     }
 
