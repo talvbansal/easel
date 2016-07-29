@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $blog = config('easel.title');
 
-        return view('vendor.easel.backend.profile.index', ['data' => $blog, 'user' => $user]);
+        return view('easel::backend.profile.index', ['data' => $blog, 'user' => $user]);
     }
 
     /**
@@ -34,7 +34,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $blog = config('easel.title');
 
-        return view('vendor.easel.backend.profile.edit', ['data' => $blog, 'user' => $user]);
+        return view('easel::backend.profile.edit', ['data' => $blog, 'user' => $user]);
     }
 
     /**

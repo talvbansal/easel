@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('vendor.easel.shared.meta-tags')
+        @include('easel::shared.meta-tags')
 
         @yield('title')
 

@@ -1,4 +1,4 @@
-@extends('backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Search</title>
@@ -6,13 +6,13 @@
 
 @section('content')
     <section id="main">
-        @include('backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="/admin">Home</a></li>
+                            <li><a href="{{ url('/admin') }}">Home</a></li>
                             <li class="active">Search</li>
                         </ol>
                         <ul class="actions">
@@ -52,7 +52,7 @@
                                         @foreach ($posts as $post)
                                             <tr>
                                                 <td>Post</td>
-                                                <td><a href="/admin/post/{{ $post->id }}/edit">{{ $post->title }}</a></td>
+                                                <td><a href="{{ url('/admin/post/' . $post->id . '/edit' )}}">{{ $post->title }}</a></td>
                                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->format('M d, Y') }}</td>
                                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('M d, Y') }}</td>
                                             </tr>
@@ -61,7 +61,7 @@
                                         @foreach ($tags as $tag)
                                             <tr>
                                                 <td>Tag</td>
-                                                <td><a href="/admin/tag/{{ $tag->id }}/edit">{{ $tag->title }}</a></td>
+                                                <td><a href="{{ url('/admin/tag/' . $tag->id . '/edit') }}">{{ $tag->title }}</a></td>
                                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $tag->created_at)->format('M d, Y') }}</td>
                                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $tag->updated_at)->format('M d, Y') }}</td>
                                             </tr>

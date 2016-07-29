@@ -2,8 +2,16 @@
 #### A minimal blogging package for laravel apps
 
 [![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
+[![Issues](https://img.shields.io/github/issues/talv86/Easel.svg)](https://github.com/talv86/easel/issues)
+[![Downloads](https://poser.pugx.org/talv86/Easel/downloads)](https://packagist.org/packages/talv86/easel)
 
-### Post install commands
+### Installation
+
+Require this package with composer
+
+```
+composer require talv86/easel
+```
 
 To register the easy install and update commands as well as registering the new routes for Easel to work, you will need to add the Easel service provider to you config/app.php file
 ```
@@ -16,15 +24,16 @@ php artisan easel:install --seed
 ```
 The optional seed parameter will seed your database
  
-Whenever an update to easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be republished with the following command
+Whenever an update to easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be published / republished with the following command
 ```
 php artisan easel:update --force
 ```
-The optional force parameter will overwrite any views that have already been published, otherwise only newly created views get published which allows you to customise the existing views
+The optional force parameter will overwrite any views that have already been published, otherwise only newly created views get published which allows you to customise the existing views.
+You could also add the above command to your post-update-cmd in your projects composer.json file
 
 
 ### User Models
-Easel allows you to use the built in user model which is Easel\Models\User or you can use your own custom model. If you want to use your own model you'll need to make the following changes: 
+Easel allows you to use the built in user model which is Easel\Models\User or you can use your own custom model. If you want to use an existing model you'll need to make the following changes to it: 
 
 You will also need to make your User model implement the "Easel\Models\BlogUserInterface" 
 You will also need to add the key 'birthday' to the $dates property of your user model

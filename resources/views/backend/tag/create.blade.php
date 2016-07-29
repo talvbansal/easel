@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | New Tag</title>
@@ -7,7 +7,7 @@
 @section('content')
     <section id="main">
 
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
 
         <section id="content">
             <div class="container">
@@ -31,9 +31,9 @@
                             </li>
                         </ul>
 
-                        @include('vendor.easel.shared.errors')
+                        @include('easel::shared.errors')
 
-                        @include('vendor.easel.shared.success')
+                        @include('easel::shared.success')
 
                         <h2>Create a New Tag</h2>
 
@@ -41,7 +41,7 @@
                     <div class="card-body card-padding">
                         {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'tagUpdate', 'url' => '/admin/tag']) !!}
 
-                            @include('vendor.easel.backend.tag.partials.form')
+                            @include('easel::backend.tag.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
@@ -60,5 +60,5 @@
 @section('unique-js')
     {!! JsValidator::formRequest('Easel\Http\Requests\TagCreateRequest', '#tagUpdate') !!}
 
-    @include('vendor.easel.backend.shared.notifications.protip')
+    @include('easel::backend.shared.notifications.protip')
 @stop

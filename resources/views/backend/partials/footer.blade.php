@@ -7,6 +7,6 @@
         <li><a href="{{url('admin/tag')}}">Tags</a></li>
         <li><a href="{{url('admin/upload')}}">Uploads</a></li>
         <li><a href="https://github.com/talv86/easel/issues">Support</a></li>
-        <li><a href="mailto:talvbansal@gmail.com">Contact</a></li>
+        <li><a href="mailto:talvbansal@hotmail.com">Contact</a></li>
     </ul>
 </footer>

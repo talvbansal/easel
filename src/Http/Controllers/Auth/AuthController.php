@@ -29,7 +29,7 @@ class AuthController extends Controller
     /**
      * @var string
      */
-    protected $redirectAfterLogout = '/auth/login';
+    protected $redirectAfterLogout = '/login';
 
     /**
      * @var string
@@ -39,7 +39,7 @@ class AuthController extends Controller
     /**
      * @var string
      */
-    protected $loginView = 'vendor.easel.auth.login';
+    protected $loginView = 'easel::auth.login';
 
     /**
      * Create a new authentication controller instance.

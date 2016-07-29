@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Sign In</title>
@@ -19,11 +19,11 @@
                     <div class="card-body card-padding" id="login-ch">
                         <p class="f-20 f-300 text-center">Please sign in to continue</p>
 
-                        @include('vendor.easel.auth.partials.login-form')
+                        @include('easel::auth.partials.login-form')
                         <br>
                     </div>
                 </div>
-                <p class="text-center"><a href="/"><i class="zmdi zmdi-long-arrow-return"></i> Go back home</a></p>
+                <p class="text-center"><a href="{{ url('/') }}"><i class="zmdi zmdi-long-arrow-return"></i> Go back home</a></p>
             </div>
         </section>
     </section>

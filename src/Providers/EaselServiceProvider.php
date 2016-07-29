@@ -24,7 +24,9 @@ class EaselServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        //load language files
+        // Load the view files
+        $this->loadViewsFrom(EASEL_BASE_PATH.'/resources/views', 'easel');
+        // Load language files
         $this->loadTranslationsFrom(EASEL_BASE_PATH.'/resources/lang', 'easel');
 
         $this->defineRoutes();
@@ -78,12 +80,13 @@ class EaselServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish assets / images / css / js / views to host application.
+     * Publish assets / images / css / js / views to host application
+     * This is only when the application is run in the console.
      */
     private function defineResources()
     {
         $this->publishes([
-            EASEL_BASE_PATH.'/resources/views' => base_path('resources/views/vendor/easel'),
+            EASEL_BASE_PATH.'/resources/publish' => base_path('resources/views/vendor/easel/'),
         ]);
 
         $this->publishes([
@@ -91,12 +94,13 @@ class EaselServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            EASEL_BASE_PATH.'/resources/assets/storage' => public_path('storage'),
+            EASEL_BASE_PATH.'/resources/assets/storage' => storage_path('app/public'),
         ]);
     }
 
     /**
-     * Publish database migrations / seeds / factories to host application.
+     * Publish database migrations / seeds / factories to host application
+     * This is only when the application is run in the console.
      */
     private function defineMigrations()
     {
@@ -119,8 +123,8 @@ class EaselServiceProvider extends ServiceProvider
     private function registerServices()
     {
         //register service providers
-        $this->app->register(JsValidationServiceProvider::class);
         $this->app->register(HtmlServiceProvider::class);
+        $this->app->register(JsValidationServiceProvider::class);
 
         //load facades
         $loader = AliasLoader::getInstance();

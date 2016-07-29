@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Uploads</title>
@@ -6,13 +6,13 @@
 
 @section('content')
     <section id="main">
-        @include('vendor.easel.backend.partials.sidebar-navigation')
+        @include('easel::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="/admin">Home</a></li>
+                            <li><a href="{{ url('/admin') }}">Home</a></li>
                             <li class="active">Uploads</li>
                         </ol>
                         <ul class="actions">
@@ -29,8 +29,8 @@
                             </li>
                         </ul>
 
-                        @include('vendor.easel.shared.errors')
-                        @include('vendor.easel.shared.success')
+                        @include('easel::shared.errors')
+                        @include('easel::shared.success')
 
                         <h2>Manage Uploads&nbsp;
                             <a href="" data-toggle="modal" data-target="#modal-file-upload"><i class="zmdi zmdi-file" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Upload file"></i></a>
@@ -44,7 +44,7 @@
 
                         <ul class="breadcrumb folder-paths">
                             @foreach ($breadcrumbs as $path => $disp)
-                                <li><a href="/admin/upload?folder={{ $path }}">{{ $disp }}</a></li>
+                                <li><a href="{{ url('/admin/upload?folder=' . $path ) }}">{{ $disp }}</a></li>
                             @endforeach
                             <li class="active">{{ $folderName }}</li>
                         </ul>
@@ -64,8 +64,8 @@
                                 @if(empty($files) && empty($subfolders))
                                     <tr><td>Folder <em>{{ $folderName }}</em> is empty.</td></tr>
                                 @else
-                                    @include('vendor.easel.backend.upload.partials.folders-row')
-                                    @include('vendor.easel.backend.upload.partials.files-row')
+                                    @include('easel::backend.upload.partials.folders-row')
+                                    @include('easel::backend.upload.partials.files-row')
                                 @endif
                             </tbody>
                         </table>
@@ -74,11 +74,11 @@
             </div>
         </section>
     </section>
-    @include('vendor.easel.backend.upload.partials.modals.folders.create')
-    @include('vendor.easel.backend.upload.partials.modals.folders.delete')
-    @include('vendor.easel.backend.upload.partials.modals.files.preview')
-    @include('vendor.easel.backend.upload.partials.modals.files.create')
-    @include('vendor.easel.backend.upload.partials.modals.files.delete')
+    @include('easel::backend.upload.partials.modals.folders.create')
+    @include('easel::backend.upload.partials.modals.folders.delete')
+    @include('easel::backend.upload.partials.modals.files.preview')
+    @include('easel::backend.upload.partials.modals.files.create')
+    @include('easel::backend.upload.partials.modals.files.delete')
 @stop
 
 @section('unique-js')
@@ -104,22 +104,22 @@
     {!! JsValidator::formRequest('Easel\Http\Requests\UploadFileRequest', '#fileCreate') !!}
 
     @if(Session::get('_new-folder'))
-        @include('vendor.easel.backend.upload.partials.notifications.folders.create')
+        @include('easel::backend.upload.partials.notifications.folders.create')
         {{ \Session::forget('_new-folder') }}
     @endif
 
     @if(Session::get('_delete-folder'))
-        @include('vendor.easel.backend.upload.partials.notifications.folders.delete')
+        @include('easel::backend.upload.partials.notifications.folders.delete')
         {{ \Session::forget('_delete-folder') }}
     @endif
 
     @if(Session::get('_new-file'))
-        @include('vendor.easel.backend.upload.partials.notifications.files.create')
+        @include('easel::backend.upload.partials.notifications.files.create')
         {{ \Session::forget('_new-file') }}
     @endif
 
     @if(Session::get('_delete-file'))
-        @include('vendor.easel.backend.upload.partials.notifications.files.delete')
+        @include('easel::backend.upload.partials.notifications.files.delete')
         {{ \Session::forget('_delete-file') }}
     @endif
 @stop

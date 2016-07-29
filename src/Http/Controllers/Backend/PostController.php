@@ -20,7 +20,7 @@ class PostController extends Controller
     {
         $data = Post::all();
 
-        return view('vendor.easel.backend.post.index', compact('data'));
+        return view('easel::backend.post.index', compact('data'));
     }
 
     /**
@@ -31,8 +31,7 @@ class PostController extends Controller
     public function create()
     {
         $data = $this->dispatch(new PostFormFields());
-
-        return view('vendor.easel.backend.post.create', $data);
+        return view('easel::backend.post.create', $data);
     }
 
     /**
@@ -64,7 +63,7 @@ class PostController extends Controller
     {
         $data = $this->dispatch(new PostFormFields($id));
 
-        return view('vendor.easel.backend.post.edit', $data);
+        return view('easel::backend.post.edit', $data);
     }
 
     /**

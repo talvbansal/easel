@@ -1,4 +1,4 @@
-@extends('vendor.easel.backend.layout')
+@extends('easel::backend.layout')
 
 @section('title')
     <title>{{ config('easel.title') }} | Reset Password</title>
@@ -21,7 +21,7 @@
                                 </ul>
                             </div>
                         @endif
-                        @include('vendor.easel.auth.partials.reset-form')
+                        @include('easel::auth.partials.reset-form')
                     </div>
                 </div>
             </div>

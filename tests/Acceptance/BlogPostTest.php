@@ -35,6 +35,37 @@ class BlogPostTest extends TestCase
     private function createPostData()
     {
         return factory(\Easel\Models\Post::class)->make(['content_raw' => 'test content']);
+
+    }
+
+    /**
+     * Not sure if this or the following test is better for some reason in this test we can't check whats in session.
+     * However this hits the page with the form on too which is better than just the back end code being tested.
+     */
+    public function test_a_user_can_create_a_post()
+    {
+        $post = $this->createPostData();
+
+        $this->actingAs($this->user)->visit('admin/post/create')
+             ->type($post->title, 'title')
+             ->type($post->subtitle, 'subtitle')
+             ->type($post->content_raw, 'content')
+             ->type($post->published_at->format('d/m/Y h:i:s'), 'published_at')
+             ->select($post->layout, 'layout')
+             ->press('Save');
+
+        // Is it there?
+        $this->seeInDatabase('posts', [
+            'title'        => $post->title,
+            'slug'         => $post->slug,
+            'subtitle'     => $post->subtitle,
+            'content_raw'  => $post->content,
+            'content_html' => '<p>'.$post->content.'</p>',
+            'published_at' => $post->published_at->format('Y-m-d h:i:s'),
+            'layout'       => $post->layout,
+        ]);
+
+        $this->seePageIs('admin/post');
     }
 
     public function test_a_post_can_be_created()
@@ -71,7 +102,6 @@ class BlogPostTest extends TestCase
         // Create new post
         $post = $this->createPostData();
         $post->save();
-
 
         // Edit the post
         $title = 'Edited Post title';
