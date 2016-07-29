@@ -39,6 +39,7 @@ class TagController extends Controller
     public function index()
     {
         $data = Tag::all();
+
         return view('easel::backend.tag.index', compact('data'));
     }
 
