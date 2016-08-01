@@ -62,6 +62,7 @@ class BlogPostTest extends TestCase
             'content_html' => '<p>'.$post->content.'</p>',
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
             'layout'       => $post->layout,
+            'author'       => $this->user->id,
         ]);
 
         $this->seePageIs('admin/post');
@@ -90,6 +91,7 @@ class BlogPostTest extends TestCase
             'content_html' => '<p>'.$post->content.'</p>',
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
             'layout'       => $post->layout,
+            'author'       => $this->user->id,
         ]);
 
         $this->assertSessionHas('_new-post', trans('easel::messages.create_success', ['entity' => 'Post']));
@@ -125,6 +127,7 @@ class BlogPostTest extends TestCase
             'content_html' => '<p>'.$content.'</p>',
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
             'layout'       => $post->layout,
+            'author'       => $this->user->id,
         ]);
 
         $this->assertSessionHas('_update-post', trans('easel::messages.update_success', ['entity' => 'Post']));

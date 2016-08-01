@@ -12,6 +12,7 @@ use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
 use Easel\Console\Commands\InstallCommand;
 use Easel\Console\Commands\UpdateCommand;
+use Easel\Models\BlogUserInterface;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
@@ -63,6 +64,8 @@ class EaselServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             EASEL_BASE_PATH.'/config/easel.php', 'easel'
         );
+
+        $this->app->bind(BlogUserInterface::class, config('easel.blog_user'));
     }
 
     /**

@@ -43,6 +43,12 @@ class User extends Model implements \Easel\Models\BlogUserInterface{
 }
 ```
 
+Then finally update the config/easel.php config file use your User model
+
+```
+'user_model' => \My\Custom\User::class,
+```
+
 ### Customising the url prefix for the blog
 By default you can access the public blog listing at the following routes:
 ```

@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = Post::all();
+        $data = Post::with('author')->get();
 
         return view('easel::backend.post.index', compact('data'));
     }

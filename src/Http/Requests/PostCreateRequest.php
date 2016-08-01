@@ -44,6 +44,7 @@ class PostCreateRequest extends Request
             'is_draft'         => (bool) $this->is_draft,
             'published_at'     => Carbon::createFromFormat('d/m/Y H:i:s', $this->published_at)->format('Y-m-d H:i:s'),
             'layout'           => $this->layout,
+            'author'           => auth()->user()->id
         ];
     }
 }
