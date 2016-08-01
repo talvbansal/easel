@@ -33,28 +33,28 @@ class UpdateCommand extends Command
      */
     public function handle()
     {
-        $this->line ('Updating Easel <info>✔</info>');
+        $this->line('Updating Easel <info>✔</info>');
 
-        $this->installNewViews ();
-        $this->publishAssets ();
-        $this->migrateData ();
+        $this->installNewViews();
+        $this->publishAssets();
+        $this->migrateData();
 
-        $this->comment ('You are now running the latest version of Easel. Enjoy!');
+        $this->comment('You are now running the latest version of Easel. Enjoy!');
     }
 
     private function installNewViews()
     {
-        $this->line ('Updating views <info>✔</info>');
-        $this->getViewsToInstall ()->each (function($view) {
-            $this->comment (
-                '    ⇒ View [' . $this->relativeViewPath ($view) . '] is new. Installing...'
+        $this->line('Updating views <info>✔</info>');
+        $this->getViewsToInstall()->each(function ($view) {
+            $this->comment(
+                '    ⇒ View ['.$this->relativeViewPath($view).'] is new. Installing...'
             );
 
-            $this->createViewDirectoryIfNecessary ($view);
+            $this->createViewDirectoryIfNecessary($view);
 
-            copy ($view->getRealPath (), $this->publishedViewPath ($view));
+            copy($view->getRealPath(), $this->publishedViewPath($view));
         });
-        $this->line ('Views updated <info>✔</info>');
+        $this->line('Views updated <info>✔</info>');
     }
 
     /**
@@ -66,8 +66,8 @@ class UpdateCommand extends Command
      */
     protected function createViewDirectoryIfNecessary($view)
     {
-        if( ! is_dir ($directory = dirname ($this->publishedViewPath ($view)))) {
-            (new Filesystem())->makeDirectory (
+        if (!is_dir($directory = dirname($this->publishedViewPath($view)))) {
+            (new Filesystem())->makeDirectory(
                 $directory, $mode = 0755, $recursive = true
             );
         }
@@ -78,16 +78,16 @@ class UpdateCommand extends Command
      */
     private function getViewsToInstall()
     {
-        $views = collect (
-            (new Filesystem())->allFiles (EASEL_BASE_PATH . '/resources/publish')
+        $views = collect(
+            (new Filesystem())->allFiles(EASEL_BASE_PATH.'/resources/publish')
         );
 
-        if($this->option ('force')) {
+        if ($this->option('force')) {
             return $views;
         }
 
-        return $views->reject (function($view) {
-            return file_exists ($this->publishedViewPath ($view));
+        return $views->reject(function ($view) {
+            return file_exists($this->publishedViewPath($view));
         });
     }
 
@@ -100,14 +100,14 @@ class UpdateCommand extends Command
      */
     protected function relativeViewPath($view)
     {
-        $viewPath = str_replace (EASEL_BASE_PATH . '/resources/views/', '', $view->getRealPath ());
+        $viewPath = str_replace(EASEL_BASE_PATH.'/resources/views/', '', $view->getRealPath());
 
-        return str_replace (resource_path ('views/vendor/easel/'), '', $viewPath);
+        return str_replace(resource_path('views/vendor/easel/'), '', $viewPath);
     }
 
     private function publishedViewPath($view)
     {
-        return resource_path ('views/vendor/easel/' . $this->relativeViewPath ($view));
+        return resource_path('views/vendor/easel/'.$this->relativeViewPath($view));
     }
 
     /**
@@ -115,16 +115,16 @@ class UpdateCommand extends Command
      */
     private function publishAssets()
     {
-        $this->line ('Publishing assets...');
-        \Artisan::call ('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
-        \Artisan::call ('vendor:publish', [
+        $this->line('Publishing assets...');
+        \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
+        \Artisan::call('vendor:publish', [
             '--provider' => 'Proengsoft\\JsValidation\\JsValidationServiceProvider',
             '--force'    => true,
-            '--tag'      => 'public'
+            '--tag'      => 'public',
         ]);
-        $this->line ('Assets published! <info>✔</info>');
+        $this->line('Assets published! <info>✔</info>');
 
-        exec ('composer dump-autoload');
+        exec('composer dump-autoload');
     }
 
     /**
@@ -132,9 +132,9 @@ class UpdateCommand extends Command
      */
     private function migrateData()
     {
-        $this->line ('Running migrations...');
+        $this->line('Running migrations...');
 
-        \Artisan::call ('migrate');
-        $this->line ('Database updated! <info>✔</info>');
+        \Artisan::call('migrate');
+        $this->line('Database updated! <info>✔</info>');
     }
 }
