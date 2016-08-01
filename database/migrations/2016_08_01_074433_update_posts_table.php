@@ -13,7 +13,7 @@ class UpdatePostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('author')->nullable();
+            $table->integer('author_id')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class UpdatePostsTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             if (Schema::hasColumn('posts', 'author')) {
-                $table->dropColumn('author');
+                $table->dropColumn('author_id');
             }
         });
     }

@@ -30,7 +30,7 @@ class Post extends Model
         'layout',
         'is_draft',
         'published_at',
-        'author',
+        'author_id',
     ];
 
     /**
@@ -38,7 +38,7 @@ class Post extends Model
      */
     public function author()
     {
-        return $this->hasOne(config('easel.user_model'), 'id');
+        return $this->hasOne(config('easel.user_model'), 'id', 'author_id');
     }
 
     /**
