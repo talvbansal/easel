@@ -26,9 +26,8 @@ The optional seed parameter will seed your database
  
 Whenever an update to easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be published / republished with the following command
 ```
-php artisan easel:update --force
+php artisan easel:update
 ```
-The optional force parameter will overwrite any views that have already been published, otherwise only newly created views get published which allows you to customise the existing views.
 You could also add the above command to your post-update-cmd in your projects composer.json file
 
 
