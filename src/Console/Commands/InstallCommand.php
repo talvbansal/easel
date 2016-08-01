@@ -81,8 +81,6 @@ class InstallCommand extends Command
         \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
         \Artisan::call('vendor:publish', ['--provider' => 'Proengsoft\\JsValidation\\JsValidationServiceProvider', '--force' => true, '--tag' => 'public']);
         $this->line('Assets published! <info>✔</info>');
-
-        //exec('composer dump-autoload');
     }
 
     /**
