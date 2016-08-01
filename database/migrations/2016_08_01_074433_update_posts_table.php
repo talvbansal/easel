@@ -25,7 +25,7 @@ class UpdatePostsTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            if(Schema::hasColumn('posts', 'author')) {
+            if (Schema::hasColumn('posts', 'author')) {
                 $table->dropColumn('author');
             }
         });
