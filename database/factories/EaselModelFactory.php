@@ -29,7 +29,7 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
         'meta_description' => 'Let\'s get you up and running with Easel!',
         'is_draft'         => false,
         'layout'           => config('easel.layouts.default'),
-        'author'           => 1
+        'author'           => 1,
     ];
 });
 

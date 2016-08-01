@@ -30,7 +30,7 @@ class Post extends Model
         'layout',
         'is_draft',
         'published_at',
-        'author'
+        'author',
     ];
 
     /**
@@ -38,7 +38,7 @@ class Post extends Model
      */
     public function author()
     {
-        return $this->hasOne( config('easel.user_model'), 'id');
+        return $this->hasOne(config('easel.user_model'), 'id');
     }
 
     /**
@@ -59,7 +59,7 @@ class Post extends Model
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-        if( ! $this->exists) {
+        if (!$this->exists) {
             $this->setUniqueSlug($value, '');
         }
     }
@@ -72,8 +72,8 @@ class Post extends Model
      */
     protected function setUniqueSlug($title, $extra)
     {
-        $slug = str_slug($title . '-' . $extra);
-        if(static::whereSlug($slug)->exists()) {
+        $slug = str_slug($title.'-'.$extra);
+        if (static::whereSlug($slug)->exists()) {
             $this->setUniqueSlug($title, $extra + 1);
 
             return;
@@ -88,8 +88,8 @@ class Post extends Model
      */
     public function setContentRawAttribute($value)
     {
-        $markdown                         = new Parsedowner();
-        $this->attributes['content_raw']  = $value;
+        $markdown = new Parsedowner();
+        $this->attributes['content_raw'] = $value;
         $this->attributes['content_html'] = $markdown->toHTML($value);
     }
 
@@ -101,7 +101,7 @@ class Post extends Model
     public function syncTags(array $tags)
     {
         Tag::addNeededTags($tags);
-        if(count($tags)) {
+        if (count($tags)) {
             $this->tags()->sync(
                 Tag::whereIn('tag', $tags)->lists('id')->all()
             );
@@ -132,9 +132,9 @@ class Post extends Model
      */
     public function url(Tag $tag = null)
     {
-        $url = url(config('easel.blog_base_url') . '/' . $this->slug);
-        if($tag) {
-            $url .= '?tag=' . urlencode($tag->tag);
+        $url = url(config('easel.blog_base_url').'/'.$this->slug);
+        if ($tag) {
+            $url .= '?tag='.urlencode($tag->tag);
         }
 
         return $url;
@@ -149,15 +149,15 @@ class Post extends Model
      */
     public function tagLinks($base = null)
     {
-        if($base === null) {
-            $base = config('easel.blog_base_url') . '/?tag=%TAG%';
+        if ($base === null) {
+            $base = config('easel.blog_base_url').'/?tag=%TAG%';
         }
 
-        $tags   = $this->tags()->lists('tag');
+        $tags = $this->tags()->lists('tag');
         $return = [];
         foreach ($tags as $tag) {
-            $url      = str_replace('%TAG%', urlencode($tag), $base);
-            $return[] = '<a href="' . url($url) . '">' . e($tag) . '</a>';
+            $url = str_replace('%TAG%', urlencode($tag), $base);
+            $return[] = '<a href="'.url($url).'">'.e($tag).'</a>';
         }
 
         return $return;
@@ -177,8 +177,8 @@ class Post extends Model
                   ->where('published_at', '<=', Carbon::now())
                   ->where('is_draft', 0)
                   ->orderBy('published_at', 'asc');
-        if($tag) {
-            $query = $query->whereHas('tags', function($q) use ($tag) {
+        if ($tag) {
+            $query = $query->whereHas('tags', function ($q) use ($tag) {
                 $q->where('tag', '=', $tag->tag);
             });
         }
@@ -199,8 +199,8 @@ class Post extends Model
             static::where('published_at', '<', $this->published_at)
                   ->where('is_draft', 0)
                   ->orderBy('published_at', 'desc');
-        if($tag) {
-            $query = $query->whereHas('tags', function($q) use ($tag) {
+        if ($tag) {
+            $query = $query->whereHas('tags', function ($q) use ($tag) {
                 $q->where('tag', '=', $tag->tag);
             });
         }
