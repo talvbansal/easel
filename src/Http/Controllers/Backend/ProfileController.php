@@ -3,6 +3,7 @@
 namespace Easel\Http\Controllers\Backend;
 
 use Auth;
+use Carbon\Carbon;
 use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\ProfileUpdateRequest;
 use Session;
@@ -48,10 +49,13 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request, $id)
     {
         $user = Auth::user();
-        $data = $request->except(['_token', '_method']);
+        $data = $request->except(['_token', '_method', 'birthday']);
         foreach ($data as $key => $value) {
             $user->{$key} = (is_array($value)) ? json_encode($value) : $value;
         }
+
+        $user->birthday = Carbon::createFromFormat('d/m/Y', $request->get('birthday'));
+
         $user->save();
 
         Session::set('_profile', trans('easel::messages.update_success', ['entity' => 'Profile']));

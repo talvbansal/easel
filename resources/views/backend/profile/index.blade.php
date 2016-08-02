@@ -94,24 +94,6 @@
                                             </dl>
                                     @endforeach
 
-                                    @if(isset($user->twitter) && strlen($user->twitter))
-                                        <dl class="dl-horizontal">
-                                            <dt>Twitter</dt>
-                                            <dd><a href="http://twitter.com/{{ $user->twitter }}" target="_blank">{{ '@' . $user->twitter }}</a></dd>
-                                        </dl>
-                                    @endif
-                                    @if(isset($user->facebook) && strlen($user->facebook))
-                                        <dl class="dl-horizontal">
-                                            <dt>Facebook</dt>
-                                            <dd><a href="http://facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></dd>
-                                        </dl>
-                                    @endif
-                                    @if(isset($user->github) && strlen($user->github))
-                                        <dl class="dl-horizontal">
-                                            <dt>GitHub</dt>
-                                            <dd><a href="http://github.com/{{ $user->github }}" target="_blank">{{ $user->github }}</a></dd>
-                                        </dl>
-                                    @endif
                                     @if(isset($user->address) && !empty($user->address))
                                         <dl class="dl-horizontal">
                                             <dt>Address</dt>

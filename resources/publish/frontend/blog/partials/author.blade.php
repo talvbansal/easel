@@ -21,7 +21,7 @@
                 Follow {{ $post->author->display_name }}:
                 @foreach( $post->author->social_media as $network => $url )
                     <a href="{{ $url }}" target="_blank" class="social">
-                        <i class="fa fa-fw fa-{{ $network }}"></i>
+                        <i class="zmdi zmdi-{{ $network }}"></i>
                     </a>
                 @endforeach
             </div>

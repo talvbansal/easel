@@ -14,39 +14,37 @@
             </a>
         </div>
         <div class="pmo-stat">
-            <h2 class="m-0 c-white">{{ $user->first_name }}</h2>
+            <h2 class="m-0 c-white">{{ $user->display_name }}</h2>
             Member since {{ $user->created_at->format('M d, Y') }}
         </div>
     </div>
     <div class="pmo-block pmo-contact hidden-xs">
         <h2>Contact</h2>
         <ul>
-            @if(isset($data['phone']) && strlen($data['phone']))
-                <li><i class="zmdi zmdi-phone"></i> {{ $data['phone'] }}</li>
+            @if(isset($user->phone) && strlen($user->phone))
+                <li><i class="zmdi zmdi-phone"></i> {{ $user->phone }}</li>
             @endif
-            <li><i class="zmdi zmdi-email"></i> <a href="mailto:{{ $user->email }}" target="_blank">{{ $user->email }}</a></li>
-            @if(isset($data['twitter']) && strlen($data['twitter']))
-                <li><i class="zmdi zmdi-twitter-box"></i> <a href="http://twitter.com/{{ $data['twitter'] }}" target="_blank">{{'@'.$data['twitter'] }}</a></li>
-            @endif
-            @if(isset($data['facebook']) && strlen($data['facebook']))
-                <li><i class="zmdi zmdi-facebook-box"></i> <a href="http://facebook.com/{{ $data['facebook'] }}" target="_blank">{{ $data['facebook'] }}</a></li>
-            @endif
-            @if(isset($data['github']) && strlen($data['github']))
-                <li><i class="zmdi zmdi-github-box"></i> <a href="http://github.com/{{ $data['github'] }}" target="_blank">{{ $data['github'] }}</a></li>
-            @endif
+
+            @foreach( $user->social_media as $network => $url )
+                    <li>
+                        <i class="zmdi zmdi-{{ $network }}"></i>
+                        <a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a>
+                    </li>
+            @endforeach
+
             <li>
-                @if(isset($data['address']) || isset($data['city']) || isset($data['country']))
+                @if(isset($user->address) || isset($user->city) || isset($user->country))
                     <i class="zmdi zmdi-pin"></i>
                 @endif
                 <address class="m-b-0 ng-binding">
-                    @if(isset($data['address']) && !empty($data['address']) )
-                        {{ $data['address'] }},<br>
+                    @if(isset($user->address) && !empty($user->address) )
+                        {{ $user->address }},<br>
                     @endif
-                    @if(isset($data['city']) && !empty($data['city']))
-                        {{ $data['city'] }},<br>
+                    @if(isset($user->city) && !empty($user->city))
+                        {{ $user->city }},<br>
                     @endif
-                    @if(isset($data['country']) && !empty($data['country']))
-                        {{ $data['country'] }}
+                    @if(isset($user->country) && !empty($user->country))
+                        {{ $user->country }}
                     @endif
 
                 </address>
