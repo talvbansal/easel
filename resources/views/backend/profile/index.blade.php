@@ -86,6 +86,14 @@
                                         <dt>Email Address</dt>
                                         <dd>{{ $user->email }}</dd>
                                     </dl>
+
+                                    @foreach( $user->social_media as $network => $url )
+                                            <dl class="dl-horizontal">
+                                                <dt>{{ ucfirst($network) }}</dt>
+                                                <dd><a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a></dd>
+                                            </dl>
+                                    @endforeach
+
                                     @if(isset($user->twitter) && strlen($user->twitter))
                                         <dl class="dl-horizontal">
                                             <dt>Twitter</dt>

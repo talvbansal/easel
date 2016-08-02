@@ -17,11 +17,11 @@
 </div>
 
 <br>
-{{--
+
 <div class="form-group">
     <div class="fg-line">
       <label class="fg-label">Twitter</label>
-      <input type="text" class="form-control" name="twitter" id="twitter" value="{{ $data['twitter'] }}" placeholder="Twitter Username">
+      <input type="text" class="form-control" name="social_media[twitter]" id="twitter" value="{{ (isset($user->social_media->twitter ))? $user->social_media->twitter : null }}" placeholder="Twitter Url">
     </div>
 </div>
 
@@ -30,7 +30,7 @@
 <div class="form-group">
     <div class="fg-line">
       <label class="fg-label">Facebook</label>
-      <input type="text" class="form-control" name="facebook" id="facebook" value="{{ $data['facebook'] }}" placeholder="Facebook Username">
+      <input type="text" class="form-control" name="social_media[facebook]" id="facebook" value="{{ (isset($user->social_media->facebook ))? $user->social_media->facebook : null }}" placeholder="Facebook Url">
     </div>
 </div>
 
@@ -39,10 +39,19 @@
 <div class="form-group">
     <div class="fg-line">
       <label class="fg-label">GitHub</label>
-      <input type="text" class="form-control" name="github" id="github" value="{{ $data['github'] }}" placeholder="GitHub Username">
+      <input type="text" class="form-control" name="social_media[github]" id="github" value="{{ (isset($user->social_media->github ))? $user->social_media->github : null }}" placeholder="GitHub Url">
     </div>
 </div>
---}}
+
+<br>
+
+<div class="form-group">
+    <div class="fg-line">
+      <label class="fg-label">Instagram</label>
+      <input type="text" class="form-control" name="social_media[instagram]" id="instagram" value="{{ (isset($user->social_media->instagram ))? $user->social_media->instagram : null }}" placeholder="Instagram Url">
+    </div>
+</div>
+
 <br>
 
 <div class="form-group">
