@@ -65,7 +65,7 @@ class EaselServiceProvider extends ServiceProvider
             EASEL_BASE_PATH.'/config/easel.php', 'easel'
         );
 
-        $this->app->bind(BlogUserInterface::class, config('easel.blog_user'));
+        $this->app->bind(BlogUserInterface::class, config('easel.user_model'));
     }
 
     /**
