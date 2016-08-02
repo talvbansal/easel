@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-
     /**
      * @var PostsManager
      */
@@ -52,8 +51,8 @@ class BlogController extends Controller
      */
     public function showPost($slug, Request $request)
     {
-        $post  = Post::with('tags')->whereSlug($slug)->firstOrFail();
-        $tag   = $request->get('tag');
+        $post = Post::with('tags')->whereSlug($slug)->firstOrFail();
+        $tag = $request->get('tag');
         $title = $post->title;
         if ($tag) {
             $tag = Tag::whereTag($tag)->firstOrFail();
