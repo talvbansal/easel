@@ -15,7 +15,7 @@ $relationships = [
 ];
 
 $genders = [
-    'Make' => 'Male',
+    'Male' => 'Male',
     'Female' => 'Female'
 ];
 
@@ -72,7 +72,7 @@ $genders = [
 <div class="form-group">
     <div class="fg-line">
       <label for="birthday" class="fg-label">Birthday</label>
-      <input type="text" class="form-control date-picker" name="birthday" id="birthday" value="{{ $user->birthday }}" placeholder="DD-MM-YYYY" data-mask="00-00-0000">
+      <input type="text" class="form-control date-picker" name="birthday" id="birthday" value="{{ $user->birthday->format('d/m/Y') }}" placeholder="DD-MM-YYYY" data-mask="00-00-0000">
     </div>
 </div>
 
