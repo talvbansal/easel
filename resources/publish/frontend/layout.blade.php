@@ -16,6 +16,10 @@
 
         @yield('unique-js')
 
+        @include('vendor.easel.frontend.partials.js')
+
         @include('vendor.easel.frontend.blog.partials.footer')
+
+
     </body>
 </html>

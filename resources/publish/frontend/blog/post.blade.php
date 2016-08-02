@@ -89,4 +89,7 @@
             </div>
         </div>
     </div>
+
+    @include('vendor.easel.frontend.blog.partials.author')
+
 @stop

@@ -23,3 +23,9 @@
         </div>
     </div>
 </div>
+
+<span id="top-link-block" class="hidden">
+    <a href="#top" class="btn btn-primary btn-xs waves-effect" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+        <i class="fa fa-chevron-up"></i> Back to Top
+    </a>
+</span><!-- /top-link-block -->

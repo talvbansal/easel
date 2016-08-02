@@ -86,7 +86,7 @@
     {!! JsValidator::formRequest('Easel\Http\Requests\ProfileUpdateRequest', '#profileUpdate') !!}
 
     @if(Session::get('_profile'))
-        @include('backend.profile.partials.notifications.update-profile')
+        @include('easel::backend.profile.partials.notifications.update-profile')
         {{ \Session::forget('_profile') }}
     @endif
 @stop

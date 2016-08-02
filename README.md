@@ -1,11 +1,13 @@
 # Easel
 #### A minimal blogging package for laravel apps
+<hr>
 
-[![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
+[![Build Status](https://api.travis-ci.org/talv86/Easel.svg)](https://travis-ci.org/talv86/easel)
 [![Issues](https://img.shields.io/github/issues/talv86/Easel.svg)](https://github.com/talv86/easel/issues)
 [![Downloads](https://poser.pugx.org/talv86/Easel/downloads)](https://packagist.org/packages/talv86/easel)
 
 ### Installation
+<hr>
 
 Require this package with composer
 
@@ -32,16 +34,36 @@ You could also add the above command to your post-update-cmd in your projects co
 
 
 ### User Models
-Easel allows you to use the built in user model which is Easel\Models\User or you can use your own custom model. If you want to use an existing model you'll need to make the following changes to it: 
+<hr>
 
-You will also need to make your User model implement the "Easel\Models\BlogUserInterface" 
+Easel allows you to use the built in user model which is Easel\Models\User or you can use your own custom model. 
+
+#### Build In Model
+If you want to use the build in User model you'll need to set it in the config/auth.php file
+
+```
+'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => Easel\Models\User::class,
+        ],
+    ],
+```
+
+#### Custom Model
+
+If you want to use an existing model you'll need to make the following changes to it: 
+
+Your User model will need implement the "Easel\Models\BlogUserInterface" and also use the "Easel\Models\EaselUserTrait" 
 You will also need to add the key 'birthday' to the $dates property of your user model
 ```
 class User extends Model implements \Easel\Models\BlogUserInterface{
+
+    use Easel\Models\EaselUserTrait;
+
     protected $dates = ['birthday'];
 }
 ```
-
 Then finally update the config/easel.php config file use your User model
 
 ```
@@ -49,11 +71,13 @@ Then finally update the config/easel.php config file use your User model
 ```
 
 ### Customising the url prefix for the blog
+<hr>
+
 By default you can access the public blog listing at the following routes:
 ```
 /blog
 /blog/{blog-post-slug}
-```
+````
 You might want the blog to accessed from a different URI.
 Easel lets you configure that by adding the following key to your .env file BLOG_BASE_URL
 
@@ -74,6 +98,8 @@ Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
 ```
 
 ### Setting a views folder for your blog posts
+<hr>
+
 When creating a blog post you can use the default layout for easel, however it is likely that you'll want to amend the views to suit your application. 
 You may also need different views for different blog posts, easel has you covered just add a new key to your .env file called BLOG_POST_LAYOUTS. then give it the path to a folder within your resources/views folder
 

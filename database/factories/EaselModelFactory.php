@@ -47,7 +47,7 @@ $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
         'title'             => 'Getting Started',
         'subtitle'          => 'Getting started with Easel',
         'meta_description'  => 'Meta content for this tag.',
-        'layout'            => 'vendor.frontend.blog.index',
+        'layout'            => 'vendor.easel.frontend.blog.index',
         'reverse_direction' => false,
         'created_at'        => Carbon\Carbon::now(),
     ];

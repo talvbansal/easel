@@ -6,6 +6,8 @@ elixir(function (mix) {
     mix.less('auth/auth.less');
     mix.less('admin/admin.less');
 
+    mix.sass('easel.scss');
+
     // Vendor Files
     mix.copy('resources/assets/vendor/', 'public/vendor')
 
@@ -22,6 +24,7 @@ elixir(function (mix) {
     mix.copy('resources/assets/css/custom.css', 'public/css/custom.css');
     mix.copy('resources/assets/css/app-1.css', 'public/css/app-1.css');
     mix.copy('resources/assets/css/app-2.css', 'public/css/app-2.css');
+    mix.copy('resources/assets/css/easel.css', 'public/css/easel.css');
 
     // Raw JS Files
     mix.copy('resources/assets/js/bootstrap-select.js', 'public/js/bootstrap-select.js');
@@ -40,6 +43,7 @@ elixir(function (mix) {
     mix.copy('resources/assets/js/functions.js', 'public/js/functions.js');
     mix.copy('resources/assets/js/bootstrap-growl.min.js', 'public/js/bootstrap-growl.min.js');
     mix.copy('resources/assets/js/fileinput.min.js', 'public/js/fileinput.min.js');
+    mix.copy('resources/assets/js/easel.js', 'public/js/easel.js');
 
     mix.phpUnit();
 });

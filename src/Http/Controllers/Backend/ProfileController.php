@@ -48,7 +48,8 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request, $id)
     {
         $user = Auth::user();
-        foreach ($request->toArray() as $key => $value) {
+        $data = $request->except(['_token', '_method']);
+        foreach ($data as $key => $value) {
             $user->{$key} = (is_array($value)) ? json_encode($value) : $value;
         }
         $user->save();

@@ -3,13 +3,24 @@
 namespace Easel\Http\Controllers\Frontend;
 
 use Easel\Http\Controllers\Controller;
-use Easel\Http\Jobs\BlogIndexData;
 use Easel\Models\Post;
 use Easel\Models\Tag;
+use Easel\Services\PostsManager;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+
+    /**
+     * @var PostsManager
+     */
+    private $postsManager;
+
+    public function __construct(PostsManager $postsManager)
+    {
+        $this->postsManager = $postsManager;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,10 +31,15 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $tag = $request->get('tag');
-        $data = $this->dispatch(new BlogIndexData($tag));
-        $layout = $tag ? Tag::layout($tag)->first() : 'vendor.easel.frontend.blog.index';
 
-        return view($layout, $data);
+        if ($tag) {
+            $data = $this->postsManager->postsByTag($tag);
+        } else {
+            $data = $this->postsManager->allPublishedPosts();
+        }
+
+
+        return view('vendor.easel.frontend.blog.index', $data);
     }
 
     /**
@@ -36,13 +52,31 @@ class BlogController extends Controller
      */
     public function showPost($slug, Request $request)
     {
-        $post = Post::with('tags')->whereSlug($slug)->firstOrFail();
-        $tag = $request->get('tag');
+        $post  = Post::with('tags')->whereSlug($slug)->firstOrFail();
+        $tag   = $request->get('tag');
         $title = $post->title;
         if ($tag) {
             $tag = Tag::whereTag($tag)->firstOrFail();
         }
 
-        return view($post->layout, compact('post', 'tag', 'slug', 'title'));
+        $data = [
+            'post'  => $post,
+            'tag'   => $tag,
+            'title' => $title,
+        ];
+
+        return view($post->layout, $data);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPostsByAuthor($id)
+    {
+        $data = $this->postsManager->postsByAuthorId($id);
+
+        return view('vendor.easel.frontend.blog.index', $data);
     }
 }
