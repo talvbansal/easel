@@ -1,10 +1,12 @@
-@if (isset($slug))
+@if (isset($post->slug))
 
+    <br/>
+    
     <div id="disqus_thread"></div>
 
     <script type="text/javascript">
         var disqus_shortname = '{{ config('easel.disqus_name') }}';
-        var disqus_identifier = 'blog-{{ $slug }}';
+        var disqus_identifier = 'blog-{{ $post->slug }}';
         (function () {
             var dsq = document.createElement('script');
             dsq.type = 'text/javascript';
