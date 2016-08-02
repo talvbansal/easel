@@ -3,23 +3,19 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 02/08/16
- * Time: 10:11
+ * Time: 10:11.
  */
-
 namespace Easel\Services;
-
 
 use Carbon\Carbon;
 use Easel\Models\Post;
 use Easel\Models\Tag;
 
 /**
- * Class PostsManager
- * @package Easel\Services
+ * Class PostsManager.
  */
 class PostsManager
 {
-
     /**
      * @return array
      */
@@ -65,7 +61,7 @@ class PostsManager
             'posts'             => $posts,
             'page_image'        => config('easel.page_image'),
             'meta_description'  => config('easel.description'),
-            'reverse_direction' => ($tag != null && $tag->reverse_direction )? $tag->reverse_direction : false,
+            'reverse_direction' => ($tag != null && $tag->reverse_direction) ? $tag->reverse_direction : false,
             'tag'               => $tag,
         ];
     }
@@ -88,7 +84,6 @@ class PostsManager
                      ->simplePaginate(config('easel.posts_per_page'));
         $posts->addQuery('tag', $tag->tag);
 
-        return $this->assemblePostData( $posts, $tag );
+        return $this->assemblePostData($posts, $tag);
     }
-
 }

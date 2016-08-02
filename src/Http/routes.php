@@ -7,7 +7,7 @@ Route::group(['middleware' => ['web']], function () {
     |--------------------------------------------------------------------------
     */
     Route::group([
-        'prefix' => config('easel.blog_base_url'),
+        'prefix'    => config('easel.blog_base_url'),
         'namespace' => 'Frontend',
     ], function () {
         Route::get('/', 'BlogController@index');

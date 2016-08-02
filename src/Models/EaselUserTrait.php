@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 02/08/16
- * Time: 07:56
+ * Time: 07:56.
  */
-
 namespace Easel\Models;
 
 trait EaselUserTrait
@@ -15,10 +14,8 @@ trait EaselUserTrait
      *
      * @return array
      */
-    public function getSocialMediaAttribute( $value )
+    public function getSocialMediaAttribute($value)
     {
-        return  json_decode( $value );
+        return  json_decode($value);
     }
-
-
 }
