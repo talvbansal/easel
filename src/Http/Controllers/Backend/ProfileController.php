@@ -8,7 +8,6 @@ use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\PasswordUpdateRequest;
 use Easel\Http\Requests\ProfileUpdateRequest;
 use Easel\Models\BlogUserInterface;
-use Illuminate\Http\Request;
 use Session;
 
 class ProfileController extends Controller
@@ -20,7 +19,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('easel::backend.profile.index', ['user' => Auth::user() ]);
+        return view('easel::backend.profile.index', ['user' => Auth::user()]);
     }
 
     /**
@@ -30,7 +29,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit( BlogUserInterface $user )
+    public function edit(BlogUserInterface $user)
     {
         return view('easel::backend.profile.edit', ['user' => $user]);
     }
@@ -42,7 +41,6 @@ class ProfileController extends Controller
      * @param BlogUserInterface    $user
      *
      * @return \Illuminate\Http\RedirectResponse
-     *
      */
     public function update(ProfileUpdateRequest $request, BlogUserInterface $user)
     {
@@ -61,35 +59,34 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the update password form
+     * Display the update password form.
      *
      * @param BlogUserInterface $user
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function editPassword( BlogUserInterface $user )
+    public function editPassword(BlogUserInterface $user)
     {
         return view('easel::backend.profile.password', ['user' => $user]);
     }
 
     /**
-     * Update the users password
+     * Update the users password.
      *
      * @param PasswordUpdateRequest $request
      * @param BlogUserInterface     $user
      *
      * @return $this|\Illuminate\Http\RedirectResponse
      */
-    public function updatePassword( PasswordUpdateRequest $request, BlogUserInterface $user )
+    public function updatePassword(PasswordUpdateRequest $request, BlogUserInterface $user)
     {
-        $this->validate( $request, [
-            'password' => 'required',
-            'new_password' => 'required|confirmed|min:6'
+        $this->validate($request, [
+            'password'     => 'required',
+            'new_password' => 'required|confirmed|min:6',
         ]);
 
         $guard = \Auth::guard();
-        if( !$guard->validate( $request->only('password') ) )
-        {
+        if (!$guard->validate($request->only('password'))) {
             return back()->withErrors(trans('auth.failed'));
         }
 
@@ -100,5 +97,4 @@ class ProfileController extends Controller
 
         return redirect()->route('admin.profile.edit.password', $user->id);
     }
-
 }
