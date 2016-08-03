@@ -5,6 +5,7 @@
 namespace Easel\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class InstallCommand.
@@ -17,7 +18,6 @@ class InstallCommand extends Command
      * @var string
      */
     protected $signature = 'easel:install
-        {--seed : Seed the database when installing}
     ';
 
     /**
@@ -41,7 +41,7 @@ class InstallCommand extends Command
         $this->createUploadsSymlink();
         //finally
         $this->comment('<info>Almost ready! Make sure to make your user model implements Easel\Models\BlogUserInterface!</info>');
-        $this->comment('Easel installed. Happy blogging!');
+        $this->comment('Easel installed! please run php artisan db:seed to complete the installation');
     }
 
     /**
@@ -89,19 +89,27 @@ class InstallCommand extends Command
     private function migrateData()
     {
         $this->line('Running migrations...');
-
         $options = [];
-        if ($this->option('seed')) {
-            $options['--seed'] = true;
-        }
-
         \Artisan::call('migrate', $options);
         $this->line('Database updated! <info>✔</info>');
+        $this->appendSeederToMasterFile();
+        exec('composer dump');
+    }
 
-        if ($this->option('seed')) {
-            $this->line('Database seeded! <info>✔</info>');
+    private function appendSeederToMasterFile()
+    {
+        $seeder = base_path("database/seeds/DatabaseSeeder.php");
+        $addition = '$this->call("EaselDatabaseSeeder");';
+
+        //Not sure the best way to do this
+        if(file_exists($seeder)) {
+            $current_contents = file_get_contents($seeder);
+            $magic = '/((?:.|\s)*?\s*run\(\)\s*{)((?:.|\s)*)(}\s*})$/m';
+            preg_match($magic, $current_contents, $matches);
+            $new_content = $matches[1].$matches[2]."\n\t\t".$addition."\n\t".$matches[3];
+            return file_put_contents($seeder, $new_content);
         } else {
-            $this->comment('The database was not seeded make sure you create your user manually');
+            return false;
         }
     }
 }

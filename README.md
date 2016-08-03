@@ -20,12 +20,18 @@ To register the easy install and update commands as well as registering the new 
 \Easel\Providers\EaselServiceProvider::class,
 ```
 
-To include the migrations, seeds and factories required for easel run the following command to publish all the required assets, migration and seed files
+To install Easel into your project run the following command, this will publish all the application assets and database migrations / factories / seeds required, the migrations will automatically be run from this command
+
 ```
-php artisan easel:install --seed
+php artisan easel:install
 ```
-The optional seed parameter will seed your database
- 
+
+Finally you'll need to seed your database to create the default admin user and initial post
+
+```
+php artisan db:seed
+```
+
 Whenever an update to easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be published / republished with the following command
 ```
 php artisan easel:update
