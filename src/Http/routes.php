@@ -23,10 +23,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin', function () {
         return redirect('/admin/post');
     });
+
     Route::group([
         'namespace'  => 'Backend',
         'middleware' => 'auth',
     ], function () {
+        // When the user model is needed resolve it from the interface bound in the IOC container that is defined in the service provider
+        Route::model('user', \Easel\Models\BlogUserInterface::class );
+
         Route::resource('admin/post', 'PostController', ['except' => 'show']);
         Route::resource('admin/tag', 'TagController', ['except' => 'show']);
         Route::get('admin/upload', 'UploadController@index');
@@ -34,7 +38,17 @@ Route::group(['middleware' => ['web']], function () {
         Route::delete('admin/upload/file', 'UploadController@deleteFile');
         Route::post('admin/upload/folder', 'UploadController@createFolder');
         Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
-        Route::resource('admin/profile', 'ProfileController');
+
+        // Profile Routes
+        Route::group(['as' => 'admin.profile.'], function () {
+            Route::get('admin/profile', 'ProfileController@index')->name('index');
+            Route::get('admin/profile/{user}/edit', 'ProfileController@edit')->name('edit');
+            Route::put('admin/profile/{user}/update', 'ProfileController@update')->name('update');
+            Route::get('admin/profile/{user}/password', 'ProfileController@editPassword')->name('edit.password');
+            Route::put('admin/profile/{user}/update-password', 'ProfileController@updatePassword')->name('update.password');
+        });
+
+        // Search Routes
         Route::resource('admin/search', 'SearchController');
     });
 
