@@ -98,15 +98,16 @@ class InstallCommand extends Command
 
     private function appendSeederToMasterFile()
     {
-        $seeder = base_path("database/seeds/DatabaseSeeder.php");
+        $seeder = base_path('database/seeds/DatabaseSeeder.php');
         $addition = '$this->call("EaselDatabaseSeeder");';
 
         //Not sure the best way to do this
-        if(file_exists($seeder)) {
+        if (file_exists($seeder)) {
             $current_contents = file_get_contents($seeder);
             $magic = '/((?:.|\s)*?\s*run\(\)\s*{)((?:.|\s)*)(}\s*})$/m';
             preg_match($magic, $current_contents, $matches);
             $new_content = $matches[1].$matches[2]."\n\t\t".$addition."\n\t".$matches[3];
+
             return file_put_contents($seeder, $new_content);
         } else {
             return false;
