@@ -29,7 +29,7 @@ Route::group(['middleware' => ['web']], function () {
         'middleware' => 'auth',
     ], function () {
         // When the user model is needed resolve it from the interface bound in the IOC container that is defined in the service provider
-        Route::model('user', \Easel\Models\BlogUserInterface::class );
+        Route::model('user', \Easel\Models\BlogUserInterface::class);
 
         Route::resource('admin/post', 'PostController', ['except' => 'show']);
         Route::resource('admin/tag', 'TagController', ['except' => 'show']);
