@@ -9,14 +9,6 @@
                 "quote", "unordered-list", "ordered-list", "|",
                 'link',
                 {
-                    name: 'insertLink',
-                    action: function (editor) {
-                        $('#easel-file-picker').modal('show');
-                    },
-                    className: "fa fa-external-link",
-                    title: "Insert Link To File"
-                },
-                {
                     name: 'insertImage',
                     action: function (editor) {
                         $('#easel-file-picker').modal('show');
