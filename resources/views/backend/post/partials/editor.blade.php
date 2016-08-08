@@ -1,22 +1,17 @@
 <script type="text/javascript">
-    var simpleMde;
+    var simpleMde; //make this global so that the image selection modal can access the editor instance once its created
     $(document).ready(function () {
-        $('.publish_date').mask('00/00/0000 00:00:00');
-
-        var toggleImagePicker = function () {
-            $('#image-picker').modal('show');
-        };
 
         simpleMde = new SimpleMDE({
             element: $("#editor")[0],
             toolbar: [
                 "bold", "italic", "heading", "|",
                 "quote", "unordered-list", "ordered-list", "|",
-                "link", /*"image",*/
+                "link",
                 {
                     name: 'insertImage',
                     action: function (editor) {
-                        toggleImagePicker();
+                        $('#image-picker').modal('show');
                     },
                     className: "fa fa-image",
                     title: "Insert Image"
@@ -26,6 +21,7 @@
             ]
         });
 
+        $('.publish_date').mask('00/00/0000 00:00:00');
     });
 </script>
 

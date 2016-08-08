@@ -23,7 +23,7 @@ class UpdateCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Update the easel installation';
+    protected $description = 'Update the Easel installation';
 
     /**
      * Execute the command.

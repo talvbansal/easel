@@ -1,5 +1,5 @@
 <div class="modal fade" id="image-picker" tabIndex="-1" role="dialog">
-    <div class="modal-dialog" style="width: 100%">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
@@ -13,68 +13,77 @@
                     <div class="card-header">
                         <ol class="breadcrumb">
 
-                            <li v-if="breadCrumbs.length == 0">
-                                <a href="#">Root</a>
+                            <li v-for="(path, name) in breadCrumbs">
+                                <a href="javascript:void(0);" @click=loadFolder(path)>@{{ name }}</a>
                             </li>
 
-                            <li v-for="(path, name) in breadCrumbs">
-                                <a href="#" @click=loadFolder(path)>@{{ name }}</a>
+                            <li>
+                                <a href="javascript:void(0);">@{{ folderName }}</a>
                             </li>
                         </ol>
                     </div>
 
                     <div class="row">
 
-                        <div class="col-sm-9 col-md-9 col-lg-10">
+                        <div :class="{ 'col-sm-12' : !currentFile, 'col-sm-9' : currentFile }">
+                            <div v-if="loading">
+                                <div class="preloader pl-xxl" style="position: relative; left: 50%; margin-left: -25px; top: 50%;">
+                                    <svg viewBox="25 25 50 50" class="pl-circular">
+                                        <circle r="20" cy="50" cx="50" class="plc-path"/>
+                                    </svg>
+                                </div>
+                            </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-condensed table-vmiddle">
+                            <div v-else>
 
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Size</th>
-                                        <th>Date</th>
-                                    </tr>
-                                    </thead>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-vmiddle">
 
-                                    <tbody>
-                                    <tr v-for="folder in folders">
-                                        <td>
-                                            <i class="zmdi zmdi-folder-outline"></i>
-                                            <a href="#" @click="loadFolder(folder)" class="word-wrappable">@{{ folder }}</a>
-                                        </td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Date</th>
+                                        </tr>
+                                        </thead>
 
-                                    <tr v-for="file in files">
-                                        <td>
+                                        <tbody>
+                                        <tr v-for="folder in folders">
+                                            <td>
+                                                <i class="zmdi zmdi-folder-outline"></i>
+                                                <a href="javascript:void(0);" @click="loadFolder(folder)" class="word-wrappable"
+                                                >@{{ folder }}</a>
+                                            </td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr v-for="file in files">
+                                            <td>
                                             <span v-if="isImage(file)">
                                                 <i class="zmdi zmdi-image"></i>
-                                                <a href="#" @click="previewImage(file)" @dblclick="selectImage(file)" class="word-wrappable">@{{ file.name }}</a>
+                                                <a href="javascript:void(0);" @click="previewImage(file)" @dblclick
+                                                ="selectImage(file)" class="word-wrappable">@{{ file.name }}</a>
                                             </span>
 
-                                            <span v-else>
+                                                <span v-else>
                                                 <i class="zmdi zmdi-file-text"></i>
                                                 <a href="@{{ file.webPath }}" target="_blank" class="word-wrappable">@{{ file.name }}</a>
                                             </span>
-                                        </td>
-                                        <td> @{{ file.mimeType }} </td>
-                                        <td> @{{ humanFileSize(file.size) }} </td>
-                                        <td> @{{ file.modified.date | moment 'L LTS' }}</td>
-                                    </tr>
+                                            </td>
+                                            <td> @{{ file.mimeType }} </td>
+                                            <td> @{{ file.modified.date | moment 'L LTS' }}</td>
+                                        </tr>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
 
+                                </div>
                             </div>
                         </div>
 
 
-                        <div class="col-sm-3 col-md-3 col-lg-2" v-show="currentFile">
+                        <div :class="{ 'hidden-xs' : !currentFile, 'col-sm-3' : currentFile }" v-show="currentFile">
 
                             <h4>Preview</h4>
                             <a href="@{{ currentFile.webPath }}" target="_blank">
@@ -87,9 +96,9 @@
                         </div>
                     </div>
 
-                    <?php
-                    echo '<pre>{{ $data | json }}</pre>';
-                    //*/ ?>
+                    @if (config('app.debug') )
+                        <pre>@{{ $data | json }}</pre>
+                    @endif
                 </div>
 
             </div>
@@ -101,15 +110,15 @@
 <script>
     $(document).ready(function () {
 
-        console.log(simpleMde);
-
         var vm = new Vue({
             el: '#easel-file-browser',
             data: {
                 currentFile: null,
+                folderName: null,
                 folders: {},
                 files: {},
-                breadCrumbs: {}
+                breadCrumbs: {},
+                loading: true
             },
 
             methods: {
@@ -117,13 +126,13 @@
                 loadFolder: function (path) {
                     if (!path) path = '';
 
-                    //we need loaders
+                    this.loading = true;
 
                     this.$http.get('/admin/browser/index?path=' + path).then(
                             function (response) {
+                                this.loading = false;
 
-                                //remove loader
-
+                                this.$set('folderName', response.data.folderName);
                                 this.$set('folders', response.data.subfolders);
                                 this.$set('files', response.data.files);
                                 this.$set('breadCrumbs', response.data.breadcrumbs);
@@ -131,7 +140,7 @@
                             },
                             function (error) {
                                 this.currentFile = null;
-                                //remove loader and display error
+                                this.loading = false;
                             }
                     );
                 },
@@ -147,14 +156,9 @@
 
                 selectImage: function (file) {
                     var cm = simpleMde.codemirror;
-                    output = '!['+file.name+']('+file.webPath+')';
+                    output = '![' + file.name + '](' + file.webPath + ')';
                     cm.replaceSelection(output);
                     $('#image-picker').modal('hide');
-                },
-
-                humanFileSize: function (size) {
-                    var i = Math.floor(Math.log(size) / Math.log(1024));
-                    return ( size / Math.pow(1024, i) ).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
                 }
 
             }
