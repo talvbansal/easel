@@ -1,5 +1,4 @@
 <header id="header" class="clearfix" data-current-skin="blue">
-    <a href="{{ url('/admin') }}"><h1 class="brand light logo cl-center">Easel</h1></a>
     <ul class="header-inner">
         <li id="menu-trigger" data-trigger="#sidebar">
             <div class="line-wrap">

@@ -66,7 +66,7 @@
 @stop
 
 @section('unique-js')
-    @include('easel::backend.post.partials.summernote')
+    @include('easel::backend.post.partials.editor')
     {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#postUpdate') !!}
 
     @if(Session::get('_update-post'))

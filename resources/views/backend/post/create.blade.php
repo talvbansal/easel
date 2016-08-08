@@ -47,7 +47,7 @@
 @stop
 
 @section('unique-js')
-    @include('easel::backend.post.partials.summernote')
+    @include('easel::backend.post.partials.editor')
 
     {!! JsValidator::formRequest('Easel\Http\Requests\PostCreateRequest', '#postCreate') !!}
 

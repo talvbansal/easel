@@ -25,7 +25,7 @@ return [
     'name'           => 'Easel',
     'title'          => 'Easel',
     'subtitle'       => 'Minimal Blogging Package',
-    'description'    => 'Blogging package for laravel apps',
+    'description'    => 'A blogging package for your laravel app',
     'author'         => 'Talv Bansal',
 
     /*

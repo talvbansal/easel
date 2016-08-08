@@ -7,14 +7,15 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-select.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/lightgallery.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.bootgrid.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('css/summernote.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/chosen.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/simplemde.min.css')}}">
 
 <!-- Application Specific -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/custom.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/app-1.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/app-2.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/easel-admin.css') }}">
 
 <!-- Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>

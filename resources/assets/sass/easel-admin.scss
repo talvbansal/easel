@@ -1,0 +1,16 @@
+/* Full Screen SimpleMde updates to the z-index so that it sits above the title-bar */
+.editor-toolbar.fullscreen{
+  z-index: 99;
+}
+
+.CodeMirror-fullscreen{
+  z-index: 99;
+}
+
+.editor-preview-side.editor-preview-active-side{
+  z-index: 99;
+}
+
+.editor-statusbar{
+  z-index: 99;
+}
