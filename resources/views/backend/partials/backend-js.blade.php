@@ -20,3 +20,6 @@
 <!-- Application Specific -->
 <script type="text/javascript" src="{{asset('js/functions.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap-growl.min.js')}}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.9.3/vue-resource.min.js"></script>

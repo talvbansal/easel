@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <ol class="breadcrumb">
                             <li><a href="{{ url('/admin') }}">Home</a></li>
-                            <li><a href="{{ url('/admin/post') }}'">Posts</a></li>
+                            <li><a href="{{ url('/admin/post') }}">Posts</a></li>
                             <li class="active">New Post</li>
                         </ol>
 
