@@ -9,5 +9,8 @@ $(document).ready(function() {
         });
     }
 
+});
 
+Vue.filter('moment', function(value, format) {
+    return moment.utc(value).local().format(format);
 });
