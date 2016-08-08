@@ -1,4 +1,5 @@
 <script type="text/javascript">
+    var simpleMde;
     $(document).ready(function () {
         $('.publish_date').mask('00/00/0000 00:00:00');
 
@@ -6,7 +7,7 @@
             $('#image-picker').modal('show');
         };
 
-        var simpleMde = new SimpleMDE({
+        simpleMde = new SimpleMDE({
             element: $("#editor")[0],
             toolbar: [
                 "bold", "italic", "heading", "|",
@@ -16,7 +17,6 @@
                     name: 'insertImage',
                     action: function (editor) {
                         toggleImagePicker();
-                        simpleMde.drawImage(editor);
                     },
                     className: "fa fa-image",
                     title: "Insert Image"

@@ -20,3 +20,15 @@
   }
 
 }
+
+.img-responsive{
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.easel-post{
+  img{
+    @extend .img-responsive;
+  }
+}

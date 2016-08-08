@@ -101,6 +101,8 @@
 <script>
     $(document).ready(function () {
 
+        console.log(simpleMde);
+
         var vm = new Vue({
             el: '#easel-file-browser',
             data: {
@@ -144,7 +146,10 @@
                 },
 
                 selectImage: function (file) {
-                    console.log(file)
+                    var cm = simpleMde.codemirror;
+                    output = '!['+file.name+']('+file.webPath+')';
+                    cm.replaceSelection(output);
+                    $('#image-picker').modal('hide');
                 },
 
                 humanFileSize: function (size) {

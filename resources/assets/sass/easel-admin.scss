@@ -1,3 +1,5 @@
+@import "easel";
+
 /* Full Screen SimpleMde updates to the z-index so that it sits above the title-bar */
 .editor-toolbar.fullscreen{
   z-index: 99;
@@ -9,6 +11,16 @@
 
 .editor-preview-side.editor-preview-active-side{
   z-index: 99;
+  img{
+    @extend .img-responsive;
+  }
+}
+
+.editor-preview
+{
+  img{
+    @extend .img-responsive;
+  }
 }
 
 .editor-statusbar{
@@ -17,7 +29,6 @@
 
 /* File Uploader Styles */
 #easel-file-browser{
-
   .word-wrappable {
     word-wrap: break-word;
   }
