@@ -7,11 +7,19 @@
             toolbar: [
                 "bold", "italic", "heading", "|",
                 "quote", "unordered-list", "ordered-list", "|",
-                "link",
+                'link',
+                {
+                    name: 'insertLink',
+                    action: function (editor) {
+                        $('#easel-file-picker').modal('show');
+                    },
+                    className: "fa fa-external-link",
+                    title: "Insert Link To File"
+                },
                 {
                     name: 'insertImage',
                     action: function (editor) {
-                        $('#image-picker').modal('show');
+                        $('#easel-file-picker').modal('show');
                     },
                     className: "fa fa-image",
                     title: "Insert Image"

@@ -1,4 +1,4 @@
-<div class="modal fade" id="image-picker" tabIndex="-1" role="dialog">
+<div class="modal fade" id="easel-file-picker" tabIndex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -25,6 +25,7 @@
 
                     <div class="row">
 
+                        {{-- Loader --}}
                         <div :class="{ 'col-sm-12' : !currentFile, 'col-sm-9' : currentFile }">
                             <div v-if="loading">
                                 <div class="preloader pl-xxl" style="position: relative; left: 50%; margin-left: -25px; top: 50%;">
@@ -68,7 +69,7 @@
 
                                                 <span v-else>
                                                 <i class="zmdi zmdi-file-text"></i>
-                                                <a href="@{{ file.webPath }}" target="_blank" class="word-wrappable">@{{ file.name }}</a>
+                                                <a href="javascript:void(0);" @dblclick="createLink(file)" class="word-wrappable">@{{ file.name }}</a>
                                             </span>
                                             </td>
                                             <td> @{{ file.mimeType }} </td>
@@ -158,14 +159,21 @@
                     var cm = simpleMde.codemirror;
                     output = '![' + file.name + '](' + file.webPath + ')';
                     cm.replaceSelection(output);
-                    $('#image-picker').modal('hide');
+                    $('#easel-file-picker').modal('hide');
+                },
+
+                createLink: function(file){
+                    var cm = simpleMde.codemirror;
+                    output = '[' + file.name + '](' + file.webPath + ')';
+                    cm.replaceSelection(output);
+                    $('#easel-file-picker').modal('hide');
                 }
 
             }
         });
 
 
-        $('#image-picker').on('shown.bs.modal', function () {
+        $('#easel-file-picker').on('shown.bs.modal', function () {
             vm.loadFolder();
         });
 
