@@ -1,5 +1,5 @@
 <div class="modal fade" id="easel-file-picker" tabIndex="-1" role="dialog">
-    <div class="modal-dialog modal-lg easel-adaptive-modal">
+    <div class="modal-dialog easel-adaptive-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
@@ -26,7 +26,7 @@
                     <div class="row">
 
                         {{-- Loader --}}
-                        <div :class="{ 'col-sm-12' : !currentFile, 'col-sm-9' : currentFile }">
+                        <div :class="{ 'col-md-12' : !currentFile, 'col-md-9' : currentFile }" class="col-sm-12">
                             <div v-if="loading">
                                 <div class="preloader pl-xxl" style="position: relative; left: 50%; margin-left: -25px; top: 50%;">
                                     <svg viewBox="25 25 50 50" class="pl-circular">
@@ -52,8 +52,7 @@
                                         <tr v-for="(path, folder) in folders">
                                             <td>
                                                 <i class="zmdi zmdi-folder-outline"></i>
-                                                <a href="javascript:void(0);" @click="loadFolder(path)" class="word-wrappable"
-                                                >@{{ folder }}</a>
+                                                <a href="javascript:void(0);" @click="loadFolder(path)" class="word-wrappable" >@{{ folder }}</a>
                                             </td>
                                             <td>-</td>
                                             <td>-</td>
@@ -61,15 +60,10 @@
 
                                         <tr v-for="file in files">
                                             <td>
-                                            <span v-if="isImage(file)">
-                                                <i class="zmdi zmdi-image"></i>
-                                                <a href="javascript:void(0);" @click="previewImage(file)" @dblclick="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
-                                            </span>
+                                                <i v-if="isImage(file)" class="zmdi zmdi-image"></i>
+                                                <i v-else class="zmdi zmdi-file-text"></i>
+                                                <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
 
-                                                <span v-else>
-                                                <i class="zmdi zmdi-file-text"></i>
-                                                <a href="javascript:void(0);" @dblclick="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
-                                            </span>
                                             </td>
                                             <td> @{{ file.mimeType }} </td>
                                             <td> @{{ file.modified.date | moment 'L' }}</td>
@@ -83,11 +77,11 @@
                         </div>
 
 
-                        <div :class="{ 'hidden-xs' : !currentFile, 'col-sm-3' : currentFile }" v-show="currentFile" class="easel-file-picker-sidebar">
+                        <div  v-show="currentFile" class="easel-file-picker-sidebar hidden-sm col-md-3">
 
-                                <img id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
+                                <img v-show="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
 
-                                <table class=" table-condensed table-vmiddle easel-file-picker-preview-table">
+                                <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
                                     <tbody>
                                     <tr>
                                         <td class="description">Name</td>
@@ -113,6 +107,7 @@
                     </div>
 
                     @if (config('app.debug') )
+                        <br>
                         <pre>@{{ $data | json }}</pre>
                     @endif
                 </div>
