@@ -49,10 +49,10 @@
                                         </thead>
 
                                         <tbody>
-                                        <tr v-for="folder in folders">
+                                        <tr v-for="(path, folder) in folders">
                                             <td>
                                                 <i class="zmdi zmdi-folder-outline"></i>
-                                                <a href="javascript:void(0);" @click="loadFolder(folder)" class="word-wrappable"
+                                                <a href="javascript:void(0);" @click="loadFolder(path)" class="word-wrappable"
                                                 >@{{ folder }}</a>
                                             </td>
                                             <td>-</td>
@@ -105,74 +105,3 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function () {
-
-        var vm = new Vue({
-            el: '#easel-file-browser',
-            data: {
-                currentFile: null,
-                folderName: null,
-                folders: {},
-                files: {},
-                breadCrumbs: {},
-                loading: true
-            },
-
-            methods: {
-
-                loadFolder: function (path) {
-                    if (!path) path = '';
-
-                    this.loading = true;
-
-                    this.$http.get('/admin/browser/index?path=' + path).then(
-                            function (response) {
-                                this.loading = false;
-
-                                this.$set('folderName', response.data.folderName);
-                                this.$set('folders', response.data.subfolders);
-                                this.$set('files', response.data.files);
-                                this.$set('breadCrumbs', response.data.breadcrumbs);
-                                this.currentFile = null;
-                            },
-                            function (error) {
-                                this.currentFile = null;
-                                this.loading = false;
-                            }
-                    );
-                },
-
-                isImage: function (file) {
-                    return file.mimeType.indexOf('image') != -1;
-                },
-
-                previewImage: function (file) {
-                    this.currentFile = file;
-                },
-
-                selectFile: function (file) {
-                    var cm = simpleMde.codemirror;
-                    var output = '[' + file.name + '](' + file.webPath + ')'
-
-                    if( this.isImage(file)) {
-                        output = '!' + output;
-                    }
-
-                    cm.replaceSelection(output);
-
-                    $('#easel-file-picker').modal('hide');
-                }
-            }
-        });
-
-
-        $('#easel-file-picker').on('shown.bs.modal', function () {
-            vm.loadFolder();
-        });
-
-    });
-
-</script>

@@ -37,12 +37,12 @@
 
                         <h2>
                             Edit <em>{{ $title }}</em>
-                            <small>Last edited on {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $updated_at)->format('M d, Y') }} at {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $updated_at)->format('g:i A') }}</small>
+                            <small>Last edited on {{ $updated_at->format('M d, Y') }} at {{ $updated_at->format('g:i A') }}</small>
                         </h2>
 
                     </div>
                     <div class="card-body card-padding">
-                        {!! Form::open(['class' => 'keyboard-save', 'id' => 'postUpdate', 'method' => 'put', 'url' => route('admin.post.update', $id)]) !!}
+                        {!! Form::open(['class' => 'keyboard-save', 'id' => 'frmPost', 'method' => 'put', 'url' => route('admin.post.update', $id)]) !!}
 
                             @include('easel::backend.post.partials.form')
 
@@ -67,7 +67,7 @@
 
 @section('unique-js')
     @include('easel::backend.post.partials.editor')
-    {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#postUpdate') !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#frmPost') !!}
 
     @if(Session::get('_update-post'))
         @include('easel::backend.post.partials.notifications.update-post')

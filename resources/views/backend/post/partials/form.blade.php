@@ -21,37 +21,16 @@
 <div class="form-group">
     <div class="fg-line">
       <label class="fg-label">Page Image</label>
-      <input type="text" class="form-control" name="page_image" id="page_image" onchange="handle_image_change()" alt="Image thumbnail" value="{{ $page_image }}" placeholder="Page Image">
+      <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage.fullPath" @click="openPicker()">
     </div>
 </div>
 
-<script>
-  function handle_image_change() {
-      $("#page-image-preview").attr("src", function () {
-          var value = $("#page_image").val();
-          if (!value) {
-              value = {!! json_encode(config('easel.page_image')) !!};
-              if (value == null) {
-                  value = '';
-              }
-          }
-          if (value.substr(0, 4) != 'http' && value.substr(0, 1) != '/') {
-              value = {!! json_encode(config('easel.uploads.webpath')) !!} +'/' + value;
-          }
-          return value;
-      });
-  }
-</script>
 <div class="visible-sm space-10"></div>
-@if (empty($page_image))
 
-    <span class="text-muted small">No Image Selected</span>
-
-@else
-
-    <img src="{{ page_image($page_image) }}" class="img img_responsive" id="page-image-preview" style="max-height:40px">
-
-@endif
+<div>
+    <img v-if="pageImage.webPath.length > 0" class="img img_responsive" id="page-image-preview" style="max-height:100px" :src="pageImage.webPath">
+    <span v-else class="text-muted small">No Image Selected</span>
+</div>
 
 <br>
 <br>
@@ -110,3 +89,7 @@
         <textarea class="form-control auto-size" name="meta_description" id="meta_description" style="resize: vertical" placeholder="Meta Description">{{ $meta_description }}</textarea>
     </div>
 </div>
+
+@if (config('app.debug') )
+    <pre>@{{ $data | json }}</pre>
+@endif

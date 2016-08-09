@@ -26,7 +26,7 @@
                         <h2>Create a New Post</h2>
                     </div>
                     <div class="card-body card-padding">
-                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'postCreate', 'url' => 'admin/post/' ]) !!}
+                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'frmPost', 'url' => 'admin/post/' ]) !!}
 
                             @include('easel::backend.post.partials.form')
 
@@ -49,7 +49,7 @@
 @section('unique-js')
     @include('easel::backend.post.partials.editor')
 
-    {!! JsValidator::formRequest('Easel\Http\Requests\PostCreateRequest', '#postCreate') !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\PostCreateRequest', '#frmPost') !!}
 
     @include('easel::backend.shared.notifications.protip')
 
