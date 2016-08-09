@@ -3,22 +3,23 @@
   'meta_description' => $post->meta_description ?: config('easel.description'),
 ])
 
-@if ($post->page_image)
-    @section('og-image')
-        <meta property="og:image" content="{{ $post->page_image }}">
-    @stop
-@endif
+
+@section('og-image')
+@if ($post->page_image)<meta property="og:image" content="{{ asset('storage/' . $post->page_image) }}">@endif
+
+@stop
+
 
 @section('og-title')
-    <meta property="og:title" content="{{ $post->title }}"/>
+<meta property="og:title" content="{{ $post->title }}"/>
 @stop
 
 @section('og-description')
-    <meta property="og:description" content="{{ $post->meta_description }}"/>
+<meta property="og:description" content="{{ $post->meta_description }}"/>
 @stop
 
 @section('title')
-    <title>{{ $title or config('easel.title') }}</title>
+<title>{{ $title or config('easel.title') }}</title>
 @stop
 
 @section('content')
