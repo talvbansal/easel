@@ -13,14 +13,12 @@ class PostFormFieldsTest extends TestCase
      */
     private $filesCreated;
 
-
     public function setUp()
     {
         parent::setUp();
 
         $this->filesCreated = collect();
     }
-
 
     public function tearDown()
     {
@@ -106,7 +104,6 @@ class PostFormFieldsTest extends TestCase
         return $response;
     }
 
-
     public function test_default_layout_only()
     {
         $response = $this->getLayouts();
@@ -118,7 +115,6 @@ class PostFormFieldsTest extends TestCase
         // Is the displayed value in the collection
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
     }
-
 
     public function test_additional_layout()
     {
@@ -135,7 +131,6 @@ class PostFormFieldsTest extends TestCase
         $this->assertTrue($response->has(config('easel.layouts.posts').'.gallery'));
     }
 
-
     public function test_only_blade_php_files_are_considered_layouts()
     {
         $this->createNewBlogTemplateFile('readme.txt');
@@ -148,7 +143,6 @@ class PostFormFieldsTest extends TestCase
         // Is the displayed value in the collection
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
     }
-
 
     public function test_blade_php_files_in_sub_folders_are_ignored()
     {
