@@ -89,6 +89,10 @@
   padding: 50px;
   width: 100%;
 
+  .modal-footer{
+    border-top: 1px solid rgb(240, 240, 240);
+  }
+
   .easel-file-picker-list{
     height: calc(80vh - 100px);
     overflow-y : scroll;
