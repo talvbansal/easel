@@ -4,26 +4,27 @@
             <h2>Written By</h2>
             <hr>
 
-            <div class="profile-pic col-sm-3">
-                <br/>
-                <img src="//www.gravatar.com/avatar/{{ md5( strtolower($post->author->email) ) }}?d=identicon&s=300" class="img-responsive center-block">
+            <div class="profile-pic col-sm-2">
+                <img src="//www.gravatar.com/avatar/{{ md5( strtolower($post->author->email) ) }}?d=identicon&s=130" class="img-responsive center-block img-circle">
             </div>
 
-            <div class="profile-info col-sm-9">
-                <h5 class="lead">{{ $post->author->display_name }}</h5>
-                <p>
-                    {{ $post->author->bio }}
-                </p>
-                <p>
-                    View all posts by <a href="{{ url(config('easel.blog_base_url').'/author/'. $post->author->id) }}">{{ $post->author->display_name }}</a>
-                </p>
+            <div class="profile-info col-sm-10">
+                <h5 class="lead">
+                    <a href="{{ url(config('easel.blog_base_url').'/author/'. $post->author->id) }}">{{ $post->author->display_name }}</a>
+                </h5>
+                <p> {{ $post->author->bio }}
 
-                Follow {{ $post->author->display_name }}:
-                @foreach( $post->author->social_media as $network => $url )
-                    <a href="{{ $url }}" target="_blank" class="social">
-                        <i class="zmdi zmdi-{{ $network }}"></i>
-                    </a>
-                @endforeach
+                <ul class="list-inline">
+                    @foreach( $post->author->social_media as $network => $url )
+                        @if( !empty($url) )
+                            <li><a href="{{ $url }}" target="_blank" class="social">
+                                    <i class="fa fa-{{ $network }}"></i>
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+                </p>
             </div>
         </div>
     </div>
