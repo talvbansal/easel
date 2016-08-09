@@ -25,4 +25,4 @@
     });
 </script>
 
-@include('easel::backend.post.partials.modals.image-picker');
+@include('easel::backend.post.partials.modals.file-picker');

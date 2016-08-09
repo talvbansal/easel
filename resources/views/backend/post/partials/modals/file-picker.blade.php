@@ -63,8 +63,7 @@
                                             <td>
                                             <span v-if="isImage(file)">
                                                 <i class="zmdi zmdi-image"></i>
-                                                <a href="javascript:void(0);" @click="previewImage(file)" @dblclick
-                                                ="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
+                                                <a href="javascript:void(0);" @click="previewImage(file)" @dblclick="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
                                             </span>
 
                                                 <span v-else>
@@ -156,13 +155,14 @@
 
                 selectFile: function (file) {
                     var cm = simpleMde.codemirror;
-                    if( this.isImage(file))
-                    {
-                        output = '![' + file.name + '](' + file.webPath + ')';
-                    }else{ //create a link to the file
-                        output = '[' + file.name + '](' + file.webPath + ')';
+                    var output = '[' + file.name + '](' + file.webPath + ')'
+
+                    if( this.isImage(file)) {
+                        output = '!' + output;
                     }
+
                     cm.replaceSelection(output);
+
                     $('#easel-file-picker').modal('hide');
                 }
             }
