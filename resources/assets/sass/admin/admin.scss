@@ -80,3 +80,31 @@
     word-wrap: break-word;
   }
 }
+
+.easel-adaptive-modal{
+  height: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+  min-height: 600px;
+  padding: 50px;
+  width: 100%;
+
+  .easel-file-picker-sidebar{
+    border-left: 1px solid rgb(240, 240, 240);
+  }
+
+  .easel-file-picker-preview-table{
+    margin-top: 1em;
+
+    td {
+      border-width: 0;
+
+      &.description{
+        text-transform: uppercase;
+        font-weight: 500;
+        min-width: 85px;
+      }
+    }
+  }
+
+}

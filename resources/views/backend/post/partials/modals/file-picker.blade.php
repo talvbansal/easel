@@ -1,9 +1,9 @@
 <div class="modal fade" id="easel-file-picker" tabIndex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg easel-adaptive-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Image Selector</h4>
+                <h4 class="modal-title">File Picker</h4>
             </div>
 
             <div class="modal-body">
@@ -72,7 +72,7 @@
                                             </span>
                                             </td>
                                             <td> @{{ file.mimeType }} </td>
-                                            <td> @{{ file.modified.date | moment 'L LTS' }}</td>
+                                            <td> @{{ file.modified.date | moment 'L' }}</td>
                                         </tr>
 
                                         </tbody>
@@ -83,15 +83,31 @@
                         </div>
 
 
-                        <div :class="{ 'hidden-xs' : !currentFile, 'col-sm-3' : currentFile }" v-show="currentFile">
+                        <div :class="{ 'hidden-xs' : !currentFile, 'col-sm-3' : currentFile }" v-show="currentFile" class="easel-file-picker-sidebar">
 
-                            <h4>Preview</h4>
-                            <a href="@{{ currentFile.webPath }}" target="_blank">
-                                <img id="easel-preview-image" class="img-responsive thumbnail" :src="currentFile.webPath"/>
-                                <p class="text-center">
-                                    <strong style="word-wrap: break-word">@{{ currentFile.name }}</strong>
-                                </p>
-                            </a>
+                                <img id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
+
+                                <table class=" table-condensed table-vmiddle easel-file-picker-preview-table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="description">Name</td>
+                                        <td>@{{ currentFile.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="description">Size</td>
+                                        <td>@{{ humanFileSize(currentFile.size) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="description">Public URL</td>
+                                        <td><a :href="currentFile.webPath" target="_blank">Click Here</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="description">Date</td>
+                                        <td>@{{ currentFile.modified.date | moment 'L LT' }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
 
                         </div>
                     </div>
