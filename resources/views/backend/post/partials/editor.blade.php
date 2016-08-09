@@ -69,6 +69,7 @@
 
                     this.$http.get('/admin/browser/index?path=' + path).then(
                             function (response) {
+
                                 this.$set('loading', false);
                                 this.$set('folderName', response.data.folderName);
                                 this.$set('folders', response.data.subfolders);

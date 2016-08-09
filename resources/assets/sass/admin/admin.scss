@@ -89,7 +89,14 @@
   padding: 50px;
   width: 100%;
 
+  .easel-file-picker-list{
+    height: calc(80vh - 100px);
+    overflow-y : scroll;
+  }
+
   .easel-file-picker-sidebar{
+    height: calc(80vh - 100px);
+    overflow-y : auto;
     border-left: 1px solid rgb(240, 240, 240);
   }
 
@@ -102,6 +109,10 @@
       &.description{
         text-transform: uppercase;
         font-weight: 500;
+      }
+
+      &.file-value{
+        word-break: break-all;
       }
     }
   }

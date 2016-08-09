@@ -35,84 +35,90 @@
                                 </div>
                             </div>
 
-                            <div v-else>
+                            <div v-else class="table-responsive easel-file-picker-list">
+                                <table class="table table-condensed table-vmiddle">
 
-                                <div class="table-responsive">
-                                    <table class="table table-condensed table-vmiddle">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
+                                    </tr>
+                                    </thead>
 
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Date</th>
-                                        </tr>
-                                        </thead>
+                                    <tbody>
+                                    <tr v-for="(path, folder) in folders">
+                                        <td>
+                                            <i class="zmdi zmdi-folder-outline"></i>
+                                            <a href="javascript:void(0);" @click="loadFolder(path)" class="word-wrappable" >@{{ folder }}</a>
+                                        </td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
 
-                                        <tbody>
-                                        <tr v-for="(path, folder) in folders">
-                                            <td>
-                                                <i class="zmdi zmdi-folder-outline"></i>
-                                                <a href="javascript:void(0);" @click="loadFolder(path)" class="word-wrappable" >@{{ folder }}</a>
-                                            </td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
+                                    <tr v-for="file in files" :class="[ (file == currentFile) ? 'active' : '' ]">
+                                        <td>
+                                            <i v-if="isImage(file)" class="zmdi zmdi-image"></i>
+                                            <i v-else class="zmdi zmdi-file-text"></i>
+                                            <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" class="
+                                            word-wrappable">@{{ file.name }}</a>
 
-                                        <tr v-for="file in files" :class="[ (file == currentFile) ? 'active' : '' ]">
-                                            <td>
-                                                <i v-if="isImage(file)" class="zmdi zmdi-image"></i>
-                                                <i v-else class="zmdi zmdi-file-text"></i>
-                                                <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
+                                        </td>
+                                        <td> @{{ file.mimeType }} </td>
+                                        <td> @{{ file.modified.date | moment 'L' }}</td>
+                                    </tr>
 
-                                            </td>
-                                            <td> @{{ file.mimeType }} </td>
-                                            <td> @{{ file.modified.date | moment 'L' }}</td>
-                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                        </tbody>
-                                    </table>
-
-                                </div>
                             </div>
                         </div>
 
 
-                        <div  v-show="currentFile" class="easel-file-picker-sidebar hidden-sm col-md-3">
+                        <div v-show="currentFile" class="easel-file-picker-sidebar hidden-xs hidden-sm col-md-3">
 
-                                <img v-show="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
+                            <img v-show="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
 
-                                <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
-                                    <tbody>
-                                    <tr>
-                                        <td class="description">Name</td>
-                                        <td>@{{ currentFile.name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="description">Size</td>
-                                        <td>@{{ humanFileSize(currentFile.size) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="description">Public URL</td>
-                                        <td><a :href="currentFile.webPath" target="_blank">Click Here</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="description">Date</td>
-                                        <td>@{{ currentFile.modified.date | moment 'L LT' }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
+                                <tbody>
+                                <tr>
+                                    <td class="description">Name</td>
+                                    <td class="file-value">@{{ currentFile.name }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="description">Size</td>
+                                    <td class="file-value">@{{ humanFileSize(currentFile.size) }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="description">Public URL</td>
+                                    <td class="file-value"><a :href="currentFile.webPath" target="_blank">Click Here</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="description">Date</td>
+                                    <td class="file-value">@{{ currentFile.modified.date | moment 'L LT' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
 
 
                         </div>
                     </div>
-
-                    @if (config('app.debug') )
-                        <br>
-                        <pre>@{{ $data | json }}</pre>
-                    @endif
                 </div>
 
             </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" v-show="currentFile" @click="selectFile(currentFile)">Select File</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+
+
+            @if (config('app.debug') )
+                <br>
+                <pre>@{{ $data | json }}</pre>
+            @endif
+
         </div>
     </div>
 </div>
