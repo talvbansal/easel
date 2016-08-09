@@ -7,12 +7,10 @@ use Easel\Http\Jobs\PostFormFields;
 use Easel\Http\Requests\PostCreateRequest;
 use Easel\Http\Requests\PostUpdateRequest;
 use Easel\Models\Post;
-use Plank\Mediable\Media;
 use Session;
 
 class PostController extends Controller
 {
-
     /**
      * Display a listing of the posts.
      *
@@ -24,7 +22,6 @@ class PostController extends Controller
 
         return view('easel::backend.post.index', compact('data'));
     }
-
 
     /**
      * Show the new post form.
@@ -38,7 +35,6 @@ class PostController extends Controller
         return view('easel::backend.post.create', $data);
     }
 
-
     /**
      * Store a newly created Post.
      *
@@ -50,13 +46,12 @@ class PostController extends Controller
     {
         /** @var Post $post */
         $post = Post::create($request->postFillData());
-        $post->syncTags($request->get('tags', [ ]));
+        $post->syncTags($request->get('tags', []));
 
-        Session::set('_new-post', trans('easel::messages.create_success', [ 'entity' => 'Post' ]));
+        Session::set('_new-post', trans('easel::messages.create_success', ['entity' => 'Post']));
 
         return redirect()->route('admin.post.index');
     }
-
 
     /**
      * Show the post edit form.
@@ -72,7 +67,6 @@ class PostController extends Controller
         return view('easel::backend.post.edit', $data);
     }
 
-
     /**
      * Update the Post.
      *
@@ -87,13 +81,12 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->fill($request->postFillData());
         $post->save();
-        $post->syncTags($request->get('tags', [ ]));
+        $post->syncTags($request->get('tags', []));
 
-        Session::set('_update-post', trans('easel::messages.update_success', [ 'entity' => 'Post' ]));
+        Session::set('_update-post', trans('easel::messages.update_success', ['entity' => 'Post']));
 
-        return redirect('/admin/post/' . $id . '/edit');
+        return redirect('/admin/post/'.$id.'/edit');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -109,7 +102,7 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
-        Session::set('_delete-post', trans('easel::messages.delete_success', [ 'entity' => 'Post' ]));
+        Session::set('_delete-post', trans('easel::messages.delete_success', ['entity' => 'Post']));
 
         return redirect()->route('admin.post.index');
     }
