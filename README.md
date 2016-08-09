@@ -2,9 +2,9 @@
 #### A minimal blogging package for laravel apps
 <hr>
 
-[![Build Status](https://api.travis-ci.org/talv86/Easel.svg)](https://travis-ci.org/talv86/easel)
-[![Issues](https://img.shields.io/github/issues/talv86/Easel.svg)](https://github.com/talv86/easel/issues)
-[![Downloads](https://poser.pugx.org/talv86/Easel/downloads)](https://packagist.org/packages/talv86/easel)
+[![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
+[![Issues](https://img.shields.io/github/issues/talv86/easel.svg)](https://github.com/talv86/easel/issues)
+[![Downloads](https://poser.pugx.org/talv86/easel/downloads)](https://packagist.org/packages/talv86/easel)
 
 ### Installation
 <hr>
