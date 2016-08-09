@@ -86,20 +86,25 @@
   margin-bottom: 0;
   margin-top: 0;
   min-height: 600px;
-  padding: 50px;
-  width: 100%;
+  padding: 1rem;
+  width: auto;
 
   .modal-footer{
     border-top: 1px solid rgb(240, 240, 240);
   }
 
   .easel-file-picker-list{
-    height: calc(80vh - 100px);
+    height: calc(72vh - 10rem);
     overflow-y : scroll;
+
+    .table > tbody > tr:last-child > td {
+      padding-bottom: 7px;
+    }
+
   }
 
   .easel-file-picker-sidebar{
-    height: calc(80vh - 100px);
+    height: calc(72vh - 10rem);
     overflow-y : auto;
     border-left: 1px solid rgb(240, 240, 240);
   }

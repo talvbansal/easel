@@ -26,7 +26,7 @@
                     <div class="row">
 
                         {{-- Loader --}}
-                        <div :class="{ 'col-md-12' : !currentFile, 'col-md-9' : currentFile }" class="col-sm-12">
+                        <div :class="{ 'col-md-12' : !currentFile, 'col-sm-9' : currentFile }" class="col-xs-12">
                             <div v-if="loading">
                                 <div class="preloader pl-xxl" style="position: relative; left: 50%; margin-left: -25px; top: 50%;">
                                     <svg viewBox="25 25 50 50" class="pl-circular">
@@ -75,7 +75,7 @@
                         </div>
 
 
-                        <div v-show="currentFile" class="easel-file-picker-sidebar hidden-xs hidden-sm col-md-3">
+                        <div v-show="currentFile" class="easel-file-picker-sidebar hidden-xs  col-sm-3">
 
                             <img v-show="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
 
