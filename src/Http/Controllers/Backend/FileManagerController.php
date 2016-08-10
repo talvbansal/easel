@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: talv
  * Date: 10/08/16
- * Time: 12:23
+ * Time: 12:23.
  */
-
 namespace Easel\Http\Controllers\Backend;
 
 use Easel\Http\Controllers\Controller;
@@ -15,17 +14,14 @@ use Easel\Services\UploadsManager;
 use Illuminate\Http\Request;
 
 /**
- * Class FileManagerController
- * @package Easel\Http\Controllers\Backend
+ * Class FileManagerController.
  */
 class FileManagerController extends Controller
 {
-
     /**
      * @var UploadsManager
      */
     private $uploadsManager;
-
 
     /**
      * FileManagerController constructor.
@@ -37,7 +33,6 @@ class FileManagerController extends Controller
         $this->uploadsManager = $uploadsManager;
     }
 
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -48,7 +43,6 @@ class FileManagerController extends Controller
         return $this->uploadsManager->folderInfo($path);
     }
 
-
     /**
      * @param UploadNewFolderRequest $request
      *
@@ -57,24 +51,22 @@ class FileManagerController extends Controller
     public function createFolder(UploadNewFolderRequest $request)
     {
         $new_folder = $request->get('new_folder');
-        $folder     = $request->get('folder') . '/' . $new_folder;
+        $folder = $request->get('folder').'/'.$new_folder;
 
         try {
             $result = $this->uploadsManager->createDirectory($folder);
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.create_error', [ 'entity' => 'directory' ]);
+                $error = $result ?: trans('easel::messages.create_error', ['entity' => 'directory']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.create_success', [ 'entity' => 'folder' ]) ];
-
+            return ['success' => trans('easel::messages.create_success', ['entity' => 'folder'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     /**
      * Delete a folder.
@@ -86,24 +78,21 @@ class FileManagerController extends Controller
     public function deleteFolder(Request $request)
     {
         $del_folder = $request->get('del_folder');
-        $folder     = $request->get('folder') . '/' . $del_folder;
+        $folder = $request->get('folder').'/'.$del_folder;
 
         try {
             $result = $this->uploadsManager->deleteDirectory($folder);
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.delete_error', [ 'entity' => 'folder' ]);
+                $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'folder']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.delete_success', [ 'entity' => 'folder' ]) ];
-
+            return ['success' => trans('easel::messages.delete_success', ['entity' => 'folder'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
-
     }
-
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -115,19 +104,16 @@ class FileManagerController extends Controller
             $result = $this->uploadsManager->deleteFile($path);
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.delete_error', [ 'entity' => 'File' ]);
+                $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'File']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.delete_success', [ 'entity' => 'File' ]) ];
-
+            return ['success' => trans('easel::messages.delete_success', ['entity' => 'File'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
-
     }
-
 
     /**
      * Upload new file.
@@ -139,27 +125,24 @@ class FileManagerController extends Controller
     public function uploadFile(UploadFileRequest $request)
     {
         try {
-            $file     = $_FILES['file'];
+            $file = $_FILES['file'];
             $fileName = $request->get('file_name');
             $fileName = $fileName ?: $file['name'];
-            $path     = str_finish($request->get('folder'), '/') . $fileName;
-            $content  = \File::get($file['tmp_name']);
-            $result   = $this->uploadsManager->saveFile($path, $content);
+            $path = str_finish($request->get('folder'), '/').$fileName;
+            $content = \File::get($file['tmp_name']);
+            $result = $this->uploadsManager->saveFile($path, $content);
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.upload_error', [ 'entity' => 'File' ]);
+                $error = $result ?: trans('easel::messages.upload_error', ['entity' => 'File']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.upload_success', [ 'entity' => 'File' ]) ];
-
-
+            return ['success' => trans('easel::messages.upload_success', ['entity' => 'File'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     /**
      * @param     $error
@@ -169,7 +152,6 @@ class FileManagerController extends Controller
      */
     private function errorResponse($error, $errorCode = 400)
     {
-        return \Response::json([ 'error' => $error ], $errorCode);
+        return \Response::json(['error' => $error], $errorCode);
     }
-
 }
