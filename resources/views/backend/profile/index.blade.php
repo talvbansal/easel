@@ -70,8 +70,10 @@
 
                 @foreach( $user->social_media as $network => $url )
                     <dl class="dl-horizontal">
-                        <dt>{{ ucfirst($network) }}</dt>
-                        <dd><a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a></dd>
+                        @if( !empty($url) )
+                            <dt>{{ ucfirst($network) }}</dt>
+                            <dd><a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a></dd>
+                        @endif
                     </dl>
                 @endforeach
 
