@@ -62,10 +62,11 @@ class UploadsManager
         return compact('folder', 'folderName', 'breadcrumbs', 'subfolders', 'files');
     }
 
-
     /**
      * Sanitize the folder name.
+     *
      * @param $folder
+     *
      * @return string
      */
     protected function cleanFolder($folder)
@@ -73,10 +74,11 @@ class UploadsManager
         return '/'.trim(str_replace('..', '', $folder), '/');
     }
 
-
     /**
      * Return breadcrumbs to current folder.
+     *
      * @param $folder
+     *
      * @return array
      */
     protected function breadcrumbs($folder)
@@ -96,10 +98,11 @@ class UploadsManager
         return $crumbs;
     }
 
-
     /**
      * Return an array of file details for a file.
+     *
      * @param $path
+     *
      * @return array
      */
     protected function fileDetails($path)
@@ -116,10 +119,11 @@ class UploadsManager
         ];
     }
 
-
     /**
      * Return the full web path to a file.
+     *
      * @param $path
+     *
      * @return \Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function fileWebpath($path)
@@ -130,10 +134,11 @@ class UploadsManager
         return url($path);
     }
 
-
     /**
      * Return the mime type.
+     *
      * @param $path
+     *
      * @return mixed|null|string
      */
     public function fileMimeType($path)
@@ -143,10 +148,11 @@ class UploadsManager
         );
     }
 
-
     /**
      * Return the file size.
+     *
      * @param $path
+     *
      * @return int
      */
     public function fileSize($path)
@@ -154,10 +160,11 @@ class UploadsManager
         return $this->disk->size($path);
     }
 
-
     /**
      * Return the last modified time.
+     *
      * @param $path
+     *
      * @return static
      */
     public function fileModified($path)
@@ -167,10 +174,11 @@ class UploadsManager
         );
     }
 
-
     /**
      * Create a new directory.
+     *
      * @param $folder
+     *
      * @return bool|string
      */
     public function createDirectory($folder)
@@ -183,10 +191,11 @@ class UploadsManager
         return $this->disk->makeDirectory($folder);
     }
 
-
     /**
      * Delete a directory.
+     *
      * @param $folder
+     *
      * @return bool|string
      */
     public function deleteDirectory($folder)
@@ -204,10 +213,11 @@ class UploadsManager
         return $this->disk->deleteDirectory($folder);
     }
 
-
     /**
      * Delete a file.
+     *
      * @param $path
+     *
      * @return bool|string
      */
     public function deleteFile($path)
@@ -220,11 +230,12 @@ class UploadsManager
         return $this->disk->delete($path);
     }
 
-
     /**
      * Save a file.
+     *
      * @param $path
      * @param $content
+     *
      * @return bool|string
      */
     public function saveFile($path, $content)
