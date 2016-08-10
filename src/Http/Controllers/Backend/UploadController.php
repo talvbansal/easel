@@ -76,7 +76,7 @@ class UploadController extends Controller
 
             return redirect()->back();
         } else {
-            $error = $result ?: trans('messages.delete_error', ['entity' => 'directory']);
+            $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'directory']);
 
             return redirect()->back()->withErrors([$error]);
         }
@@ -93,7 +93,6 @@ class UploadController extends Controller
     {
         $file = $_FILES['file'];
         $fileName = $request->get('file_name');
-        $fileName = $fileName ?: $file['name'];
         $path = str_finish($request->get('folder'), '/').$fileName;
         $content = File::get($file['tmp_name']);
         $result = $this->manager->saveFile($path, $content);

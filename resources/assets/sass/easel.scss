@@ -21,10 +21,19 @@
 
 }
 
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
 .img-responsive{
   display: block;
   height: auto;
   max-width: 100%;
+}
+
+.post-subtitle{
+  margin-top: -20px;
 }
 
 .easel-post{

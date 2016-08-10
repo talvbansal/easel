@@ -15,7 +15,7 @@
     composer require talv86/easel
     ```
 
-2. To register the easy install and update commands as well as registering the new routes for Easel to work, you will need to add the Easel service provider to you `config/app.php` file
+2. To register the `easel:install` and `easel:update` artisan commands as well as the new routes for Easel to work, you will need to add the Easel service provider to your `config/app.php` file
 
     ```
     \Easel\Providers\EaselServiceProvider::class,

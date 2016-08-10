@@ -39,11 +39,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('admin/upload/folder', 'UploadController@createFolder');
         Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
 
-        Route::get('/admin/browser/index', function (\Easel\Services\UploadsManager $manager) {
-            $path = request('path');
-
-            return $manager->folderInfo($path);
-        });
+        Route::get('/admin/browser/index', 'FileManagerController@index');
+        Route::post('admin/browser/file', 'FileManagerController@uploadFile');
+        Route::delete('/admin/browser/delete', 'FileManagerController@deleteFile');
+        Route::post('/admin/browser/folder', 'FileManagerController@createFolder');
+        Route::delete('/admin/browser/folder', 'FileManagerController@deleteFolder');
 
         // Profile Routes
         Route::group(['as' => 'admin.profile.'], function () {

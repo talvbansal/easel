@@ -7599,7 +7599,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 1030;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
@@ -14812,7 +14812,11 @@ a.thumbnail.active {
   color: #7c7c7c;
 }
 
-@media (min-width: 768px) {
+body .breadcrumb {
+    padding: 10px 7px 11px;
+}
+
+/*@media (min-width: 768px) {
   body:not(.sw-toggled) .breadcrumb {
     padding: 10px 33px 11px;
   }
@@ -14822,7 +14826,7 @@ a.thumbnail.active {
   body.sw-toggled .breadcrumb {
     padding: 10px 33px 11px 280px;
   }
-}
+}*/
 
 #messages-main {
   position: relative;
