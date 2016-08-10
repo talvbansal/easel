@@ -79,8 +79,8 @@ Every app is different and Easel has been designed to be customisable. Be sure t
 
 If you want to use an existing model you'll need to make the following changes to it: 
 
-1. Your User model will need implement the "Easel\Models\BlogUserInterface" and also use the "Easel\Models\EaselUserTrait"
-2. You will also need to add the key 'birthday' to the $dates property of your user model
+1. Your User model will need implement the `Easel\Models\BlogUserInterface` and also use the `Easel\Models\EaselUserTrait`
+2. You will also need to add the key `birthday` to the `$dates` property of your user model
 
         class User extends Model implements \Easel\Models\BlogUserInterface{
         
