@@ -17,7 +17,8 @@
                 <ul class="list-inline">
                     @foreach( $post->author->social_media as $network => $url )
                         @if( !empty($url) )
-                            <li><a href="{{ $url }}" target="_blank" class="social">
+                            <li>
+                                <a href="{{ $url }}" target="_blank" class="social">
                                     <i class="fa fa-{{ $network }}"></i>
                                 </a>
                             </li>

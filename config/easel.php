@@ -39,8 +39,9 @@ return [
     | your host application's .env file
     |
     */
-    'blog_base_url'  => env('BLOG_BASE_URL', '/blog'),
-    'disqus_name'    => env('BLOG_DISQUS_NAME', 'YOUR_UNIQUE_SHORTNAME'),
+    'blog_base_url' => env('BLOG_BASE_URL', '/blog'),
+    'disqus_name' => env('BLOG_DISQUS_NAME', null),
+    'google_analytics_id' => env('GOOGLE_ANALYTICS_ID', null),
     'posts_per_page' => 6,
 
     /*

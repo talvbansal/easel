@@ -54,11 +54,15 @@
             "php artisan optimize"
         ]
 
-### User Models
+### Customisation
 
-- Easel allows you to use the built in user model (`Easel\Models\User`) or you can use your own custom model. 
+Every app is different and Easel has been designed to be customisable. Be sure to check out the `config/easel.php` for a complete list of configurable options. 
 
-#### Build In Model
+#### User Models
+
+- Since Easel is designed to be the starting point for a new project or added into an existing one, you can decide to use the built in `User` model (`Easel\Models\User`) or use an existing `User` model with a few alterations. 
+
+- ##### Built In Model
 
 - If you want to use the build in User model (`Easel\Models\User`) you'll need to set it in the config/auth.php file
 
@@ -70,7 +74,7 @@
         ],
     
 
-#### Custom Model
+- ##### Custom Model
 
 If you want to use an existing model you'll need to make the following changes to it: 
 
@@ -92,7 +96,7 @@ If you want to use an existing model you'll need to make the following changes t
     ```
     
 
-### Customising the url prefix for the blog
+#### Customising the url prefix for the blog
 
 By default you can access the blog list and posts at the following routes:
     
@@ -112,7 +116,7 @@ If you want the blog to respond at the `'/'` route you will need to add a new ro
 
         Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
 
-### Setting a views folder for your blog posts
+#### Setting a views folder for your blog posts
 
 When creating a blog post you can use the `default` layout for Easel, however it is likely that you'll want to amend the views to suit your application. 
 You may also need different views for different blog posts - Easel has you covered! just add the `BLOG_POST_LAYOUTS` key to your `.env` file and give it the path to a folder within your `resources/views` folder
@@ -127,4 +131,3 @@ Will point to the following folder
 
  - Every blade template within that folder will then be listed on the post creation page as a potential layout for that post. 
  - Sub-folders within the `BLOG_POST_LAYOUTS` folder will __not__ be listed allowing you to store partials for your templates within that single folder structure.
-

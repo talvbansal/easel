@@ -26,10 +26,12 @@
             @endif
 
             @foreach( $user->social_media as $network => $url )
+                @if(!empty($url))
                     <li>
                         <i class="zmdi zmdi-{{ $network }}"></i>
                         <a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a>
                     </li>
+                @endif
             @endforeach
 
             <li>
