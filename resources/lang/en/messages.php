@@ -7,8 +7,10 @@ return [
     'update_success'    => 'Success! :entity has been updated.',
     'delete_success'    => 'Success! :entity has been deleted.',
     'upload_success'    => 'Success! New :entity has been uploaded.',
+    'rename_success'    => 'Success! New :entity has been renamed.',
 
     'create_error'      => 'Sorry! An error occurred creating :entity.',
     'delete_error'      => 'Sorry! An error occurred deleting :entity',
     'upload_error'      => 'Sorry! An error occurred uploading file.',
+    'rename_error'      => 'Sorry! An error occurred renaming file.',
 ];

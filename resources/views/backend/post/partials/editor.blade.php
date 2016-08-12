@@ -26,10 +26,11 @@
                 insertIntoEditor: false,
                 pageImage: {
                     'fullPath': '{{ $page_image }}',
-                    'webPath': '{{ ( !empty($page_image) )? DIRECTORY_SEPARATOR . 'storage' . $page_image : null }}'
+                    'webPath': '{{ ( !empty($page_image) )? DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . $page_image : null }}'
                 },
                 newFolderName: null,
-                fileUploadFormData: new FormData()
+                fileUploadFormData: new FormData(),
+                newItemName: null
             },
 
             computed: {
@@ -79,6 +80,7 @@
                     this.files = {};
                     this.breadCrumbs = {};
                     this.newFolderName = null;
+                    this.newItemName = null;
                 },
 
                 openPicker: function () {
@@ -104,7 +106,9 @@
                 },
 
                 loadFolder: function (path) {
-                    if (!path) path = '';
+                    if (!path) {
+                        path = ( this.currentPath )? this.currentPath : '';
+                    }
 
                     this.loading = true;
                     this.currentFile = false;
@@ -120,6 +124,7 @@
                                 this.$set('currentPath', response.data.folder);
                                 this.$set('selectedFile', null);
                                 this.$set('newFolderName', null);
+                                this.$set('newItemName', null);
                             },
                             function (response) {
                                 this.responseError(response);
@@ -165,8 +170,6 @@
                         return this.deleteFolder();
                     }
                     return this.deleteFile();
-
-
                 },
 
                 deleteFile: function () {
@@ -179,7 +182,8 @@
                                     this.loadFolder(this.currentPath);
                                 }.bind(this),
                                 function (response) {
-                                    systemNotification(response.data.error, 'danger');
+                                    var error = (response.data.error)? response.data.error : response.statusText;
+                                    systemNotification( error, 'danger' );
 
                                     this.$set('loading', false);
                                     this.$set('currentFile', null);
@@ -199,7 +203,8 @@
                                     this.loadFolder(this.currentPath)
                                 }.bind(this),
                                 function (response) {
-                                    systemNotification(response.data.error, 'danger');
+                                    var error = (response.data.error)? response.data.error : response.statusText;
+                                    systemNotification( error, 'danger' );
 
                                     this.$set('loading', false);
                                     this.$set('currentFile', null);
@@ -214,10 +219,13 @@
                         this.$http.post('/admin/browser/folder', {'folder': this.currentPath, 'new_folder': this.newFolderName}).then(
                                 function (response) {
                                     systemNotification(response.data.success);
-                                    this.loadFolder(this.currentPath)
+                                    this.loadFolder(this.currentPath);
+
+                                    $('#easel-new-folder').modal('hide');
                                 }.bind(this),
                                 function (response) {
-                                    systemNotification(response.data.error, 'danger');
+                                    var error = (response.data.error)? response.data.error : response.statusText;
+                                    systemNotification( error, 'danger' );
 
                                     this.$set('loading', false);
                                 }
@@ -245,6 +253,33 @@
                                 this.$set('loading', false);
                             }
                     );
+                },
+
+                renameItem: function()
+                {
+                    var original = ( this.isFolder(this.currentFile) )? this.currentFile : this.currentFile.name
+
+                    this.$http.post('/admin/browser/rename', {
+                        'path': this.currentPath,
+                        'original': original,
+                        'newName' : this.newItemName,
+                        'type'    : (this.isFolder(this.currentFile))? 'Folder' : 'File'
+                    }).then(
+                            function (response) {
+                                systemNotification(response.data.success);
+                                this.loadFolder(this.currentPath);
+
+                                $('#easel-rename-item').modal('hide');
+
+                            }.bind(this),
+                            function (response) {
+                                var error = (response.data.error)? response.data.error : response.statusText;
+                                systemNotification( error, 'danger' );
+
+                                this.$set('loading', false);
+                            }
+                    );
+
                 }
             }
         });

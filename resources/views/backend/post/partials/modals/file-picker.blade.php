@@ -38,6 +38,12 @@
                         <i class="zmdi zmdi-delete"></i>
                         <span class="hidden-xs">Delete</span>
                         </button>
+
+
+                        <button data-toggle="modal" href="#easel-rename-item" class="btn btn-default btn-icon-text waves-effect" type="button" :disabled="!currentFile" title="Rename">
+                            <i class="zmdi zmdi-border-color"></i>
+                            <span class="hidden-xs">Rename</span>
+                        </button>
                     </div>
 
                 </div>
@@ -169,3 +175,4 @@
 </div>
 
 @include('easel::backend.post.partials.modals.create-folder')
+@include('easel::backend.post.partials.modals.rename-item')

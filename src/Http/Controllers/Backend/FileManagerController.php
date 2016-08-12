@@ -162,6 +162,35 @@ class FileManagerController extends Controller
 
 
     /**
+     * @param Request $request
+     *
+     * @return array|\Illuminate\Http\JsonResponse
+     */
+    public function rename(Request $request)
+    {
+        $path     = $request->get('path');
+        $original = $request->get('original');
+        $newName  = $request->get('newName');
+        $type  = $request->get('type');
+
+        try {
+            $result = $this->uploadsManager->rename($path, $original, $newName);
+
+            if ($result !== true) {
+                $error = $result ?: trans('easel::messages.rename_error', [ 'entity' => $type ]);
+
+                return $this->errorResponse($error);
+            }
+
+            return [ 'success' => trans('easel::messages.rename_success', [ 'entity' => $type ]) ];
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e->getMessage());
+        }
+    }
+
+
+    /**
      * @param     $error
      * @param int $errorCode
      *

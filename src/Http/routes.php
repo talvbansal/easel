@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::delete('/admin/browser/delete', 'FileManagerController@deleteFile');
         Route::post('/admin/browser/folder', 'FileManagerController@createFolder');
         Route::delete('/admin/browser/folder', 'FileManagerController@deleteFolder');
+        Route::post('/admin/browser/rename', 'FileManagerController@rename');
 
         // Profile Routes
         Route::group(['as' => 'admin.profile.'], function () {

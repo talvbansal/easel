@@ -158,7 +158,7 @@ class UploadsManager
     /**
      * Return the last modified time.
      * @param $path
-     * @return static
+     * @return Carbon
      */
     public function fileModified($path)
     {
@@ -191,7 +191,6 @@ class UploadsManager
      */
     public function deleteDirectory($folder)
     {
-        \Log::info($folder);
         $folder = $this->cleanFolder($folder);
         $filesFolders = array_merge(
             $this->disk->directories($folder),
@@ -235,5 +234,24 @@ class UploadsManager
         }
 
         return $this->disk->put($path, $content);
+    }
+
+
+    /**
+     * @param $path
+     * @param $originalFileName
+     * @param $newFileName
+     *
+     * @return bool|string
+     */
+    public function rename( $path, $originalFileName, $newFileName)
+    {
+        $path = $this->cleanFolder($path);
+        $nameName = $path . DIRECTORY_SEPARATOR . $newFileName;
+        if ($this->disk->exists($nameName)) {
+            return 'File already exists.';
+        }
+
+        return $this->disk->getDriver()->rename( ($path . DIRECTORY_SEPARATOR . $originalFileName), $newFileName );
     }
 }
