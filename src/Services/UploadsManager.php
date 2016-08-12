@@ -164,6 +164,7 @@ class UploadsManager
      * Return the last modified time.
      *
      * @param $path
+     *
      * @return Carbon
      */
     public function fileModified($path)
@@ -246,7 +247,6 @@ class UploadsManager
         return $this->disk->put($path, $content);
     }
 
-
     /**
      * @param $path
      * @param $originalFileName
@@ -254,14 +254,14 @@ class UploadsManager
      *
      * @return bool|string
      */
-    public function rename( $path, $originalFileName, $newFileName)
+    public function rename($path, $originalFileName, $newFileName)
     {
         $path = $this->cleanFolder($path);
-        $nameName = $path . DIRECTORY_SEPARATOR . $newFileName;
+        $nameName = $path.DIRECTORY_SEPARATOR.$newFileName;
         if ($this->disk->exists($nameName)) {
             return 'File already exists.';
         }
 
-        return $this->disk->getDriver()->rename( ($path . DIRECTORY_SEPARATOR . $originalFileName), $newFileName );
+        return $this->disk->getDriver()->rename(($path.DIRECTORY_SEPARATOR.$originalFileName), $newFileName);
     }
 }
