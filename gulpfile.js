@@ -36,7 +36,9 @@ elixir(function (mix) {
 
     mix.scripts([
         'jquery.min.js',
-        'bootstrap.min.js'
+        'bootstrap.min.js',
+        'vue.min.js',
+        'vue-resource.min.js'
     ], 'public/js/core.js');
 
     // Vendor JS Files
