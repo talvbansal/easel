@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 /**
  * Class FileManagerController.
  */
-class FileManagerController extends Controller
+class MediaController extends Controller
 {
     /**
      * @var UploadsManager
@@ -33,10 +33,15 @@ class FileManagerController extends Controller
         $this->uploadsManager = $uploadsManager;
     }
 
+    public function index()
+    {
+        return view('easel::backend.media.index');
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function ls()
     {
         $path = request('path');
 

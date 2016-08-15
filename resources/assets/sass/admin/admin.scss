@@ -71,6 +71,9 @@
 
 .CodeMirror {
   max-height: 70vh;
+  &.CodeMirror-fullscreen{
+    max-height: 100vh;
+  }
 }
 
 .fade-transition {
@@ -85,11 +88,11 @@
 // File Uploader Styles
 #easel-file-picker {
 
-  .easel-adaptive-modal {
+  .easel-file-browser {
     height: 100%;
     margin-bottom: 0;
     margin-top: 0;
-    min-height: 600px;
+    min-height: 400px;
     padding: 1rem;
     width: auto;
 

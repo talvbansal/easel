@@ -34,22 +34,16 @@ Route::group(['middleware' => ['web']], function () {
         Route::resource('admin/post', 'PostController', ['except' => 'show']);
         Route::resource('admin/tag', 'TagController', ['except' => 'show']);
 
-        // Plan to remove these in favour of the media browser / uploader
-        Route::get('admin/upload', 'UploadController@index');
-        Route::post('admin/upload/file', 'UploadController@uploadFile');
-        Route::delete('admin/upload/file', 'UploadController@deleteFile');
-        Route::post('admin/upload/folder', 'UploadController@createFolder');
-        Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
-
         // Media Manager Routes
-        Route::get('/admin/browser/index', 'FileManagerController@index');
-        Route::post('admin/browser/file', 'FileManagerController@uploadFile');
-        Route::delete('/admin/browser/delete', 'FileManagerController@deleteFile');
-        Route::post('/admin/browser/folder', 'FileManagerController@createFolder');
-        Route::delete('/admin/browser/folder', 'FileManagerController@deleteFolder');
-        Route::post('/admin/browser/rename', 'FileManagerController@rename');
-        Route::get('/admin/browser/directories', 'FileManagerController@allDirectories');
-        Route::post('/admin/browser/move', 'FileManagerController@move');
+        Route::get('/admin/media', 'MediaController@index');
+        Route::get('/admin/browser/index', 'MediaController@ls');
+        Route::post('admin/browser/file', 'MediaController@uploadFile');
+        Route::delete('/admin/browser/delete', 'MediaController@deleteFile');
+        Route::post('/admin/browser/folder', 'MediaController@createFolder');
+        Route::delete('/admin/browser/folder', 'MediaController@deleteFolder');
+        Route::post('/admin/browser/rename', 'MediaController@rename');
+        Route::get('/admin/browser/directories', 'MediaController@allDirectories');
+        Route::post('/admin/browser/move', 'MediaController@move');
 
         // Profile Routes
         Route::group(['as' => 'admin.profile.'], function () {

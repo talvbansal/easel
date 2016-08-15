@@ -1,8 +1,8 @@
-<div class="modal fade" id="easel-file-picker" tabIndex="-1" role="dialog">
-    <div class="modal-dialog easel-adaptive-modal">
-        <div class="modal-content">
+<div :class="{ 'modal fade' : isModal }" id="easel-file-picker" tabIndex="-1" role="dialog">
+    <div :class="{ 'modal-dialog' : isModal }" class="easel-file-browser">
+        <div :class="{ 'modal-content' : isModal }">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
+                <button v-if="isModal" type="button" class="close" data-dismiss="modal" >×</button>
 
                 <div class="btn-toolbar" role="toolbar" role="toolbar">
                     <div class="btn-group offset-right">
@@ -71,7 +71,7 @@
 
                     <div :class="{ 'col-sm-12' : !currentFile || isFolder(currentFile), 'col-sm-9' : currentFile && ! isFolder(currentFile) }" class="col-xs-12">
                         {{-- Loader --}}
-                        <div v-if="loading" transition="fade">
+                        <div v-show="loading" transition="fade">
                             <div class="preloader pl-xxl" style="position: relative; left: 50%; margin-left: -25px; top: 50%;">
                                 <svg viewBox="25 25 50 50" class="pl-circular">
                                     <circle r="20" cy="50" cx="50" class="plc-path"/>
@@ -103,7 +103,7 @@
 
                                 <tr v-for="file in visibleFiles" :class="[ (file == currentFile) ? 'active' : '' ]">
                                     <td>
-                                        <i v-if="isImage(file)" class="zmdi zmdi-image"></i>
+                                        <i v-show="isImage(file)" class="zmdi zmdi-image"></i>
                                         <i v-else class="zmdi zmdi-file-text"></i>
                                         <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" class="
                                             word-wrappable">@{{ file.name }}</a>
@@ -120,9 +120,9 @@
                     </div>
 
                     {{-- Sidebar --}}
-                    <div v-show="currentFile && !isFolder(currentFile)" class="easel-file-picker-sidebar hidden-xs col-sm-3">
+                    <div v-if="currentFile && !isFolder(currentFile)" class="easel-file-picker-sidebar hidden-xs col-sm-3">
 
-                        <img v-show="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
+                        <img v-if="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
 
                         <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
                             <tbody>
@@ -157,8 +157,8 @@
                 </div>
 
                 <div class="buttons">
-                    <button type="button" class="btn btn-primary" v-show="currentFile" @click="selectFile(currentFile)">Select File</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" v-show="currentFile && isModal" @click="selectFile(currentFile)">Select File</button>
+                    <button type="button" class="btn btn-default" v-if="isModal" data-dismiss="modal">Close</button>
                 </div>
 
             </div>
@@ -167,6 +167,7 @@
     </div>
 </div>
 
-@include('easel::backend.post.partials.modals.create-folder')
-@include('easel::backend.post.partials.modals.rename-item')
-@include('easel::backend.post.partials.modals.move-item')
+@include('easel::backend.media.partials.modals.create-folder')
+@include('easel::backend.media.partials.modals.rename-item')
+@include('easel::backend.media.partials.modals.move-item')
+@include('easel::backend.media.partials.js.file-manager-mixin')
