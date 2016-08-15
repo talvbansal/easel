@@ -19,7 +19,7 @@
 
             <div class="container">
                 <div class="card">
-                    @include('easel::backend.media.partials.modals.file-picker')
+                    @include('easel::backend.media.partials.file-picker')
                 </div>
             </div>
         </section>

@@ -1,4 +1,4 @@
-@include('easel::backend.media.partials.modals.file-picker')
+@include('easel::backend.media.partials.file-picker')
 <script type="text/javascript">
 
     $(document).ready(function () {
