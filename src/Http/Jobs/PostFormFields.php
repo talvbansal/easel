@@ -24,6 +24,7 @@ class PostFormFields extends Job
      */
     protected $fieldList = [
         'title'            => '',
+        'slug'             => '',
         'subtitle'         => '',
         'page_image'       => '',
         'content'          => '',

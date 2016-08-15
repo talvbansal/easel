@@ -29,10 +29,10 @@
                     </div>
 
                     <div class="btn-group offset-right">
-                        {{--<button class="btn btn-default btn-icon-text waves-effect" type="button" :disabled="!currentFile" title="Move">
+                        <button  class="btn btn-default btn-icon-text waves-effect" type="button" :disabled="!currentFile" @click="openMoveModal()" title="Move">
                             <i class="zmdi zmdi-forward"></i>
                             <span class="hidden-xs">Move</span>
-                        </button>--}}
+                        </button>
 
                         <button class="btn btn-default btn-icon-text waves-effect" type="button" :disabled="!currentFile" @click="deleteItem()" title="Delete">
                         <i class="zmdi zmdi-delete"></i>
@@ -69,7 +69,7 @@
                 <div class="row">
 
 
-                    <div :class="{ 'col-md-12' : !currentFile || isFolder(currentFile), 'col-sm-9' : currentFile }" class="col-xs-12">
+                    <div :class="{ 'col-sm-12' : !currentFile || isFolder(currentFile), 'col-sm-9' : currentFile && ! isFolder(currentFile) }" class="col-xs-12">
                         {{-- Loader --}}
                         <div v-if="loading" transition="fade">
                             <div class="preloader pl-xxl" style="position: relative; left: 50%; margin-left: -25px; top: 50%;">
@@ -145,7 +145,6 @@
                             </tbody>
                         </table>
 
-
                     </div>
                 </div>
 
@@ -164,7 +163,6 @@
 
             </div>
 
-
             @if (config('app.debug') )
                 <br>
                 <pre>@{{ $data | json }}</pre>
@@ -176,3 +174,4 @@
 
 @include('easel::backend.post.partials.modals.create-folder')
 @include('easel::backend.post.partials.modals.rename-item')
+@include('easel::backend.post.partials.modals.move-item')

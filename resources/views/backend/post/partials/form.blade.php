@@ -2,8 +2,8 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Title</label>
-      <input type="text" class="form-control" name="title" id="title" value="{{ $title }}" placeholder="Title">
+        {!! Form::label('title', 'Title', ['class' => 'fg-label']) !!}
+        {!! Form::text('title', $title, ['class' => 'form-control', 'placeholder' => 'Title', 'v-model' => 'title']) !!}
     </div>
 </div>
 
@@ -77,7 +77,7 @@
 
 <div class="form-group">
     <div class="fg-line">
-        <label for="layout" class="fg-label">Layout</label>
+        {!! Form::label('layout', 'Layout', ['class' => 'fg-label']) !!}
         {!! Form::select('layout', $layouts, $layout, ['class' => 'form-control']) !!}
     </div>
 </div>
@@ -91,5 +91,6 @@
 </div>
 
 @if (config('app.debug') )
+    <br>
     <pre>@{{ $data | json }}</pre>
 @endif

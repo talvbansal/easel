@@ -130,6 +130,9 @@
       .table > tbody > tr > td, .table > thead > tr > th:first-child {
         padding-left: 7px;
       }
+      .table > tbody > tr > td {
+        transition: background-color 0.15s ease-in-out 0.05s;
+      }
       .table > tbody > tr:last-child > td {
         padding-bottom: 7px;
       }

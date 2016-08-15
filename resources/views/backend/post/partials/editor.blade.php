@@ -1,3 +1,5 @@
+@include('easel::backend.post.partials.modals.file-picker');
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -30,7 +32,9 @@
                 },
                 newFolderName: null,
                 fileUploadFormData: new FormData(),
-                newItemName: null
+                newItemName: null,
+                allDirectories: {},
+                newFolderLocation: null
             },
 
             computed: {
@@ -42,10 +46,12 @@
                     return this.files.filter(function (item) {
                         return (item.name.substring(0, 1) != ".");
                     });
-                }
+                },
+
             },
 
             ready: function () {
+
                 simpleMde = new SimpleMDE({
                     element: $("#editor")[0],
                     toolbar: [
@@ -68,6 +74,8 @@
                 });
 
                 $('.publish_date').mask('00/00/0000 00:00:00');
+
+
             },
 
             methods: {
@@ -81,6 +89,7 @@
                     this.breadCrumbs = {};
                     this.newFolderName = null;
                     this.newItemName = null;
+                    this.newFolderLocation = null;
                 },
 
                 openPicker: function () {
@@ -107,7 +116,7 @@
 
                 loadFolder: function (path) {
                     if (!path) {
-                        path = ( this.currentPath )? this.currentPath : '';
+                        path = ( this.currentPath ) ? this.currentPath : '';
                     }
 
                     this.loading = true;
@@ -137,7 +146,7 @@
                 },
 
                 isFolder: function (file) {
-                    return (typeof file === 'string');
+                    return (typeof file == 'string');
                 },
 
                 previewFile: function (file) {
@@ -174,107 +183,116 @@
 
                 deleteFile: function () {
                     if (this.currentFile) {
-                        this.loading = true;
-
-                        this.$http.delete('/admin/browser/delete', {body: {'path': this.currentFile.fullPath}}).then(
-                                function (response) {
-                                    systemNotification(response.data.success);
-                                    this.loadFolder(this.currentPath);
-                                }.bind(this),
-                                function (response) {
-                                    var error = (response.data.error)? response.data.error : response.statusText;
-                                    systemNotification( error, 'danger' );
-
-                                    this.$set('loading', false);
-                                    this.$set('currentFile', null);
-                                    this.$set('selectedFile', null);
-                                }
-                        );
+                        var data = {'path': this.currentFile.fullPath};
+                        this.delete('/admin/browser/delete', data);
                     }
                 },
 
                 deleteFolder: function () {
                     if (this.isFolder(this.currentFile)) {
-                        this.loading = true;
-
-                        this.$http.delete('/admin/browser/folder', {body: {'folder': this.currentPath, 'del_folder': this.currentFile}}).then(
-                                function (response) {
-                                    systemNotification(response.data.success);
-                                    this.loadFolder(this.currentPath)
-                                }.bind(this),
-                                function (response) {
-                                    var error = (response.data.error)? response.data.error : response.statusText;
-                                    systemNotification( error, 'danger' );
-
-                                    this.$set('loading', false);
-                                    this.$set('currentFile', null);
-                                    this.$set('selectedFile', null);
-                                }
-                        );
+                        var data = {'folder': this.currentPath, 'del_folder': this.currentFile};
+                        this.delete('/admin/browser/folder', data);
                     }
                 },
 
                 createFolder: function () {
                     if (this.newFolderName) {
-                        this.$http.post('/admin/browser/folder', {'folder': this.currentPath, 'new_folder': this.newFolderName}).then(
-                                function (response) {
-                                    systemNotification(response.data.success);
-                                    this.loadFolder(this.currentPath);
-
-                                    $('#easel-new-folder').modal('hide');
-                                }.bind(this),
-                                function (response) {
-                                    var error = (response.data.error)? response.data.error : response.statusText;
-                                    systemNotification( error, 'danger' );
-
-                                    this.$set('loading', false);
-                                }
-                        );
-
+                        var data = {
+                            'folder': this.currentPath,
+                            'new_folder': this.newFolderName
+                        };
+                        this.post('/admin/browser/folder', data, function () {
+                            $('#easel-new-folder').modal('hide');
+                        });
                     }
-
                 },
 
                 uploadFile: function (e) {
                     var files = e.target.files || e.dataTransfer.files;
-
                     this.fileUploadFormData.append('file', files[0]);
                     this.fileUploadFormData.append('folder', this.currentPath);
 
-                    this.$http.post('/admin/browser/file', this.fileUploadFormData).then(
+                    this.post('/admin/browser/file', this.fileUploadFormData);
+                },
+
+                renameItem: function () {
+                    var original = ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name;
+
+                    var data = {
+                        'path': this.currentPath,
+                        'original': original,
+                        'newName': this.newItemName,
+                        'type': (this.isFolder(this.currentFile)) ? 'Folder' : 'File'
+                    };
+
+                    this.post('/admin/browser/rename', data, function () {
+                        $('#easel-rename-item').modal('hide');
+                    });
+                },
+
+                {{-- Don't use the bootstrap html attributes to open the modal since we need to populate the folders based on an up to date listing--}}
+                openMoveModal: function () {
+
+                    this.$http.get('/admin/browser/directories').then(
                             function (response) {
-                                systemNotification(response.data.success);
-                                this.loadFolder(this.currentPath)
+                                $('#easel-move-item').modal('show');
+                                this.newFolderLocation = this.currentPath;
+                                this.allDirectories = response.data;
                             }.bind(this),
                             function (response) {
-                                var error = (response.data.error)? response.data.error : response.statusText;
-                                systemNotification( error, 'danger' );
+                                var error = (response.data.error) ? response.data.error : response.statusText;
+                                systemNotification(error, 'danger');
+                            }
+                    );
+
+                },
+
+                moveItem: function () {
+                    var currentItem = ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name
+
+                    var data = {
+                        'path': this.currentPath,
+                        'currentItem': currentItem,
+                        'newPath': this.newFolderLocation,
+                        'type': (this.isFolder(this.currentFile)) ? 'Folder' : 'File'
+                    };
+
+                    this.post('/admin/browser/move', data, function () {
+                        $('#easel-move-item').modal('hide');
+                    });
+                },
+
+                delete: function (route, payload, callback) {
+                    this.loading = true;
+                    this.$http.delete(route, {body: payload}).then(
+                            function (response) {
+                                if (response.data.success) systemNotification(response.data.success);
+                                this.loadFolder(this.currentPath);
+                                if (typeof callback == 'function') callback();
+                            }.bind(this),
+                            function (response) {
+                                var error = (response.data.error) ? response.data.error : response.statusText;
+                                systemNotification(error, 'danger');
 
                                 this.$set('loading', false);
+                                this.$set('currentFile', null);
+                                this.$set('selectedFile', null);
                             }
                     );
                 },
 
-                renameItem: function()
-                {
-                    var original = ( this.isFolder(this.currentFile) )? this.currentFile : this.currentFile.name
-
-                    this.$http.post('/admin/browser/rename', {
-                        'path': this.currentPath,
-                        'original': original,
-                        'newName' : this.newItemName,
-                        'type'    : (this.isFolder(this.currentFile))? 'Folder' : 'File'
-                    }).then(
+                post: function (route, payload, callback) {
+                    this.loading = true;
+                    this.$http.post(route, payload).then(
                             function (response) {
-                                systemNotification(response.data.success);
+                                if (response.data.success) systemNotification(response.data.success);
                                 this.loadFolder(this.currentPath);
-
-                                $('#easel-rename-item').modal('hide');
+                                if (typeof callback == 'function') callback();
 
                             }.bind(this),
                             function (response) {
-                                var error = (response.data.error)? response.data.error : response.statusText;
-                                systemNotification( error, 'danger' );
+                                var error = (response.data.error) ? response.data.error : response.statusText;
+                                systemNotification(error, 'danger');
 
                                 this.$set('loading', false);
                             }
@@ -290,5 +308,3 @@
 
     });
 </script>
-
-@include('easel::backend.post.partials.modals.file-picker');

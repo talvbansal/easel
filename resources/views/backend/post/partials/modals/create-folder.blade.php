@@ -9,11 +9,11 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Folder name</label>
-                    <input type="text" value="" v-model="newFolderName" class="form-control">
+                    <input type="text" value="" v-model="newFolderName" class="form-control" id="newFolderName">
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" @click="createFolder()">
+                <button class="btn btn-primary" @click="createFolder()" id=btnCreateFolder>
                     Apply
                 </button>
                 <button data-dismiss="modal" class="btn btn-default" type="button">
@@ -23,3 +23,17 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    var modal = $('#easel-new-folder');
+    modal.on('shown.bs.modal', function () {
+        $('#newFolderName').focus()
+    });
+
+    modal.keypress(function(e) {
+        if(e.which == 13) {
+            $('#btnCreateFolder').click();
+        }
+    });
+</script>
