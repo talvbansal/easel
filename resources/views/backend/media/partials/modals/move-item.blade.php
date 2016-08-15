@@ -21,7 +21,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" @click="moveItem()" id=btnMoveItem>
-                    Apply
+                Apply
                 </button>
                 <button data-dismiss="modal" class="btn btn-default" type="button">
                     Cancel
@@ -30,17 +30,3 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    var modal = $('#easel-move-item');
-    modal.on('shown.bs.modal', function () {
-        $('newFolderLocation').focus();
-    });
-
-    modal.keypress(function(e) {
-        if(e.which == 13) {
-            $('#btnMoveItem').click();
-        }
-    });
-</script>

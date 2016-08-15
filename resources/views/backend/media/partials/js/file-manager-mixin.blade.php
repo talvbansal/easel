@@ -17,6 +17,46 @@
             newFolderLocation: null
         },
 
+        ready: function()
+        {
+            // Create Folder
+            var createFolderModal = $('#easel-new-folder');
+            createFolderModal.on('shown.bs.modal', function () {
+                $('#newFolderName').focus();
+            });
+
+            createFolderModal.keypress(function (e) {
+                if (e.which == 13) {
+                    $('#btnCreateFolder').click();
+                }
+            });
+
+            // Move Item
+            var moveItemModal = $('#easel-move-item');
+            moveItemModal.on('shown.bs.modal', function () {
+                $('newFolderLocation').focus();
+            });
+
+            moveItemModal.keypress(function (e) {
+                if (e.which == 13) {
+                    $('#btnMoveItem').click();
+                }
+            });
+
+            // Rename Item
+            var renameItemModal = $('#easel-rename-item')
+            renameItemModal.on('shown.bs.modal', function () {
+                $('#newItemName').focus()
+            });
+
+            renameItemModal.keypress(function (e) {
+                if (e.which == 13) {
+                    $('#btnRename').click();
+                }
+            });
+
+        },
+
         computed: {
             itemsCount: function () {
                 return this.visibleFiles.length + Object.keys(this.folders).length;
