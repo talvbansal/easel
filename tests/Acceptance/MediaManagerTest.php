@@ -6,7 +6,7 @@
  * Date: 12/08/16
  * Time: 13:33.
  */
-class FileManagerTest extends TestCase
+class MediaManagerTest extends TestCase
 {
     /**
      * @var \Easel\Models\User
