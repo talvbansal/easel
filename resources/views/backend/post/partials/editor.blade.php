@@ -26,10 +26,7 @@
                 breadCrumbs: {},
                 loading: true,
                 insertIntoEditor: false,
-                pageImage: {
-                    'fullPath': '{{ $page_image }}',
-                    'webPath': '{{ ( !empty($page_image) )? DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . $page_image : null }}'
-                },
+                pageImage: null,
                 newFolderName: null,
                 fileUploadFormData: new FormData(),
                 newItemName: null,
@@ -47,6 +44,11 @@
                         return (item.name.substring(0, 1) != ".");
                     });
                 },
+
+                webPathToPostImage : function()
+                {
+                    return ( this.pageImage.length > 0 )? '/storage/'+this.pageImage : null;
+                }
 
             },
 
@@ -167,7 +169,7 @@
 
                         cm.replaceSelection(output);
                     } else {
-                        this.pageImage = file;
+                        this.pageImage = file.fullPath;
                     }
 
                     this.closePicker();

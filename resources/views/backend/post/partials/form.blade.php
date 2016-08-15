@@ -3,7 +3,7 @@
 <div class="form-group">
     <div class="fg-line">
         {!! Form::label('title', 'Title', ['class' => 'fg-label']) !!}
-        {!! Form::text('title', $title, ['class' => 'form-control', 'placeholder' => 'Title', 'v-model' => 'title']) !!}
+        {!! Form::text('title', $title, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
     </div>
 </div>
 
@@ -11,8 +11,8 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Subtitle</label>
-      <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}" placeholder="Subtitle">
+        {!! Form::label('subtitle', 'Subtitle', ['class' => 'fg-label']) !!}
+        {!! Form::text('subtitle', $subtitle, ['class' => 'form-control', 'placeholder' => 'Subtitle']) !!}
     </div>
 </div>
 
@@ -20,15 +20,15 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Page Image</label>
-      <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage.fullPath" data-toggle="modal" href="#easel-file-picker">
+        {!! Form::label('page_image', 'Page Image', ['class' => 'fg-label']) !!}
+        {!! Form::text('page_image', $page_image, ['class' => 'form-control', 'placeholder' => 'Page Image', 'alt' => "Image thumbnail", 'v-model' => "pageImage", 'data-toggle' => "modal", 'href' => "#easel-file-picker"]) !!}
     </div>
 </div>
 
 <div class="visible-sm space-10"></div>
 
 <div>
-    <img v-if="pageImage.webPath.length > 0" class="img img_responsive" id="page-image-preview" style="max-height:100px" :src="pageImage.webPath">
+    <img v-if="webPathToPostImage.length > 0" class="img img_responsive" id="page-image-preview" style="max-height:100px" :src="webPathToPostImage">
     <span v-else class="text-muted small">No Image Selected</span>
 </div>
 
@@ -89,8 +89,3 @@
         <textarea class="form-control auto-size" name="meta_description" id="meta_description" style="resize: vertical" placeholder="Meta Description">{{ $meta_description }}</textarea>
     </div>
 </div>
-
-@if (config('app.debug') )
-    <br>
-    <pre>@{{ $data | json }}</pre>
-@endif

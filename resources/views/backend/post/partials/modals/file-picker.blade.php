@@ -163,11 +163,6 @@
 
             </div>
 
-            @if (config('app.debug') )
-                <br>
-                <pre>@{{ $data | json }}</pre>
-            @endif
-
         </div>
     </div>
 </div>
