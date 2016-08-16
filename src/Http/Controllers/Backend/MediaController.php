@@ -12,6 +12,7 @@ use Easel\Http\Requests\UploadFileRequest;
 use Easel\Http\Requests\UploadNewFolderRequest;
 use Easel\Services\UploadsManager;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Class FileManagerController.
@@ -130,12 +131,16 @@ class MediaController extends Controller
     public function uploadFile(UploadFileRequest $request)
     {
         try {
-            $file = $_FILES['file'];
-            $fileName = $request->get('file_name');
-            $fileName = $fileName ?: $file['name'];
-            $path = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$fileName;
-            $content = \File::get($file['tmp_name']);
-            $result = $this->uploadsManager->saveFile($path, $content);
+            $files = $request->file('files');
+
+            /** @var UploadedFile $file */
+            foreach ($files as $file) {
+
+                $fileName = $file->getClientOriginalName();
+                $path     = str_finish($request->get('folder'), DIRECTORY_SEPARATOR) . $fileName;
+                $content  = file_get_contents($file);
+                $result   = $this->uploadsManager->saveFile($path, $content);
+            }
 
             if ($result !== true) {
                 $error = $result ?: trans('easel::messages.upload_error', ['entity' => 'File']);

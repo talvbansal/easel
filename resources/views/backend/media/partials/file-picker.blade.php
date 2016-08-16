@@ -11,7 +11,7 @@
                         <label class="btn btn-primary btn-icon-text waves-effect btn-file" title="Upload">
                             <i class="zmdi zmdi-upload" ></i>
                             <span class="hidden-xs">Upload</span>
-                            <input type="file" class="hidden" @change="uploadFile" name="files[]" />
+                            <input type="file" class="hidden" @change="uploadFile" name="files[]" multiple="multiple" />
                         </label>
 
                         <button data-toggle="modal" href="#easel-new-folder" class="btn btn-primary btn-icon-text waves-effect" type="button" title="Add Folder">

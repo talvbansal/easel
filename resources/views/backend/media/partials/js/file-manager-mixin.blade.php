@@ -11,7 +11,6 @@
             loading: true,
             insertIntoEditor: false,
             newFolderName: null,
-            fileUploadFormData: new FormData(),
             newItemName: null,
             allDirectories: {},
             newFolderLocation: null
@@ -178,12 +177,20 @@
                 }
             },
 
-            uploadFile: function (e) {
-                var files = e.target.files || e.dataTransfer.files;
-                this.fileUploadFormData.append('file', files[0]);
-                this.fileUploadFormData.append('folder', this.currentPath);
+            uploadFile: function (event) {
+                event.preventDefault();
 
-                this.post('/admin/browser/file', this.fileUploadFormData);
+                var form = new FormData();
+                var files = event.target.files || event.dataTransfer.files;
+
+                for( var key in files )
+                {
+                    form.append('files[' + key + ']', files[key]);
+                }
+
+                form.append('folder', this.currentPath);
+
+                this.post('/admin/browser/file', form);
             },
 
             renameItem: function () {
@@ -268,6 +275,8 @@
                             this.$set('loading', false);
                         }
                 );
+
+                this.loading = false;
             },
 
             selectFile: function()
