@@ -80,7 +80,7 @@ return [
             'custom'  => env('BLOG_POST_LAYOUTS', 'layouts.posts'),
         ],
 
-        'list' => env('BLOG_POST_LIST', 'vendor.easel.frontend.blog.index')
+        'list' => env('BLOG_POST_LIST', 'vendor.easel.frontend.blog.index'),
     ],
 
 ];
