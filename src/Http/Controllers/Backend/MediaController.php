@@ -84,7 +84,7 @@ class MediaController extends Controller
     public function deleteFolder(Request $request)
     {
         $del_folder = $request->get('del_folder');
-        $folder = $request->get('folder').'/'.$del_folder;
+        $folder = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$del_folder;
 
         try {
             $result = $this->uploadsManager->deleteDirectory($folder);
@@ -192,15 +192,8 @@ class MediaController extends Controller
         $newPath = $request->get('newPath');
         $type = $request->get('type');
 
-        if ($path == '/') {
-            $path = '';
-        }
-        if ($newPath == '/') {
-            $newPath = '';
-        }
-
-        $currentFile = $path.DIRECTORY_SEPARATOR.$currentFileName;
-        $newFile = $newPath.DIRECTORY_SEPARATOR.$currentFileName;
+        $currentFile = str_finish($path, DIRECTORY_SEPARATOR).$currentFileName;
+        $newFile = str_finish($newPath, DIRECTORY_SEPARATOR).$currentFileName;
 
         try {
             $result = $this->uploadsManager->move($currentFile, $newFile, ($type == 'Folder'));
