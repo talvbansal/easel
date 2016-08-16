@@ -58,6 +58,17 @@
             },
 
             methods: {
+                openPicker: function () {
+                    this.reset();
+                    $('#easel-file-picker').modal('show');
+                },
+
+                closePicker: function () {
+                    this.reset();
+                    this.insertIntoEditor = false;
+                    $('#easel-file-picker').modal('hide');
+                },
+
                 selectFile: function (file) {
 
                     // this is pretty bad but not sure how else to achieve it without creating a custom markdown editor within vue

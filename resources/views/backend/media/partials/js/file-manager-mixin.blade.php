@@ -82,17 +82,6 @@
                 this.newFolderLocation = null;
             },
 
-            openPicker: function () {
-                this.reset();
-                $('#easel-file-picker').modal('show');
-            },
-
-            closePicker: function () {
-                this.reset();
-                this.insertIntoEditor = false;
-                $('#easel-file-picker').modal('hide');
-            },
-
             responseError: function (response) {
 
                 if (response.data.error) {
@@ -279,10 +268,7 @@
                 this.loading = false;
             },
 
-            selectFile: function()
-            {
-
-            }
+            selectFile: function() { }
         }
     };
 </script>
