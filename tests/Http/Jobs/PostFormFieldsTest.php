@@ -65,7 +65,7 @@ class PostFormFieldsTest extends TestCase
      */
     private function createPathFromFileName($fileName)
     {
-        $path = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/'.config('easel.layouts.posts'))).'/'.$fileName;
+        $path = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/'.config('easel.layouts.posts.custom'))).'/'.$fileName;
 
         return $path;
     }
@@ -128,7 +128,7 @@ class PostFormFieldsTest extends TestCase
         $this->assertTrue($response->contains('gallery'));
         // Are these values in the collection
         $this->assertTrue($response->has('vendor.easel.frontend.blog.post'));
-        $this->assertTrue($response->has(config('easel.layouts.posts').'.gallery'));
+        $this->assertTrue($response->has(config('easel.layouts.posts.custom').'.gallery'));
     }
 
     public function test_only_blade_php_files_are_considered_layouts()
