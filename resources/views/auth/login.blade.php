@@ -12,7 +12,7 @@
                     <br>
                     <div class="card-header">
                         <div class="text-center">
-                            <h1 class="brand dark">Easel</h1>
+                            <h1 class="brand" id="logo">Easel</h1>
                         </div>
                     </div>
 

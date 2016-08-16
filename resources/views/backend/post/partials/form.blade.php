@@ -37,7 +37,7 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
+        <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
     </div>
 </div>
 
@@ -45,8 +45,8 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Publish Date / Time</label>
-      <input class="form-control date-time-picker" name="published_at" id="published_at" type="text" value="{{ $published_at }}" placeholder="DD/MM/YYYY HH:MM:SS" data-mask="00/00/0000 00:00:00">
+        {!! Form::label('published_at', 'Publish Date / Time', ['class' => 'fg-label']) !!}
+        {!! Form::text('published_at', $published_at, ['class' => 'form-control date-time-picker', 'id' => 'published_at', 'placeholder' => 'DD/MM/YYYY HH:MM:SS', 'data-mask' => '"00/00/0000 00:00:00"']) !!}
     </div>
 </div>
 
@@ -64,12 +64,12 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Tags</label>
-      <select name="tags[]" id="tags" class="selectpicker" multiple>
-          @foreach ($allTags as $tag)
-              <option @if (in_array($tag, $tags)) selected @endif value="{{ $tag }}">{{ $tag }}</option>
-          @endforeach
-      </select>
+        <label class="fg-label">Tags</label>
+        <select name="tags[]" id="tags" class="selectpicker" multiple>
+            @foreach ($allTags as $tag)
+                <option @if (in_array($tag, $tags)) selected @endif value="{{ $tag }}">{{ $tag }}</option>
+            @endforeach
+        </select>
     </div>
 </div>
 
