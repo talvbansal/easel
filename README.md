@@ -117,7 +117,7 @@ If you want the blog to respond at the `'/'` route you will need to add a new ro
 
         Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
 
-#### Setting a views folder for your blog posts
+#### Customising views for your blog posts and list
 
 When creating a blog post you can use the `default` layout for Easel, however it is likely that you'll want to amend the views to suit your application. 
 You may also need different views for different blog posts - Easel has you covered! just add the `BLOG_POST_LAYOUTS` key to your `.env` file and give it the path to a folder within your `resources/views` folder
