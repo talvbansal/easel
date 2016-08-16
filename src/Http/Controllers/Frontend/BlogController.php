@@ -37,8 +37,7 @@ class BlogController extends Controller
             $data = $this->postsManager->allPublishedPosts();
         }
 
-
-        return view('vendor.easel.frontend.blog.index', $data);
+        return view(config('easel.layouts.list'), $data);
     }
 
     /**
@@ -76,6 +75,6 @@ class BlogController extends Controller
     {
         $data = $this->postsManager->postsByAuthorId($id);
 
-        return view('vendor.easel.frontend.blog.index', $data);
+        return view(config('easel.layouts.list'), $data);
     }
 }

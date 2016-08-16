@@ -28,7 +28,7 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
         'published_at'        => Carbon\Carbon::now(),
         'meta_description'    => 'Let\'s get you up and running with Easel!',
         'is_draft'            => false,
-        'layout'              => config('easel.layouts.default'),
+        'layout'              => config('easel.layouts.posts.default'),
         'author_id'           => 1,
     ];
 });

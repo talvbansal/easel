@@ -10,7 +10,7 @@ return [
     | Here you can define the user model that Easel uses.
     |
     */
-    'user_model' => \Easel\Models\User::class,
+    'user_model'          => \Easel\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -22,11 +22,11 @@ return [
     | on sites such as Facebook and Twitter.
     |
     */
-    'name'           => 'Easel',
-    'title'          => 'Easel',
-    'subtitle'       => 'Minimal Blogging Package',
-    'description'    => 'A blogging package for your laravel app',
-    'author'         => 'Talv Bansal',
+    'name'                => 'Easel',
+    'title'               => 'Easel',
+    'subtitle'            => 'Minimal Blogging Package',
+    'description'         => 'A blogging package for your laravel app',
+    'author'              => 'Talv Bansal',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,27 +56,31 @@ return [
     | Supported: "public"
     |
     */
-    'uploads'        => [
+    'uploads'             => [
         'storage' => 'public',
         'webpath' => '/storage/',
     ],
-
 
     /*
     |--------------------------------------------------------------------------
     | Post Layouts Configuration
     |--------------------------------------------------------------------------
     |
-    | This option points to a folder that you can store templates for your
-    | blog posts. Each file within that folder will be included in the
-    | drop down box on the layout section of the post editor page.
-    | If the given path doesn't exist then only the default
-    | layout will be shown.
+    | These options allow you to configure the views used by Easel.
+    | You can use the inbuilt defaults or use custom views files
+    | to suit the host application. The posts and lists pages
+    | are both configurable. layouts.posts.custom lets you
+    | point to a folder that can contain a varying set
+    | of templates to be used across your posts
     |
     */
-    'layouts'        => [
-        'default' => 'vendor.easel.frontend.blog.post',
-        'posts'   => env('BLOG_POST_LAYOUTS', 'layouts.posts'),
+    'layouts'             => [
+        'posts' => [
+            'default' => 'vendor.easel.frontend.blog.post',
+            'custom'  => env('BLOG_POST_LAYOUTS', 'layouts.posts'),
+        ],
+
+        'list' => env('BLOG_POST_LIST', 'vendor.easel.frontend.blog.index')
     ],
 
 ];

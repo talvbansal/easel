@@ -18,8 +18,8 @@ trait FindBlogLayouts
      */
     protected function getPostLayouts()
     {
-        $defaultLayout = config('easel.layouts.default');
-        $layoutsFolder = config('easel.layouts.posts');
+        $defaultLayout = config('easel.layouts.posts.default');
+        $layoutsFolder = config('easel.layouts.posts.custom');
 
         $layoutsFullPath = resource_path(str_replace('.', DIRECTORY_SEPARATOR, '/views/'.$layoutsFolder));
 

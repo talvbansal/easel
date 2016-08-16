@@ -124,7 +124,7 @@ You may also need different views for different blog posts - Easel has you cover
 
 For example
 
-        BLOG_POST_LAYOUTS=layouts.posts
+        BLOG_POST_LAYOUTS=layouts.blog.post
 
 Will point to the following folder
 
@@ -132,3 +132,7 @@ Will point to the following folder
 
  - Every blade template within that folder will then be listed on the post creation page as a potential layout for that post. 
  - Sub-folders within the `BLOG_POST_LAYOUTS` folder will __not__ be listed allowing you to store partials for your templates within that single folder structure.
+
+You can also set the blog post list layout using the `BLOG_POST_LIST` key, which again points to a corresponding view within your `resources/views` folder
+
+        BLOG_POST_LIST=layouts.blog.list
