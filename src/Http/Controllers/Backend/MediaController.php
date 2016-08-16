@@ -135,11 +135,10 @@ class MediaController extends Controller
 
             /** @var UploadedFile $file */
             foreach ($files as $file) {
-
                 $fileName = $file->getClientOriginalName();
-                $path     = str_finish($request->get('folder'), DIRECTORY_SEPARATOR) . $fileName;
-                $content  = file_get_contents($file);
-                $result   = $this->uploadsManager->saveFile($path, $content);
+                $path = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$fileName;
+                $content = file_get_contents($file);
+                $result = $this->uploadsManager->saveFile($path, $content);
             }
 
             if ($result !== true) {
