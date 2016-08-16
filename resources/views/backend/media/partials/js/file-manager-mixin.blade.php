@@ -16,8 +16,7 @@
             newFolderLocation: null
         },
 
-        ready: function()
-        {
+        ready: function () {
             // Create Folder
             var createFolderModal = $('#easel-new-folder');
             createFolderModal.on('shown.bs.modal', function () {
@@ -172,8 +171,7 @@
                 var form = new FormData();
                 var files = event.target.files || event.dataTransfer.files;
 
-                for( var key in files )
-                {
+                for (var key in files) {
                     form.append('files[' + key + ']', files[key]);
                 }
 
@@ -238,12 +236,12 @@
                             if (typeof callback == 'function') callback();
                         }.bind(this),
                         function (response) {
+                            this.loadFolder(this.currentPath);
                             var error = (response.data.error) ? response.data.error : response.statusText;
                             this.notify(error, 'danger');
+                            if (response.data.notices) this.notify(response.data.notices);
 
                             this.$set('loading', false);
-                            this.$set('currentFile', null);
-                            this.$set('selectedFile', null);
                         }
                 );
             },
@@ -258,29 +256,30 @@
 
                         }.bind(this),
                         function (response) {
+                            this.loadFolder(this.currentPath);
                             var error = (response.data.error) ? response.data.error : response.statusText;
                             this.notify(error, 'danger');
-
+                            if (response.data.notices) this.notify(response.data.notices);
                             this.$set('loading', false);
                         }
                 );
 
             },
 
-            notify: function(notices, type)
-            {
-                if( typeof notices == 'array')
-                {
+            notify: function (notices, type) {
+                if (typeof notices == 'object') {
                     for (var i = 0, len = notices.length; i < len; i++) {
                         systemNotification(notices[i], type);
                     }
+                    return
 
-                }else {
-                    systemNotification(notices, type);
                 }
-            }
+                systemNotification(notices, type);
 
-            selectFile: function() { }
+            },
+
+            selectFile: function () {
+            }
         }
     };
 </script>

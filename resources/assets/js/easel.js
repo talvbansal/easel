@@ -36,7 +36,7 @@ function systemNotification(message, type){
             from: 'top',
             align: 'right'
         },
-        delay: 2500,
+        delay: 3800,
         z_index: 1061,
         animate: {
             enter: 'animated fadeInDown',
