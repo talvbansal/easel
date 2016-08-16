@@ -47,8 +47,10 @@
             },
 
             data: {
+                isModal: true,
                 pageImage: null,
-                isModal: true
+                slug : null,
+                title: null
             },
 
             computed: {
@@ -58,6 +60,16 @@
             },
 
             methods: {
+
+                slugify: function()
+                {
+                    this.slug = this.title.toLowerCase()
+                            .trim()
+                            .replace(/ /g, '-')
+                            .replace(/[^\w\-]+/g, '')
+                            .replace(/\-\-+/g, '-');
+                },
+
                 openPicker: function () {
                     this.reset();
                     $('#easel-file-picker').modal('show');

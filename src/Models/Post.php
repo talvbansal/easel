@@ -23,6 +23,7 @@ class Post extends Model
      */
     protected $fillable = [
         'title',
+        'slug',
         'subtitle',
         'content_raw',
         'page_image',

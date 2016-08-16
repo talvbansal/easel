@@ -22,6 +22,7 @@
 $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
     return [
         'title'               => 'Hello world',
+        'slug'                => 'hello-world',
         'subtitle'            => 'Easel is a blogging package for Laravel',
         'page_image'          => 'placeholder.png',
         'content_raw'         => view('easel::shared.helpers.welcome'),

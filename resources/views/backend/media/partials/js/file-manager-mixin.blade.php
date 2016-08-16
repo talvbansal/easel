@@ -265,7 +265,6 @@
                         }
                 );
 
-                this.loading = false;
             },
 
             selectFile: function() { }

@@ -3,7 +3,16 @@
 <div class="form-group">
     <div class="fg-line">
         {!! Form::label('title', 'Title', ['class' => 'fg-label']) !!}
-        {!! Form::text('title', $title, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
+        {!! Form::text('title', $title, ['class' => 'form-control', 'placeholder' => 'Title', 'v-model' => 'title', '@keyup' => 'slugify()']) !!}
+    </div>
+</div>
+
+<br>
+
+<div class="form-group">
+    <div class="fg-line">
+        {!! Form::label('slug', 'Slug', ['class' => 'fg-label']) !!}
+        {!! Form::text('slug', $slug, ['class' => 'form-control', 'placeholder' => 'Slug', 'v-model' => 'slug']) !!}
     </div>
 </div>
 
@@ -64,7 +73,7 @@
 
 <div class="form-group">
     <div class="fg-line">
-        <label class="fg-label">Tags</label>
+        {!! Form::label('tags[]', 'Tags', ['class' => 'fg-label']) !!}
         <select name="tags[]" id="tags" class="selectpicker" multiple>
             @foreach ($allTags as $tag)
                 <option @if (in_array($tag, $tags)) selected @endif value="{{ $tag }}">{{ $tag }}</option>

@@ -47,6 +47,7 @@ class BlogPostTest extends TestCase
 
         $this->actingAs($this->user)->visit('admin/post/create')
              ->type($post->title, 'title')
+             ->type($post->slug, 'slug')
              ->type($post->subtitle, 'subtitle')
              ->type($post->content_raw, 'content')
              ->type($post->published_at->format('d/m/Y h:i:s'), 'published_at')
