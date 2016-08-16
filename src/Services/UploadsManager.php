@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadsManager
 {
-
     /**
      * @var FilesystemAdapter
      */
@@ -24,8 +23,7 @@ class UploadsManager
     /**
      * @var array
      */
-    private $errors = [ ];
-
+    private $errors = [];
 
     /**
      * UploadsManager constructor.
@@ -34,10 +32,9 @@ class UploadsManager
      */
     public function __construct(PhpRepository $mimeDetect)
     {
-        $this->disk       = Storage::disk(config('easel.uploads.storage'));
+        $this->disk = Storage::disk(config('easel.uploads.storage'));
         $this->mimeDetect = $mimeDetect;
     }
-
 
     /**
      * Return files and directories within a folder.
@@ -54,23 +51,22 @@ class UploadsManager
      */
     public function folderInfo($folder)
     {
-        $folder      = $this->cleanFolder($folder);
+        $folder = $this->cleanFolder($folder);
         $breadcrumbs = $this->breadcrumbs($folder);
-        $slice       = array_slice($breadcrumbs, -1);
-        $folderName  = current($slice);
+        $slice = array_slice($breadcrumbs, -1);
+        $folderName = current($slice);
         $breadcrumbs = array_slice($breadcrumbs, 0, -1);
-        $subfolders  = [ ];
+        $subfolders = [];
         foreach (array_unique($this->disk->directories($folder)) as $subfolder) {
             $subfolders["/$subfolder"] = basename($subfolder);
         }
-        $files = [ ];
+        $files = [];
         foreach ($this->disk->files($folder) as $path) {
             $files[] = $this->fileDetails($path);
         }
 
         return compact('folder', 'folderName', 'breadcrumbs', 'subfolders', 'files');
     }
-
 
     /**
      * Sanitize the folder name.
@@ -81,9 +77,8 @@ class UploadsManager
      */
     protected function cleanFolder($folder)
     {
-        return '/' . trim(str_replace('..', '', $folder), '/');
+        return '/'.trim(str_replace('..', '', $folder), '/');
     }
-
 
     /**
      * Return breadcrumbs to current folder.
@@ -95,20 +90,19 @@ class UploadsManager
     protected function breadcrumbs($folder)
     {
         $folder = trim($folder, '/');
-        $crumbs = [ '/' => 'Root' ];
-        if (empty( $folder )) {
+        $crumbs = ['/' => 'Root'];
+        if (empty($folder)) {
             return $crumbs;
         }
         $folders = explode('/', $folder);
-        $build   = '';
+        $build = '';
         foreach ($folders as $folder) {
-            $build .= '/' . $folder;
+            $build .= '/'.$folder;
             $crumbs[$build] = $folder;
         }
 
         return $crumbs;
     }
-
 
     /**
      * Return an array of file details for a file.
@@ -119,7 +113,7 @@ class UploadsManager
      */
     protected function fileDetails($path)
     {
-        $path = '/' . ltrim($path, '/');
+        $path = '/'.ltrim($path, '/');
 
         return [
             'name'     => basename($path),
@@ -131,7 +125,6 @@ class UploadsManager
         ];
     }
 
-
     /**
      * Return the full web path to a file.
      *
@@ -141,11 +134,10 @@ class UploadsManager
      */
     public function fileWebpath($path)
     {
-        $path = rtrim(config('easel.uploads.webpath'), '/') . '/' . ltrim($path, '/');
+        $path = rtrim(config('easel.uploads.webpath'), '/').'/'.ltrim($path, '/');
 
         return url($path);
     }
-
 
     /**
      * Return the mime type.
@@ -159,7 +151,6 @@ class UploadsManager
         return $this->mimeDetect->findType(pathinfo($path, PATHINFO_EXTENSION));
     }
 
-
     /**
      * Return the file size.
      *
@@ -172,7 +163,6 @@ class UploadsManager
         return $this->disk->size($path);
     }
 
-
     /**
      * Return the last modified time.
      *
@@ -184,7 +174,6 @@ class UploadsManager
     {
         return Carbon::createFromTimestamp($this->disk->lastModified($path));
     }
-
 
     /**
      * Create a new directory.
@@ -203,7 +192,6 @@ class UploadsManager
         return $this->disk->makeDirectory($folder);
     }
 
-
     /**
      * Delete a directory.
      *
@@ -213,15 +201,14 @@ class UploadsManager
      */
     public function deleteDirectory($folder)
     {
-        $folder       = $this->cleanFolder($folder);
+        $folder = $this->cleanFolder($folder);
         $filesFolders = array_merge($this->disk->directories($folder), $this->disk->files($folder));
-        if ( ! empty( $filesFolders )) {
+        if (!empty($filesFolders)) {
             return 'Directory must be empty to delete it.';
         }
 
         return $this->disk->deleteDirectory($folder);
     }
-
 
     /**
      * Delete a file.
@@ -233,13 +220,12 @@ class UploadsManager
     public function deleteFile($path)
     {
         $path = $this->cleanFolder($path);
-        if ( ! $this->disk->exists($path)) {
+        if (!$this->disk->exists($path)) {
             return 'File does not exist.';
         }
 
         return $this->disk->delete($path);
     }
-
 
     /**
      * Save a file.
@@ -253,14 +239,13 @@ class UploadsManager
     {
         $path = $this->cleanFolder($path);
         if ($this->disk->exists($path)) {
-            $this->errors[] = 'File ' . $path . ' already exists.';
+            $this->errors[] = 'File '.$path.' already exists.';
 
             return false;
         }
 
         return $this->disk->put($path, $content);
     }
-
 
     /**
      * @param $path
@@ -271,15 +256,14 @@ class UploadsManager
      */
     public function rename($path, $originalFileName, $newFileName)
     {
-        $path     = $this->cleanFolder($path);
-        $nameName = $path . DIRECTORY_SEPARATOR . $newFileName;
+        $path = $this->cleanFolder($path);
+        $nameName = $path.DIRECTORY_SEPARATOR.$newFileName;
         if ($this->disk->exists($nameName)) {
             return 'File already exists.';
         }
 
-        return $this->disk->getDriver()->rename(( $path . DIRECTORY_SEPARATOR . $originalFileName ), $nameName);
+        return $this->disk->getDriver()->rename(($path.DIRECTORY_SEPARATOR.$originalFileName), $nameName);
     }
-
 
     /**
      * Show all directories that the selected item can be moved to.
@@ -291,17 +275,16 @@ class UploadsManager
         $directories = $this->disk->allDirectories('/');
 
         return collect($directories)->map(function ($directory) {
-            return DIRECTORY_SEPARATOR . $directory;
+            return DIRECTORY_SEPARATOR.$directory;
         })->reduce(function ($allDirectories, $directory) {
             $parts = explode('/', $directory);
-            $name  = str_repeat('&nbsp;', ( count($parts) ) * 4) . basename($directory);
+            $name = str_repeat('&nbsp;', (count($parts)) * 4).basename($directory);
 
             $allDirectories[$directory] = $name;
 
             return $allDirectories;
         }, collect())->prepend('Root', '/');
     }
-
 
     /**
      * @param      $currentFile
@@ -329,12 +312,10 @@ class UploadsManager
         return $this->disk->getDriver()->rename($currentFile, $newFile);
     }
 
-
     public function errors()
     {
         return $this->errors;
     }
-
 
     /**
      * @param array  $files
@@ -347,15 +328,15 @@ class UploadsManager
         $uploaded = 0;
         /** @var UploadedFile $file */
         foreach ($files as $file) {
-            if ( ! $file->isValid()) {
-                $this->errors[] = trans('easel::messages.upload_error', [ 'entity' => $file->getClientOriginalName() ]);
+            if (!$file->isValid()) {
+                $this->errors[] = trans('easel::messages.upload_error', ['entity' => $file->getClientOriginalName()]);
 
                 continue;
             }
 
             $fileName = $file->getClientOriginalName();
-            $path     = str_finish($folder, DIRECTORY_SEPARATOR) . $fileName;
-            $content  = file_get_contents($file);
+            $path = str_finish($folder, DIRECTORY_SEPARATOR).$fileName;
+            $content = file_get_contents($file);
             if ($this->saveFile($path, $content)) {
                 $uploaded++;
             }

@@ -18,12 +18,10 @@ use Illuminate\Http\Request;
  */
 class MediaController extends Controller
 {
-
     /**
      * @var UploadsManager
      */
     private $uploadsManager;
-
 
     /**
      * FileManagerController constructor.
@@ -35,12 +33,10 @@ class MediaController extends Controller
         $this->uploadsManager = $uploadsManager;
     }
 
-
     public function index()
     {
         return view('easel::backend.media.index');
     }
-
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -52,7 +48,6 @@ class MediaController extends Controller
         return $this->uploadsManager->folderInfo($path);
     }
 
-
     /**
      * @param UploadNewFolderRequest $request
      *
@@ -61,23 +56,22 @@ class MediaController extends Controller
     public function createFolder(UploadNewFolderRequest $request)
     {
         $new_folder = $request->get('new_folder');
-        $folder     = $request->get('folder') . '/' . $new_folder;
+        $folder = $request->get('folder').'/'.$new_folder;
 
         try {
             $result = $this->uploadsManager->createDirectory($folder);
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.create_error', [ 'entity' => 'directory' ]);
+                $error = $result ?: trans('easel::messages.create_error', ['entity' => 'directory']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.create_success', [ 'entity' => 'folder' ]) ];
+            return ['success' => trans('easel::messages.create_success', ['entity' => 'folder'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     /**
      * Delete a folder.
@@ -89,22 +83,21 @@ class MediaController extends Controller
     public function deleteFolder(Request $request)
     {
         $del_folder = $request->get('del_folder');
-        $folder     = str_finish($request->get('folder'), DIRECTORY_SEPARATOR) . $del_folder;
+        $folder = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$del_folder;
 
         try {
             $result = $this->uploadsManager->deleteDirectory($folder);
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.delete_error', [ 'entity' => 'folder' ]);
+                $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'folder']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.delete_success', [ 'entity' => 'folder' ]) ];
+            return ['success' => trans('easel::messages.delete_success', ['entity' => 'folder'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -116,17 +109,16 @@ class MediaController extends Controller
             $result = $this->uploadsManager->deleteFile($path);
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.delete_error', [ 'entity' => 'File' ]);
+                $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'File']);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.delete_success', [ 'entity' => 'File' ]) ];
+            return ['success' => trans('easel::messages.delete_success', ['entity' => 'File'])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     /**
      * Upload new file.
@@ -138,25 +130,22 @@ class MediaController extends Controller
     public function uploadFiles(UploadFileRequest $request)
     {
         try {
-            $files  = $request->file('files');
+            $files = $request->file('files');
             $folder = $request->get('folder');
 
             $response = $this->uploadsManager->saveFiles($files, $folder);
-            $errors   = $this->uploadsManager->errors();
-            $response = trans('easel::messages.upload_success', [ 'entity' => $response . ' New ' . str_plural('File', $response) ]);
+            $errors = $this->uploadsManager->errors();
+            $response = trans('easel::messages.upload_success', ['entity' => $response.' New '.str_plural('File', $response)]);
 
-            if ( ! empty( $errors )) {
+            if (!empty($errors)) {
                 return $this->errorResponse($errors, [$response]);
             }
 
-            return [ 'success' => $response ];
-
+            return ['success' => $response];
         } catch (\Exception $e) {
-            return $this->errorResponse([ $e->getMessage() ]);
+            return $this->errorResponse([$e->getMessage()]);
         }
-
     }
-
 
     /**
      * @param Request $request
@@ -165,26 +154,25 @@ class MediaController extends Controller
      */
     public function rename(Request $request)
     {
-        $path     = $request->get('path');
+        $path = $request->get('path');
         $original = $request->get('original');
-        $newName  = $request->get('newName');
-        $type     = $request->get('type');
+        $newName = $request->get('newName');
+        $type = $request->get('type');
 
         try {
             $result = $this->uploadsManager->rename($path, $original, $newName);
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.rename_error', [ 'entity' => $type ]);
+                $error = $result ?: trans('easel::messages.rename_error', ['entity' => $type]);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.rename_success', [ 'entity' => $type ]) ];
+            return ['success' => trans('easel::messages.rename_success', ['entity' => $type])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     /**
      * @param Request $request
@@ -193,38 +181,36 @@ class MediaController extends Controller
      */
     public function move(Request $request)
     {
-        $path            = $request->get('path');
+        $path = $request->get('path');
         $currentFileName = $request->get('currentItem');
-        $newPath         = $request->get('newPath');
-        $type            = $request->get('type');
+        $newPath = $request->get('newPath');
+        $type = $request->get('type');
 
-        $currentFile = str_finish($path, DIRECTORY_SEPARATOR) . $currentFileName;
-        $newFile     = str_finish($newPath, DIRECTORY_SEPARATOR) . $currentFileName;
+        $currentFile = str_finish($path, DIRECTORY_SEPARATOR).$currentFileName;
+        $newFile = str_finish($newPath, DIRECTORY_SEPARATOR).$currentFileName;
 
         try {
-            $result = $this->uploadsManager->move($currentFile, $newFile, ( $type == 'Folder' ));
+            $result = $this->uploadsManager->move($currentFile, $newFile, ($type == 'Folder'));
 
             if ($result !== true) {
-                $error = $result ?: trans('easel::messages.move_error', [ 'entity' => $type ]);
+                $error = $result ?: trans('easel::messages.move_error', ['entity' => $type]);
 
                 return $this->errorResponse($error);
             }
 
-            return [ 'success' => trans('easel::messages.move_success', [ 'entity' => $type ]) ];
+            return ['success' => trans('easel::messages.move_success', ['entity' => $type])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
     }
-
 
     public function allDirectories()
     {
         return $this->uploadsManager->allDirectories();
     }
 
-
     /**
-     * Upload multiple files
+     * Upload multiple files.
      *
      * @param       $error
      * @param array $notices
@@ -234,10 +220,11 @@ class MediaController extends Controller
      */
     private function errorResponse($error, $notices = [], $errorCode = 400)
     {
-        if( is_array($error) ) json_encode($error);
-        $payload = [ 'error' => $error ];
-        if( !empty( $notices ) )
-        {
+        if (is_array($error)) {
+            json_encode($error);
+        }
+        $payload = ['error' => $error];
+        if (!empty($notices)) {
             $payload['notices'] = $notices;
         }
 
