@@ -137,27 +137,26 @@ class MediaController extends Controller
 
             /** @var UploadedFile $file */
             foreach ($files as $file) {
-                if( $file->isValid() ) {
+                if ($file->isValid()) {
                     $fileName = $file->getClientOriginalName();
-                    $path     = str_finish($request->get('folder'), DIRECTORY_SEPARATOR) . $fileName;
-                    $content  = file_get_contents($file);
-                    $result   = $this->uploadsManager->saveFile($path, $content);
-                    if( $result !== true )
-                    {
+                    $path = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$fileName;
+                    $content = file_get_contents($file);
+                    $result = $this->uploadsManager->saveFile($path, $content);
+                    if ($result !== true) {
                         $errors[] = $result;
-                    }else{
+                    } else {
                         $uploaded++;
                     }
-                }else{
+                } else {
                     $errors[] = trans('easel::messages.upload_error', ['entity' => $file->getClientOriginalName()]);
                 }
             }
 
-            if ( !empty($errors) ) {
+            if (!empty($errors)) {
                 return $this->errorResponse($errors);
             }
 
-            return ['success' => trans('easel::messages.upload_success', ['entity' => $uploaded. ' New '. str_plural('File', $uploaded) ] )];
+            return ['success' => trans('easel::messages.upload_success', ['entity' => $uploaded.' New '.str_plural('File', $uploaded)])];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
