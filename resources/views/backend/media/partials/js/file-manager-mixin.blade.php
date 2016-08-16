@@ -239,7 +239,7 @@
                         }.bind(this),
                         function (response) {
                             var error = (response.data.error) ? response.data.error : response.statusText;
-                            systemNotification(error, 'danger');
+                            this.notify(error, 'danger');
 
                             this.$set('loading', false);
                             this.$set('currentFile', null);
@@ -259,13 +259,26 @@
                         }.bind(this),
                         function (response) {
                             var error = (response.data.error) ? response.data.error : response.statusText;
-                            systemNotification(error, 'danger');
+                            this.notify(error, 'danger');
 
                             this.$set('loading', false);
                         }
                 );
 
             },
+
+            notify: function(notices, type)
+            {
+                if( typeof notices == 'array')
+                {
+                    for (var i = 0, len = notices.length; i < len; i++) {
+                        systemNotification(notices[i], type);
+                    }
+
+                }else {
+                    systemNotification(notices, type);
+                }
+            }
 
             selectFile: function() { }
         }

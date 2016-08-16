@@ -132,22 +132,32 @@ class MediaController extends Controller
     {
         try {
             $files = $request->file('files');
+            $errors = [];
+            $uploaded = 0;
 
             /** @var UploadedFile $file */
             foreach ($files as $file) {
-                $fileName = $file->getClientOriginalName();
-                $path = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$fileName;
-                $content = file_get_contents($file);
-                $result = $this->uploadsManager->saveFile($path, $content);
+                if( $file->isValid() ) {
+                    $fileName = $file->getClientOriginalName();
+                    $path     = str_finish($request->get('folder'), DIRECTORY_SEPARATOR) . $fileName;
+                    $content  = file_get_contents($file);
+                    $result   = $this->uploadsManager->saveFile($path, $content);
+                    if( $result !== true )
+                    {
+                        $errors[] = $result;
+                    }else{
+                        $uploaded++;
+                    }
+                }else{
+                    $errors[] = trans('easel::messages.upload_error', ['entity' => $file->getClientOriginalName()]);
+                }
             }
 
-            if ($result !== true) {
-                $error = $result ?: trans('easel::messages.upload_error', ['entity' => 'File']);
-
-                return $this->errorResponse($error);
+            if ( !empty($errors) ) {
+                return $this->errorResponse($errors);
             }
 
-            return ['success' => trans('easel::messages.upload_success', ['entity' => 'File'])];
+            return ['success' => trans('easel::messages.upload_success', ['entity' => $uploaded. ' New '. str_plural('File', $uploaded) ] )];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
