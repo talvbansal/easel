@@ -105,6 +105,7 @@
                                         <i v-show="isImage(file)" class="zmdi zmdi-image"></i>
                                         <i v-else class="zmdi zmdi-file-text"></i>
                                         <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" v-touch:doubletap="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
+
                                     </td>
                                     <td> @{{ file.mimeType }} </td>
                                     <td> @{{ file.modified.date | moment 'L' }}</td>
