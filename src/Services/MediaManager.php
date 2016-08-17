@@ -1,4 +1,5 @@
 <?php
+
 namespace Easel\Services;
 
 use Carbon\Carbon;
@@ -62,8 +63,7 @@ class MediaManager
         $files = [];
         foreach ($this->disk->files($folder) as $path) {
             // Don't show hidden files or folders
-            if( ! starts_with(last( explode( DIRECTORY_SEPARATOR, $path) ), '.') )
-            {
+            if (!starts_with(last(explode(DIRECTORY_SEPARATOR, $path)), '.')) {
                 $files[] = $this->fileDetails($path);
             }
         }
@@ -119,13 +119,13 @@ class MediaManager
         $path = '/'.ltrim($path, '/');
 
         return [
-            'name'     => basename($path),
-            'fullPath' => $path,
-            'webPath'  => $this->fileWebpath($path),
-            'mimeType' => $this->fileMimeType($path),
-            'size'     => $this->fileSize($path),
-            'modified' => $this->fileModified($path),
-            'relativePath' => $this->fileRelativePath($path)
+            'name'         => basename($path),
+            'fullPath'     => $path,
+            'webPath'      => $this->fileWebpath($path),
+            'mimeType'     => $this->fileMimeType($path),
+            'size'         => $this->fileSize($path),
+            'modified'     => $this->fileModified($path),
+            'relativePath' => $this->fileRelativePath($path),
         ];
     }
 
@@ -349,7 +349,6 @@ class MediaManager
         return $uploaded;
     }
 
-
     /**
      * @param $path
      *
@@ -357,6 +356,6 @@ class MediaManager
      */
     protected function fileRelativePath($path)
     {
-        return rtrim(config('easel.uploads.webpath'), '/') . '/' . ltrim($path, '/');
+        return rtrim(config('easel.uploads.webpath'), '/').'/'.ltrim($path, '/');
     }
 }
