@@ -122,7 +122,7 @@
                     {{-- Sidebar --}}
                     <div v-if="currentFile && !isFolder(currentFile)" class="easel-file-picker-sidebar hidden-xs col-sm-3">
 
-                        <img v-if="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
+                        <img v-if="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px" transition="fade"/>
 
                         <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
                             <tbody>
