@@ -33,9 +33,5 @@
 
         @yield('unique-js')
 
-        <script>
-            Vue.http.headers.common['X-XSRF-Token'] = document.querySelector('meta[name="_token"]').getAttribute('content');
-        </script>
-
     </body>
 </html>

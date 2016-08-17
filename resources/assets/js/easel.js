@@ -10,6 +10,8 @@ $(document).ready(function() {
     }
 });
 
+Vue.http.headers.common['X-XSRF-Token'] = document.querySelector('meta[name="_token"]').getAttribute('content');
+
 Vue.filter('moment', function(value, format) {
     return moment.utc(value).local().format(format);
 });
