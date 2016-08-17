@@ -26,13 +26,13 @@
 @stop
 
 @section('unique-js')
-
     @include('easel::backend.media.partials.js.file-manager-mixin')
     <script type="text/javascript">
         $(document).ready(function () {
+            Vue.config.devtools = true;
             var vm = new Vue({
                 el: 'body',
-                mixins: [fileManagerMixin],
+                mixins: [FileManagerMixin],
                 ready: function () {
                     this.loadFolder();
                 }

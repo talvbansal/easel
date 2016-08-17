@@ -37,7 +37,7 @@
 <div class="visible-sm space-10"></div>
 
 <div>
-    <img v-if="webPathToPostImage.length > 0" class="img img_responsive" id="page-image-preview" style="max-height:100px" :src="webPathToPostImage">
+    <img v-if="pageImage" class="img img_responsive" id="page-image-preview" style="max-height:100px" :src="pageImage">
     <span v-else class="text-muted small">No Image Selected</span>
 </div>
 

@@ -1,12 +1,9 @@
 @include('easel::backend.media.partials.file-picker')
 <script type="text/javascript">
-
     $(document).ready(function () {
-
-        var simpleMde;
         var vm = new Vue({
             el: 'body',
-            mixins: [fileManagerMixin],
+            mixins: [FileManagerMixin],
             ready: function () {
 
                 {{-- code to allow the multi-layered modal windows --}}
@@ -22,7 +19,7 @@
                     vm.loadFolder();
                 });
 
-                simpleMde = new SimpleMDE({
+                this.simpleMde = new SimpleMDE({
                     element: $("#editor")[0],
                     toolbar: [
                         "bold", "italic", "heading", "|",
@@ -50,13 +47,8 @@
                 isModal: true,
                 pageImage: null,
                 slug : null,
-                title: null
-            },
-
-            computed: {
-                webPathToPostImage: function () {
-                    return ( this.pageImage.length > 0 ) ? '/storage/' + this.pageImage : null;
-                }
+                title: null,
+                simpleMde: null
             },
 
             methods: {
@@ -82,12 +74,9 @@
                 },
 
                 selectFile: function (file) {
-
-                    // this is pretty bad but not sure how else to achieve it without creating a custom markdown editor within vue
-                    // which is possible but we'd lose the toolbars
                     if (this.insertIntoEditor) {
-                        var cm = simpleMde.codemirror;
-                        var output = '[' + file.name + '](' + file.webPath + ')';
+                        var cm = this.simpleMde.codemirror;
+                        var output = '[' + file.name + '](' + file.relativePath + ')';
 
                         if (this.isImage(file)) {
                             output = '!' + output;
@@ -95,14 +84,12 @@
 
                         cm.replaceSelection(output);
                     } else {
-                        this.pageImage = file.fullPath;
+                        this.pageImage = file.relativePath;
                     }
 
                     this.closePicker();
                 }
             }
         });
-
-
     });
 </script>

@@ -101,7 +101,7 @@
                                     <td>-</td>
                                 </tr>
 
-                                <tr v-for="file in visibleFiles" :class="[ (file == currentFile) ? 'active' : '' ]">
+                                <tr v-for="file in files" :class="[ (file == currentFile) ? 'active' : '' ]">
                                     <td>
                                         <i v-show="isImage(file)" class="zmdi zmdi-image"></i>
                                         <i v-else class="zmdi zmdi-file-text"></i>

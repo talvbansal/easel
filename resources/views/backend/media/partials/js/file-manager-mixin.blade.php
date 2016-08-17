@@ -1,8 +1,10 @@
+{{-- This mixin provides almost all of the core file browser functionality --}}
 <script>
-    var fileManagerMixin = {
+    var FileManagerMixin = {
         data: {
             isModal: false,
             currentFile: null,
+            selectedFile: null,
             currentPath: null,
             folderName: null,
             folders: {},
@@ -57,13 +59,7 @@
 
         computed: {
             itemsCount: function () {
-                return this.visibleFiles.length + Object.keys(this.folders).length;
-            },
-
-            visibleFiles: function () {
-                return this.files.filter(function (item) {
-                    return (item.name.substring(0, 1) != ".");
-                });
+                return this.files.length + Object.keys(this.folders).length;
             }
         },
 
@@ -127,6 +123,16 @@
                 return (typeof file == 'string');
             },
 
+            getItemName: function( item )
+            {
+                if(! item)
+                {
+                    return null;
+                }
+
+                return ( this.isFolder(item) ) ? item : item;
+            },
+
             previewFile: function (file) {
                 this.currentFile = file;
             },
@@ -181,7 +187,7 @@
             },
 
             renameItem: function () {
-                var original = ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name;
+                var original = this.getItemName( this.currentFile);
 
                 var data = {
                     'path': this.currentPath,
@@ -213,7 +219,7 @@
             },
 
             moveItem: function () {
-                var currentItem = ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name
+                var currentItem = this.getItemName( this.currentFile);
 
                 var data = {
                     'path': this.currentPath,
@@ -279,6 +285,7 @@
             },
 
             selectFile: function () {
+
             }
         }
     };

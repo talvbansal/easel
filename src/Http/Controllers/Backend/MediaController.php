@@ -10,7 +10,7 @@ namespace Easel\Http\Controllers\Backend;
 use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\UploadFileRequest;
 use Easel\Http\Requests\UploadNewFolderRequest;
-use Easel\Services\UploadsManager;
+use Easel\Services\MediaManager;
 use Illuminate\Http\Request;
 
 /**
@@ -19,18 +19,18 @@ use Illuminate\Http\Request;
 class MediaController extends Controller
 {
     /**
-     * @var UploadsManager
+     * @var MediaManager
      */
-    private $uploadsManager;
+    private $mediaManager;
 
     /**
      * FileManagerController constructor.
      *
-     * @param UploadsManager $uploadsManager
+     * @param MediaManager $mediaManager
      */
-    public function __construct(UploadsManager $uploadsManager)
+    public function __construct(MediaManager $mediaManager)
     {
-        $this->uploadsManager = $uploadsManager;
+        $this->mediaManager = $mediaManager;
     }
 
     public function index()
@@ -45,7 +45,7 @@ class MediaController extends Controller
     {
         $path = request('path');
 
-        return $this->uploadsManager->folderInfo($path);
+        return $this->mediaManager->folderInfo($path);
     }
 
     /**
@@ -59,7 +59,7 @@ class MediaController extends Controller
         $folder = $request->get('folder').'/'.$new_folder;
 
         try {
-            $result = $this->uploadsManager->createDirectory($folder);
+            $result = $this->mediaManager->createDirectory($folder);
 
             if ($result !== true) {
                 $error = $result ?: trans('easel::messages.create_error', ['entity' => 'directory']);
@@ -86,7 +86,7 @@ class MediaController extends Controller
         $folder = str_finish($request->get('folder'), DIRECTORY_SEPARATOR).$del_folder;
 
         try {
-            $result = $this->uploadsManager->deleteDirectory($folder);
+            $result = $this->mediaManager->deleteDirectory($folder);
             if ($result !== true) {
                 $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'folder']);
 
@@ -106,7 +106,7 @@ class MediaController extends Controller
     {
         $path = request('path');
         try {
-            $result = $this->uploadsManager->deleteFile($path);
+            $result = $this->mediaManager->deleteFile($path);
 
             if ($result !== true) {
                 $error = $result ?: trans('easel::messages.delete_error', ['entity' => 'File']);
@@ -133,14 +133,12 @@ class MediaController extends Controller
             $files = $request->file('files');
             $folder = $request->get('folder');
 
-            $response = $this->uploadsManager->saveFiles($files, $folder);
-            $errors = $this->uploadsManager->errors();
-            if($response > 0) {
-                $response = [trans('easel::messages.upload_success', [ 'entity' => $response . ' New ' . str_plural('File', $response) ])];
-            }
+            $response = $this->mediaManager->saveFiles($files, $folder);
+            $errors = $this->mediaManager->errors();
+            $response = trans('easel::messages.upload_success', ['entity' => $response.' New '.str_plural('File', $response)]);
 
             if (!empty($errors)) {
-                return $this->errorResponse($errors, $response);
+                return $this->errorResponse($errors, [$response]);
             }
 
             return ['success' => $response];
@@ -162,7 +160,7 @@ class MediaController extends Controller
         $type = $request->get('type');
 
         try {
-            $result = $this->uploadsManager->rename($path, $original, $newName);
+            $result = $this->mediaManager->rename($path, $original, $newName);
 
             if ($result !== true) {
                 $error = $result ?: trans('easel::messages.rename_error', ['entity' => $type]);
@@ -192,7 +190,7 @@ class MediaController extends Controller
         $newFile = str_finish($newPath, DIRECTORY_SEPARATOR).$currentFileName;
 
         try {
-            $result = $this->uploadsManager->move($currentFile, $newFile, ($type == 'Folder'));
+            $result = $this->mediaManager->move($currentFile, $newFile, ($type == 'Folder'));
 
             if ($result !== true) {
                 $error = $result ?: trans('easel::messages.move_error', ['entity' => $type]);
@@ -208,7 +206,7 @@ class MediaController extends Controller
 
     public function allDirectories()
     {
-        return $this->uploadsManager->allDirectories();
+        return $this->mediaManager->allDirectories();
     }
 
     /**

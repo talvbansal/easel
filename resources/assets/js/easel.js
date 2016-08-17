@@ -8,8 +8,6 @@ $(document).ready(function() {
             offset: {top: 100}
         });
     }
-
-
 });
 
 Vue.filter('moment', function(value, format) {
