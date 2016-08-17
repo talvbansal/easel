@@ -94,8 +94,7 @@
                                 <tr v-for="(path, folder) in folders" :class="[ (folder == currentFile) ? 'active' : '' ]">
                                     <td>
                                         <i class="zmdi zmdi-folder-outline"></i> &nbsp;
-                                        <a href="javascript:void(0);" @click="previewFile(folder)" @dblclick="loadFolder(path)" class="
-                                        word-wrappable" >@{{ folder }}</a>
+                                        <a href="javascript:void(0);" @click="previewFile(folder)" @dblclick="loadFolder(path)" v-touch:doubletap="loadFolder(path)" class="word-wrappable" >@{{ folder }}</a>
                                     </td>
                                     <td>-</td>
                                     <td>-</td>
@@ -105,9 +104,7 @@
                                     <td>
                                         <i v-show="isImage(file)" class="zmdi zmdi-image"></i>
                                         <i v-else class="zmdi zmdi-file-text"></i>
-                                        <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" class="
-                                            word-wrappable">@{{ file.name }}</a>
-
+                                        <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" v-touch:doubletap="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
                                     </td>
                                     <td> @{{ file.mimeType }} </td>
                                     <td> @{{ file.modified.date | moment 'L' }}</td>
@@ -157,7 +154,7 @@
                 </div>
 
                 <div class="buttons">
-                    <button type="button" class="btn btn-primary" v-show="currentFile && isModal" @click="selectFile(currentFile)">Select File</button>
+                    <button type="button" class="btn btn-primary" v-show="currentFile && !isFolder(currentFile) && isModal" @click="selectFile(currentFile)">Select File</button>
                     <button type="button" class="btn btn-default" v-if="isModal" data-dismiss="modal">Close</button>
                 </div>
 

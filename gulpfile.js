@@ -49,12 +49,14 @@ elixir(function (mix) {
         'bootstrap-select.js',
         'chosen.jquery.min.js',
         'fileinput.min.js',
+        'hammer.js',
         'jquery.bootgrid.min.js',
         'jquery.mask.min.js',
         'jquery.mCustomScrollbar.concat.min.js',
         'lightgallery.min.js',
         'simplemde.min.js',
-        'sweet-alert.min.js'
+        'sweet-alert.min.js',
+        'vue-touch.js'
     ], 'public/js/vendor.js');
 
     // App JS Files

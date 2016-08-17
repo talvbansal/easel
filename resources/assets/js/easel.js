@@ -21,6 +21,12 @@ Vue.filter('humanFileSize',  function (size) {
     return ( size / Math.pow(1024, i) ).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
 });
 
+Vue.use(VueTouch);
+VueTouch.registerCustomEvent('doubletap', {
+    type: 'tap',
+    taps: 2
+});
+
 function systemNotification(message, type){
 
     if( !type ) type = 'inverse';

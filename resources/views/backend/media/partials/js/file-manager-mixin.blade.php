@@ -15,10 +15,13 @@
             newFolderName: null,
             newItemName: null,
             allDirectories: {},
-            newFolderLocation: null
+            newFolderLocation: null,
+            isMobile : false
         },
 
         ready: function () {
+            this.isMobile = ( $('html').hasClass('ismobile') );
+
             // Create Folder
             var createFolderModal = $('#easel-new-folder');
             createFolderModal.on('shown.bs.modal', function () {
@@ -130,7 +133,7 @@
                     return null;
                 }
 
-                return ( this.isFolder(item) ) ? item : item;
+                return ( this.isFolder(item) ) ? item : item.name;
             },
 
             previewFile: function (file) {
@@ -284,9 +287,7 @@
 
             },
 
-            selectFile: function () {
-
-            }
+            selectFile: function ( ) { }
         }
     };
 </script>
