@@ -135,10 +135,12 @@ class MediaController extends Controller
 
             $response = $this->uploadsManager->saveFiles($files, $folder);
             $errors = $this->uploadsManager->errors();
-            $response = trans('easel::messages.upload_success', ['entity' => $response.' New '.str_plural('File', $response)]);
+            if($response > 0) {
+                $response = [trans('easel::messages.upload_success', [ 'entity' => $response . ' New ' . str_plural('File', $response) ])];
+            }
 
             if (!empty($errors)) {
-                return $this->errorResponse($errors, [$response]);
+                return $this->errorResponse($errors, $response);
             }
 
             return ['success' => $response];
