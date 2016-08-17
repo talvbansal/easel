@@ -4,7 +4,7 @@ namespace Easel\Http\Controllers\Auth;
 
 use Easel\Http\Controllers\Controller;
 use Easel\Models\BlogUserInterface;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Validator;
@@ -12,7 +12,7 @@ use Validator;
 /**
  * Class AuthController.
  */
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesUsers, ThrottlesLogins;
 
     /**
      * @var string

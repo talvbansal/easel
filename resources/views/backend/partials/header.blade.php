@@ -26,8 +26,11 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ url('/logout') }}"><i class="zmdi zmdi-power"></i>Sign out</a>
-                        </li>
+                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="zmdi zmdi-power"></i>Sign out
+                            </a>
+                        </li>s
+                        {!! Form::open(['url' => url('/logout'), 'id' => 'logout-form', 'class' => 'hidden' ]) !!} {!! Form::close() !!}
                     </ul>
                 </li>
             </ul>

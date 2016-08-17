@@ -63,7 +63,7 @@ Route::group(['middleware' => ['web']], function () {
     | Logging In/Out Routes
     |--------------------------------------------------------------------------
     */
-    Route::get('/login', 'Auth\AuthController@getLogin');
-    Route::post('/login', 'Auth\AuthController@postLogin');
-    Route::get('/logout', 'Auth\AuthController@getLogout');
+    Route::get('/login', 'Auth\LoginController@getLogin');
+    Route::post('/login', 'Auth\LoginController@postLogin');
+    Route::post('/logout', 'Auth\LoginController@logout');
 });

@@ -1,20 +1,14 @@
 {
   "name": "talv86/Easel",
-  "description": "A package based off the minimal blogging app 'Canvas' by Todd Austin (commit #3c59c55)",
-  "keywords": ["blog", "laravel", "easel", "canvas", "markdown", "developers", "minimal"],
+  "description": "A minimal blogging package for laravel",
+  "keywords": ["blog", "laravel", "easel", "markdown", "developers", "minimal"],
   "license": "MIT",
   "authors": [
     {
       "name": "Talvinder Bansal",
       "email": "talvbansal@hotmail.com",
       "role": "Developer"
-    },
-    {
-      "name": "Todd Austin",
-      "email": "austin.todd.j@gmail.com",
-      "role": "Developer"
     }
-
   ],
   "require": {
     "php": ">=5.6",
@@ -23,7 +17,7 @@
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
     "proengsoft/laravel-jsvalidation": "1.0.*",
-    "laravelcollective/html": "^5.2"
+    "laravelcollective/html": "^5.3"
   },
   "require-dev": {
     "symfony/dom-crawler": "~3.0",
@@ -34,7 +28,7 @@
     "phpspec/phpspec": "~2.1",
     "illuminate/support": "^5.2",
     "illuminate/routing": "^5.2",
-    "orchestra/testbench": "~3.2"
+    "orchestra/testbench": "~3.3"
   },
   "autoload": {
     "psr-4": {
