@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->boolean('is_draft')->default(false);
             $table->string('layout')->default('vendor.easel.frontend.blog.post');
             $table->timestamps();
-            $table->timestamp('published_at')->index();
+            $table->timestamp('published_at')->nullable()->index();
         });
     }
 

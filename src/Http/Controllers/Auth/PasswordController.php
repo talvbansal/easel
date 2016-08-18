@@ -28,24 +28,4 @@ class PasswordController extends Controller
     {
         $this->middleware('guest');
     }
-
-    public function getEmail()
-    {
-        return redirect('/');
-    }
-
-    public function postEmail()
-    {
-        return redirect('/');
-    }
-
-    public function getReset()
-    {
-        return redirect('/');
-    }
-
-    public function postReset()
-    {
-        return redirect('/');
-    }
 }

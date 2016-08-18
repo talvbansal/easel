@@ -59,22 +59,3 @@ function checked($value)
 {
     return $value ? 'checked' : '';
 }
-
-/**
- * Return the img url for headers.
- *
- * @param null $value
- *
- * @return mixed|null|string
- */
-function page_image($value = null)
-{
-    if (empty($value)) {
-        $value = config('easel.page_image');
-    }
-    if (!starts_with($value, 'http') && $value[0] !== '/') {
-        $value = config('easel.uploads.webpath').'/'.$value;
-    }
-
-    return $value;
-}

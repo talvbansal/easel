@@ -31,8 +31,11 @@ Route::group(['middleware' => ['web']], function () {
         // When the user model is needed resolve it from the interface bound in the IOC container that is defined in the service provider
         Route::model('user', \Easel\Models\BlogUserInterface::class);
 
-        Route::resource('admin/post', 'PostController', ['except' => 'show']);
-        Route::resource('admin/tag', 'TagController', ['except' => 'show']);
+        Route::group(['as' => 'admin.'], function () {
+            Route::resource('admin/post', 'PostController', [ 'except' => 'show' ]);
+            Route::resource('admin/tag', 'TagController', [ 'except' => 'show' ]);
+            Route::resource('admin/search', 'SearchController');
+        });
 
         // Media Manager Routes
         Route::get('/admin/media', 'MediaController@index');
@@ -54,8 +57,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::put('admin/profile/{user}/update-password', 'ProfileController@updatePassword')->name('update.password');
         });
 
-        // Search Routes
-        Route::resource('admin/search', 'SearchController');
     });
 
     /*
@@ -63,7 +64,7 @@ Route::group(['middleware' => ['web']], function () {
     | Logging In/Out Routes
     |--------------------------------------------------------------------------
     */
-    Route::get('/login', 'Auth\AuthController@getLogin');
-    Route::post('/login', 'Auth\AuthController@postLogin');
-    Route::get('/logout', 'Auth\AuthController@getLogout');
+    Route::get('/login', 'Auth\LoginController@getLogin');
+    Route::post('/login', 'Auth\LoginController@login');
+    Route::get('/logout', 'Auth\LoginController@logout');
 });

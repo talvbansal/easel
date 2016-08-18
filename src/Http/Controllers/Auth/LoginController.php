@@ -4,15 +4,14 @@ namespace Easel\Http\Controllers\Auth;
 
 use Easel\Http\Controllers\Controller;
 use Easel\Models\BlogUserInterface;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Validator;
 
 /**
  * Class AuthController.
  */
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +23,7 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesUsers;
 
     /**
      * @var string
@@ -46,39 +45,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return \Validator::make($data, [
-            'name'     => 'required|max:255',
-            'email'    => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function getRegister()
-    {
-        return redirect('/');
-    }
-
-    /**
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function postRegister()
-    {
-        return redirect('/');
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
@@ -90,7 +57,11 @@ class AuthController extends Controller
     public function authenticated(Request $request, BlogUserInterface $user)
     {
         \Session::set('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
+        return redirect()->intended($this->redirectTo);
+    }
 
-        return redirect()->intended($this->redirectPath());
+    public function getLogin()
+    {
+        return view( $this->loginView );
     }
 }

@@ -25,6 +25,11 @@ class UpdateUsersTable extends Migration
         }
 
         Schema::table('users', function (Blueprint $table) {
+
+            if (Schema::hasColumn('users', 'name')) {
+                $table->string('name')->nullable()->change();
+            }
+
             if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('first_name')->nullable();
             }
