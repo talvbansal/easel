@@ -6,9 +6,12 @@ use Carbon\Carbon;
 use Easel\Services\Parsedowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
+    use Searchable;
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -33,6 +36,13 @@ class Post extends Model
         'published_at',
         'author_id',
     ];
+
+    /**
+     * Searchable items
+     *
+     * @var array
+     */
+    public $searchable = ['title', 'subtitle', 'content_raw', 'meta_description'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

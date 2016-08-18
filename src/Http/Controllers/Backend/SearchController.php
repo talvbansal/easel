@@ -15,9 +15,10 @@ class SearchController extends Controller
      */
     public function index()
     {
-        $params = \Request::get('search');
-        $posts = Post::where('title', 'LIKE', '%'.$params.'%')->get();
-        $tags = Tag::where('title', 'LIKE', '%'.$params.'%')->get();
+        $search = request('search');
+
+        $posts = Post::search( $search )->get();
+        $tags  = Tag::search( $search )->get();
 
         return view('easel::backend.search.index', compact('params', 'posts', 'tags'));
     }

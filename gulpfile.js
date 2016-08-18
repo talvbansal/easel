@@ -8,6 +8,13 @@ elixir(function (mix) {
     mix.sass('blog/blog.scss');
     mix.sass('easel.scss');
 
+    // App CSS Files
+    mix.styles([
+        'custom.css',
+        'app-1.css',
+        'app-2.css'
+    ], 'public/css/app.css');
+
     // Vendor Files
     mix.copy('resources/assets/vendor/', 'public/vendor');
 
@@ -24,13 +31,6 @@ elixir(function (mix) {
         'sweet-alert.min.css',
         'simplemde.min.css'
     ], 'public/css/vendor.css');
-
-    // App CSS Files
-    mix.styles([
-        'custom.css',
-        'app-1.css',
-        'app-2.css'
-    ], 'public/css/app.css');
 
     // Core Vendor JS Files
 

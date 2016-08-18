@@ -3,9 +3,12 @@
 namespace Easel\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Tag extends Model
 {
+    use Searchable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -15,6 +18,13 @@ class Tag extends Model
         'tag', 'title', 'subtitle', 'meta_description',
         'reverse_direction', 'created_at', 'updated_at',
     ];
+
+    /**
+     * Searchable items
+     *
+     * @var array
+     */
+    public $searchable = ['title', 'tag', 'meta_description'];
 
     /**
      * Get the posts relationship.

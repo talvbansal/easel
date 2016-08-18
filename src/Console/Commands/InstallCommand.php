@@ -97,7 +97,7 @@ class InstallCommand extends Command
         \Artisan::call('migrate', $options);
         $this->line('Database updated! <info>✔</info>');
         $this->appendSeederToMasterFile();
-        exec('composer dump');
+        @system('composer dump');
     }
 
     private function appendSeederToMasterFile()
