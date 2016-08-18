@@ -32,8 +32,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::model('user', \Easel\Models\BlogUserInterface::class);
 
         Route::group(['as' => 'admin.'], function () {
-            Route::resource('admin/post', 'PostController', [ 'except' => 'show' ]);
-            Route::resource('admin/tag', 'TagController', [ 'except' => 'show' ]);
+            Route::resource('admin/post', 'PostController', ['except' => 'show']);
+            Route::resource('admin/tag', 'TagController', ['except' => 'show']);
             Route::resource('admin/search', 'SearchController');
         });
 
@@ -56,7 +56,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('admin/profile/{user}/password', 'ProfileController@editPassword')->name('edit.password');
             Route::put('admin/profile/{user}/update-password', 'ProfileController@updatePassword')->name('update.password');
         });
-
     });
 
     /*
