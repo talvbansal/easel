@@ -7,10 +7,8 @@
  */
 namespace Easel\Console\Commands;
 
-use Easel\Models\Post;
 use Easel\Models\Tag;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 class UpdateCommand extends Command
 {
