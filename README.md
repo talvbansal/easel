@@ -2,18 +2,32 @@
 #### A minimal blogging package for Laravel
 
 <div style="text-align:center">
-
-![Editor](https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png)
-    
+    <img src="https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
 </div>
+
+<br>
+
 <div style="text-align:center">
 
-[![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
-[![Style CI](https://styleci.io/repos/63001540/shield?style=flat)](https://styleci.io/repos/63001540)
-[![Issues](https://img.shields.io/github/issues/talv86/easel.svg)](https://github.com/talv86/easel/issues)
-[![Downloads](https://poser.pugx.org/talv86/easel/downloads)](https://packagist.org/packages/talv86/easel)
-[![License](https://poser.pugx.org/talv86/easel/license)](https://github.com/talv86/easel/blob/master/licence)
-
+    <a href="https://travis-ci.org/talv86/easel" target="_blank">
+        <img src="https://api.travis-ci.org/talv86/easel.svg" alt="Build Status" />
+    </a>
+    
+    <a href="https://styleci.io/repos/63001540" target="_blank">
+        <img src="https://styleci.io/repos/63001540/shield?style=flat" alt="Style CI" />
+    </a>
+    
+    <a href="https://github.com/talv86/easel/issues" target="_blank">
+        <img src="https://img.shields.io/github/issues/talv86/easel.svg" alt="Issues" />
+    </a>
+    
+    <a href="https://packagist.org/packages/talv86/easel" target="_blank">
+        <img src="https://poser.pugx.org/talv86/easel/downloads" alt="Downloads" />
+    </a>
+    
+    <a href="https://github.com/talv86/easel/blob/master/licence" target="_blank">
+        <img src="https://poser.pugx.org/talv86/easel/license" alt="License" />
+    </a>
 </div>
 
 ### Installation
