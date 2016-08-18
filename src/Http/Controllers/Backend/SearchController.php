@@ -8,6 +8,7 @@ use Easel\Models\Tag;
 
 class SearchController extends Controller
 {
+
     /**
      * Display search result.
      *
@@ -19,11 +20,11 @@ class SearchController extends Controller
 
         try {
             $posts = Post::search($params)->get();
-            $tags = Tag::search($params)->get();
+            $tags  = Tag::search($params)->get();
         } catch (\Exception $e) {
             //fallback to basic search
-            $posts = Post::where('title', 'LIKE', '%'.$params.'%')->get();
-            $tags = Tag::where('title', 'LIKE', '%'.$params.'%')->get();
+            $posts = Post::where('title', 'LIKE', '%' . $params . '%')->get();
+            $tags  = Tag::where('title', 'LIKE', '%' . $params . '%')->get();
         }
 
         return view('easel::backend.search.index', compact('params', 'posts', 'tags'));

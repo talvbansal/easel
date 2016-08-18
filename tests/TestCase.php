@@ -26,9 +26,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $this->withFactories(realpath(__DIR__.'/../database/factories'));
 
         $this->artisan('easel:install');
-
-        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
-        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
     }
 
     public function tearDown()
