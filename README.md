@@ -1,11 +1,15 @@
 # Easel
-#### A minimal blogging package for laravel apps
+#### A minimal blogging package for Laravel
+
+<div style="text-align:center">
 
 [![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
 [![Style CI](https://styleci.io/repos/63001540/shield?style=flat)](https://styleci.io/repos/63001540)
 [![Issues](https://img.shields.io/github/issues/talv86/easel.svg)](https://github.com/talv86/easel/issues)
 [![Downloads](https://poser.pugx.org/talv86/easel/downloads)](https://packagist.org/packages/talv86/easel)
 [![License](https://poser.pugx.org/talv86/easel/license)](https://github.com/talv86/easel/blob/master/licence)
+
+</div>
 
 ### Installation
 
@@ -32,14 +36,24 @@
     ```
     php artisan db:seed
     ```
+5. Update your `config/auth.php` file to use Easel's built in User Model (`Easel\Models\User`) 
 
-5. Sign into Easel using the default credentials:
+        'providers' => [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => Easel\Models\User::class,
+            ],
+        ],
+        
+    Or alternatively configure Easel to use your own [Custom User Model](#Custom-Model)
+
+6. Sign into Easel using the default credentials:
     - Email `admin@easel.com`
     - Password `password`
     
-6. Head over to the profile page and update your details and password!
+7. Head over to the profile page and update your details and password!
 
-7. Start blogging! 
+8. Start blogging! 
 
 ### Updates 
 
@@ -65,7 +79,7 @@ Every app is different and Easel has been designed to be customisable. Be sure t
 
 - ##### Built In Model
 
-- If you want to use the build in User model (`Easel\Models\User`) you'll need to set it in the config/auth.php file
+- If you want to use the build in User model (`Easel\Models\User`) you'll need to set it in the `config/auth.php` file
 
         'providers' => [
             'users' => [

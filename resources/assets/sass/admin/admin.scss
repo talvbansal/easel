@@ -46,14 +46,26 @@
 // Full Screen SimpleMde updates to the z-index so that it sits above the title-bar
 .editor-toolbar.fullscreen {
   z-index: 99;
+  top: 70px;
 }
 
 .CodeMirror-fullscreen {
   z-index: 99;
+  top: 120px;
+}
+
+.editor-toolbar.fullscreen {
+  &::after {
+    background: none;
+  }
+  &::before {
+    background: none;
+  }
 }
 
 .editor-preview-side.editor-preview-active-side {
   z-index: 99;
+  top: 120px;
   img {
     @extend .img-responsive;
   }
@@ -129,18 +141,13 @@
 
     }
 
-    #easel-file-browser {
-      .breadcrumb {
-        padding: 20px 8px;
-      }
-    }
-
     .word-wrappable {
       word-wrap: break-word;
     }
 
+    $editor-height : 60vh;
     .easel-file-picker-list {
-      height: calc(70vh - 10rem);
+      height: $editor-height;
       overflow-y: scroll;
 
       .table {
@@ -155,6 +162,9 @@
             td {
               transition: background-color 0.15s ease-in-out 0.05s;
               padding-left: 7px;
+              a{
+                margin-left: 0.5em;
+              }
             }
 
             th {
@@ -169,7 +179,7 @@
     }
 
     .easel-file-picker-sidebar {
-      height: calc(70vh - 10rem);
+      height: $editor-height;
       overflow-y: auto;
       border-left: 1px solid rgb(240, 240, 240);
     }

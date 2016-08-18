@@ -10381,7 +10381,7 @@ h6 small,
   -ms-user-select: none;
   user-select: none;
   position: fixed;
-  z-index: 11;
+  z-index: 101;
   width: 100%;
   left: 0;
   top: 0;
@@ -10519,7 +10519,7 @@ h6 small,
  * For Header type 2 only
  * You may remove these if you opt header 1
  */
-
+/*
 #header-2 {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   position: relative;
@@ -10598,7 +10598,7 @@ h6 small,
   bottom: 1px;
   color: #fff;
   font-size: 22px;
-}
+}*/
 
 .ha-menu > ul {
   list-style: none;

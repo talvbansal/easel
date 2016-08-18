@@ -93,7 +93,7 @@
                                 <tbody>
                                 <tr v-for="(path, folder) in folders" :class="[ (folder == currentFile) ? 'active' : '' ]">
                                     <td>
-                                        <i class="zmdi zmdi-folder-outline"></i> &nbsp;
+                                        <i class="zmdi zmdi-folder-outline"></i>
                                         <a href="javascript:void(0);" @click="previewFile(folder)" @dblclick="loadFolder(path)" v-touch:doubletap="loadFolder(path)" class="word-wrappable" >@{{ folder }}</a>
                                     </td>
                                     <td>-</td>
@@ -102,7 +102,7 @@
 
                                 <tr v-for="file in files" :class="[ (file == currentFile) ? 'active' : '' ]">
                                     <td>
-                                        <i v-show="isImage(file)" class="zmdi zmdi-image"></i>
+                                        <i v-if="isImage(file)" class="zmdi zmdi-image"></i>
                                         <i v-else class="zmdi zmdi-file-text"></i>
                                         <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" v-touch:doubletap="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
 

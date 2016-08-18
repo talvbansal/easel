@@ -24,7 +24,7 @@
                     toolbar: [
                         "bold", "italic", "heading", "|",
                         "quote", "unordered-list", "ordered-list", "|",
-                        'link',
+                        'link', 'image',
                         {
                             name: 'insertImage',
                             action: function (editor) {
@@ -32,8 +32,8 @@
                                 this.openPicker();
 
                             }.bind(this),
-                            className: "fa fa-image",
-                            title: "Insert Image"
+                            className: "zmdi zmdi-collection-image-o",
+                            title: "Insert Media Browser Image"
                         },
                         "|",
                         "preview", "side-by-side", "fullscreen", "|"
