@@ -6,7 +6,6 @@ use Easel\Http\Controllers\Controller;
 use Easel\Models\BlogUserInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Validator;
 
 /**
  * Class AuthController.
@@ -57,11 +56,12 @@ class LoginController extends Controller
     public function authenticated(Request $request, BlogUserInterface $user)
     {
         \Session::set('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
+
         return redirect()->intended($this->redirectTo);
     }
 
     public function getLogin()
     {
-        return view( $this->loginView );
+        return view($this->loginView);
     }
 }

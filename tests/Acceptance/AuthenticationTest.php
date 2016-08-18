@@ -41,7 +41,7 @@ class AuthenticationTest extends TestCase
              ->seePageIs('/admin/post');
     }
 
-    /**
+    /*
      * Test the ability for a user to log out of the application.
      *
      * @return void
