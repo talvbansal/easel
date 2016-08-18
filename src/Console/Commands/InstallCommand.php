@@ -4,6 +4,8 @@
 
 namespace Easel\Console\Commands;
 
+use Easel\Models\Post;
+use Easel\Models\Tag;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -97,6 +99,11 @@ class InstallCommand extends Command
         \Artisan::call('migrate', $options);
         $this->line('Database updated! <info>✔</info>');
         $this->appendSeederToMasterFile();
+
+        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
+        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
+        $this->line('Search index files created <info>✔</info>');
+
         @system('composer dump');
     }
 
@@ -108,13 +115,17 @@ class InstallCommand extends Command
         //Not sure the best way to do this
         if (file_exists($seeder)) {
             $current_contents = file_get_contents($seeder);
-            $magic = '/((?:.|\s)*?\s*run\(\)\s*{)((?:.|\s)*)(}\s*})$/m';
-            preg_match($magic, $current_contents, $matches);
-            $new_content = $matches[1].$matches[2]."\n\t\t".$addition."\n\t".$matches[3];
+            //Only add the seeder in if it doesn't already exist
+            if(  strpos($current_contents, $addition) !== false ) {
+                $magic = '/((?:.|\s)*?\s*run\(\)\s*{)((?:.|\s)*)(}\s*})$/m';
+                preg_match($magic, $current_contents, $matches);
+                $new_content = $matches[1] . $matches[2] . "\n\t\t" . $addition . "\n\t" . $matches[3];
 
-            return file_put_contents($seeder, $new_content);
-        } else {
-            return false;
+                return file_put_contents($seeder, $new_content);
+            }
         }
+
+        return false;
+
     }
 }

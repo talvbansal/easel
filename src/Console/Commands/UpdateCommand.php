@@ -7,7 +7,10 @@
  */
 namespace Easel\Console\Commands;
 
+use Easel\Models\Post;
+use Easel\Models\Tag;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class UpdateCommand extends Command
 {
@@ -62,5 +65,9 @@ class UpdateCommand extends Command
 
         \Artisan::call('migrate');
         $this->line('Database updated! <info>✔</info>');
+
+        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
+        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
+        $this->line('Search index files updated <info>✔</info>');
     }
 }
