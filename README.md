@@ -1,13 +1,13 @@
 # Easel
 #### A minimal blogging package for Laravel
 
-<div style="text-align:center">
+<div align="center">
     <img src="https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
 </div>
 
 <br>
 
-<div style="text-align:center">
+<div align="center">
 
     <a href="https://travis-ci.org/talv86/easel" target="_blank">
         <img src="https://api.travis-ci.org/talv86/easel.svg" alt="Build Status" />
@@ -29,6 +29,13 @@
         <img src="https://poser.pugx.org/talv86/easel/license" alt="License" />
     </a>
 </div>
+
+### Requirements
+
+- [PHP](https://php.net) >= 5.6
+- [Composer](https://getcomposer.org)
+- An exsiting [Laravel 5.3 ](https://laravel.com/docs/master/installation) project
+
 
 ### Installation
 
