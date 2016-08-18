@@ -17,6 +17,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
+use TeamTNT\Scout\TNTSearchScoutServiceProvider;
 
 /**
  * Class EaselServiceProvider.
@@ -133,7 +134,7 @@ class EaselServiceProvider extends ServiceProvider
         //register service providers
         $this->app->register(HtmlServiceProvider::class);
         $this->app->register(JsValidationServiceProvider::class);
-        $this->app->register(TeamTNT\Scout\TNTSearchScoutServiceProvider::class);
+        $this->app->register(TNTSearchScoutServiceProvider::class);
 
         //load facades
         $loader = AliasLoader::getInstance();
