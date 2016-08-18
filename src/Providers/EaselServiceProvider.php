@@ -15,6 +15,7 @@ use Easel\Console\Commands\UpdateCommand;
 use Easel\Models\BlogUserInterface;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\ScoutServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
@@ -134,6 +135,7 @@ class EaselServiceProvider extends ServiceProvider
         //register service providers
         $this->app->register(HtmlServiceProvider::class);
         $this->app->register(JsValidationServiceProvider::class);
+        $this->app->register(ScoutServiceProvider::class);
         $this->app->register(TNTSearchScoutServiceProvider::class);
 
         //load facades
