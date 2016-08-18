@@ -1,8 +1,10 @@
+{{-- This mixin provides almost all of the core file browser functionality --}}
 <script>
-    var fileManagerMixin = {
+    var FileManagerMixin = {
         data: {
             isModal: false,
             currentFile: null,
+            selectedFile: null,
             currentPath: null,
             folderName: null,
             folders: {},
@@ -13,11 +15,13 @@
             newFolderName: null,
             newItemName: null,
             allDirectories: {},
-            newFolderLocation: null
+            newFolderLocation: null,
+            isMobile : false
         },
 
-        ready: function()
-        {
+        ready: function () {
+            this.isMobile = ( $('html').hasClass('ismobile') );
+
             // Create Folder
             var createFolderModal = $('#easel-new-folder');
             createFolderModal.on('shown.bs.modal', function () {
@@ -58,13 +62,7 @@
 
         computed: {
             itemsCount: function () {
-                return this.visibleFiles.length + Object.keys(this.folders).length;
-            },
-
-            visibleFiles: function () {
-                return this.files.filter(function (item) {
-                    return (item.name.substring(0, 1) != ".");
-                });
+                return this.files.length + Object.keys(this.folders).length;
             }
         },
 
@@ -128,6 +126,16 @@
                 return (typeof file == 'string');
             },
 
+            getItemName: function( item )
+            {
+                if(! item)
+                {
+                    return null;
+                }
+
+                return ( this.isFolder(item) ) ? item : item.name;
+            },
+
             previewFile: function (file) {
                 this.currentFile = file;
             },
@@ -172,8 +180,7 @@
                 var form = new FormData();
                 var files = event.target.files || event.dataTransfer.files;
 
-                for( var key in files )
-                {
+                for (var key in files) {
                     form.append('files[' + key + ']', files[key]);
                 }
 
@@ -183,7 +190,7 @@
             },
 
             renameItem: function () {
-                var original = ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name;
+                var original = this.getItemName( this.currentFile);
 
                 var data = {
                     'path': this.currentPath,
@@ -215,7 +222,7 @@
             },
 
             moveItem: function () {
-                var currentItem = ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name
+                var currentItem = this.getItemName( this.currentFile);
 
                 var data = {
                     'path': this.currentPath,
@@ -238,12 +245,12 @@
                             if (typeof callback == 'function') callback();
                         }.bind(this),
                         function (response) {
+                            this.loadFolder(this.currentPath);
                             var error = (response.data.error) ? response.data.error : response.statusText;
-                            systemNotification(error, 'danger');
+                            this.notify(error, 'danger');
+                            if (response.data.notices) this.notify(response.data.notices);
 
                             this.$set('loading', false);
-                            this.$set('currentFile', null);
-                            this.$set('selectedFile', null);
                         }
                 );
             },
@@ -258,17 +265,29 @@
 
                         }.bind(this),
                         function (response) {
+                            this.loadFolder(this.currentPath);
                             var error = (response.data.error) ? response.data.error : response.statusText;
-                            systemNotification(error, 'danger');
-
+                            this.notify(error, 'danger');
+                            if (response.data.notices) this.notify(response.data.notices);
                             this.$set('loading', false);
                         }
                 );
 
-                this.loading = false;
             },
 
-            selectFile: function() { }
+            notify: function (notices, type) {
+                if (typeof notices == 'object') {
+                    for (var i = 0, len = notices.length; i < len; i++) {
+                        systemNotification(notices[i], type);
+                    }
+                    return
+
+                }
+                systemNotification(notices, type);
+
+            },
+
+            selectFile: function ( ) { }
         }
     };
 </script>

@@ -23,6 +23,7 @@ class PostCreateRequest extends Request
     {
         return [
             'title'        => 'required',
+            'slug'         => 'required',
             'subtitle'     => 'required',
             'content'      => 'required',
             'published_at' => 'required',
@@ -37,6 +38,7 @@ class PostCreateRequest extends Request
     {
         return [
             'title'            => $this->title,
+            'slug'             => $this->slug,
             'subtitle'         => $this->subtitle,
             'page_image'       => $this->page_image,
             'content_raw'      => $this->get('content'),

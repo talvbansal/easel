@@ -22,7 +22,7 @@ class UploadFileRequest extends Request
     public function rules()
     {
         return [
-            'files'  => 'required',
+            'files'  => 'required|array',
             'folder' => 'required',
         ];
     }

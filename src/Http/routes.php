@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
         // Media Manager Routes
         Route::get('/admin/media', 'MediaController@index');
         Route::get('/admin/browser/index', 'MediaController@ls');
-        Route::post('admin/browser/file', 'MediaController@uploadFile');
+        Route::post('admin/browser/file', 'MediaController@uploadFiles');
         Route::delete('/admin/browser/delete', 'MediaController@deleteFile');
         Route::post('/admin/browser/folder', 'MediaController@createFolder');
         Route::delete('/admin/browser/folder', 'MediaController@deleteFolder');

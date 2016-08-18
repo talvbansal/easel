@@ -11,7 +11,7 @@
 
                 <div class="form-group">
                     <label>Current name</label>
-                    <p class="form-control-static">@{{ ( isFolder(currentFile) )? currentFile : currentFile.name }}</p>
+                    <p class="form-control-static">@{{ this.getItemName(this.currentFile) }}</p>
                 </div>
 
                 <div class="form-group">

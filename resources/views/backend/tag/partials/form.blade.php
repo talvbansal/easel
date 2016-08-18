@@ -1,5 +1,3 @@
-<br>
-
 @if(isset($data['tag']))
     <div class="form-group">
         <div class="fg-line">

@@ -5,9 +5,10 @@ namespace Easel\Services;
 use Carbon\Carbon;
 use Dflydev\ApacheMimeTypes\PhpRepository;
 use Illuminate\Filesystem\FilesystemAdapter;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class UploadsManager
+class MediaManager
 {
     /**
      * @var FilesystemAdapter
@@ -18,6 +19,11 @@ class UploadsManager
      * @var PhpRepository
      */
     protected $mimeDetect;
+
+    /**
+     * @var array
+     */
+    private $errors = [];
 
     /**
      * UploadsManager constructor.
@@ -56,7 +62,10 @@ class UploadsManager
         }
         $files = [];
         foreach ($this->disk->files($folder) as $path) {
-            $files[] = $this->fileDetails($path);
+            // Don't show hidden files or folders
+            if (!starts_with(last(explode(DIRECTORY_SEPARATOR, $path)), '.')) {
+                $files[] = $this->fileDetails($path);
+            }
         }
 
         return compact('folder', 'folderName', 'breadcrumbs', 'subfolders', 'files');
@@ -110,12 +119,13 @@ class UploadsManager
         $path = '/'.ltrim($path, '/');
 
         return [
-            'name'     => basename($path),
-            'fullPath' => $path,
-            'webPath'  => $this->fileWebpath($path),
-            'mimeType' => $this->fileMimeType($path),
-            'size'     => $this->fileSize($path),
-            'modified' => $this->fileModified($path),
+            'name'         => basename($path),
+            'fullPath'     => $path,
+            'webPath'      => $this->fileWebpath($path),
+            'mimeType'     => $this->fileMimeType($path),
+            'size'         => $this->fileSize($path),
+            'modified'     => $this->fileModified($path),
+            'relativePath' => $this->fileRelativePath($path),
         ];
     }
 
@@ -128,7 +138,7 @@ class UploadsManager
      */
     public function fileWebpath($path)
     {
-        $path = rtrim(config('easel.uploads.webpath'), '/').'/'.ltrim($path, '/');
+        $path = $this->fileRelativePath($path);
 
         return url($path);
     }
@@ -227,13 +237,15 @@ class UploadsManager
      * @param $path
      * @param $content
      *
-     * @return bool|string
+     * @return bool
      */
     public function saveFile($path, $content)
     {
         $path = $this->cleanFolder($path);
         if ($this->disk->exists($path)) {
-            return 'File already exists.';
+            $this->errors[] = 'File '.$path.' already exists.';
+
+            return false;
         }
 
         return $this->disk->put($path, $content);
@@ -302,5 +314,48 @@ class UploadsManager
         }
 
         return $this->disk->getDriver()->rename($currentFile, $newFile);
+    }
+
+    public function errors()
+    {
+        return $this->errors;
+    }
+
+    /**
+     * @param array  $files
+     * @param string $folder
+     *
+     * @return int
+     */
+    public function saveFiles(array $files, $folder = '/')
+    {
+        $uploaded = 0;
+        /** @var UploadedFile $file */
+        foreach ($files as $file) {
+            if (!$file->isValid()) {
+                $this->errors[] = trans('easel::messages.upload_error', ['entity' => $file->getClientOriginalName()]);
+
+                continue;
+            }
+
+            $fileName = $file->getClientOriginalName();
+            $path = str_finish($folder, DIRECTORY_SEPARATOR).$fileName;
+            $content = file_get_contents($file);
+            if ($this->saveFile($path, $content)) {
+                $uploaded++;
+            }
+        }
+
+        return $uploaded;
+    }
+
+    /**
+     * @param $path
+     *
+     * @return string
+     */
+    protected function fileRelativePath($path)
+    {
+        return rtrim(config('easel.uploads.webpath'), '/').'/'.ltrim($path, '/');
     }
 }

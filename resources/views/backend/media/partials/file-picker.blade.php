@@ -94,19 +94,17 @@
                                 <tr v-for="(path, folder) in folders" :class="[ (folder == currentFile) ? 'active' : '' ]">
                                     <td>
                                         <i class="zmdi zmdi-folder-outline"></i> &nbsp;
-                                        <a href="javascript:void(0);" @click="previewFile(folder)" @dblclick="loadFolder(path)" class="
-                                        word-wrappable" >@{{ folder }}</a>
+                                        <a href="javascript:void(0);" @click="previewFile(folder)" @dblclick="loadFolder(path)" v-touch:doubletap="loadFolder(path)" class="word-wrappable" >@{{ folder }}</a>
                                     </td>
                                     <td>-</td>
                                     <td>-</td>
                                 </tr>
 
-                                <tr v-for="file in visibleFiles" :class="[ (file == currentFile) ? 'active' : '' ]">
+                                <tr v-for="file in files" :class="[ (file == currentFile) ? 'active' : '' ]">
                                     <td>
                                         <i v-show="isImage(file)" class="zmdi zmdi-image"></i>
                                         <i v-else class="zmdi zmdi-file-text"></i>
-                                        <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" class="
-                                            word-wrappable">@{{ file.name }}</a>
+                                        <a href="javascript:void(0);" @click="previewFile(file)" @dblclick="selectFile(file)" v-touch:doubletap="selectFile(file)" class="word-wrappable">@{{ file.name }}</a>
 
                                     </td>
                                     <td> @{{ file.mimeType }} </td>
@@ -122,7 +120,7 @@
                     {{-- Sidebar --}}
                     <div v-if="currentFile && !isFolder(currentFile)" class="easel-file-picker-sidebar hidden-xs col-sm-3">
 
-                        <img v-if="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px"/>
+                        <img v-if="isImage(currentFile)" id="easel-preview-image" class="img-responsive center-block" :src="currentFile.webPath" style="max-height: 200px" transition="fade"/>
 
                         <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
                             <tbody>
@@ -157,7 +155,7 @@
                 </div>
 
                 <div class="buttons">
-                    <button type="button" class="btn btn-primary" v-show="currentFile && isModal" @click="selectFile(currentFile)">Select File</button>
+                    <button type="button" class="btn btn-primary" v-show="currentFile && !isFolder(currentFile) && isModal" @click="selectFile(currentFile)">Select File</button>
                     <button type="button" class="btn btn-default" v-if="isModal" data-dismiss="modal">Close</button>
                 </div>
 

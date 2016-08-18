@@ -70,9 +70,14 @@
 }
 
 .CodeMirror {
-  max-height: 70vh;
+  height: 60vh;
+
   &.CodeMirror-fullscreen {
-    max-height: 100vh;
+    max-height: none;
+  }
+
+  &.CodeMirror-scroll {
+    max-height: none;
   }
 }
 
@@ -101,7 +106,7 @@
     width: auto;
 
     &.modal-dialog{
-      margin-top: 6rem;
+      margin-top: 2rem;
     }
 
     .modal-header {

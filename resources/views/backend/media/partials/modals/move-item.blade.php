@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Item name</label>
-                    <p class="static">@{{ ( this.isFolder(this.currentFile) ) ? this.currentFile : this.currentFile.name }}</p>
+                    <p class="static">@{{ this.getItemName(this.currentFile) }}</p>
                 </div>
 
                 <div class="form-group">

@@ -4,6 +4,7 @@
     "laravel-elixir": "^6.0.0-9",
     "simplemde": "^1.11.2",
     "vue": "^1.0.26",
-    "vue-resource": "^0.9.3"
+    "vue-resource": "^0.9.3",
+    "vue-touch": "^1.1.0"
   }
 }
