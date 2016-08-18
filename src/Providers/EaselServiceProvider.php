@@ -65,6 +65,11 @@ class EaselServiceProvider extends ServiceProvider
             EASEL_BASE_PATH.'/config/easel.php', 'easel'
         );
 
+        // Merge any new config items into the existing config file
+        $this->mergeConfigFrom(
+            EASEL_BASE_PATH.'/config/scout.php', 'scout'
+        );
+
         $this->app->bind(BlogUserInterface::class, config('easel.user_model'));
     }
 
@@ -128,6 +133,7 @@ class EaselServiceProvider extends ServiceProvider
         //register service providers
         $this->app->register(HtmlServiceProvider::class);
         $this->app->register(JsValidationServiceProvider::class);
+        $this->app->register(TeamTNT\Scout\TNTSearchScoutServiceProvider::class);
 
         //load facades
         $loader = AliasLoader::getInstance();

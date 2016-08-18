@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "50e126e029d250c1d46ffc1b763109cc",
-    "content-hash": "f5612487f1022cab05b9070513f868f0",
+    "hash": "2bef91e50a5e178e5490b6005e29dfb8",
+    "content-hash": "51537c49663b7cc6efb593545a018f00",
     "packages": [
         {
             "name": "bestmomo/scafold",
@@ -849,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ab360d9160d22dc2b6182592333fdd9096ed19e3"
+                "reference": "ade941e4b98c8545b4e8985409b2b6cc49b1d741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ab360d9160d22dc2b6182592333fdd9096ed19e3",
-                "reference": "ab360d9160d22dc2b6182592333fdd9096ed19e3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ade941e4b98c8545b4e8985409b2b6cc49b1d741",
+                "reference": "ade941e4b98c8545b4e8985409b2b6cc49b1d741",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,67 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-17 17:29:46"
+            "time": "2016-08-18 09:42:22"
+        },
+        {
+            "name": "laravel/scout",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/scout.git",
+                "reference": "aa713923b3dc2625d3f76eb91edfe5447e83833c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/aa713923b3dc2625d3f76eb91edfe5447e83833c",
+                "reference": "aa713923b3dc2625d3f76eb91edfe5447e83833c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.3",
+                "illuminate/database": "~5.3",
+                "illuminate/support": "~5.3",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "algolia/algoliasearch-client-php": "^1.10",
+                "illuminate/bus": "~5.3",
+                "illuminate/pagination": "~5.3",
+                "illuminate/queue": "~5.3",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "algolia/algoliasearch-client-php": "Required to use the Algolia engine."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
+            "keywords": [
+                "algolia",
+                "laravel",
+                "search"
+            ],
+            "time": "2016-08-15 23:42:13"
         },
         {
             "name": "laravelcollective/html",
@@ -2478,6 +2538,116 @@
             "time": "2016-08-16 14:58:24"
         },
         {
+            "name": "teamtnt/laravel-scout-tntsearch-driver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
+                "reference": "6b01c5329e4d6a21abd1c3658ffa54ed4de4c892"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/6b01c5329e4d6a21abd1c3658ffa54ed4de4c892",
+                "reference": "6b01c5329e4d6a21abd1c3658ffa54ed4de4c892",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.3",
+                "illuminate/database": "~5.3",
+                "illuminate/support": "~5.3",
+                "laravel/scout": "*",
+                "teamtnt/tntsearch": "0.8.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "teamtnt/tntsearch": "Required to use the TNTSearch engine."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TeamTNT\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TNT Studio",
+                    "email": "info@tntstudio.hr"
+                }
+            ],
+            "description": "Driver for Laravel Scout search package based on https://github.com/teamtnt/tntsearch",
+            "keywords": [
+                "laravel",
+                "scout",
+                "search",
+                "tntsearch"
+            ],
+            "time": "2016-08-16 13:19:49"
+        },
+        {
+            "name": "teamtnt/tntsearch",
+            "version": "v0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamtnt/tntsearch.git",
+                "reference": "cf5353ec47092cf42e254f983f467997d700c495"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/cf5353ec47092cf42e254f983f467997d700c495",
+                "reference": "cf5353ec47092cf42e254f983f467997d700c495",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-pdo_sqlite": "*",
+                "ext-sqlite3": "*",
+                "php": "~5.5|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TeamTNT\\TNTSearch\\": "src"
+                },
+                "files": [
+                    "helper/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nenad Tičarić",
+                    "email": "nticaric@gmail.com",
+                    "homepage": "http://www.tntstudio.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fully featured full text search engine written in PHP",
+            "homepage": "https://github.com/teamtnt/tntsearch",
+            "keywords": [
+                "teamtnt",
+                "tntsearch"
+            ],
+            "time": "2016-07-20 21:52:16"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "dev-master",
             "source": {
@@ -2809,12 +2979,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "138cdd2d04601aae42f4e346e7ae4cc88e470f0c"
+                "reference": "04ac51d36a729ce668685309fb7214bb3359be09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/138cdd2d04601aae42f4e346e7ae4cc88e470f0c",
-                "reference": "138cdd2d04601aae42f4e346e7ae4cc88e470f0c",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/04ac51d36a729ce668685309fb7214bb3359be09",
+                "reference": "04ac51d36a729ce668685309fb7214bb3359be09",
                 "shasum": ""
             },
             "require": {
@@ -2864,7 +3034,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2016-08-17 09:58:32"
+            "time": "2016-08-18 01:13:07"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3683,12 +3853,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "622c5dc0a8036cfc4ccd73c7b1b668a431e69d96"
+                "reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/622c5dc0a8036cfc4ccd73c7b1b668a431e69d96",
-                "reference": "622c5dc0a8036cfc4ccd73c7b1b668a431e69d96",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/be2c607e43ce4c89ecd60e75c6a85c126e754aea",
+                "reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea",
                 "shasum": ""
             },
             "require": {
@@ -3725,7 +3895,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-06-11 08:21:19"
+            "time": "2016-08-18 05:49:44"
         },
         {
             "name": "sebastian/exporter",
@@ -4103,16 +4273,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "0a64afb2cfaf22a36bb4c917849cdee2d008f26a"
+                "reference": "8444f2ac9f86342665cdae47b6d3ea6e07794456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/0a64afb2cfaf22a36bb4c917849cdee2d008f26a",
-                "reference": "0a64afb2cfaf22a36bb4c917849cdee2d008f26a",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/8444f2ac9f86342665cdae47b6d3ea6e07794456",
+                "reference": "8444f2ac9f86342665cdae47b6d3ea6e07794456",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3|^7.0"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.6",
@@ -4145,7 +4315,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-08-15 15:30:25"
+            "time": "2016-08-18 09:30:53"
         }
     ],
     "aliases": [],

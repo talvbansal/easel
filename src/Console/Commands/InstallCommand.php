@@ -68,8 +68,12 @@ class InstallCommand extends Command
      */
     private function createConfig()
     {
-        $this->line('Config files created! <info>✔</info>');
         copy(EASEL_BASE_PATH.'/config/easel.php', config_path('easel.php'));
+        $this->line('Copying Easel Config <info>✔</info>');
+        copy(EASEL_BASE_PATH.'/config/scout.php', config_path('scout.php'));
+        $this->line('Copying Scout Config! <info>✔</info>');
+
+        $this->line('Config files created! <info>✔</info>');
     }
 
     /**
