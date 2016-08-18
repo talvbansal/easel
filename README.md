@@ -3,6 +3,11 @@
 
 <div style="text-align:center">
 
+![Editor](https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png)
+    
+</div>
+<div style="text-align:center">
+
 [![Build Status](https://api.travis-ci.org/talv86/easel.svg)](https://travis-ci.org/talv86/easel)
 [![Style CI](https://styleci.io/repos/63001540/shield?style=flat)](https://styleci.io/repos/63001540)
 [![Issues](https://img.shields.io/github/issues/talv86/easel.svg)](https://github.com/talv86/easel/issues)

@@ -36,7 +36,7 @@ class Tag extends Model
         if (count($tags) === 0) {
             return;
         }
-        $found = static::whereIn('tag', $tags)->lists('tag')->all();
+        $found = static::whereIn('tag', $tags)->pluck('tag')->all();
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
                 'tag'               => $tag,
