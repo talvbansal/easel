@@ -38,7 +38,7 @@ class Post extends Model
     ];
 
     /**
-     * Searchable items
+     * Searchable items.
      *
      * @var array
      */
