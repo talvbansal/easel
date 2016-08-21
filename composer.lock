@@ -849,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "240f53872c7d7eb143bd6e71ac5725394d318ac5"
+                "reference": "0d319059a22f3d4b4120e5515cc6ee90cd8c0f16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/240f53872c7d7eb143bd6e71ac5725394d318ac5",
-                "reference": "240f53872c7d7eb143bd6e71ac5725394d318ac5",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0d319059a22f3d4b4120e5515cc6ee90cd8c0f16",
+                "reference": "0d319059a22f3d4b4120e5515cc6ee90cd8c0f16",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-19 12:28:00"
+            "time": "2016-08-21 12:37:17"
         },
         {
             "name": "laravel/scout",
@@ -976,12 +976,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "aa713923b3dc2625d3f76eb91edfe5447e83833c"
+                "reference": "172d1563c7fd9c64626432d13fad438db6e6999e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/aa713923b3dc2625d3f76eb91edfe5447e83833c",
-                "reference": "aa713923b3dc2625d3f76eb91edfe5447e83833c",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/172d1563c7fd9c64626432d13fad438db6e6999e",
+                "reference": "172d1563c7fd9c64626432d13fad438db6e6999e",
                 "shasum": ""
             },
             "require": {
@@ -1028,7 +1028,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2016-08-15 23:42:13"
+            "time": "2016-08-21 12:40:18"
         },
         {
             "name": "laravelcollective/html",
@@ -1711,12 +1711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "17ba8f8fc03074f90771e52b226698e37bc2c115"
+                "reference": "0b3e60404c3e398f521e9f366555678178695d91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/17ba8f8fc03074f90771e52b226698e37bc2c115",
-                "reference": "17ba8f8fc03074f90771e52b226698e37bc2c115",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0b3e60404c3e398f521e9f366555678178695d91",
+                "reference": "0b3e60404c3e398f521e9f366555678178695d91",
                 "shasum": ""
             },
             "require": {
@@ -1756,7 +1756,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-07-09 18:06:48"
+            "time": "2016-08-19 20:47:22"
         },
         {
             "name": "symfony/console",
@@ -2043,12 +2043,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "1d5845b62b785b316e6e79438c2491c8e20ef62a"
+                "reference": "97dac293d2a3f60bc90ee134714ba4296efff5ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/1d5845b62b785b316e6e79438c2491c8e20ef62a",
-                "reference": "1d5845b62b785b316e6e79438c2491c8e20ef62a",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/97dac293d2a3f60bc90ee134714ba4296efff5ec",
+                "reference": "97dac293d2a3f60bc90ee134714ba4296efff5ec",
                 "shasum": ""
             },
             "require": {
@@ -2117,7 +2117,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-19 06:48:39"
+            "time": "2016-08-19 13:46:22"
         },
         {
             "name": "symfony/polyfill-mbstring",
