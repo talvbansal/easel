@@ -13,7 +13,7 @@ elixir(function (mix) {
         'custom.css',
         'app-1.css',
         'app-2.css'
-    ], 'public/css/app.css');
+    ], 'public/css/core.css');
 
     // Vendor Files
     mix.copy('resources/assets/vendor/', 'public/vendor');
