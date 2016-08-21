@@ -849,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0d319059a22f3d4b4120e5515cc6ee90cd8c0f16"
+                "reference": "28cc111bf15c501413d0303a849d21c278677106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0d319059a22f3d4b4120e5515cc6ee90cd8c0f16",
-                "reference": "0d319059a22f3d4b4120e5515cc6ee90cd8c0f16",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/28cc111bf15c501413d0303a849d21c278677106",
+                "reference": "28cc111bf15c501413d0303a849d21c278677106",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-21 12:37:17"
+            "time": "2016-08-21 21:33:43"
         },
         {
             "name": "laravel/scout",
@@ -976,12 +976,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "172d1563c7fd9c64626432d13fad438db6e6999e"
+                "reference": "da29e1fab4951243969db3121851a92892d7dba8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/172d1563c7fd9c64626432d13fad438db6e6999e",
-                "reference": "172d1563c7fd9c64626432d13fad438db6e6999e",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/da29e1fab4951243969db3121851a92892d7dba8",
+                "reference": "da29e1fab4951243969db3121851a92892d7dba8",
                 "shasum": ""
             },
             "require": {
@@ -1028,7 +1028,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2016-08-21 12:40:18"
+            "time": "2016-08-21 21:29:21"
         },
         {
             "name": "laravelcollective/html",
