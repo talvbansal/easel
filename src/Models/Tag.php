@@ -24,7 +24,7 @@ class Tag extends Model
      *
      * @var array
      */
-    public $searchable = ['title', 'tag', 'meta_description'];
+    public $searchable = ['tag', 'title', 'subtitle', 'meta_description'];
 
     /**
      * Get the posts relationship.
@@ -46,7 +46,7 @@ class Tag extends Model
         if (count($tags) === 0) {
             return;
         }
-        $found = static::whereIn('tag', $tags)->pluck('tag')->all();
+        $found = Tag::whereIn('tag', $tags)->pluck('tag')->all();
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
                 'tag'               => $tag,
@@ -68,7 +68,7 @@ class Tag extends Model
      */
     public static function layout($tag, $default = 'easel::blog.layouts.index')
     {
-        $layout = static::whereTag($tag)->pluck('layout');
+        $layout = Tag::whereTag($tag)->pluck('layout');
 
         return $layout ?: $default;
     }

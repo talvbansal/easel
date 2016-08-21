@@ -849,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ade941e4b98c8545b4e8985409b2b6cc49b1d741"
+                "reference": "240f53872c7d7eb143bd6e71ac5725394d318ac5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ade941e4b98c8545b4e8985409b2b6cc49b1d741",
-                "reference": "ade941e4b98c8545b4e8985409b2b6cc49b1d741",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/240f53872c7d7eb143bd6e71ac5725394d318ac5",
+                "reference": "240f53872c7d7eb143bd6e71ac5725394d318ac5",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-18 09:42:22"
+            "time": "2016-08-19 12:28:00"
         },
         {
             "name": "laravel/scout",
@@ -1764,12 +1764,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "65393063d77f9be62835490c31d516ebcba46564"
+                "reference": "8ea494c34f0f772c3954b5fbe00bffc5a435e563"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/65393063d77f9be62835490c31d516ebcba46564",
-                "reference": "65393063d77f9be62835490c31d516ebcba46564",
+                "url": "https://api.github.com/repos/symfony/console/zipball/8ea494c34f0f772c3954b5fbe00bffc5a435e563",
+                "reference": "8ea494c34f0f772c3954b5fbe00bffc5a435e563",
                 "shasum": ""
             },
             "require": {
@@ -1816,7 +1816,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-10 06:57:07"
+            "time": "2016-08-19 06:48:39"
         },
         {
             "name": "symfony/debug",
@@ -1824,12 +1824,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "ea4f0830c215536f6e79748ffa7791637fdf29ba"
+                "reference": "053d5564e40d923cd1daff96a320deaf22c29981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/ea4f0830c215536f6e79748ffa7791637fdf29ba",
-                "reference": "ea4f0830c215536f6e79748ffa7791637fdf29ba",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/053d5564e40d923cd1daff96a320deaf22c29981",
+                "reference": "053d5564e40d923cd1daff96a320deaf22c29981",
                 "shasum": ""
             },
             "require": {
@@ -1873,7 +1873,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-05 08:37:39"
+            "time": "2016-08-19 06:48:39"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2043,12 +2043,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "16236cdb6a2488bd509a8bd7986c6bd4477aa99d"
+                "reference": "1d5845b62b785b316e6e79438c2491c8e20ef62a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/16236cdb6a2488bd509a8bd7986c6bd4477aa99d",
-                "reference": "16236cdb6a2488bd509a8bd7986c6bd4477aa99d",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/1d5845b62b785b316e6e79438c2491c8e20ef62a",
+                "reference": "1d5845b62b785b316e6e79438c2491c8e20ef62a",
                 "shasum": ""
             },
             "require": {
@@ -2117,7 +2117,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-16 14:58:24"
+            "time": "2016-08-19 06:48:39"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2480,12 +2480,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "61889b135e6433502e57167cee7d7d10088638be"
+                "reference": "3f8d0e999c9c1b4876eb1875c89dbdf00fac60cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/61889b135e6433502e57167cee7d7d10088638be",
-                "reference": "61889b135e6433502e57167cee7d7d10088638be",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3f8d0e999c9c1b4876eb1875c89dbdf00fac60cc",
+                "reference": "3f8d0e999c9c1b4876eb1875c89dbdf00fac60cc",
                 "shasum": ""
             },
             "require": {
@@ -2535,7 +2535,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2016-08-16 14:58:24"
+            "time": "2016-08-19 06:48:39"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
@@ -2543,12 +2543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "6b01c5329e4d6a21abd1c3658ffa54ed4de4c892"
+                "reference": "97c454c214a10ae9e566aacbc98a4ab46c149386"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/6b01c5329e4d6a21abd1c3658ffa54ed4de4c892",
-                "reference": "6b01c5329e4d6a21abd1c3658ffa54ed4de4c892",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/97c454c214a10ae9e566aacbc98a4ab46c149386",
+                "reference": "97c454c214a10ae9e566aacbc98a4ab46c149386",
                 "shasum": ""
             },
             "require": {
@@ -2593,20 +2593,20 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2016-08-16 13:19:49"
+            "time": "2016-08-19 12:41:23"
         },
         {
             "name": "teamtnt/tntsearch",
-            "version": "v0.8.0",
+            "version": "v0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/tntsearch.git",
-                "reference": "cf5353ec47092cf42e254f983f467997d700c495"
+                "reference": "7081b5c19c6d1cc18fa9d83040ab445c5ebb1fed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/cf5353ec47092cf42e254f983f467997d700c495",
-                "reference": "cf5353ec47092cf42e254f983f467997d700c495",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/7081b5c19c6d1cc18fa9d83040ab445c5ebb1fed",
+                "reference": "7081b5c19c6d1cc18fa9d83040ab445c5ebb1fed",
                 "shasum": ""
             },
             "require": {
@@ -2645,7 +2645,7 @@
                 "teamtnt",
                 "tntsearch"
             ],
-            "time": "2016-07-20 21:52:16"
+            "time": "2016-08-19 12:32:13"
         },
         {
             "name": "vlucas/phpdotenv",

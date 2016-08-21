@@ -12,14 +12,21 @@ use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
  */
 class SearchTest extends TestCase
 {
-    use InteractsWithDatabase;
-
     /**
      * The user model.
      *
      * @var Easel\Models\User
      */
     private $user;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
+        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
+    }
+
 
     /**
      * Create the user model test subject.
@@ -31,6 +38,11 @@ class SearchTest extends TestCase
     public function createUser()
     {
         $this->user = factory(\Easel\Models\User::class)->create();
+    }
+
+    public function testA()
+    {
+        return $this->assertTrue( true );
     }
 
     public function test_can_search_posts()
@@ -57,7 +69,8 @@ class SearchTest extends TestCase
         $postB->save();
         $postC->save();
 
-        $posts = Post::whereIn('id', [1, 2])->get();
+        $posts    = Post::whereIn('id', [$postA->id, $postB->id])->get();
+        //$posts    = Post::search('easel')->get();
         $response = $this->actingAs($this->user)->call('GET', '/admin/search?search=easel');
 
         $this->assertEquals(200, $response->status());
@@ -67,22 +80,31 @@ class SearchTest extends TestCase
     public function test_can_search_tags()
     {
         //create two tag to show up and one to not show
-        $tagA = factory(Tag::class)->make(['title' => 'easel', 'tag' => 'easel']);
-        $tagB = factory(Tag::class)->make(['title' => 'easel']);
+        $tagA = factory(Tag::class)->make([
+            'title' => 'easel',
+            'tag'   => 'easel'
+        ]);
+        $tagB = factory(Tag::class)->make([
+            'title'    => 'Easel',
+            'subtitle' => 'easel',
+        ]);
         $tagC = factory(Tag::class)->make([
             'tag'              => 'this shouldnt show up',
             'title'            => 'this-shouldnt-show-up',
             'meta_description' => 'this-shouldnt-show-up',
+            'subtitle'         => 'this-shouldnt-show-up',
         ]);
 
         $tagA->save();
         $tagB->save();
         $tagC->save();
 
-        $tags = Tag::whereIn('id', [1, 2])->get();
+        $tags    = Tag::whereIn('id', [$tagA->id, $tagB->id])->get();
+        //$tags     = Tag::search('easel')->get();
         $response = $this->actingAs($this->user)->call('GET', '/admin/search?search=easel');
 
         $this->assertEquals(200, $response->status());
         $this->assertViewHas('tags', $tags);
     }
+
 }

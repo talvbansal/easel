@@ -103,7 +103,7 @@ class InstallCommand extends Command
         \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
         $this->line('Search index files created <info>✔</info>');
 
-        @system('composer dump');
+        #exec('composer dump');
     }
 
     private function appendSeederToMasterFile()

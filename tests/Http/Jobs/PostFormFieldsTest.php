@@ -1,4 +1,5 @@
 <?php
+use Easel\Http\Jobs\PostFormFields;
 
 /**
  * Created by PhpStorm.
@@ -39,7 +40,7 @@ class PostFormFieldsTest extends TestCase
      */
     private function getPostLayoutsAsPublic()
     {
-        $reflection = new ReflectionClass(\Easel\Http\Jobs\PostFormFields::class);
+        $reflection = new ReflectionClass(PostFormFields::class);
         $getPostLayouts = $reflection->getMethod('getPostLayouts');
         $getPostLayouts->setAccessible(true);
 
@@ -97,7 +98,7 @@ class PostFormFieldsTest extends TestCase
     {
         $getPostLayouts = $this->getPostLayoutsAsPublic();
 
-        $postFormFields = new \Easel\Http\Jobs\PostFormFields();
+        $postFormFields = new PostFormFields();
         /** @var \Illuminate\Support\Collection $response */
         $response = $getPostLayouts->invoke($postFormFields);
 
