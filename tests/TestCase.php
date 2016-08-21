@@ -7,7 +7,6 @@ use Easel\Providers\EaselServiceProvider;
  */
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-
     /**
      * The base URL to use while testing the application.
      *
@@ -27,7 +26,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $this->withFactories(realpath(__DIR__.'/../database/factories'));
 
         $this->artisan('easel:install');
-
     }
 
     public function tearDown()
@@ -77,8 +75,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'driver' => 'eloquent',
             'model'  => \Easel\Models\User::class,
         ]);
-
-
     }
 
     public function getTempDirectory($suffix = '')
@@ -90,15 +86,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return $this->getTempDirectory().'/app/public'.($suffix == '' ? '' : '/'.$suffix);
     }
+
     /**
      * @return \Illuminate\Support\Collection
      */
     private function resetIndexes()
     {
-        $storagePath = str_finish(realpath(storage_path()), DIRECTORY_SEPARATOR) . '*.index';
+        $storagePath = str_finish(realpath(storage_path()), DIRECTORY_SEPARATOR).'*.index';
 
         return collect(\File::glob($storagePath))->each(function ($index) {
             unlink($index);
-        });;
+        });
     }
 }
