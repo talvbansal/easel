@@ -1,6 +1,4 @@
 <h1 align="center">Easel</h1>
-<h2 align="center">A minimal blogging package for Laravel</h2>
-<hr>
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
@@ -31,16 +29,16 @@
     </a>
 </div>
 
-### Requirements
-<hr>
+<h2 align="center">A minimal blogging package for Laravel</h2>
+
+<h3>Requirements</h3>
 
 - [PHP](https://php.net) >= 5.6
 - [Composer](https://getcomposer.org)
 - An exsiting [Laravel 5.3 ](https://laravel.com/docs/master/installation) project
 
 
-### Installation
-<hr>
+<h3>Installation</h3>
 
 1. You can download Easel using composer 
 
@@ -84,8 +82,7 @@
 
 8. Start blogging! 
 
-### Updates 
-<hr>
+<h3>Updates</h3>
 
 - Whenever an update to Easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be published / republished with the following command
     
@@ -99,8 +96,7 @@
             "php artisan optimize"
         ]
 
-### Customisation
-<hr>
+<h3>Customisation</h3>
 
 Every app is different and Easel has been designed to be customisable. Be sure to check out the `config/easel.php` for a complete list of configurable options. 
 
