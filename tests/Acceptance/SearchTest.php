@@ -2,7 +2,6 @@
 
 use Easel\Models\Post;
 use Easel\Models\Tag;
-use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
 /**
  * Created by PhpStorm.
@@ -27,7 +26,6 @@ class SearchTest extends TestCase
         \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
     }
 
-
     /**
      * Create the user model test subject.
      *
@@ -42,7 +40,7 @@ class SearchTest extends TestCase
 
     public function testA()
     {
-        return $this->assertTrue( true );
+        return $this->assertTrue(true);
     }
 
     public function test_can_search_posts()
@@ -69,7 +67,7 @@ class SearchTest extends TestCase
         $postB->save();
         $postC->save();
 
-        $posts    = Post::whereIn('id', [$postA->id, $postB->id])->get();
+        $posts = Post::whereIn('id', [$postA->id, $postB->id])->get();
         //$posts    = Post::search('easel')->get();
         $response = $this->actingAs($this->user)->call('GET', '/admin/search?search=easel');
 
@@ -82,7 +80,7 @@ class SearchTest extends TestCase
         //create two tag to show up and one to not show
         $tagA = factory(Tag::class)->make([
             'title' => 'easel',
-            'tag'   => 'easel'
+            'tag'   => 'easel',
         ]);
         $tagB = factory(Tag::class)->make([
             'title'    => 'Easel',
@@ -99,12 +97,11 @@ class SearchTest extends TestCase
         $tagB->save();
         $tagC->save();
 
-        $tags    = Tag::whereIn('id', [$tagA->id, $tagB->id])->get();
+        $tags = Tag::whereIn('id', [$tagA->id, $tagB->id])->get();
         //$tags     = Tag::search('easel')->get();
         $response = $this->actingAs($this->user)->call('GET', '/admin/search?search=easel');
 
         $this->assertEquals(200, $response->status());
         $this->assertViewHas('tags', $tags);
     }
-
 }
