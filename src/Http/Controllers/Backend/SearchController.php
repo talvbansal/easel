@@ -8,7 +8,6 @@ use Easel\Models\Tag;
 
 class SearchController extends Controller
 {
-
     /**
      * Display search result.
      *
@@ -20,19 +19,19 @@ class SearchController extends Controller
 
         try {
             $posts = Post::search($params)->get();
-            $tags  = Tag::search($params)->get();
+            $tags = Tag::search($params)->get();
         } catch (\Exception $e) {
             //fallback to basic search
-            $posts = Post::where('title', 'LIKE', '%' . $params . '%')
-                ->orWhere('subtitle', 'LIKE', '%' . $params . '%')
-                ->orWhere('content_raw', 'LIKE', '%' . $params . '%')
-                ->orWhere('meta_description', 'LIKE', '%' . $params . '%')
+            $posts = Post::where('title', 'LIKE', '%'.$params.'%')
+                ->orWhere('subtitle', 'LIKE', '%'.$params.'%')
+                ->orWhere('content_raw', 'LIKE', '%'.$params.'%')
+                ->orWhere('meta_description', 'LIKE', '%'.$params.'%')
                 ->get();
 
-            $tags  = Tag::where('tag', 'LIKE', '%' . $params . '%')
-                ->orWhere('title', 'LIKE', '%' . $params . '%')
-                ->orWhere('subtitle', 'LIKE', '%' . $params . '%')
-                ->orWhere('meta_description', 'LIKE', '%' . $params . '%')
+            $tags = Tag::where('tag', 'LIKE', '%'.$params.'%')
+                ->orWhere('title', 'LIKE', '%'.$params.'%')
+                ->orWhere('subtitle', 'LIKE', '%'.$params.'%')
+                ->orWhere('meta_description', 'LIKE', '%'.$params.'%')
                 ->get();
         }
 

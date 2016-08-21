@@ -46,7 +46,7 @@ class Tag extends Model
         if (count($tags) === 0) {
             return;
         }
-        $found = Tag::whereIn('tag', $tags)->pluck('tag')->all();
+        $found = self::whereIn('tag', $tags)->pluck('tag')->all();
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
                 'tag'               => $tag,
@@ -68,7 +68,7 @@ class Tag extends Model
      */
     public static function layout($tag, $default = 'easel::blog.layouts.index')
     {
-        $layout = Tag::whereTag($tag)->pluck('layout');
+        $layout = self::whereTag($tag)->pluck('layout');
 
         return $layout ?: $default;
     }
