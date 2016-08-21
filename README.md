@@ -1,5 +1,7 @@
 <h1 align="center">Easel</h1>
 
+<p align="center">A minimal blogging package for Laravel</p>
+
 <div align="center">
     <img src="https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
 </div>
@@ -29,7 +31,6 @@
     </a>
 </div>
 
-<h2 align="center">A minimal blogging package for Laravel</h2>
 
 <h3>Requirements</h3>
 
