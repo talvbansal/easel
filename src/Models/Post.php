@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Easel\Services\Parsedowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Query\Builder;
 use Laravel\Scout\Searchable;
 
 class Post extends Model
@@ -189,7 +190,7 @@ class Post extends Model
                   ->where('is_draft', 0)
                   ->orderBy('published_at', 'asc');
         if ($tag) {
-            $query = $query->whereHas('tags', function ($q) use ($tag) {
+            $query = $query->whereHas('tags', function (Builder $q) use ($tag) {
                 $q->where('tag', '=', $tag->tag);
             });
         }

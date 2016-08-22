@@ -1,5 +1,5 @@
 {
-  "name": "talv86/Easel",
+  "name": "talv86/easel",
   "description": "A minimal blogging package for laravel",
   "keywords": ["blog", "laravel", "easel", "markdown", "developers", "minimal"],
   "license": "MIT",

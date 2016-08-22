@@ -4,9 +4,7 @@
 
 namespace Easel\Console\Commands;
 
-use Easel\Models\Tag;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class InstallCommand.
@@ -18,8 +16,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'easel:install
-    ';
+    protected $signature = 'easel:install';
 
     /**
      * description of the command.

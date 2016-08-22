@@ -61,7 +61,7 @@ class PostsManager
             'posts'             => $posts,
             'page_image'        => config('easel.page_image'),
             'meta_description'  => config('easel.description'),
-            'reverse_direction' => ($tag != null && $tag->reverse_direction) ? $tag->reverse_direction : false,
+            'reverse_direction' => ($tag !== null && $tag->reverse_direction) ? $tag->reverse_direction : false,
             'tag'               => $tag,
         ];
     }

@@ -7,7 +7,6 @@
  */
 namespace Easel\Console\Commands;
 
-use Easel\Models\Tag;
 use Illuminate\Console\Command;
 
 class UpdateCommand extends Command
