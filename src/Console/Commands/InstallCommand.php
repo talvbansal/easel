@@ -4,9 +4,7 @@
 
 namespace Easel\Console\Commands;
 
-use Easel\Models\Tag;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class InstallCommand.
@@ -18,8 +16,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'easel:install
-    ';
+    protected $signature = 'easel:install';
 
     /**
      * description of the command.
@@ -102,8 +99,6 @@ class InstallCommand extends Command
         \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
         \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
         $this->line('Search index files created <info>✔</info>');
-
-        //exec('composer dump');
     }
 
     private function appendSeederToMasterFile()

@@ -335,7 +335,7 @@ $(document).ready(function(){
     }
 
     /*
-     * Todo Add new item
+     * To do Add new item
      */
     if ($('#todo-lists')[0]) {
     	//Add Todo Item

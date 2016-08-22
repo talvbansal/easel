@@ -26,6 +26,10 @@
         <img src="https://poser.pugx.org/talv86/easel/downloads" alt="Downloads" />
     </a>
     
+    <a href="https://insight.sensiolabs.com/projects/06d23269-ac1d-4465-b542-9c38b31f8d91" target="_blank">
+        <img src="https://img.shields.io/sensiolabs/i/06d23269-ac1d-4465-b542-9c38b31f8d91.svg?style=flat-square" alt="SensioLabsInsight"/>
+    </a>
+    
     <a href="https://github.com/talv86/easel/blob/master/licence" target="_blank">
         <img src="https://poser.pugx.org/talv86/easel/license" alt="License" />
     </a>

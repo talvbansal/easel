@@ -10,6 +10,8 @@ namespace Easel\Services;
 use Carbon\Carbon;
 use Easel\Models\Post;
 use Easel\Models\Tag;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Pagination\Paginator;
 
 /**
  * Class PostsManager.
@@ -48,12 +50,12 @@ class PostsManager
     }
 
     /**
-     * @param      $posts
-     * @param null $tag
+     * @param Paginator $posts
+     * @param null      $tag
      *
      * @return array
      */
-    private function assemblePostData($posts, $tag = null)
+    private function assemblePostData(Paginator $posts, Tag $tag = null)
     {
         return [
             'title'             => config('easel.title'),
@@ -61,7 +63,7 @@ class PostsManager
             'posts'             => $posts,
             'page_image'        => config('easel.page_image'),
             'meta_description'  => config('easel.description'),
-            'reverse_direction' => ($tag != null && $tag->reverse_direction) ? $tag->reverse_direction : false,
+            'reverse_direction' => ($tag !== null && $tag->reverse_direction) ? $tag->reverse_direction : false,
             'tag'               => $tag,
         ];
     }
@@ -76,7 +78,7 @@ class PostsManager
         $tag = Tag::where('tag', $tag)->firstOrFail();
         $reverse_direction = (bool) $tag->reverse_direction;
         $posts = Post::where('published_at', '<=', Carbon::now())
-                     ->whereHas('tags', function ($q) use ($tag) {
+                     ->whereHas('tags', function (Builder $q) use ($tag) {
                          $q->where('tag', '=', $tag->tag);
                      })
                      ->where('is_draft', 0)

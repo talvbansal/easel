@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2bef91e50a5e178e5490b6005e29dfb8",
-    "content-hash": "51537c49663b7cc6efb593545a018f00",
+    "hash": "541d06fea9f91416d92c95e86405d805",
+    "content-hash": "a949eeb0776815963fba8bc84c53fcac",
     "packages": [
         {
             "name": "bestmomo/scafold",
@@ -849,12 +849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "28cc111bf15c501413d0303a849d21c278677106"
+                "reference": "68f71031771de761fb2c7b0f9b1c4e334957b6a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/28cc111bf15c501413d0303a849d21c278677106",
-                "reference": "28cc111bf15c501413d0303a849d21c278677106",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/68f71031771de761fb2c7b0f9b1c4e334957b6a4",
+                "reference": "68f71031771de761fb2c7b0f9b1c4e334957b6a4",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-21 21:33:43"
+            "time": "2016-08-22 08:07:43"
         },
         {
             "name": "laravel/scout",
@@ -976,12 +976,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "da29e1fab4951243969db3121851a92892d7dba8"
+                "reference": "fdf4030d6921aec38c51cf546fd28e8672cbc878"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/da29e1fab4951243969db3121851a92892d7dba8",
-                "reference": "da29e1fab4951243969db3121851a92892d7dba8",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/fdf4030d6921aec38c51cf546fd28e8672cbc878",
+                "reference": "fdf4030d6921aec38c51cf546fd28e8672cbc878",
                 "shasum": ""
             },
             "require": {
@@ -1028,7 +1028,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2016-08-21 21:29:21"
+            "time": "2016-08-22 00:18:05"
         },
         {
             "name": "laravelcollective/html",
