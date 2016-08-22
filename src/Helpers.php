@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('seoUrl')) {
+if (!function_exists('seoUrl')) {
     /**
      * Process a url and make it SEO compliant.
      *
@@ -24,7 +24,7 @@ if (! function_exists('seoUrl')) {
 }
 
 
-if (! function_exists('human_filesize')) {
+if (!function_exists('human_filesize')) {
     /**
      * Return sizes readable by humans.
      *
@@ -35,14 +35,14 @@ if (! function_exists('human_filesize')) {
      */
     function human_filesize($bytes, $decimals = 2)
     {
-        $size   = [ 'B', 'kB', 'MB', 'GB', 'TB', 'PB' ];
-        $factor = floor(( strlen($bytes) - 1 ) / 3);
+        $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB'];
+        $factor = floor((strlen($bytes) - 1) / 3);
 
-        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)).@$size[$factor];
     }
 }
 
-if (! function_exists('is_image')) {
+if (!function_exists('is_image')) {
     /**
      * Check if the mime type is an image.
      *
@@ -57,7 +57,7 @@ if (! function_exists('is_image')) {
 }
 
 
-if (! function_exists('checked')) {
+if (!function_exists('checked')) {
     /**
      * Return 'checked' if true.
      *
