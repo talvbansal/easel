@@ -212,7 +212,7 @@ class Post extends Model
                   ->where('is_draft', 0)
                   ->orderBy('published_at', 'desc');
         if ($tag) {
-            $query = $query->whereHas('tags', function ($q) use ($tag) {
+            $query = $query->whereHas('tags', function (Builder $q) use ($tag) {
                 $q->where('tag', '=', $tag->tag);
             });
         }

@@ -10,6 +10,8 @@ namespace Easel\Services;
 use Carbon\Carbon;
 use Easel\Models\Post;
 use Easel\Models\Tag;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 /**
  * Class PostsManager.
@@ -48,12 +50,12 @@ class PostsManager
     }
 
     /**
-     * @param      $posts
+     * @param Paginator $posts
      * @param null $tag
      *
      * @return array
      */
-    private function assemblePostData($posts, $tag = null)
+    private function assemblePostData(Paginator $posts, $tag = null)
     {
         return [
             'title'             => config('easel.title'),
