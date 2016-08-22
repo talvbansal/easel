@@ -54,7 +54,7 @@ class PostsManager
      *
      * @return array
      */
-    private function assemblePostData(Paginator $posts, $tag = null)
+    private function assemblePostData(Paginator $posts, Tag $tag = null)
     {
         return [
             'title'             => config('easel.title'),
