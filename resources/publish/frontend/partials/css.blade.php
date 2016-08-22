@@ -2,4 +2,3 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/core.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/blog.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/easel.css')}}">
-
