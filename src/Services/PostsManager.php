@@ -10,6 +10,7 @@ namespace Easel\Services;
 use Carbon\Carbon;
 use Easel\Models\Post;
 use Easel\Models\Tag;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Pagination\Paginator;
 
 /**
@@ -77,7 +78,7 @@ class PostsManager
         $tag = Tag::where('tag', $tag)->firstOrFail();
         $reverse_direction = (bool) $tag->reverse_direction;
         $posts = Post::where('published_at', '<=', Carbon::now())
-                     ->whereHas('tags', function ($q) use ($tag) {
+                     ->whereHas('tags', function (Builder $q) use ($tag) {
                          $q->where('tag', '=', $tag->tag);
                      })
                      ->where('is_draft', 0)
