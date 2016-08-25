@@ -20,6 +20,7 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 use Spatie\Backup\BackupServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
+
 /**
  * Class EaselServiceProvider.
  */
