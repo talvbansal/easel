@@ -18,8 +18,8 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
+use Spatie\Backup\BackupServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
-
 /**
  * Class EaselServiceProvider.
  */
@@ -137,6 +137,7 @@ class EaselServiceProvider extends ServiceProvider
         $this->app->register(JsValidationServiceProvider::class);
         $this->app->register(ScoutServiceProvider::class);
         $this->app->register(TNTSearchScoutServiceProvider::class);
+        $this->app->register(BackupServiceProvider::class);
 
         //load facades
         $loader = AliasLoader::getInstance();
