@@ -1,15 +1,15 @@
 <div class="pm-overview c-overflow">
     <div class="pmo-pic">
         <div class="p-relative">
-            <a href="http://gravatar.com" target="_blank">
+            <a href="http://gravatar.com" target="_blank" rel="noopener">
                 <img class="img-responsive" src="//www.gravatar.com/avatar/{{ md5($user->email) }}?d=identicon&s=500">
             </a>
             <div class="dropdown pmop-message">
-                <a href="mailto:{{ $user->email }}" target="_blank" class="btn bgm-white btn-float z-depth-1">
+                <a href="mailto:{{ $user->email }}" target="_blank" rel="noopener" class="btn bgm-white btn-float z-depth-1">
                     <i class="zmdi zmdi-email"></i>
                 </a>
             </div>
-            <a href="http://gravatar.com" target="_blank" class="pmop-edit">
+            <a href="http://gravatar.com" target="_blank" rel="noopener" class="pmop-edit">
                 <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
             </a>
         </div>
@@ -29,7 +29,7 @@
                 @if(!empty($url))
                     <li>
                         <i class="zmdi zmdi-{{ $network }}"></i>
-                        <a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a>
+                        <a href="{{ $url }}" target="_blank" rel="noopener">{{ last( explode('/', $url) ) }}</a>
                     </li>
                 @endif
             @endforeach
