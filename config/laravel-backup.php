@@ -108,9 +108,9 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => env('APP_URL'),
-            'disks' => ['local'],
-            'newestBackupsShouldNotBeOlderThanDays' => 1,
+            'name'                                   => env('APP_URL'),
+            'disks'                                  => ['local'],
+            'newestBackupsShouldNotBeOlderThanDays'  => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
         ],
 
@@ -181,9 +181,9 @@ return [
          * Here you can specify how messages should be sent to Telegram Bot API.
          */
         'telegram' => [
-            'bot_token' => env('TELEGRAM_BOT_TOKEN'),
-            'chat_id'   => env('TELEGRAM_CHAT_ID'),
-            'async_requests' => env('TELEGRAM_ASYNC_REQUESTS', false),
+            'bot_token'                => env('TELEGRAM_BOT_TOKEN'),
+            'chat_id'                  => env('TELEGRAM_CHAT_ID'),
+            'async_requests'           => env('TELEGRAM_ASYNC_REQUESTS', false),
             'disable_web_page_preview' => env('TELEGRAM_DISABLE_WEB_PAGE_PREVIEW', true),
         ],
     ],

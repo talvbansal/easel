@@ -75,7 +75,7 @@ class InstallCommand extends Command
 
         $this->line('Config files created! <info>✔</info>');
     }
- 
+
     /**
      * publish initial views, css, js, images and database files.
      */
