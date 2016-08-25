@@ -72,7 +72,7 @@
                     <dl class="dl-horizontal">
                         @if( !empty($url) )
                             <dt>{{ ucfirst($network) }}</dt>
-                            <dd><a href="{{ $url }}" target="_blank">{{ last( explode('/', $url) ) }}</a></dd>
+                            <dd><a href="{{ $url }}" target="_blank" rel="noopener">{{ last( explode('/', $url) ) }}</a></dd>
                         @endif
                     </dl>
                 @endforeach

@@ -1,5 +1,5 @@
 <footer id="footer">
-    &copy; {{ date('Y') }} {{ config('easel.title') }}. Code released under the <a href="https://github.com/talv86/easel/blob/master/LICENSE" target="_blank">MIT License</a>
+    &copy; {{ date('Y') }} {{ config('easel.title') }}. Code released under the <a href="https://github.com/talv86/easel/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a>
 
     <ul class="f-menu">
         <li><a href="{{url('admin/profile')}}">Profile</a></li>

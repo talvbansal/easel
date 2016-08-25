@@ -134,7 +134,7 @@
                             </tr>
                             <tr>
                                 <td class="description">Public URL</td>
-                                <td class="file-value"><a :href="currentFile.webPath" target="_blank">Click Here</a></td>
+                                <td class="file-value"><a :href="currentFile.webPath" target="_blank" rel="noopener">Click Here</a></td>
                             </tr>
                             <tr>
                                 <td class="description">Date</td>
