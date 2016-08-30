@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p class="small">&copy; {{ date('Y') }} {{ config('easel.title') }}. Code released under the <a href="https://github.com/talv86/easel/blob/master/licence" target="_blank" rel="noopener">MIT License</a></p>
+                <p class="small">&copy; {{ date('Y') }} {{ config('easel.title') }}. Code released under the <a href="https://github.com/talvbansal/easel/blob/master/licence" target="_blank" rel="noopener">MIT License</a></p>
             </div>
         </div>
     </div>

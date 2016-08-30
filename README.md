@@ -3,35 +3,35 @@
 <p align="center">A minimal blogging package for Laravel</p>
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/talv86/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
+    <img src="https://raw.githubusercontent.com/talvbansal/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
 </div>
 
 <br>
 
 <div align="center">
 
-    <a href="https://travis-ci.org/talv86/easel" target="_blank">
-        <img src="https://api.travis-ci.org/talv86/easel.svg" alt="Build Status" />
+    <a href="https://travis-ci.org/talvbansal/easel" target="_blank">
+        <img src="https://api.travis-ci.org/talvbansal/easel.svg" alt="Build Status" />
     </a>
     
     <a href="https://styleci.io/repos/63001540" target="_blank">
         <img src="https://styleci.io/repos/63001540/shield?style=flat" alt="Style CI" />
     </a>
     
-    <a href="https://github.com/talv86/easel/issues" target="_blank">
-        <img src="https://img.shields.io/github/issues/talv86/easel.svg" alt="Issues" />
+    <a href="https://github.com/talvbansal/easel/issues" target="_blank">
+        <img src="https://img.shields.io/github/issues/talvbansal/easel.svg" alt="Issues" />
     </a>
     
-    <a href="https://packagist.org/packages/talv86/easel" target="_blank">
-        <img src="https://poser.pugx.org/talv86/easel/downloads" alt="Downloads" />
+    <a href="https://packagist.org/packages/talvbansal/easel" target="_blank">
+        <img src="https://poser.pugx.org/talvbansal/easel/downloads" alt="Downloads" />
     </a>
     
     <a href="https://insight.sensiolabs.com/projects/06d23269-ac1d-4465-b542-9c38b31f8d91" target="_blank">
         <img src="https://img.shields.io/sensiolabs/i/06d23269-ac1d-4465-b542-9c38b31f8d91.svg?style=flat-square" alt="SensioLabsInsight"/>
     </a>
     
-    <a href="https://github.com/talv86/easel/blob/master/licence" target="_blank">
-        <img src="https://poser.pugx.org/talv86/easel/license" alt="License" />
+    <a href="https://github.com/talvbansal/easel/blob/master/licence" target="_blank">
+        <img src="https://poser.pugx.org/talvbansal/easel/license" alt="License" />
     </a>
 </div>
 
@@ -48,7 +48,7 @@
 1. You can download Easel using composer 
 
     ```
-    composer require talv86/easel
+    composer require talvbansal/easel
     ```
 
 2. To register the `easel:install` and `easel:update` artisan commands as well as the new routes for Easel to work, you will need to add the Easel service provider to your `config/app.php` file
