@@ -62,14 +62,16 @@ class InstallCommand extends Command
     }
 
     /**
-     * copy config file into main project.
+     * copy and create config files into the host project.
      */
     private function createConfig()
     {
         copy(EASEL_BASE_PATH.'/config/easel.php', config_path('easel.php'));
         $this->line('Copying Easel Config <info>✔</info>');
         copy(EASEL_BASE_PATH.'/config/scout.php', config_path('scout.php'));
-        $this->line('Copying Scout Config! <info>✔</info>');
+        $this->line('Copying Scout Config <info>✔</info>');
+        copy(EASEL_BASE_PATH.'/config/laravel-backup.php', config_path('laravel-backup.php'));
+        $this->line('Copying Laravel-Backup config <info>✔</info>');
 
         $this->line('Config files created! <info>✔</info>');
     }
@@ -110,7 +112,7 @@ class InstallCommand extends Command
         if (file_exists($seeder)) {
             $current_contents = file_get_contents($seeder);
             //Only add the seeder in if it doesn't already exist
-            if (strpos($current_contents, $addition) !== false) {
+            if (strpos($current_contents, $addition) === false) {
                 $magic = '/((?:.|\s)*?\s*run\(\)\s*{)((?:.|\s)*)(}\s*})$/m';
                 preg_match($magic, $current_contents, $matches);
                 $new_content = $matches[1].$matches[2]."\n\t\t".$addition."\n\t".$matches[3];
