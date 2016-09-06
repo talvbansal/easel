@@ -65,6 +65,10 @@
     @include('easel::backend.post.partials.modals.delete')
 @stop
 
+@section('unique-css')
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/talvbansal/mediamanager/css/media-manager.css')}}">
+@stop
+
 @section('unique-js')
     @include('easel::backend.post.partials.editor')
     {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#frmPost') !!}

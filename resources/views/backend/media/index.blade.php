@@ -17,7 +17,7 @@
 
             <div class="container">
                 <div class="card">
-                    @include('easel::backend.media.partials.file-picker')
+                    @include('media-manager::media.partials.file-picker')
                 </div>
             </div>
         </section>
@@ -25,8 +25,12 @@
 
 @stop
 
+@section('unique-css')
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/talvbansal/mediamanager/css/media-manager.css')}}">
+@stop
+
 @section('unique-js')
-    @include('easel::backend.media.partials.js.file-manager-mixin')
+    @include('media-manager::media.partials.js.file-manager-mixin')
     <script type="text/javascript">
         $(document).ready(function () {
             Vue.config.devtools = true;
@@ -39,6 +43,4 @@
             });
         });
     </script>
-
-
 @stop

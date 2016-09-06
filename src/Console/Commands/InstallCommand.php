@@ -83,6 +83,7 @@ class InstallCommand extends Command
     {
         $this->line('Publishing assets...');
         \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
+        \Artisan::call('vendor:publish', ['--provider' => 'TalvBansal\MediaManager\Providers\MediaManagerServiceProvider', '--force' => true]);
         \Artisan::call('vendor:publish', ['--provider' => 'Proengsoft\\JsValidation\\JsValidationServiceProvider', '--force' => true, '--tag' => 'public']);
         $this->line('Assets published! <info>✔</info>');
     }

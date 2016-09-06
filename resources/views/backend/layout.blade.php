@@ -7,6 +7,8 @@
 
         @include('easel::backend.partials.backend-css')
 
+        @yield('unique-css')
+
         <meta name="_token" content="{{ encrypt(csrf_token()) }}" />
 
     </head>

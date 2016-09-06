@@ -1,4 +1,8 @@
-@include('easel::backend.media.partials.file-picker')
+@section('unique-css')
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/talvbansal/mediamanager/css/media-manager.css')}}">
+@stop
+
+@include('media-manager::media.partials.file-picker')
 <script type="text/javascript">
     $(document).ready(function () {
         var vm = new Vue({
