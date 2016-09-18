@@ -40,7 +40,7 @@
 
 - [PHP](https://php.net) >= 5.6
 - [Composer](https://getcomposer.org)
-- An exsiting [Laravel 5.3 ](https://laravel.com/docs/master/installation) project
+- An existing [Laravel 5.3 ](https://laravel.com/docs/master/installation) project
 
 
 <h3>Installation</h3>
