@@ -20,6 +20,7 @@ elixir(function (mix) {
 
     // Vendor CSS Files
     mix.styles([
+        '../../../vendor/talvbansal/media-manager/public/css/media-manager.css',
         'bootstrap-datetimepicker.css',
         'chosen.min.css',
         'jquery.bootgrid.min.css',
@@ -33,30 +34,25 @@ elixir(function (mix) {
     ], 'public/css/vendor.css');
 
     // Core Vendor JS Files
-
     mix.scripts([
         'jquery.min.js',
-        'bootstrap.min.js',
-        'vue.min.js',
-        'vue-resource.min.js'
+        'bootstrap.min.js'
     ], 'public/js/core.js');
 
     // Vendor JS Files
     mix.scripts([
-        'moment.min.js',
+        '../../../vendor/talvbansal/media-manager/public/js/media-manager.js',
         'autosize.min.js',
         'bootstrap-datetimepicker.min.js',
         'bootstrap-select.js',
         'chosen.jquery.min.js',
         'fileinput.min.js',
-        'hammer.js',
         'jquery.bootgrid.min.js',
         'jquery.mask.min.js',
         'jquery.mCustomScrollbar.concat.min.js',
         'lightgallery.min.js',
         'simplemde.min.js',
-        'sweet-alert.min.js',
-        'vue-touch.js'
+        'sweet-alert.min.js'
     ], 'public/js/vendor.js');
 
     // App JS Files
@@ -66,6 +62,9 @@ elixir(function (mix) {
         'functions.js',
         'easel.js'
     ], 'public/js/easel.js');
+
+    // Copy SVG images into the public directory...
+    mix.copy( 'resources/assets/talvbansal/media-manager/fonts', 'public/fonts' );
 
     mix.phpUnit();
 });

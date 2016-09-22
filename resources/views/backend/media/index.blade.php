@@ -17,7 +17,7 @@
 
             <div class="container">
                 <div class="card">
-                    @include('media-manager::media.partials.file-picker')
+                    <media-manager></media-manager>
                 </div>
             </div>
         </section>
@@ -25,21 +25,12 @@
 
 @stop
 
-@section('unique-css')
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/talvbansal/mediamanager/css/media-manager.css')}}">
-@stop
-
 @section('unique-js')
-    @include('media-manager::media.partials.js.file-manager-mixin')
     <script type="text/javascript">
         $(document).ready(function () {
             Vue.config.devtools = true;
             var vm = new Vue({
-                el: 'body',
-                mixins: [FileManagerMixin],
-                ready: function () {
-                    this.loadFolder();
-                }
+                el: 'body'
             });
         });
     </script>
