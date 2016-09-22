@@ -30,7 +30,7 @@
 <div class="form-group">
     <div class="fg-line">
         {!! Form::label('page_image', 'Page Image', ['class' => 'fg-label']) !!}
-        {!! Form::text('page_image', $page_image, ['class' => 'form-control', 'placeholder' => 'Page Image', 'alt' => "Image thumbnail", 'v-model' => "pageImage", 'data-toggle' => "modal", 'href' => "#easel-file-picker"]) !!}
+        {!! Form::text('page_image', $page_image, ['class' => 'form-control', 'placeholder' => 'Page Image', 'alt' => "Image thumbnail", 'v-model' => "pageImage", '@click' => 'openFromPageImage']) !!}
     </div>
 </div>
 

@@ -75,6 +75,12 @@
                 openFromEditor: function () {
                     this.showMediaManager = true;
                     this.selectedEventName = 'editor';
+                },
+
+                openFromPageImage: function()
+                {
+                    this.showMediaManager = true;
+                    this.selectedEventName = 'page-image';
                 }
             }
         });
