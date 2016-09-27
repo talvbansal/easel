@@ -843,12 +843,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "8380a2b24c6a4dce90194cf3259910493d52df2d"
+                "reference": "2b338315d54ea37aa6c5e97f4d75a33ccf303503"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/8380a2b24c6a4dce90194cf3259910493d52df2d",
-                "reference": "8380a2b24c6a4dce90194cf3259910493d52df2d",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/2b338315d54ea37aa6c5e97f4d75a33ccf303503",
+                "reference": "2b338315d54ea37aa6c5e97f4d75a33ccf303503",
                 "shasum": ""
             },
             "require": {
@@ -862,7 +862,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -893,7 +893,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2016-09-17 08:57:48"
+            "time": "2016-09-23 18:24:34"
         },
         {
             "name": "laravel/framework",
@@ -901,12 +901,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b9511bf7c0d4d86d1c202cecc86c0cd1755e6f6c"
+                "reference": "8a4cc3ed2dd12fd5721939799fe034eb649ffe6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b9511bf7c0d4d86d1c202cecc86c0cd1755e6f6c",
-                "reference": "b9511bf7c0d4d86d1c202cecc86c0cd1755e6f6c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8a4cc3ed2dd12fd5721939799fe034eb649ffe6b",
+                "reference": "8a4cc3ed2dd12fd5721939799fe034eb649ffe6b",
                 "shasum": ""
             },
             "require": {
@@ -1021,7 +1021,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-09-22 13:54:51"
+            "time": "2016-09-27 22:06:27"
         },
         {
             "name": "laravel/scout",
@@ -1029,12 +1029,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "ace1b3116d751b7e7987d5aa5876fded423e9368"
+                "reference": "e8209540a39ab19c3e5849ab7b7bf57b4a1454a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/ace1b3116d751b7e7987d5aa5876fded423e9368",
-                "reference": "ace1b3116d751b7e7987d5aa5876fded423e9368",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/e8209540a39ab19c3e5849ab7b7bf57b4a1454a6",
+                "reference": "e8209540a39ab19c3e5849ab7b7bf57b4a1454a6",
                 "shasum": ""
             },
             "require": {
@@ -1080,10 +1080,11 @@
             "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
             "keywords": [
                 "algolia",
+                "elasticsearch",
                 "laravel",
                 "search"
             ],
-            "time": "2016-09-20 21:20:33"
+            "time": "2016-09-27 13:41:14"
         },
         {
             "name": "laravelcollective/html",
@@ -1298,12 +1299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "dacec2fe1ead778f90d0149caa8f047a0856571b"
+                "reference": "ffc421a4fd4e9651e236341f5ff3994b25a8ecc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dacec2fe1ead778f90d0149caa8f047a0856571b",
-                "reference": "dacec2fe1ead778f90d0149caa8f047a0856571b",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/ffc421a4fd4e9651e236341f5ff3994b25a8ecc5",
+                "reference": "ffc421a4fd4e9651e236341f5ff3994b25a8ecc5",
                 "shasum": ""
             },
             "require": {
@@ -1368,7 +1369,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-09-18 16:07:11"
+            "time": "2016-09-25 14:47:31"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -1632,12 +1633,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+                "reference": "607ce1d4005af32dd866c4a402459494c168d555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/607ce1d4005af32dd866c4a402459494c168d555",
+                "reference": "607ce1d4005af32dd866c4a402459494c168d555",
                 "shasum": ""
             },
             "require": {
@@ -1671,7 +1672,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-09-19 16:02:08"
+            "time": "2016-09-25 13:41:54"
         },
         {
             "name": "psy/psysh",
@@ -1997,12 +1998,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "07e4dd35f083d3455c6a590e62cd5cd048883600"
+                "reference": "ec8d482a8e2e9d852a570e20f6454cbc921f7d0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/07e4dd35f083d3455c6a590e62cd5cd048883600",
-                "reference": "07e4dd35f083d3455c6a590e62cd5cd048883600",
+                "url": "https://api.github.com/repos/symfony/console/zipball/ec8d482a8e2e9d852a570e20f6454cbc921f7d0d",
+                "reference": "ec8d482a8e2e9d852a570e20f6454cbc921f7d0d",
                 "shasum": ""
             },
             "require": {
@@ -2050,7 +2051,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-19 20:28:39"
+            "time": "2016-09-25 20:53:54"
         },
         {
             "name": "symfony/debug",
@@ -2777,12 +2778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/talvbansal/media-manager.git",
-                "reference": "4f0136acc31c8480e68aa11d1575afc76f4df2af"
+                "reference": "d1c4b98263e947330b0f15520ac28bbcc3843309"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/4f0136acc31c8480e68aa11d1575afc76f4df2af",
-                "reference": "4f0136acc31c8480e68aa11d1575afc76f4df2af",
+                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/d1c4b98263e947330b0f15520ac28bbcc3843309",
+                "reference": "d1c4b98263e947330b0f15520ac28bbcc3843309",
                 "shasum": ""
             },
             "require": {
@@ -2828,7 +2829,7 @@
                 "minimal",
                 "uploader"
             ],
-            "time": "2016-09-22 13:25:40"
+            "time": "2016-09-27 21:40:52"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
@@ -3403,12 +3404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "7df58d6065c89a0d0388394b312ff7477b6f2d41"
+                "reference": "153ebd99d9b842e0c99a024c41f970d79db46475"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/7df58d6065c89a0d0388394b312ff7477b6f2d41",
-                "reference": "7df58d6065c89a0d0388394b312ff7477b6f2d41",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/153ebd99d9b842e0c99a024c41f970d79db46475",
+                "reference": "153ebd99d9b842e0c99a024c41f970d79db46475",
                 "shasum": ""
             },
             "require": {
@@ -3473,7 +3474,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2016-09-18 13:42:02"
+            "time": "2016-09-26 20:28:11"
         },
         {
             "name": "phpspec/prophecy",
@@ -3786,12 +3787,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "41433b0d64caa3f2a73e415596dfa73490c262fc"
+                "reference": "d99e588e3cbab28db86f8da22e22c72d8cc38543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/41433b0d64caa3f2a73e415596dfa73490c262fc",
-                "reference": "41433b0d64caa3f2a73e415596dfa73490c262fc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d99e588e3cbab28db86f8da22e22c72d8cc38543",
+                "reference": "d99e588e3cbab28db86f8da22e22c72d8cc38543",
                 "shasum": ""
             },
             "require": {
@@ -3850,7 +3851,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-08-28 06:58:45"
+            "time": "2016-09-22 17:37:27"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4395,12 +4396,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "7fbb0dfc86370757774ff2d9bd5c3b89c9aac1a8"
+                "reference": "ef38bb2d8e9341a7a052526330b0f6693fb95138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/7fbb0dfc86370757774ff2d9bd5c3b89c9aac1a8",
-                "reference": "7fbb0dfc86370757774ff2d9bd5c3b89c9aac1a8",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/ef38bb2d8e9341a7a052526330b0f6693fb95138",
+                "reference": "ef38bb2d8e9341a7a052526330b0f6693fb95138",
                 "shasum": ""
             },
             "require": {
@@ -4442,7 +4443,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-20 08:33:13"
+            "time": "2016-09-25 16:21:58"
         },
         {
             "name": "webmozart/assert",
