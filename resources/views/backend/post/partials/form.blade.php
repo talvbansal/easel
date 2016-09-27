@@ -28,10 +28,15 @@
 <br>
 
 <div class="form-group">
-    <div class="fg-line">
-        {!! Form::label('page_image', 'Page Image', ['class' => 'fg-label']) !!}
-        {!! Form::text('page_image', $page_image, ['class' => 'form-control', 'placeholder' => 'Page Image', 'alt' => "Image thumbnail", 'v-model' => "pageImage", '@click' => 'openFromPageImage']) !!}
-    </div>
+    <span class="fg-line">
+      <label class="fg-label">Page Image</label>
+      <div class="input-group">
+        <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" value="{{ $page_image }}" placeholder="Example: /storage/placeholder.png" v-model="pageImage">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary waves-effect" @click="openFromPageImage()">Select Image</button>
+        </span>
+
+      </div>
 </div>
 
 <div class="visible-sm space-10"></div>
