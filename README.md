@@ -27,7 +27,7 @@
     </a>
     
     <a href="https://insight.sensiolabs.com/projects/06d23269-ac1d-4465-b542-9c38b31f8d91" target="_blank">
-        <img src="https://img.shields.io/sensiolabs/i/06d23269-ac1d-4465-b542-9c38b31f8d91.svg?style=flat-square" alt="SensioLabsInsight"/>
+        <img src="https://img.shields.io/sensiolabs/i/06d23269-ac1d-4465-b542-9c38b31f8d91.svg?style=flat" alt="SensioLabsInsight"/>
     </a>
     
     <a href="https://github.com/talvbansal/easel/blob/master/licence" target="_blank">
