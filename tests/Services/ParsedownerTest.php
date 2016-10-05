@@ -31,16 +31,19 @@ class ParsedownerTest extends PHPUnit_Framework_TestCase
             ['`hello_world`', '<p><code>hello_world</code></p>'],
             ['``` <?php $var = "Php Code Blocks"; echo $var; ?> ```', '<p><code>&lt;?php $var = "Php Code Blocks"; echo $var; ?&gt;</code></p>'],
             ['*italics text*', '<p><em>italics text</em></p>'],
+            ['_italics text_', '<p><em>italics text</em></p>'],
             ['**bold text**', '<p><strong>bold text</strong></p>'],
+            ['__bold text__', '<p><strong>bold text</strong></p>'],
             ['---', '<hr />'],
             ['***', '<hr />'],
             ['>note', "<blockquote>\n<p>note</p>\n</blockquote>"],
-            ['[Canvas](http://austintoddj.github.io/Canvas "Canvas")', '<p><a href="http://austintoddj.github.io/Canvas" title="Canvas">Canvas</a></p>'],
+            ['[Easel](http://http://github.com/talvbansal/easel "Easel")', '<p><a href="http://github.com/talvbansal/easel" title="Easel">Easel</a></p>'],
             ['Intra-word *emp*hasis', '<p>Intra-word <em>emp</em>hasis</p>'],
             ['~~Strikethrough~~', '<p><del>Strikethrough</del></p>'],
-            ['![Canvas Logo](http://austintoddj.github.io/Canvas/img/canvas-logo.gif)', '<p><img src="http://austintoddj.github.io/Canvas/img/canvas-logo.gif" alt="Canvas Logo" /></p>'],
+            ['![Easel Logo](http://github.com/talvbansal/easel/logo.gif)', '<p><img src="http://github.com/talvbansal/easel/logo.gif" alt="Easel Logo" /></p>'],
             ['- List Item', "<ul>\n<li>List Item</li>\n</ul>"],
             ['1. List Item', "<ol>\n<li>List Item</li>\n</ol>"],
+            ['[Easel](http://github.com/talvbansal/easel)', '<p><a href="http://github.com/talvbansal/easel">Easel</a></p>'],
         ];
     }
 }
