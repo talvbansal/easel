@@ -37,7 +37,7 @@ class ParsedownerTest extends PHPUnit_Framework_TestCase
             ['---', '<hr />'],
             ['***', '<hr />'],
             ['>note', "<blockquote>\n<p>note</p>\n</blockquote>"],
-            ['[Easel](http://http://github.com/talvbansal/easel "Easel")', '<p><a href="http://github.com/talvbansal/easel" title="Easel">Easel</a></p>'],
+            ['[Easel](http://github.com/talvbansal/easel "Easel")', '<p><a href="http://github.com/talvbansal/easel" title="Easel">Easel</a></p>'],
             ['Intra-word *emp*hasis', '<p>Intra-word <em>emp</em>hasis</p>'],
             ['~~Strikethrough~~', '<p><del>Strikethrough</del></p>'],
             ['![Easel Logo](http://github.com/talvbansal/easel/logo.gif)', '<p><img src="http://github.com/talvbansal/easel/logo.gif" alt="Easel Logo" /></p>'],
