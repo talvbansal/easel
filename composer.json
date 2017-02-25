@@ -10,26 +10,27 @@
       "role": "Developer"
     }
   ],
+
   "require": {
     "php": ">=5.6",
     "bestmomo/scafold": "dev-master",
     "dflydev/apache-mime-types": "^1.0",
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
-    "proengsoft/laravel-jsvalidation": "1.0.*",
-    "laravelcollective/html": "^5.3",
-    "teamtnt/laravel-scout-tntsearch-driver": "^1.0",
+    "proengsoft/laravel-jsvalidation": "^1.5",
+    "laravelcollective/html": "5.*",
+    "teamtnt/laravel-scout-tntsearch-driver": "2.*",
     "spatie/laravel-backup": "^3.10"
   },
   "require-dev": {
-    "symfony/dom-crawler": "~3.0",
-    "symfony/css-selector": "~3.0",
+    "symfony/dom-crawler": "3.*",
+    "symfony/css-selector": "3.*",
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0",
     "phpspec/phpspec": "~2.1",
-    "illuminate/support": "^5.3",
-    "illuminate/routing": "^5.3",
+    "illuminate/support": "5.*.*",
+    "illuminate/routing": "5.*.*",
     "orchestra/testbench": "~3.3"
   },
   "autoload": {

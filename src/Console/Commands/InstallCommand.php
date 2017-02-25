@@ -4,7 +4,9 @@
 
 namespace Easel\Console\Commands;
 
+use Easel\Providers\EaselServiceProvider;
 use Illuminate\Console\Command;
+use Proengsoft\JsValidation\JsValidationServiceProvider;
 
 /**
  * Class InstallCommand.
@@ -82,8 +84,8 @@ class InstallCommand extends Command
     private function publishAssets()
     {
         $this->line('Publishing assets...');
-        \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
-        \Artisan::call('vendor:publish', ['--provider' => 'Proengsoft\\JsValidation\\JsValidationServiceProvider', '--force' => true, '--tag' => 'public']);
+        \Artisan::call('vendor:publish', ['--provider' => EaselServiceProvider::class, '--force' => true]);
+        \Artisan::call('vendor:publish', ['--provider' => JsValidationServiceProvider::class, '--force' => true, '--tag' => 'public']);
         $this->line('Assets published! <info>✔</info>');
     }
 

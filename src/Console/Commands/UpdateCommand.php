@@ -7,7 +7,9 @@
  */
 namespace Easel\Console\Commands;
 
+use Easel\Providers\EaselServiceProvider;
 use Illuminate\Console\Command;
+use Proengsoft\JsValidation\JsValidationServiceProvider;
 
 class UpdateCommand extends Command
 {
@@ -44,9 +46,9 @@ class UpdateCommand extends Command
     private function publishAssets()
     {
         $this->line('Publishing assets...');
-        \Artisan::call('vendor:publish', ['--provider' => 'Easel\\Providers\\EaselServiceProvider', '--force' => true]);
+        \Artisan::call('vendor:publish', ['--provider' => EaselServiceProvider::class, '--force' => true]);
         \Artisan::call('vendor:publish', [
-            '--provider' => 'Proengsoft\\JsValidation\\JsValidationServiceProvider',
+            '--provider' => JsValidationServiceProvider::class,
             '--force'    => true,
             '--tag'      => 'public',
         ]);
