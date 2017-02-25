@@ -17,7 +17,7 @@
 
             <div class="container">
                 <div class="card">
-                    @include('easel::backend.media.partials.file-picker')
+                    <media-manager></media-manager>
                 </div>
             </div>
         </section>
@@ -26,19 +26,12 @@
 @stop
 
 @section('unique-js')
-    @include('easel::backend.media.partials.js.file-manager-mixin')
     <script type="text/javascript">
         $(document).ready(function () {
             Vue.config.devtools = true;
             var vm = new Vue({
-                el: 'body',
-                mixins: [FileManagerMixin],
-                ready: function () {
-                    this.loadFolder();
-                }
+                el: 'body'
             });
         });
     </script>
-
-
 @stop

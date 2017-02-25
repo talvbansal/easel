@@ -7,7 +7,13 @@
 
         @include('easel::backend.partials.backend-css')
 
-        <meta name="_token" content="{{ encrypt(csrf_token()) }}" />
+        @yield('unique-css')
+
+        <script>
+            window.Laravel = <?php echo json_encode([
+                    'csrfToken' => csrf_token(),
+            ]); ?>
+        </script>
 
     </head>
     <body @if(Auth::check()) class="toggled sw-toggled" @endif>
