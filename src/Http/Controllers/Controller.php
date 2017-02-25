@@ -5,6 +5,7 @@
  * Date: 19/07/16
  * Time: 09:49.
  */
+
 namespace Easel\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

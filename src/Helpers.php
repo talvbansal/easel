@@ -23,7 +23,6 @@ if (!function_exists('seoUrl')) {
     }
 }
 
-
 if (!function_exists('human_filesize')) {
     /**
      * Return sizes readable by humans.
@@ -55,7 +54,6 @@ if (!function_exists('is_image')) {
         return starts_with($mimeType, 'image/');
     }
 }
-
 
 if (!function_exists('checked')) {
     /**
