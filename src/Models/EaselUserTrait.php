@@ -5,6 +5,7 @@
  * Date: 02/08/16
  * Time: 07:56.
  */
+
 namespace Easel\Models;
 
 trait EaselUserTrait

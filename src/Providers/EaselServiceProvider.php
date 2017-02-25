@@ -5,6 +5,7 @@
  * Date: 10/07/16
  * Time: 16:04.
  */
+
 namespace Easel\Providers;
 
 use Collective\Html\FormFacade;
