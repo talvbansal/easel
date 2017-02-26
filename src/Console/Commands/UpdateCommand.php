@@ -5,6 +5,7 @@
  * Date: 18/07/16
  * Time: 14:37.
  */
+
 namespace Easel\Console\Commands;
 
 use Easel\Providers\EaselServiceProvider;

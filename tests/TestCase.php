@@ -20,10 +20,10 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->artisan('migrate', [
             '--database' => 'test',
-            '--realpath' => realpath(__DIR__ . '/../database/migrations'),
+            '--realpath' => realpath(__DIR__.'/../database/migrations'),
         ]);
 
-        $this->withFactories(realpath(__DIR__ . '/../database/factories'));
+        $this->withFactories(realpath(__DIR__.'/../database/factories'));
 
         $this->artisan('easel:install');
     }

@@ -32,6 +32,4 @@ class Seed extends Command
         $this->call('db:seed', ['--class' => EaselDatabaseSeeder::class]);
         $this->line('Seeding database <info>✔</info>');
     }
-
-
 }
