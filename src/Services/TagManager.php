@@ -5,6 +5,7 @@
  * Date: 21/07/16
  * Time: 12:40.
  */
+
 namespace Easel\Services;
 
 use Easel\Models\Tag;

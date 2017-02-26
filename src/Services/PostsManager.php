@@ -5,6 +5,7 @@
  * Date: 02/08/16
  * Time: 10:11.
  */
+
 namespace Easel\Services;
 
 use Carbon\Carbon;

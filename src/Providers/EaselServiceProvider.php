@@ -5,6 +5,7 @@
  * Date: 10/07/16
  * Time: 16:04.
  */
+
 namespace Easel\Providers;
 
 use Collective\Html\FormFacade;
@@ -14,6 +15,7 @@ use Easel\Console\Commands\InstallCommand;
 use Easel\Console\Commands\Seed;
 use Easel\Console\Commands\UpdateCommand;
 use Easel\Models\BlogUserInterface;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
@@ -21,7 +23,6 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 use Spatie\Backup\BackupServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 /**
  * Class EaselServiceProvider.
@@ -113,8 +114,7 @@ class EaselServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load database migrations / seeds / factories
-     *
+     * Load database migrations / seeds / factories.
      */
     private function defineMigrations()
     {
