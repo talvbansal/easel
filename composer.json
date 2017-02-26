@@ -31,7 +31,8 @@
     "phpspec/phpspec": "~2.1",
     "illuminate/support": "5.*.*",
     "illuminate/routing": "5.*.*",
-    "orchestra/testbench": "~3.3"
+    "orchestra/testbench": "~3.3",
+    "orchestra/database": "~3.1"
   },
   "autoload": {
     "psr-4": {

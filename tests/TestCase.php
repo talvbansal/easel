@@ -18,10 +18,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        $this->artisan('migrate', [
-            '--database' => 'test',
-            '--realpath' => realpath(__DIR__.'/../database/migrations'),
-        ]);
+        $this->artisan('migrate');
 
         $this->withFactories(realpath(__DIR__.'/../database/factories'));
 

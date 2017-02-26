@@ -17,6 +17,7 @@ use Easel\Console\Commands\UpdateCommand;
 use Easel\Models\BlogUserInterface;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Foundation\Providers\ConsoleSupportServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
