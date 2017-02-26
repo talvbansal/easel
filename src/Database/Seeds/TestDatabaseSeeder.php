@@ -1,4 +1,5 @@
 <?php
+namespace Easel\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 

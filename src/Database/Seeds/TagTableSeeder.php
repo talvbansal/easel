@@ -1,4 +1,5 @@
 <?php
+namespace Easel\Database\Seeds;
 
 use Easel\Models\Tag;
 use Illuminate\Database\Seeder;

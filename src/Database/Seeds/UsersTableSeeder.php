@@ -1,4 +1,5 @@
 <?php
+namespace Easel\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
@@ -22,7 +23,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = DB::table('users');
+        $users = \DB::table('users');
         $users->truncate();
 
         $users->insert([
@@ -75,8 +76,8 @@ class UsersTableSeeder extends Seeder
             | Timestamps
             |--------------------------------------------------------------------------
             */
-            'created_at'   => Carbon\Carbon::now(),
-            'updated_at'   => Carbon\Carbon::now(),
+            'created_at'   => \Carbon\Carbon::now(),
+            'updated_at'   => \Carbon\Carbon::now(),
         ]);
     }
 }

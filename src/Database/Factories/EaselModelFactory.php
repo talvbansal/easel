@@ -78,6 +78,5 @@ $factory->define(Easel\Models\User::class, function (Faker\Generator $faker) {
         'country'      => $faker->countryCode,
         'url'          => $faker->url,
         'password'     => bcrypt('password'),
-
     ];
 });

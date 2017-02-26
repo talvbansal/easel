@@ -11,6 +11,7 @@ use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
 use Easel\Console\Commands\InstallCommand;
+use Easel\Console\Commands\Seed;
 use Easel\Console\Commands\UpdateCommand;
 use Easel\Models\BlogUserInterface;
 use Illuminate\Foundation\AliasLoader;
@@ -20,6 +21,7 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 use Spatie\Backup\BackupServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 /**
  * Class EaselServiceProvider.
@@ -58,6 +60,7 @@ class EaselServiceProvider extends ServiceProvider
             $this->commands([
                 InstallCommand::class,
                 UpdateCommand::class,
+                Seed::class,
             ]);
         }
 
@@ -110,22 +113,13 @@ class EaselServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish database migrations / seeds / factories to host application
-     * This is only when the application is run in the console.
+     * Load database migrations / seeds / factories
+     *
      */
     private function defineMigrations()
     {
-        $this->publishes([
-            EASEL_BASE_PATH.'/database/migrations/' => database_path('migrations'),
-        ], 'migrations');
-
-        $this->publishes([
-            EASEL_BASE_PATH.'/database/seeds/' => database_path('seeds'),
-        ], 'seeds');
-
-        $this->publishes([
-            EASEL_BASE_PATH.'/database/factories/' => database_path('factories'),
-        ], 'factories');
+        $this->loadMigrationsFrom(EASEL_BASE_PATH.'/src/Database/Migrations/');
+        $this->app->make(EloquentFactory::class)->load(EASEL_BASE_PATH.'/src/Database/Factories');
     }
 
     /**

@@ -33,43 +33,43 @@ class UpdateUsersTable extends Migration
                 $table->string('first_name')->nullable();
             }
 
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'last_name')) {
                 $table->string('last_name')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'display_name')) {
                 $table->string('display_name')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'url')) {
                 $table->string('url')->nullable();
             }
             if (!Schema::hasColumn('users', 'first_name')) {
                 $table->json('social_media')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'address')) {
                 $table->string('address')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'city')) {
                 $table->string('city')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'country')) {
                 $table->string('country')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'bio')) {
                 $table->text('bio')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'job')) {
                 $table->string('job')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'phone')) {
                 $table->string('phone')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'gender')) {
                 $table->string('gender', 140)->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'relationship')) {
                 $table->string('relationship', 140)->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'birthday')) {
                 $table->date('birthday')->nullable();
             }
         });
@@ -82,29 +82,6 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $columns = [
-                'first_name',
-                'last_name',
-                'display_name',
-                'url',
-                'social_media',
-                'address',
-                'city',
-                'country',
-                'bio',
-                'job',
-                'phone',
-                'gender',
-                'relationship',
-                'birthday',
-            ];
-
-            foreach ($columns as $column) {
-                if (Schema::hasColumn('users', $column)) {
-                    $table->dropColumn($column);
-                }
-            }
-        });
+        Schema::dropIfExists('users');
     }
 }
