@@ -5,6 +5,7 @@
  * Date: 13/07/16
  * Time: 17:05.
  */
+
 namespace Easel\Models;
 
 /**

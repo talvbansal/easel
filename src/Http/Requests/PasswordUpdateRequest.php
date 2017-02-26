@@ -5,6 +5,7 @@
  * Date: 03/08/16
  * Time: 08:28.
  */
+
 namespace Easel\Http\Requests;
 
 class PasswordUpdateRequest extends Request
