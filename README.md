@@ -47,36 +47,36 @@
 
 1. You can download Easel using composer 
 
-    ```
+    ```bash
     composer require talvbansal/easel
     ```
 
 2. To register the `easel:install` and `easel:update` artisan commands as well as the new routes for Easel to work, you will need to add the Easel service provider to your `config/app.php` file
 
-    ```
+    ```php
     \Easel\Providers\EaselServiceProvider::class,
     ```
 
 3. To install Easel into your project run the following command, this will publish all the application assets and database migrations / factories / seeds required, the migrations will automatically be run from this command
 
-    ```
+    ```bash
     php artisan easel:install
     ```
 
 4. Finally you'll need to seed your database to create the default admin user and initial post
 
-    ```
-    php artisan db:seed
+    ```bash
+    php artisan easel:seed
     ```
 5. Update your `config/auth.php` file to use Easel's built in User Model (`Easel\Models\User`) 
-
+	```php
         'providers' => [
             'users' => [
                 'driver' => 'eloquent',
                 'model' => Easel\Models\User::class,
             ],
         ],
-        
+	```
     Or alternatively configure Easel to use your own [Custom User Model](#Custom-Model)
 
 6. Sign into Easel using the default credentials:
@@ -87,21 +87,22 @@
 
 8. Start blogging! 
 
-<h3>Updates</h3>
+### Updates
 
 - Whenever an update to Easel is made internal files will automatically be updated when a composer update is run, however new views and assets will only be published / republished with the following command
     
         php artisan easel:update
     
 - You could also add the above command to your post-update-cmd in your projects `composer.json` file
-
+	```javascript
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan easel:update",
             "php artisan optimize"
         ]
+   ```
 
-<h3>Customisation</h3>
+### Customisation
 
 Every app is different and Easel has been designed to be customisable. Be sure to check out the `config/easel.php` for a complete list of configurable options. 
 
@@ -112,14 +113,14 @@ Every app is different and Easel has been designed to be customisable. Be sure t
 - ##### Built In Model
 
 - If you want to use the build in User model (`Easel\Models\User`) you'll need to set it in the `config/auth.php` file
-
+	```php
         'providers' => [
             'users' => [
                 'driver' => 'eloquent',
                 'model' => Easel\Models\User::class,
             ],
         ],
-    
+    ```
 
 - ##### Custom Model
 
@@ -127,7 +128,7 @@ If you want to use an existing model you'll need to make the following changes t
 
 1. Your User model will need implement the `Easel\Models\BlogUserInterface` and also use the `Easel\Models\EaselUserTrait`
 2. You will also need to add the key `birthday` to the `$dates` property of your user model
-
+	```php
         class User extends Model implements \Easel\Models\BlogUserInterface{
         
             use Easel\Models\EaselUserTrait;
@@ -135,10 +136,11 @@ If you want to use an existing model you'll need to make the following changes t
             protected $dates = ['birthday'];
             
         }
+    ```
     
 3. Then finally update the `config/easel.php` config file use your User model
  
-    ```
+    ```php
     'user_model' => \My\Custom\User::class,
     ```
     
@@ -161,8 +163,10 @@ The above changes will make your blog respond at
 
 If you want the blog to respond at the `'/'` route you will need to add a new route to your `routes.php` file as follows:
 
+	```php
         Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
-
+	```
+	
 #### Customising views for your blog posts and list
 
 When creating a blog post you can use the `default` layout for Easel, however it is likely that you'll want to amend the views to suit your application. 
