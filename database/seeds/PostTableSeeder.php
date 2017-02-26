@@ -12,6 +12,11 @@ class PostTableSeeder extends Seeder
     {
         Post::truncate();
 
-        factory(Post::class, 1)->create();
+        factory(Post::class, 1)->create([
+            'title'               => 'Hello world',
+            'slug'                => 'hello-world',
+            'subtitle'            => 'Easel is a blogging package for Laravel',
+            'meta_description'    => 'Let\'s get you up and running with Easel!',
+        ]);
     }
 }

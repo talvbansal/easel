@@ -21,13 +21,13 @@
 */
 $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
     return [
-        'title'               => 'Hello world',
-        'slug'                => 'hello-world',
-        'subtitle'            => 'Easel is a blogging package for Laravel',
+        'title'               => $faker->title,
+        'slug'                => $faker->word,
+        'subtitle'            => $faker->sentence,
         'page_image'          => '/storage/placeholder.png',
         'content_raw'         => view('easel::shared.helpers.welcome'),
         'published_at'        => Carbon\Carbon::now(),
-        'meta_description'    => 'Let\'s get you up and running with Easel!',
+        'meta_description'    => $faker->sentence,
         'is_draft'            => false,
         'layout'              => config('easel.layouts.posts.default'),
         'author_id'           => 1,
@@ -44,10 +44,10 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
 */
 $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
     return [
-        'tag'               => 'Getting Started',
-        'title'             => 'Getting Started',
-        'subtitle'          => 'Getting started with Easel',
-        'meta_description'  => 'Meta content for this tag.',
+        'tag'               => $faker->word,
+        'title'             => $faker->title,
+        'subtitle'          => $faker->title,
+        'meta_description'  => $faker->words(3),
         'layout'            => 'vendor.easel.frontend.blog.index',
         'reverse_direction' => false,
         'created_at'        => Carbon\Carbon::now(),
@@ -71,7 +71,7 @@ $factory->define(Easel\Models\User::class, function (Faker\Generator $faker) {
         'birthday'     => $faker->date('Y-m-d'),
         'email'        => $faker->safeEmail,
         'social_media' => json_encode(['twitter'   => 'http://twitter.com/'.$faker->userName,
-                                        'facebook' => 'http://facebook.com/'.$faker->userName,
+            'facebook' => 'http://facebook.com/'.$faker->userName,
         ]),
         'address'      => $faker->streetAddress,
         'city'         => $faker->city,
