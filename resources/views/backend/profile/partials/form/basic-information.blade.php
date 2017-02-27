@@ -63,7 +63,17 @@ $genders = [
 <div class="form-group">
     <div class="fg-line">
         <label for="gender" class="fg-label">Gender</label>
-        {!! Form::select('gender', $genders, $user->gender, ['class' => 'selectpicker']) !!}
+        <select name="gender" id="gender" class="selectpicker">
+            @foreach($genders as $key => $gender)
+
+                @if($key == $user->gender)
+                    <option value="{{ $key }}" selected>{{ $gender }}</option>
+                @else
+                    <option value="{{ $key }}">{{ $gender }}</option>
+                @endif
+
+            @endforeach
+        </select>
     </div>
 </div>
 
@@ -81,7 +91,16 @@ $genders = [
 <div class="form-group">
     <div class="fg-line">
         <label for="relationship" class="fg-label">Relationship Status</label>
-        {!! Form::select('relationship', $relationships, $user->relationship ,['class' => 'selectpicker']) !!}
+        <select name="relationship" id="relationship" class="selectpicker">
+            @foreach($relationships as $key => $relationship)
 
+                @if($key == $user->relationship)
+                    <option value="{{ $key }}" selected>{{ $relationship }}</option>
+                @else
+                    <option value="{{ $key }}">{{ $relationship }}</option>
+                @endif
+
+            @endforeach
+        </select>
     </div>
 </div>

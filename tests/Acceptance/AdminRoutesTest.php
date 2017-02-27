@@ -1,5 +1,8 @@
 <?php
+namespace EaselTest\Acceptance;
 
+use Easel\Models\User;
+use EaselTest\TestCase;
 
 /**
  * Class AdminRoutesTest.
@@ -11,7 +14,7 @@ class AdminRoutesTest extends TestCase
     /**
      * The user model.
      *
-     * @var Easel\Models\User
+     * @var User
      */
     private $user;
 
@@ -24,7 +27,7 @@ class AdminRoutesTest extends TestCase
      */
     public function createUser()
     {
-        $this->user = factory(\Easel\Models\User::class)->create();
+        $this->user = factory(User::class)->create();
     }
 
     /**
@@ -34,8 +37,13 @@ class AdminRoutesTest extends TestCase
      */
     public function testPostsPageResponseCode()
     {
-        $response = $this->actingAs($this->user)->call('GET', '/admin/post');
+        $this->disableExceptionHandling();
+
+        $this->actingAs($this->user);
+
+        $response = $this->call('GET', '/admin/post');
         $this->assertEquals(200, $response->status());
+
     }
 
     /**

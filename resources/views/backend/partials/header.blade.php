@@ -36,12 +36,12 @@
 
 
     <!-- Top Search Content -->
-    {!! Form::open(['method' => 'GET', 'url' => route('admin.search.index'), 'name' => 'search', 'id' => 'search']) !!}
+    <form id="search" name="search" action="{{ route('admin.search.index') }}" method="GET">
         <div id="top-search-wrap">
             <div class="tsw-inner">
                 <i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
                 <input type="text" placeholder="Search" name="search">
             </div>
         </div>
-    {!! Form::close() !!}
+    </form>
 </header>

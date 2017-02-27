@@ -37,8 +37,6 @@ elixir(function (mix) {
     mix.scripts([
         'jquery.min.js',
         'bootstrap.min.js',
-        'vue.min.js',
-        'vue-resource.min.js'
     ], 'public/js/core.js');
 
     // Vendor JS Files
@@ -55,8 +53,7 @@ elixir(function (mix) {
         'jquery.mCustomScrollbar.concat.min.js',
         'lightgallery.min.js',
         'simplemde.min.js',
-        'sweet-alert.min.js',
-        'vue-touch.js'
+        'sweet-alert.min.js'
     ], 'public/js/vendor.js');
 
     // App JS Files
@@ -66,6 +63,9 @@ elixir(function (mix) {
         'functions.js',
         'easel.js'
     ], 'public/js/easel.js');
+
+    mix.webpack('app.js')
+        .webpack('app-start.js');
 
     mix.phpUnit();
 });

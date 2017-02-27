@@ -18,16 +18,16 @@
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
     "proengsoft/laravel-jsvalidation": "^1.5",
-    "laravelcollective/html": "5.*",
     "teamtnt/laravel-scout-tntsearch-driver": "2.*",
-    "spatie/laravel-backup": "^3.10"
+    "spatie/laravel-backup": "^3.10",
+    "talvbansal/media-manager": "^2.0"
   },
   "require-dev": {
     "symfony/dom-crawler": "3.*",
     "symfony/css-selector": "3.*",
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~4.0",
+    "phpunit/phpunit": "~5.0",
     "phpspec/phpspec": "~2.1",
     "illuminate/support": "5.*.*",
     "illuminate/routing": "5.*.*",
@@ -43,6 +43,9 @@
     ]
   },
   "autoload-dev": {
+    "psr-4": {
+      "EaselTest\\": "tests/"
+    },
     "classmap": [
       "tests/TestCase.php"
     ]

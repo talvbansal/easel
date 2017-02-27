@@ -9,6 +9,12 @@
 
         <meta name="_token" content="{{ encrypt(csrf_token()) }}" />
 
+        <script>
+            window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+            ]); ?>
+        </script>
+
     </head>
     <body @if(Auth::check()) class="toggled sw-toggled" @endif>
         @if (Auth::guest())
@@ -32,6 +38,8 @@
         @include('easel::backend.partials.search-js')
 
         @yield('unique-js')
+
+        <script src="/js/app-start.js"></script>
 
     </body>
 </html>

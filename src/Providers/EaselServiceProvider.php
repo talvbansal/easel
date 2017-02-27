@@ -128,7 +128,7 @@ class EaselServiceProvider extends ServiceProvider
     private function registerServices()
     {
         //register service providers
-        $this->app->register(HtmlServiceProvider::class);
+        $this->app->register(\TalvBansal\MediaManager\Providers\MediaManagerServiceProvider::class);
         $this->app->register(JsValidationServiceProvider::class);
         $this->app->register(ScoutServiceProvider::class);
         $this->app->register(TNTSearchScoutServiceProvider::class);
@@ -137,7 +137,5 @@ class EaselServiceProvider extends ServiceProvider
         //load facades
         $loader = AliasLoader::getInstance();
         $loader->alias('JsValidator', JsValidatorFacade::class);
-        $loader->alias('Form', FormFacade::class);
-        $loader->alias('Html', HtmlFacade::class);
     }
 }

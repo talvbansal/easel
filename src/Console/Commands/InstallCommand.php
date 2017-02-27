@@ -7,6 +7,7 @@ namespace Easel\Console\Commands;
 use Easel\Providers\EaselServiceProvider;
 use Illuminate\Console\Command;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
+use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 
 /**
  * Class InstallCommand.
@@ -86,6 +87,7 @@ class InstallCommand extends Command
         $this->line('Publishing assets...');
         \Artisan::call('vendor:publish', ['--provider' => EaselServiceProvider::class, '--force' => true]);
         \Artisan::call('vendor:publish', ['--provider' => JsValidationServiceProvider::class, '--force' => true, '--tag' => 'public']);
+        \Artisan::call('vendor:publish', ['--provider' => MediaManagerServiceProvider::class, '--force' => true, '--tag' => 'media-manager']);
         $this->line('Assets published! <info>✔</info>');
     }
 
@@ -98,31 +100,11 @@ class InstallCommand extends Command
         $options = [];
         \Artisan::call('migrate', $options);
         $this->line('Database updated! <info>✔</info>');
-        $this->appendSeederToMasterFile();
+
+        \Artisan::call('easel:seed', $options);
 
         \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
         \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
         $this->line('Search index files created <info>✔</info>');
-    }
-
-    private function appendSeederToMasterFile()
-    {
-        $seeder = base_path('database/seeds/DatabaseSeeder.php');
-        $addition = '$this->call("EaselDatabaseSeeder");';
-
-        //Not sure the best way to do this
-        if (file_exists($seeder)) {
-            $current_contents = file_get_contents($seeder);
-            //Only add the seeder in if it doesn't already exist
-            if (strpos($current_contents, $addition) === false) {
-                $magic = '/((?:.|\s)*?\s*run\(\)\s*{)((?:.|\s)*)(}\s*})$/m';
-                preg_match($magic, $current_contents, $matches);
-                $new_content = $matches[1].$matches[2]."\n\t\t".$addition."\n\t".$matches[3];
-
-                return file_put_contents($seeder, $new_content);
-            }
-        }
-
-        return false;
     }
 }

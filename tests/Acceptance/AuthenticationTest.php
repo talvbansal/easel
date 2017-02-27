@@ -1,4 +1,8 @@
 <?php
+namespace EaselTest\Acceptance;
+
+use Easel\Models\User;
+use EaselTest\TestCase;
 
 /**
  * Class AuthenticationTest.
@@ -23,7 +27,7 @@ class AuthenticationTest extends TestCase
      */
     public function createUser()
     {
-        $this->user = factory(Easel\Models\User::class)->create();
+        $this->user = factory(User::class)->create();
     }
 
     /**

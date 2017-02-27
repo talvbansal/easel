@@ -42,8 +42,9 @@
 
                     </div>
                     <div class="card-body card-padding">
-                        {!! Form::open(['class' => 'keyboard-save', 'id' => 'frmPost', 'method' => 'put', 'url' => route('admin.post.update', $id)]) !!}
-
+                        <form class="keyboard-save" role="form" method="POST" id="frmPost" action="{!! route('admin.post.update', $id) !!}">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="hidden" name="user_id" value="{!! auth()->user()->id!!}">
                             @include('easel::backend.post.partials.form')
 
                             <div class="form-group">
@@ -55,7 +56,7 @@
                                     <i class="zmdi zmdi-delete"></i> Delete
                                 </button>
                             </div>
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             </div>

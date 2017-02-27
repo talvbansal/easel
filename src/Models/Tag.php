@@ -2,9 +2,17 @@
 
 namespace Easel\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
+/**
+ * Class Tag
+ * @package Easel\Models
+ *
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ */
 class Tag extends Model
 {
     use Searchable;

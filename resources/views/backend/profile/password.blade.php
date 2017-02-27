@@ -6,7 +6,9 @@
 
 @section('profile-content')
 
-    {!! Form::open(['class' => 'keyboard-save', 'autocomplete' => 'off', 'method' => 'put', 'url' => route('admin.profile.update.password', $user->id), 'id' => 'frmPasswordUpdate' ]) !!}
+    <form class="keyboard-save" action="{!! route('admin.profile.update.password', $user->id) !!}" method="POST" role="form" autocomplete="false" id="frmPasswordUpdate">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_method" value="PUT">
 
     <div class="pmb-block">
         <div class="pmbb-header">
@@ -20,10 +22,11 @@
 
         <div class="pmbb-body p-l-30">
 
+
             <div class="form-group">
                 <div class="fg-line">
-                    {!! Form::label('password', 'Current Password', ['class' => 'fg-label'])  !!}
-                    {!! Form::password('password', ['class'=> 'form-control', 'size' => 20, 'maxlength' => 255, 'autofocus' => 'autofocus', 'placeholder' => 'Current Password' ] )  !!}
+                    <label class="fg-label">Current Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Current Password">
                 </div>
             </div>
 
@@ -31,8 +34,8 @@
 
             <div class="form-group">
                 <div class="fg-line">
-                    {!! Form::label('new_password', 'Password', ['class' => 'fg-label']) !!}
-                    {!! Form::password('new_password', ['class'=> 'form-control', 'maxlength' => 50, 'placeholder' => 'New Password'] ) !!}
+                    <label class="fg-label">New Password</label>
+                    <input type="password" class="form-control" name="new_password" id="new_password" placeholder="New Password">
                 </div>
             </div>
 
@@ -40,8 +43,8 @@
 
             <div class="form-group">
                 <div class="fg-line">
-                    {!! Form::label('new_password_confirmation', 'Confirm Password', ['class' => 'fg-label']) !!}
-                    {!! Form::password('new_password_confirmation', ['class'=> 'form-control', 'maxlength' => 50, 'placeholder' => 'Confirm Password'] ) !!}
+                    <label class="fg-label">Confirm New Password</label>
+                    <input type="password" class="form-control" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm New Password">
                 </div>
             </div>
 
@@ -76,7 +79,7 @@
 
     </div>
 
-    {!! Form::close() !!}
+    </form>
 
 @stop
 

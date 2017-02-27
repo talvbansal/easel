@@ -44,7 +44,9 @@
 
                     </div>
                     <div class="card-body card-padding">
-                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'method' => 'put', 'id' => 'tagUpdate', 'url' => '/admin/tag/' . $data['id'] ]) !!}
+                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="'/admin/tag/{{ $data['id']; }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="id" value="{{ $data['id'] }}">
 
                             @include('easel::backend.tag.partials.form')
@@ -57,7 +59,7 @@
                                     <i class="zmdi zmdi-delete"></i> Delete
                                 </button>
                             </div>
-                        {{ Form::close() }}
+                        </form>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Query\Builder;
 use Laravel\Scout\Searchable;
 
+/**
+ * Class Post
+ * @package Easel\Models
+ *
+ * @property Carbon created_at
+ * @property Carbon published_at
+ * @property Carbon updated_at
+ */
 class Post extends Model
 {
     use Searchable;

@@ -1,5 +1,7 @@
 <?php
+namespace EaselTest\Http\Jobs;
 
+use EaselTest\TestCase;
 use Easel\Http\Jobs\PostFormFields;
 
 /**

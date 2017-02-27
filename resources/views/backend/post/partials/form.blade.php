@@ -2,8 +2,7 @@
 
 <div class="form-group">
     <div class="fg-line">
-        {!! Form::label('title', 'Title', ['class' => 'fg-label']) !!}
-        {!! Form::text('title', $title, ['class' => 'form-control', 'placeholder' => 'Title', 'v-model' => 'title', '@keyup' => 'slugify()']) !!}
+        <input type="text" class="form-control" name="title" id="title" placeholder="Title" v-model="title" @keyup="slugify()">
     </div>
 </div>
 

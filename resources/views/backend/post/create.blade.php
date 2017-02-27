@@ -26,8 +26,8 @@
                         <h2>Create a New Post</h2>
                     </div>
                     <div class="card-body card-padding">
-                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'frmPost', 'url' => 'admin/post/' ]) !!}
-
+                        <form class="keyboard-save" role="form" method="POST" id="frmPost" action="'admin/post/'">
+                            <input type="hidden" name="user_id" value="{!! auth()->user()->id !!}">
                             @include('easel::backend.post.partials.form')
 
                             <div class="form-group">
@@ -38,7 +38,7 @@
                                 </a>
                             </div>
 
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             </div>
