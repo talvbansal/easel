@@ -39,7 +39,15 @@
 <div class="form-group">
     <div class="fg-line">
         <label for="layout" class="fg-label">Layout</label>
-        {!! Form::select('layout', $data['layouts'], old('layout', $data['layout']), ['class' => 'form-control']) !!}
+        <select name="layout" id="layout" class="form-control">
+            @foreach($layouts as $key => $value)
+                @if( $value == old('layout', $data['layout']) )
+                    <option value="{{ $key }}" selected>{{ $value }}</option>
+                @else
+                    <option value="{{ $key }}">{{ $value }}</option>
+                @endif
+            @endforeach
+        </select>
     </div>
 </div>
 
