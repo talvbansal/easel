@@ -148,24 +148,26 @@ If you want to use an existing model you'll need to make the following changes t
 #### Customising the url prefix for the blog
 
 By default you can access the blog list and posts at the following routes:
-    
-        /blog
-        /blog/{blog-post-slug}
-    
+```bash  
+	/blog
+	/blog/{blog-post-slug}
+```
 However you might want the blog to accessed from a different URI, Easel lets you configure that by adding the following key `BLOG_BASE_URL` to your `.env` file, for example:
-
-        BLOG_BASE_URL=/myblog
-   
+```bash
+	BLOG_BASE_URL=/myblog
+ ```
+ 
 The above changes will make your blog respond at 
-    
-        /myblog
-        /myblog/{blog-post-slug}
-
+   
+```bash
+	/myblog
+	/myblog/{blog-post-slug}
+```
 If you want the blog to respond at the `'/'` route you will need to add a new route to your `routes.php` file as follows:
 
-	```php
-        Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
-	```
+```php
+	Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
+```
 	
 #### Customising views for your blog posts and list
 
@@ -173,16 +175,17 @@ When creating a blog post you can use the `default` layout for Easel, however it
 You may also need different views for different blog posts - Easel has you covered! just add the `BLOG_POST_LAYOUTS` key to your `.env` file and give it the path to a folder within your `resources/views` folder
 
 For example
-
-        BLOG_POST_LAYOUTS=layouts.blog.posts
-
+```bash
+	BLOG_POST_LAYOUTS=layouts.blog.posts
+```
 Will point to the following folder
-
-        {project}/resources/views/layouts/blog/posts
-
+```bash
+	{project}/resources/views/layouts/blog/posts
+```
  - Every blade template within that folder will then be listed on the post creation page as a potential layout for that post. 
  - Sub-folders within the `BLOG_POST_LAYOUTS` folder will __not__ be listed allowing you to store partials for your templates within that single folder structure.
 
 You can also set the blog post list layout using the `BLOG_POST_LIST` key, which again points to a corresponding view within your `resources/views` folder
-
-        BLOG_POST_LIST=layouts.blog.list
+```bash
+	BLOG_POST_LIST=layouts.blog.list
+```
