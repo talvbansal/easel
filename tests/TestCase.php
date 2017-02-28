@@ -4,6 +4,7 @@ namespace EaselTest;
 use Easel\Providers\EaselServiceProvider;
 use App\Exceptions\Handler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithPages;
 
 /**
  * Class TestCase.

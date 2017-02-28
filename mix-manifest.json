@@ -1,0 +1,13 @@
+{
+  "/public/js/easel-app.js": "/public/js/easel-app.js",
+  "/public/css/admin.css": "/public/css/admin.css",
+  "/public/css/auth.css": "/public/css/auth.css",
+  "/public/css/blog.css": "/public/css/blog.css",
+  "/public/css/easel.css": "/public/css/easel.css",
+  "/public/js/easel-start.js": "/public/js/easel-start.js",
+  "public/css/core.css": "public/css/core.css",
+  "public/css/vendor.css": "public/css/vendor.css",
+  "public/js/core.js": "public/js/core.js",
+  "public/js/vendor.js": "public/js/vendor.js",
+  "public/js/easel.js": "public/js/easel.js"
+}
