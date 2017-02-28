@@ -1,95 +1,106 @@
-@include('easel::backend.media.partials.file-picker')
-<script type="text/javascript">
-    $(document).ready(function () {
-        var vm = new Vue({
-            el: 'body',
-            mixins: [FileManagerMixin],
-            ready: function () {
+<script>
+    Vue.component('blog-post-editor', {
 
-                {{-- code to allow the multi-layered modal windows --}}
-                $(document).on('show.bs.modal', '.modal', function () {
-                    var zIndex = 1040 + (10 * $('.modal:visible').length);
-                    $(this).css('z-index', zIndex);
-                    setTimeout(function () {
-                        $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
-                    }, 0);
-                });
+        data: function () {
+            return {
+                pageImage: '{{ $page_image }}',
+                selectedEventName: null,
+                showMediaManager: false,
+                simpleMde: null,
+                slug: null,
+                title: null
+            };
+        },
+        mounted: function () {
 
-                $('#easel-file-picker').on('shown.bs.modal', function () {
-                    vm.loadFolder();
-                });
+            this.simpleMde = new simpleMde({
+                element: document.getElementById("editor"),
+                toolbar: [
+                    "bold", "italic", "heading", "|",
+                    "quote", "unordered-list", "ordered-list", "|",
+                    'link', 'image',
+                    {
+                        name: 'insertImage',
+                        action: function (editor) {
+                            //this.insertIntoEditor = true;
+                            //this.openPicker();
+                            console.log('open media manager');
+                            this.openFromEditor();
 
-                this.simpleMde = new SimpleMDE({
-                    element: $("#editor")[0],
-                    toolbar: [
-                        "bold", "italic", "heading", "|",
-                        "quote", "unordered-list", "ordered-list", "|",
-                        'link', 'image',
-                        {
-                            name: 'insertImage',
-                            action: function (editor) {
-                                this.insertIntoEditor = true;
-                                this.openPicker();
 
-                            }.bind(this),
-                            className: "zmdi zmdi-collection-image-o",
-                            title: "Insert Media Browser Image"
-                        },
-                        "|",
-                        "preview", "side-by-side", "fullscreen", "|"
-                    ]
-                });
+                        }.bind(this),
+                        className: "zmdi zmdi-collection-image-o",
+                        title: "Insert Media Browser Image"
+                    },
+                    "|",
+                    "preview", "side-by-side", "fullscreen", "|"
+                ]
+            });
 
-                $('.publish_date').mask('00/00/0000 00:00:00');
-            },
+            $('.publish_date').mask('00/00/0000 00:00:00');
 
-            data: {
-                isModal: true,
-                pageImage: null,
-                slug : null,
-                title: null,
-                simpleMde: null
-            },
+            window.eventHub.$on('media-manager-selected-page-image', function (file) {
+                this.pageImage = file.relativePath;
+                this.showMediaManager = false;
+            }.bind(this));
 
-            methods: {
-
-                slugify: function()
-                {
-                    this.slug = this.title.toLowerCase()
-                            .trim()
-                            .replace(/ /g, '-')
-                            .replace(/[^\w\-]+/g, '')
-                            .replace(/\-\-+/g, '-');
-                },
-
-                openPicker: function () {
-                    this.reset();
-                    $('#easel-file-picker').modal('show');
-                },
-
-                closePicker: function () {
-                    this.reset();
-                    this.insertIntoEditor = false;
-                    $('#easel-file-picker').modal('hide');
-                },
-
-                selectFile: function (file) {
-                    if (this.insertIntoEditor) {
-                        var cm = this.simpleMde.codemirror;
-                        var output = '[' + file.name + '](' + file.relativePath + ')';
-
-                        if (this.isImage(file)) {
-                            output = '!' + output;
-                        }
-
-                        cm.replaceSelection(output);
-                    } else {
-                        this.pageImage = file.relativePath;
-                    }
-
-                    this.closePicker();
+            window.eventHub.$on('media-manager-selected-editor', function (file) {
+                var cm = this.simpleMde.codemirror;
+                var output = '[' + file.name + '](' + file.relativePath + ')';
+                if (this.isImage(file)) {
+                    output = '!' + output;
                 }
+                cm.replaceSelection(output);
+                this.showMediaManager = false;
+            }.bind(this));
+
+            window.eventHub.$on('media-manager-notification', function (message, type, time) {
+                $.growl({
+                    message: message
+                }, {
+                    type: 'inverse',
+                    allow_dismiss: false,
+                    label: 'Cancel',
+                    className: 'btn-xs btn-inverse',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    z_index: 9999,
+                    delay: time,
+                    animate: {
+                        enter: 'animated fadeInRight',
+                        exit: 'animated fadeOutRight'
+                    },
+                    offset: {
+                        x: 20,
+                        y: 85
+                    }
+                });
+            });
+        },
+
+        methods: {
+            slugify: function () {
+                this.slug = this.title.toLowerCase()
+                    .trim()
+                    .replace(/ /g, '-')
+                    .replace(/[^\w\-]+/g, '')
+                    .replace(/\-\-+/g, '-');
+            },
+            openFromEditor: function () {
+                this.showMediaManager = true;
+                this.selectedEventName = 'editor';
+            },
+            openFromPageImage: function () {
+                this.showMediaManager = true;
+                this.selectedEventName = 'page-image';
+            },
+
+            created: function () {
+
             }
-        });
+        }
     });
+
 </script>

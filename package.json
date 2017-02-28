@@ -1,6 +1,12 @@
 {
   "dependencies": {
+    "autosize": "^3.0.20",
+    "bootstrap-datetimepicker": "^0.0.7",
+    "bootstrap-select": "^1.12.2",
+    "chosen": "^0.0.2",
     "gulp": "^3.9.1",
+    "hammer": "^0.0.5",
+    "hammerjs": "^2.0.8",
     "laravel-elixir": "^6.0.0-14",
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",

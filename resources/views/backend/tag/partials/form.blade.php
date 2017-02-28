@@ -35,12 +35,11 @@
 </div>
 
 <br>
-
 <div class="form-group">
     <div class="fg-line">
         <label for="layout" class="fg-label">Layout</label>
         <select name="layout" id="layout" class="form-control">
-            @foreach($layouts as $key => $value)
+            @foreach($data['layouts'] as $key => $value)
                 @if( $value == old('layout', $data['layout']) )
                     <option value="{{ $key }}" selected>{{ $value }}</option>
                 @else

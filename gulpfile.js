@@ -1,4 +1,5 @@
 var elixir = require('laravel-elixir');
+require('laravel-elixir-vue-2');
 
 elixir(function (mix) {
 
@@ -41,18 +42,12 @@ elixir(function (mix) {
 
     // Vendor JS Files
     mix.scripts([
-        'moment.min.js',
-        'autosize.min.js',
         'bootstrap-datetimepicker.min.js',
-        'bootstrap-select.js',
-        'chosen.jquery.min.js',
         'fileinput.min.js',
-        'hammer.js',
         'jquery.bootgrid.min.js',
         'jquery.mask.min.js',
         'jquery.mCustomScrollbar.concat.min.js',
         'lightgallery.min.js',
-        'simplemde.min.js',
         'sweet-alert.min.js'
     ], 'public/js/vendor.js');
 
@@ -64,8 +59,11 @@ elixir(function (mix) {
         'easel.js'
     ], 'public/js/easel.js');
 
-    mix.webpack('app.js')
-        .webpack('app-start.js');
+    mix.webpack('easel-app.js', 'public/js/easel-app.js')
+        .webpack('easel-start.js', 'public/js/easel-start.js');
+
+    // Media manager assets...
+    mix.copy('vendor/talvbansal/media-manager/public/fonts/', 'public/fonts');
 
     mix.phpUnit();
 });

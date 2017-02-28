@@ -38,6 +38,7 @@ Route::group(['middleware' => ['web']], function () {
         });
 
         // Media Manager Routes
+        Route::get('admin/media', 'MediaController@index')->name('admin.media.index');
         \TalvBansal\MediaManager\Routes\MediaRoutes::get();
 
         // Profile Routes
