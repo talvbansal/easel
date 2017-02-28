@@ -8,9 +8,6 @@
 
 namespace Easel\Providers;
 
-use Collective\Html\FormFacade;
-use Collective\Html\HtmlFacade;
-use Collective\Html\HtmlServiceProvider;
 use Easel\Console\Commands\InstallCommand;
 use Easel\Console\Commands\Seed;
 use Easel\Console\Commands\UpdateCommand;
