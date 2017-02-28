@@ -1,4 +1,5 @@
 <?php
+
 namespace EaselTest\Acceptance;
 
 use Easel\Models\User;
@@ -39,7 +40,6 @@ class AdminRoutesTest extends TestCase
     {
         $response = $this->actingAs($this->user)->call('GET', '/admin/post');
         $this->assertEquals(200, $response->status());
-
     }
 
     /**

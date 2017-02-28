@@ -10,8 +10,7 @@ use Illuminate\Database\Query\Builder;
 use Laravel\Scout\Searchable;
 
 /**
- * Class Post
- * @package Easel\Models
+ * Class Post.
  *
  * @property Carbon created_at
  * @property Carbon published_at

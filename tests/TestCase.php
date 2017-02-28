@@ -1,8 +1,8 @@
 <?php
+
 namespace EaselTest;
 
 use Easel\Providers\EaselServiceProvider;
-use App\Exceptions\Handler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithPages;
 
@@ -53,7 +53,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-
         $app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware('Illuminate\Session\Middleware\StartSession');
 
         $this->resetIndexes();
@@ -79,8 +78,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'driver' => 'eloquent',
             'model'  => \Easel\Models\User::class,
         ]);
-
-
     }
 
     public function getTempDirectory($suffix = '')
@@ -107,10 +104,17 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function disableExceptionHandling()
     {
-        $this->app->instance(ExceptionHandler::class, new class extends \Orchestra\Testbench\Exceptions\Handler {
-            public function __construct() {}
-            public function report(\Exception $e) {}
-            public function render($request, \Exception $e) {
+        $this->app->instance(ExceptionHandler::class, new class() extends \Orchestra\Testbench\Exceptions\Handler {
+            public function __construct()
+            {
+            }
+
+            public function report(\Exception $e)
+            {
+            }
+
+            public function render($request, \Exception $e)
+            {
                 throw $e;
             }
         });

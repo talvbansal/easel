@@ -1,9 +1,10 @@
 <?php
+
 namespace EaselTest\Acceptance;
 
-use EaselTest\TestCase;
 use Easel\Models\Post;
 use Easel\Models\Tag;
+use EaselTest\TestCase;
 
 /**
  * Created by PhpStorm.

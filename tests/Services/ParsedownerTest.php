@@ -1,4 +1,5 @@
 <?php
+
 namespace EaselTest\Services;
 
 class ParsedownerTest extends \PHPUnit_Framework_TestCase
