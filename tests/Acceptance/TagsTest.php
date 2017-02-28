@@ -1,8 +1,9 @@
 <?php
+
 namespace EaselTest\Acceptance;
 
-use EaselTest\TestCase;
 use Easel\Models\Tag;
+use EaselTest\TestCase;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 
 /**

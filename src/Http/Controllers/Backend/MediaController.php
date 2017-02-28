@@ -9,22 +9,17 @@
 namespace Easel\Http\Controllers\Backend;
 
 use Easel\Http\Controllers\Controller;
-use Easel\Http\Requests\UploadFileRequest;
-use Easel\Http\Requests\UploadNewFolderRequest;
 use Easel\Services\MediaManager;
-use Illuminate\Http\Request;
 
 /**
  * Class FileManagerController.
  */
 class MediaController extends Controller
 {
-
     /**
      * @var MediaManager
      */
     private $mediaManager;
-
 
     /**
      * FileManagerController constructor.
@@ -35,7 +30,6 @@ class MediaController extends Controller
     {
         $this->mediaManager = $mediaManager;
     }
-
 
     public function index()
     {

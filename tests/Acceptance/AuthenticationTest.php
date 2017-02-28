@@ -1,4 +1,5 @@
 <?php
+
 namespace EaselTest\Acceptance;
 
 use Easel\Models\User;
