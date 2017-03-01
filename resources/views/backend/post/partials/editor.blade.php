@@ -55,7 +55,7 @@
             }.bind(this));
 
             window.eventHub.$on('media-manager-notification', function (message, type, time) {
-                $.growl({
+                $.notify({
                     message: message
                 }, {
                     type: 'inverse',

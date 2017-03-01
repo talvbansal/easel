@@ -1481,66 +1481,6 @@ html.ismobile .page-loader {
   right: 35px;
 }
 
-.mejs-container .mejs-controls .mejs-play button {
-  background-image: url("../images/icons/play.png");
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .mejs-container .mejs-controls .mejs-play button {
-    background-image: url("../images/icons/play@2x.png");
-    background-size: 15px 15px;
-  }
-}
-
-.mejs-container .mejs-controls .mejs-pause button {
-  background-image: url("../images/icons/pause.png");
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .mejs-container .mejs-controls .mejs-pause button {
-    background-image: url("../images/icons/pause@2x.png");
-    background-size: 15px 15px;
-  }
-}
-
-.mejs-container .mejs-controls .mejs-mute button {
-  background-image: url("../images/icons/speaker.png");
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .mejs-container .mejs-controls .mejs-mute button {
-    background-image: url("../images/icons/speaker@2x.png");
-    background-size: 15px 15px;
-  }
-}
-
-.mejs-container .mejs-controls .mejs-unmute button {
-  background-image: url("../images/icons/speaker-2.png");
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .mejs-container .mejs-controls .mejs-unmute button {
-    background-image: url("../images/icons/speaker-2@2x.png");
-    background-size: 15px 15px;
-  }
-}
-
-.mejs-container .mejs-controls .mejs-fullscreen-button {
-  position: absolute;
-  right: 5px;
-}
-
-.mejs-container .mejs-controls .mejs-fullscreen-button button {
-  background-image: url("../images/icons/fullscreen.png");
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .mejs-container .mejs-controls .mejs-fullscreen-button button {
-    background-image: url("../images/icons/fullscreen@2x.png");
-    background-size: 15px 15px;
-  }
-}
-
 /** CALENDAR WIDGET **/
 
 #calendar-widget {
@@ -1605,7 +1545,6 @@ html.ismobile .page-loader {
 
 #calendar .fc-toolbar {
   height: 300px;
-  background-image: url('../images/cal-header.jpg');
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;

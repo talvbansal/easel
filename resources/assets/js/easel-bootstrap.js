@@ -1,5 +1,14 @@
 
 window._ = require('lodash');
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+window.$ = window.jQuery = require('jquery');
+
+require('bootstrap-sass');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -34,7 +43,46 @@ window.moment = require('moment');
  */
 require('./../../../vendor/talvbansal/media-manager/public/js/media-manager');
 window.autosize = require('autosize');
-window.select = require('bootstrap-select');
 window.hammer = require('hammerjs');
 window.chosen = require('chosen');
 window.simpleMde = require('simplemde');
+window.Waves = require('node-waves');
+window.bootgrid = require('./jquery.bootgrid');
+require('bootstrap-growl');
+require('bootstrap-select');
+require('eonasdan-bootstrap-datetimepicker');
+require('malihu-custom-scrollbar-plugin');
+
+require('./functions.js');
+require('./fileinput.min.js');
+require('./jquery.mask.min.js');
+require('./lightgallery.min.js');
+require('./sweet-alert.min.js');
+
+// Create a global notification method...
+global.systemNotification = function(message, type){
+    if( !type ) type = 'inverse';
+
+    $.notify({
+        message: message
+    },{
+        type: type,
+        allow_dismiss: false,
+        label: 'Cancel',
+        className: 'btn-xs btn-inverse',
+        placement: {
+            from: 'top',
+            align: 'right'
+        },
+        delay: 3800,
+        z_index: 1061,
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        offset: {
+            x: 20,
+            y: 85
+        }
+    });
+}

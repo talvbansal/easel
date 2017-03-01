@@ -107,7 +107,7 @@ class EaselServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            EASEL_BASE_PATH.'/fonts' => base_path('public'),
+            EASEL_BASE_PATH.'/fonts' => base_path('public/fonts'),
         ]);
 
         $this->publishes([

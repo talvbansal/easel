@@ -13888,7 +13888,7 @@ html:not(.ie9) .select:before {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   html:not(.ie9) .select:before {
-    background-image: url("../images/select@2x.png");
+    background-image: url("../../resources/assets/images/select@2x.png");
     background-size: 12px 12px;
   }
 }
@@ -17882,14 +17882,14 @@ hr.fc-divider {
   background-color: #FFF;
   background-position: right calc(100% - 7px);
   background-repeat: no-repeat;
-  background-image: url("../images/select.png");
+  background-image: url("../../resources/assets/images/select.png");
   pointer-events: none;
   z-index: 5;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .bootstrap-select > .btn-default:before {
-    background-image: url("../images/select@2x.png");
+    background-image: url("../../resources/assets/images/select@2x.png");
     background-size: 12px 12px;
   }
 }
@@ -18099,14 +18099,14 @@ hr.fc-divider {
 }
 
 .chosen-container-single .chosen-single div b {
-  background-image: url("../images/select.png");
+  background-image: url("../../resources/assets/images/select.png");
   background-repeat: no-repeat;
   background-position: right 12px;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .chosen-container-single .chosen-single div b {
-    background-image: url("../images/select@2x.png");
+    background-image: url("../../resources/assets/images/select@2x.png");
     background-size: 12px 12px;
   }
 }
