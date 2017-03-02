@@ -32,7 +32,8 @@
     "illuminate/support": "5.*.*",
     "illuminate/routing": "5.*.*",
     "orchestra/testbench": "~3.3",
-    "orchestra/database": "~3.1"
+    "orchestra/database": "~3.1",
+    "symfony/browser-kit": "^3.2"
   },
   "autoload": {
     "psr-4": {

@@ -12,12 +12,15 @@
             <div class="container container-alt">
                 <div class="block-header">
                     <h2>Media Manager</h2>
+                    <small>
+                        All the files you’ve uploaded are listed alphabetically in the Media Library. Double-click a folder name to see its contents.
+                    </small>
                 </div>
             </div>
 
             <div class="container">
                 <div class="card">
-                    @include('easel::backend.media.partials.file-picker')
+                    <media-manager></media-manager>
                 </div>
             </div>
         </section>
@@ -26,19 +29,7 @@
 @stop
 
 @section('unique-js')
-    @include('easel::backend.media.partials.js.file-manager-mixin')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            Vue.config.devtools = true;
-            var vm = new Vue({
-                el: 'body',
-                mixins: [FileManagerMixin],
-                ready: function () {
-                    this.loadFolder();
-                }
-            });
-        });
+    <script>
+
     </script>
-
-
 @stop

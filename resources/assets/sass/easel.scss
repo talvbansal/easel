@@ -1,54 +1,24 @@
-#top-link-block{
-  &.affix-top{
-    position: absolute; /* allows it to "slide" up into view */
-    bottom: -82px; /* negative of the offset - height of link element */
-    right: 10px; /* padding from the left side of the window */
-    z-index: 100;
-  }
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-  &.affix{
-    position: fixed; /* keeps it on the bottom once in view */
-    bottom: 18px; /* height of link element */
-    right: 10px; /* padding from the left side of the window */
-  }
+// Variables
+@import "variables";
 
-  a.btn{
-    border-radius: 0;
-    font-size: 15px;
-    font-weight: 300;
-    padding: 5px 10px;
-  }
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-}
+@import "./../css/custom.css";
+@import "./../css/app-1.css";
+@import "./../css/app-2.css";
 
-.vertical-center {
-  display: flex;
-  align-items: center;
-}
+// Media Manager
+@import '../../../vendor/talvbansal/media-manager/public/css/media-manager';
 
-.img-responsive{
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
+// Dependencies
+@import "node_modules/bootstrap-select/sass/bootstrap-select";
+@import "node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build";
+@import "node_modules/jquery-bootgrid/dist/jquery.bootgrid";
+@import "node_modules/simplemde/dist/simplemde.min";
 
-.post-subtitle{
-  margin-top: -20px;
-}
-
-.easel-post{
-  img{
-    @extend .img-responsive;
-  }
-}
-
-.profile-info{
-
-  h5{
-    margin-bottom: 0.25rem;
-    margin-top: 0.25rem;
-  }
-  p{
-    margin:0.5rem 0;
-  }
-}
+// General Styles
+@import "theme";

@@ -39,7 +39,8 @@
 
                     </div>
                     <div class="card-body card-padding">
-                        {!! Form::open(['class' => 'keyboard-save', 'role' => 'form', 'id' => 'tagUpdate', 'url' => '/admin/tag']) !!}
+                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="'/admin/tag'">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             @include('easel::backend.tag.partials.form')
 
@@ -49,7 +50,7 @@
                                 <a href="{{ url('/admin/tag') }}"><button type="button" class="btn btn-link">Cancel</button></a>
                             </div>
 
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             </div>

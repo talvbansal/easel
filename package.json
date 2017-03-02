@@ -1,11 +1,29 @@
 {
+  "scripts": {
+    "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
   "dependencies": {
+    "autosize": "^3.0.20",
+    "axios": "^0.15.3",
+    "bootstrap-growl": "^3.1.3",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap-select": "^1.12.2",
+    "chosen": "^0.0.2",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "gulp": "^3.9.1",
-    "laravel-elixir": "^6.0.0-14",
-    "laravel-elixir-vue-2": "^0.2.0",
-    "laravel-elixir-webpack-official": "^1.0.2",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.1.1",
+    "jquery-bootgrid": "^1.3.1",
+    "laravel-mix": "^0.8.8",
+    "lightgallery": "^1.3.9",
     "lodash": "^4.16.2",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
     "moment": "^2.17.1",
+    "node-waves": "^0.7.5",
     "simplemde": "^1.11.2",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3"

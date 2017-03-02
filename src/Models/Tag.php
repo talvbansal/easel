@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
 /**
- * Class Tag
- * @package Easel\Models
+ * Class Tag.
  *
  * @property Carbon created_at
  * @property Carbon updated_at

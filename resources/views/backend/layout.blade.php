@@ -7,8 +7,6 @@
 
         @include('easel::backend.partials.backend-css')
 
-        <meta name="_token" content="{{ encrypt(csrf_token()) }}" />
-
         <script>
             window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -17,21 +15,24 @@
 
     </head>
     <body @if(Auth::check()) class="toggled sw-toggled" @endif>
-        @if (Auth::guest())
+        <div id="container">
+            @if (Auth::guest())
 
-            @yield('login')
+                @yield('login')
 
-        @else
+            @else
 
-            @include('easel::backend.partials.header')
+                @include('easel::backend.partials.header')
 
-            @yield('content')
+                @yield('content')
 
-            @include('easel::shared.page-loader')
+                @include('easel::shared.page-loader')
 
-        @endif
+            @endif
 
-        @include('easel::backend.partials.footer')
+            @include('easel::backend.partials.footer')
+
+        </div>
 
         @include('easel::backend.partials.backend-js')
 
@@ -39,7 +40,7 @@
 
         @yield('unique-js')
 
-        <script src="/js/app-start.js"></script>
+        <script src="/js/easel-start.js"></script>
 
     </body>
 </html>

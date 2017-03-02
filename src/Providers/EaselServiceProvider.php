@@ -8,9 +8,6 @@
 
 namespace Easel\Providers;
 
-use Collective\Html\FormFacade;
-use Collective\Html\HtmlFacade;
-use Collective\Html\HtmlServiceProvider;
 use Easel\Console\Commands\InstallCommand;
 use Easel\Console\Commands\Seed;
 use Easel\Console\Commands\UpdateCommand;
@@ -22,6 +19,7 @@ use Laravel\Scout\ScoutServiceProvider;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 use Spatie\Backup\BackupServiceProvider;
+use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
 
 /**
@@ -109,6 +107,10 @@ class EaselServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
+            EASEL_BASE_PATH.'/fonts' => base_path('public/fonts'),
+        ]);
+
+        $this->publishes([
             EASEL_BASE_PATH.'/resources/assets/storage' => storage_path('app/public'),
         ]);
     }
@@ -128,7 +130,7 @@ class EaselServiceProvider extends ServiceProvider
     private function registerServices()
     {
         //register service providers
-        $this->app->register(\TalvBansal\MediaManager\Providers\MediaManagerServiceProvider::class);
+        $this->app->register(MediaManagerServiceProvider::class);
         $this->app->register(JsValidationServiceProvider::class);
         $this->app->register(ScoutServiceProvider::class);
         $this->app->register(TNTSearchScoutServiceProvider::class);
