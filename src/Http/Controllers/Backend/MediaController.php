@@ -16,21 +16,6 @@ use Easel\Services\MediaManager;
  */
 class MediaController extends Controller
 {
-    /**
-     * @var MediaManager
-     */
-    private $mediaManager;
-
-    /**
-     * FileManagerController constructor.
-     *
-     * @param MediaManager $mediaManager
-     */
-    public function __construct(MediaManager $mediaManager)
-    {
-        $this->mediaManager = $mediaManager;
-    }
-
     public function index()
     {
         return view('easel::backend.media.index');
