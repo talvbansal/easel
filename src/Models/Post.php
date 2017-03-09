@@ -12,6 +12,16 @@ use Laravel\Scout\Searchable;
 /**
  * Class Post.
  *
+ * @property string title
+ * @property string slug
+ * @property string subtitle
+ * @property string page_image
+ * @property string content_raw
+ * @property string content_html
+ * @property string meta_description
+ * @property string layout
+ * @property bool is_draft
+ * @property int author_id
  * @property Carbon created_at
  * @property Carbon published_at
  * @property Carbon updated_at
