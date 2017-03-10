@@ -14,6 +14,7 @@ class UpdatePostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->integer('author_id')->nullable();
+            $table->integer('category_id')->nullable();
         });
     }
 
@@ -24,9 +25,12 @@ class UpdatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumn('posts', 'author')) {
+        Schema::table('posts', function (Blueprint $table) {
+            if (Schema::hasColumn('posts', 'author_id')) {
                 $table->dropColumn('author_id');
+            }
+            if (Schema::hasColumn('posts', 'category_id')) {
+                $table->dropColumn('category_id');
             }
         });
     }

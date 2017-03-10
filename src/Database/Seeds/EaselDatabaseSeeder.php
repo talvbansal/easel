@@ -2,6 +2,7 @@
 
 namespace Easel\Database\Seeds;
 
+use Easel\Models\Category;
 use Illuminate\Database\Seeder;
 
 class EaselDatabaseSeeder extends Seeder
@@ -17,5 +18,6 @@ class EaselDatabaseSeeder extends Seeder
         $this->call(PostTableSeeder::class);
         $this->call(TagTableSeeder::class);
         $this->call(PostTagPivotTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
     }
 }

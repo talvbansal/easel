@@ -5,6 +5,7 @@ namespace Easel\Models;
 use Carbon\Carbon;
 use Easel\Services\Parsedowner;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Query\Builder;
 use Laravel\Scout\Searchable;
@@ -18,6 +19,7 @@ use Laravel\Scout\Searchable;
  * @property string page_image
  * @property string content_raw
  * @property string content_html
+ * @property string category
  * @property string meta_description
  * @property string layout
  * @property bool is_draft
@@ -48,6 +50,7 @@ class Post extends Model
         'subtitle',
         'content_raw',
         'page_image',
+        'category_id',
         'meta_description',
         'layout',
         'is_draft',
@@ -78,6 +81,16 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tag_pivot');
+    }
+
+    /**
+     * Get the category relationship.
+     *
+     * @return BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /**
@@ -236,4 +249,5 @@ class Post extends Model
 
         return $query->first();
     }
+
 }
