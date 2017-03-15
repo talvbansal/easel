@@ -249,5 +249,4 @@ class Post extends Model
 
         return $query->first();
     }
-
 }

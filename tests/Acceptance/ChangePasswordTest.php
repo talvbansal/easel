@@ -3,7 +3,6 @@
 namespace EaselTest\Acceptance;
 
 use EaselTest\TestCase;
-use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**

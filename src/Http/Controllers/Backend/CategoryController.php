@@ -8,13 +8,11 @@
 
 namespace Easel\Http\Controllers\Backend;
 
-
 use Easel\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-
     }
 }

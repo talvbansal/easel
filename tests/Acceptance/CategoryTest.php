@@ -8,7 +8,6 @@
 
 namespace EaselTest\Acceptance;
 
-
 use EaselTest\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -20,7 +19,7 @@ class CategoryTest extends TestCase
     {
         $user = factory(\Easel\Models\User::class)->create();
 
-        $this->actingAs( $user );
+        $this->actingAs($user);
 
         $this->visit('/admin/category');
 

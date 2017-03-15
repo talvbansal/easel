@@ -8,14 +8,12 @@
 
 namespace Easel\Models;
 
-
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Class Category
- * @package Easel\Models
+ * Class Category.
  *
  * @property string name
  * @property string slug
