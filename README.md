@@ -1,6 +1,6 @@
-<h1 align="center">Easel</h1>
+# Easel
 
-<p align="center">A minimal blogging package for Laravel</p>
+A minimal blogging package for Laravel
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/talvbansal/easel/gh-pages/images/Editor.png" alt="Editor" width="600"/>
@@ -8,42 +8,39 @@
 
 <br>
 
-<div align="center">
+<a href="https://travis-ci.org/talvbansal/easel" target="_blank">
+    <img src="https://api.travis-ci.org/talvbansal/easel.svg" alt="Build Status" />
+</a>
 
-    <a href="https://travis-ci.org/talvbansal/easel" target="_blank">
-        <img src="https://api.travis-ci.org/talvbansal/easel.svg" alt="Build Status" />
-    </a>
-    
-    <a href="https://styleci.io/repos/63001540" target="_blank">
-        <img src="https://styleci.io/repos/63001540/shield?style=flat" alt="Style CI" />
-    </a>
-    
-    <a href="https://github.com/talvbansal/easel/issues" target="_blank">
-        <img src="https://img.shields.io/github/issues/talvbansal/easel.svg" alt="Issues" />
-    </a>
-    
-    <a href="https://packagist.org/packages/talvbansal/easel" target="_blank">
-        <img src="https://poser.pugx.org/talvbansal/easel/downloads" alt="Downloads" />
-    </a>
-    
-    <a href="https://insight.sensiolabs.com/projects/06d23269-ac1d-4465-b542-9c38b31f8d91" target="_blank">
-        <img src="https://img.shields.io/sensiolabs/i/06d23269-ac1d-4465-b542-9c38b31f8d91.svg?style=flat" alt="SensioLabsInsight"/>
-    </a>
-    
-    <a href="https://github.com/talvbansal/easel/blob/master/licence" target="_blank">
-        <img src="https://poser.pugx.org/talvbansal/easel/license" alt="License" />
-    </a>
-</div>
+<a href="https://styleci.io/repos/63001540" target="_blank">
+    <img src="https://styleci.io/repos/63001540/shield?style=flat" alt="Style CI" />
+</a>
+
+<a href="https://github.com/talvbansal/easel/issues" target="_blank">
+    <img src="https://img.shields.io/github/issues/talvbansal/easel.svg" alt="Issues" />
+</a>
+
+<a href="https://packagist.org/packages/talvbansal/easel" target="_blank">
+    <img src="https://poser.pugx.org/talvbansal/easel/downloads" alt="Downloads" />
+</a>
+
+<a href="https://insight.sensiolabs.com/projects/06d23269-ac1d-4465-b542-9c38b31f8d91" target="_blank">
+    <img src="https://img.shields.io/sensiolabs/i/06d23269-ac1d-4465-b542-9c38b31f8d91.svg?style=flat" alt="SensioLabsInsight"/>
+</a>
+
+<a href="https://github.com/talvbansal/easel/blob/master/licence" target="_blank">
+    <img src="https://poser.pugx.org/talvbansal/easel/license" alt="License" />
+</a>
 
 
-<h3>Requirements</h3>
+### Requirements
 
 - [PHP](https://php.net) >= 7.0
 - [Composer](https://getcomposer.org)
 - An existing [Laravel 5.3 ](https://laravel.com/docs/master/installation) project
 
 
-<h3>Installation</h3>
+### Installation
 
 1. You can download Easel using composer 
 
