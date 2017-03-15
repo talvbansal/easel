@@ -10,7 +10,6 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
  */
 class TestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
-
     public function setUp()
     {
         parent::setUp();

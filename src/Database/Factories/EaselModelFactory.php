@@ -21,17 +21,17 @@
 */
 $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->title,
-        'slug' => $faker->word,
-        'subtitle' => $faker->sentence,
-        'page_image' => '/storage/placeholder.png',
-        'content_raw' => view('easel::shared.helpers.welcome'),
-        'published_at' => Carbon\Carbon::now(),
+        'title'            => $faker->title,
+        'slug'             => $faker->word,
+        'subtitle'         => $faker->sentence,
+        'page_image'       => '/storage/placeholder.png',
+        'content_raw'      => view('easel::shared.helpers.welcome'),
+        'published_at'     => Carbon\Carbon::now(),
         'meta_description' => $faker->sentence,
-        'is_draft' => false,
-        'layout' => config('easel.layouts.posts.default'),
-        'author_id' => 1,
-        'category_id' => 1,
+        'is_draft'         => false,
+        'layout'           => config('easel.layouts.posts.default'),
+        'author_id'        => 1,
+        'category_id'      => 1,
     ];
 });
 
@@ -45,12 +45,12 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
 */
 $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
     return [
-        'tag' => $faker->word,
-        'title' => $faker->title,
-        'subtitle' => $faker->title,
-        'meta_description' => $faker->sentence,
-        'layout' => 'vendor.easel.frontend.blog.index',
-        'reverse_direction' => false
+        'tag'               => $faker->word,
+        'title'             => $faker->title,
+        'subtitle'          => $faker->title,
+        'meta_description'  => $faker->sentence,
+        'layout'            => 'vendor.easel.frontend.blog.index',
+        'reverse_direction' => false,
     ];
 });
 
@@ -79,20 +79,20 @@ $factory->define(Easel\Models\Category::class, function (Faker\Generator $faker)
 */
 $factory->define(Easel\Models\User::class, function (Faker\Generator $faker) {
     return [
-        'first_name' => $first = $faker->firstName,
-        'last_name' => $last = $faker->lastName,
-        'display_name' => $first . ' ' . $last,
-        'job' => $faker->jobTitle,
-        'birthday' => $faker->date('Y-m-d'),
-        'email' => $faker->safeEmail,
+        'first_name'   => $first = $faker->firstName,
+        'last_name'    => $last = $faker->lastName,
+        'display_name' => $first.' '.$last,
+        'job'          => $faker->jobTitle,
+        'birthday'     => $faker->date('Y-m-d'),
+        'email'        => $faker->safeEmail,
         'social_media' => json_encode([
-            'twitter' => 'http://twitter.com/' . $faker->userName,
-            'facebook' => 'http://facebook.com/' . $faker->userName,
+            'twitter'  => 'http://twitter.com/'.$faker->userName,
+            'facebook' => 'http://facebook.com/'.$faker->userName,
         ]),
-        'address' => $faker->streetAddress,
-        'city' => $faker->city,
-        'country' => $faker->countryCode,
-        'url' => $faker->url,
+        'address'  => $faker->streetAddress,
+        'city'     => $faker->city,
+        'country'  => $faker->countryCode,
+        'url'      => $faker->url,
         'password' => bcrypt('password'),
     ];
 });
