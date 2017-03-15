@@ -2,7 +2,6 @@
 
 namespace Easel\Database\Seeds;
 
-use Easel\Models\Category;
 use Illuminate\Database\Seeder;
 
 class EaselDatabaseSeeder extends Seeder
