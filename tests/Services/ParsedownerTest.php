@@ -2,13 +2,15 @@
 
 namespace EaselTest\Services;
 
+use Easel\Services\Parsedowner;
+
 class ParsedownerTest extends \PHPUnit_Framework_TestCase
 {
     protected $parsedowner;
 
     public function setup()
     {
-        $this->parsedowner = new Easel\Services\Parsedowner();
+        $this->parsedowner = new Parsedowner();
     }
 
     /**

@@ -48,10 +48,9 @@ $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
         'tag' => $faker->word,
         'title' => $faker->title,
         'subtitle' => $faker->title,
-        'meta_description' => $faker->words(3),
+        'meta_description' => $faker->sentence,
         'layout' => 'vendor.easel.frontend.blog.index',
-        'reverse_direction' => false,
-        'created_at' => Carbon\Carbon::now(),
+        'reverse_direction' => false
     ];
 });
 

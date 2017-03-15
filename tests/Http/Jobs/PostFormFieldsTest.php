@@ -44,7 +44,7 @@ class PostFormFieldsTest extends TestCase
      */
     private function getPostLayoutsAsPublic()
     {
-        $reflection = new ReflectionClass(PostFormFields::class);
+        $reflection = new \ReflectionClass(PostFormFields::class);
         $getPostLayouts = $reflection->getMethod('getPostLayouts');
         $getPostLayouts->setAccessible(true);
 

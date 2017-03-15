@@ -4,7 +4,7 @@ namespace EaselTest\Acceptance;
 
 use Easel\Models\Tag;
 use EaselTest\TestCase;
-use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Created by PhpStorm.
@@ -14,7 +14,7 @@ use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
  */
 class TagsTest extends TestCase
 {
-    use InteractsWithDatabase;
+    use DatabaseMigrations;
 
     /**
      * @var \Easel\Models\User
@@ -95,8 +95,7 @@ class TagsTest extends TestCase
     public function test_a_tag_can_be_deleted()
     {
         // Create a new Tag
-        $tag = factory(Tag::class)->make();
-        $tag->save();
+        $tag = factory(Tag::class)->create();
 
         // Delete it!
         $this->actingAs($this->user)->delete('admin/tag/'.$tag->id);

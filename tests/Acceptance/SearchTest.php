@@ -19,7 +19,7 @@ class SearchTest extends TestCase
     /**
      * The user model.
      *
-     * @var Easel\Models\User
+     * @var \Easel\Models\User
      */
     private $user;
 
@@ -83,27 +83,23 @@ class SearchTest extends TestCase
     public function test_can_search_tags()
     {
         //create two tag to show up and one to not show
-        $tagA = factory(Tag::class)->make([
+        $tagA = factory(Tag::class)->create([
             'title' => 'easel',
             'tag'   => 'easel',
         ]);
-        $tagB = factory(Tag::class)->make([
+        $tagB = factory(Tag::class)->create([
             'title'    => 'Easel',
             'subtitle' => 'easel',
         ]);
-        $tagC = factory(Tag::class)->make([
+
+        factory(Tag::class)->create([
             'tag'              => 'this shouldnt show up',
             'title'            => 'this-shouldnt-show-up',
             'meta_description' => 'this-shouldnt-show-up',
             'subtitle'         => 'this-shouldnt-show-up',
         ]);
 
-        $tagA->save();
-        $tagB->save();
-        $tagC->save();
-
         $tags = Tag::whereIn('id', [$tagA->id, $tagB->id])->get();
-        //$tags     = Tag::search('easel')->get();
         $response = $this->actingAs($this->user)->call('GET', '/admin/search?search=easel');
 
         $this->assertEquals(200, $response->status());
