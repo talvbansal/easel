@@ -56,12 +56,14 @@ class AuthenticationTest extends TestCase
     public function testApplicationLogout()
     {
         /*
-         * Laravel 5.3's logout route redirects to '/'
+         * Laravel 5.3+'s logout route redirects to '/'
          * Easel does not provide a '/' route by default so for the purpose of testing
          * Create a test route so that the logout redirects properly
          */
         if (!\Route::has('/')) {
-            \Route::get('/', '\Easel\Http\Controllers\Frontend\BlogController@index');
+            \Route::get('/', function(){
+                return '<h1>Hello World</h1>';
+            });
         }
 
         $this->actingAs($this->user)
