@@ -4,6 +4,7 @@ namespace EaselTest\Acceptance;
 
 use Easel\Models\User;
 use EaselTest\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Class AuthenticationTest.
@@ -12,6 +13,7 @@ use EaselTest\TestCase;
  */
 class AuthenticationTest extends TestCase
 {
+    use DatabaseMigrations;
     /**
      * The user model.
      *

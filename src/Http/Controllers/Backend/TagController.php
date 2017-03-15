@@ -66,7 +66,7 @@ class TagController extends Controller
     {
         $this->tagManager->create($request->toArray());
 
-        Session::set('_new-tag', trans('easel::messages.create_success', ['entity' => 'Tag']));
+        Session::put('_new-tag', trans('easel::messages.create_success', ['entity' => 'Tag']));
 
         return redirect('/admin/tag');
     }
@@ -97,7 +97,7 @@ class TagController extends Controller
     {
         $this->tagManager->edit($id, $request->toArray());
 
-        Session::set('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
+        Session::put('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
 
         return redirect("/admin/tag/$id/edit");
     }
@@ -113,7 +113,7 @@ class TagController extends Controller
     {
         $this->tagManager->delete($id);
 
-        Session::set('_delete-tag', trans('easel::messages.delete_success', ['entity' => 'Tag']));
+        Session::put('_delete-tag', trans('easel::messages.delete_success', ['entity' => 'Tag']));
 
         return redirect('/admin/tag');
     }

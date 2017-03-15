@@ -55,7 +55,7 @@ class LoginController extends Controller
      */
     public function authenticated(Request $request, BlogUserInterface $user)
     {
-        \Session::set('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
+        \Session::put('_login', trans('easel::messages.login', ['first_name' => $user->first_name, 'last_name' => $user->last_name]));
 
         return redirect()->intended($this->redirectTo);
     }

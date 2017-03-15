@@ -22,6 +22,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::resource('admin/post', 'PostController', ['except' => 'show']);
             Route::resource('admin/tag', 'TagController', ['except' => 'show']);
             Route::resource('admin/search', 'SearchController');
+
+            Route::get('admin/category', 'CategoryController@index');
         });
 
         // Media Manager Routes

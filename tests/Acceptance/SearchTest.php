@@ -5,6 +5,7 @@ namespace EaselTest\Acceptance;
 use Easel\Models\Post;
 use Easel\Models\Tag;
 use EaselTest\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Created by PhpStorm.
@@ -14,6 +15,7 @@ use EaselTest\TestCase;
  */
 class SearchTest extends TestCase
 {
+    use DatabaseMigrations;
     /**
      * The user model.
      *

@@ -28,12 +28,9 @@
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~5.0",
-    "phpspec/phpspec": "~2.1",
-    "illuminate/support": "5.*.*",
-    "illuminate/routing": "5.*.*",
-    "orchestra/testbench": "~3.3",
-    "orchestra/database": "~3.1",
-    "symfony/browser-kit": "^3.2"
+    "orchestra/testbench": "~3.0",
+    "symfony/browser-kit": "^3.2",
+    "orchestra/testbench-browser-kit": "~3.1"
   },
   "autoload": {
     "psr-4": {

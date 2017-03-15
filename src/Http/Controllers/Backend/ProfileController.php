@@ -53,7 +53,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        Session::set('_profile', trans('easel::messages.update_success', ['entity' => 'Profile']));
+        Session::put('_profile', trans('easel::messages.update_success', ['entity' => 'Profile']));
 
         return redirect()->route('admin.profile.edit', $user->id);
     }
@@ -93,7 +93,7 @@ class ProfileController extends Controller
         $user->password = bcrypt($request->input('new_password'));
         $user->save();
 
-        Session::set('_passwordUpdate', trans('easel::messages.update_success', ['entity' => 'Password']));
+        Session::put('_passwordUpdate', trans('easel::messages.update_success', ['entity' => 'Password']));
 
         return redirect()->route('admin.profile.edit.password', $user->id);
     }

@@ -8,24 +8,18 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 /**
  * Class TestCase.
  */
-class TestCase extends \Orchestra\Testbench\TestCase
+class TestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl = 'http://localhost';
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->artisan('migrate');
+        //$this->artisan('migrate');
 
         $this->withFactories(realpath(__DIR__.'/../database/factories'));
 
-        $this->artisan('easel:install');
+        //$this->artisan('easel:install');
     }
 
     public function tearDown()
@@ -52,7 +46,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware('Illuminate\Session\Middleware\StartSession');
+        $app->make('Illuminate\Contracts\Http\Kernel');
 
         $this->resetIndexes();
 

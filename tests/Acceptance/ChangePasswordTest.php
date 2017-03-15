@@ -4,6 +4,7 @@ namespace EaselTest\Acceptance;
 
 use EaselTest\TestCase;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  * Created by PhpStorm.
@@ -13,7 +14,7 @@ use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
  */
 class ChangePasswordTest extends TestCase
 {
-    use InteractsWithDatabase;
+    use DatabaseMigrations;
 
     /**
      * @var \Easel\Models\User
@@ -42,7 +43,7 @@ class ChangePasswordTest extends TestCase
 
         $this->assertSessionHas('_passwordUpdate', trans('easel::messages.update_success', ['entity' => 'Password']));
 
-        $this->assertTrue(Auth::validate([
+        $this->assertTrue(\Auth::validate([
             'email'    => $this->user->email,
             'password' => '123456',
         ]));
