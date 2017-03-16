@@ -25,7 +25,7 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
         'slug'             => str_replace(' ', '-', $faker->sentence),
         'subtitle'         => $faker->sentence,
         'page_image'       => '/storage/placeholder.png',
-        'content_raw'      => view('easel::shared.helpers.welcome'),
+        'content_raw'      => implode('<br/>', $faker->paragraphs(4)),
         'published_at'     => Carbon\Carbon::now(),
         'meta_description' => $faker->sentence,
         'is_draft'         => false,
