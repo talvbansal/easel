@@ -17,6 +17,7 @@
     </div>
     <ul class="main-menu">
         <li @if (Request::is('admin/post*')) class="active" @endif><a href="{{ url('/admin/post') }}"><i class="zmdi zmdi-view-compact"></i> Posts <span class="label label-default label-totals">{{ Easel\Models\Post::count() }}</span></a></li>
+        <li @if (Request::is('admin/category*')) class="active" @endif><a href="{{ url('/admin/category') }}"><i class="zmdi zmdi-collection-plus"></i> Categories <span class="label label-default label-totals">{{ Easel\Models\Category::count() }}</span></a></li>
         <li @if (Request::is('admin/tag*')) class="active" @endif><a href="{{ url('/admin/tag') }}"><i class="zmdi zmdi-tag"></i> Tags <span class="label label-default label-totals">{{ Easel\Models\Tag::count() }}</span></a></li>
         <li @if (Request::is('admin/media*')) class="active" @endif><a href="{{ url('/admin/media') }}"><i class="zmdi zmdi-cloud-upload"></i> Media</a></li>
     </ul>
