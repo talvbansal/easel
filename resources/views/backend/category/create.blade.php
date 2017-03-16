@@ -1,7 +1,7 @@
 @extends('easel::backend.layout')
 
 @section('title')
-    <title>{{ config('easel.title') }} | New Tag</title>
+    <title>{{ config('easel.title') }} | New Category</title>
 @stop
 
 @section('content')
@@ -15,8 +15,8 @@
                     <div class="card-header">
                         <ol class="breadcrumb">
                             <li><a href="{{ url('/admin') }}">Home</a></li>
-                            <li><a href="{{ url('/admin/tag') }}">Tags</a></li>
-                            <li class="active">New Tag</li>
+                            <li><a href="{{ url('/admin/category') }}">Categories</a></li>
+                            <li class="active">New Category</li>
                         </ol>
                         <ul class="actions">
                             <li class="dropdown">
@@ -25,7 +25,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="">Refresh Tag</a>
+                                        <a href="">Refresh Category</a>
                                     </li>
                                 </ul>
                             </li>
@@ -35,19 +35,19 @@
 
                         @include('easel::shared.success')
 
-                        <h2>Create a New Tag</h2>
+                        <h2>Create a New Category</h2>
 
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="/admin/tag">
+                        <form class="keyboard-save" role="form" method="POST" id="categoryUpdate" action="/admin/category">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            @include('easel::backend.tag.partials.form')
+                            @include('easel::backend.category.partials.form')
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
                                 &nbsp;
-                                <a href="{{ url('/admin/tag') }}"><button type="button" class="btn btn-link">Cancel</button></a>
+                                <a href="{{ url('/admin/category') }}"><button type="button" class="btn btn-link">Cancel</button></a>
                             </div>
 
                         </form>
@@ -59,7 +59,7 @@
 @stop
 
 @section('unique-js')
-    {!! JsValidator::formRequest('Easel\Http\Requests\TagCreateRequest', '#tagUpdate') !!}
+    {!! JsValidator::formRequest('Easel\Http\Requests\CategoryCreateRequest', '#categoryUpdate') !!}
 
     @include('easel::backend.shared.notifications.protip')
 @stop

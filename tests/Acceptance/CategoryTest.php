@@ -62,7 +62,7 @@ class CategoryTest extends TestCase
             ->press('Save');
 
         $this->seeInDatabase('categories', [
-            'title' => 'Travel',
+            'name' => 'Travel',
             'slug' => 'travel',
         ]);
 

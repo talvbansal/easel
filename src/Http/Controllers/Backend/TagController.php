@@ -64,7 +64,7 @@ class TagController extends Controller
      */
     public function store(TagCreateRequest $request)
     {
-        $this->tagManager->create($request->toArray());
+        $this->tagManager->create($request->except(['_token']));
 
         Session::put('_new-tag', trans('easel::messages.create_success', ['entity' => 'Tag']));
 

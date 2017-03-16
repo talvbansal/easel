@@ -24,6 +24,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::resource('admin/search', 'SearchController');
 
             Route::get('admin/category', 'CategoryController@index');
+            Route::get('admin/category/create', 'CategoryController@create');
+            Route::post('admin/category', 'CategoryController@store');
         });
 
         // Media Manager Routes
