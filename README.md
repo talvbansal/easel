@@ -37,7 +37,7 @@ A minimal blogging package for Laravel
 
 - [PHP](https://php.net) >= 7.0
 - [Composer](https://getcomposer.org)
-- An existing [Laravel 5.3 ](https://laravel.com/docs/master/installation) project
+- An existing [Laravel 5.3+](https://laravel.com/docs/master/installation) project
 
 
 ### Installation
