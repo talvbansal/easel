@@ -1,9 +1,7 @@
-<div id="_new-tag" data-field-id="{{ Session::get('_new-tag') }}"></div>
-
 <script>
     $(document).ready(function(){
         setTimeout(function () {
-            var message = $('#_new-tag').data("field-id");
+            var message = '{{ \Session::get('_new-tag') }}';
             systemNotification(message, 'inverse');
         }, 300);
     });
