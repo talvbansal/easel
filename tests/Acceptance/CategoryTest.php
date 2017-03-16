@@ -14,5 +14,4 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class CategoryTest extends TestCase
 {
     use DatabaseMigrations;
-
 }
