@@ -15,14 +15,4 @@ class CategoryTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function test_()
-    {
-        $user = factory(\Easel\Models\User::class)->create();
-
-        $this->actingAs($user);
-
-        $this->visit('/admin/category');
-
-        $this->assertResponseStatus(200);
-    }
 }

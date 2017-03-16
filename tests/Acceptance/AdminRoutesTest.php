@@ -38,10 +38,9 @@ class AdminRoutesTest extends TestCase
      *
      * @return void
      */
-    public function testPostsPageResponseCode()
+    public function test_posts_page_response_code()
     {
-        $response = $this->actingAs($this->user)->call('GET', '/admin/post');
-        $this->assertEquals(200, $response->status());
+        $this->actingAs($this->user)->visit('/admin/post')->assertResponseStatus(200);
     }
 
     /**
@@ -49,10 +48,19 @@ class AdminRoutesTest extends TestCase
      *
      * @return void
      */
-    public function testTagsPageResponseCode()
+    public function test_tags_page_response_code()
     {
-        $response = $this->actingAs($this->user)->call('GET', '/admin/tag');
-        $this->assertEquals(200, $response->status());
+        $this->actingAs($this->user)->visit('/admin/tag')->assertResponseStatus(200);
+    }
+
+    /**
+     * Test the response code for the Category page.
+     *
+     * @return void
+     */
+    public function test_category_page_response_code()
+    {
+        $this->actingAs($this->user)->visit('/admin/category')->assertResponseStatus(200);
     }
 
     /**
@@ -60,10 +68,9 @@ class AdminRoutesTest extends TestCase
      *
      * @return void
      */
-    public function testUploadsPageResponseCode()
+    public function test_uploads_page_response_code()
     {
-        $response = $this->actingAs($this->user)->call('GET', '/admin/media');
-        $this->assertEquals(200, $response->status());
+        $this->actingAs($this->user)->visit('/admin/media')->assertResponseStatus(200);
     }
 
     /**
@@ -71,9 +78,8 @@ class AdminRoutesTest extends TestCase
      *
      * @return void
      */
-    public function testProfilePageResponseCode()
+    public function test_profile_page_response_code()
     {
-        $response = $this->actingAs($this->user)->call('GET', '/admin/profile');
-        $this->assertEquals(200, $response->status());
+        $this->actingAs($this->user)->visit('/admin/profile')->assertResponseStatus(200);
     }
 }
