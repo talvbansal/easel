@@ -43,6 +43,7 @@
                     </div>
                     <div class="card-body card-padding">
                         <form class="keyboard-save" role="form" method="POST" id="frmPost" action="{!! route('admin.post.update', $id) !!}">
+                            {{ csrf_field() }}
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="user_id" value="{!! auth()->user()->id!!}">
                             @include('easel::backend.post.partials.form')

@@ -22,7 +22,7 @@ class PostsManager
     /**
      * @return array
      */
-    public function allPublishedPosts()
+    public function publishedPosts()
     {
         $posts = Post::with('tags')
                      ->where('published_at', '<=', Carbon::now())

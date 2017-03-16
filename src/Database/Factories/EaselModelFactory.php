@@ -21,8 +21,8 @@
 */
 $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
     return [
-        'title'            => $faker->title,
-        'slug'             => $faker->word,
+        'title'            => $faker->sentence,
+        'slug'             => str_replace(' ', '-', $faker->sentence),
         'subtitle'         => $faker->sentence,
         'page_image'       => '/storage/placeholder.png',
         'content_raw'      => view('easel::shared.helpers.welcome'),

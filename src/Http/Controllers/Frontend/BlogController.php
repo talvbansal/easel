@@ -34,7 +34,7 @@ class BlogController extends Controller
         if ($tag) {
             $data = $this->postsManager->postsByTag($tag);
         } else {
-            $data = $this->postsManager->allPublishedPosts();
+            $data = $this->postsManager->publishedPosts();
         }
 
         return view(config('easel.layouts.list'), $data);

@@ -7,8 +7,11 @@
                 selectedEventName: null,
                 showMediaManager: false,
                 simpleMde: null,
-                slug: null,
-                title: null
+                slug: '{{ old('slug', $slug) }}',
+                title: '{{ old('title', $title) }}',
+                subtitle: '{{ old('subtitle', $subtitle) }}',
+                published_at: '{{ old('published_at', $published_at) }}'
+
             };
         },
         mounted: function () {

@@ -120,5 +120,6 @@ class CategoryTest extends TestCase
 
         $this->assertSessionHas('_delete-category', trans('easel::messages.delete_success', ['entity' => 'Category']));
         $this->assertRedirectedTo('/admin/category');
+
     }
 }

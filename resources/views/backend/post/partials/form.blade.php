@@ -57,7 +57,7 @@
         <div class="form-group">
             <div class="fg-line">
                 <label for="published_at" class="fg-label">Publish Date / Time</label>
-                <input type="text" class="form-control date-time-picker" name="published_at" id="published_at" placeholder="Page Image" data-mask="00/00/0000 00:00:00"/>
+                <input type="text" class="form-control date-time-picker" name="published_at" id="published_at" placeholder="Page Image" data-mask="00/00/0000 00:00:00" v-model="published_at"/>
             </div>
         </div>
 
