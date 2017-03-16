@@ -23,7 +23,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::resource('admin/post', 'PostController', ['except' => 'show']);
             Route::resource('admin/search', 'SearchController');
             Route::resource('admin/tag', 'TagController', ['except' => 'show']);
-
         });
 
         // Media Manager Routes

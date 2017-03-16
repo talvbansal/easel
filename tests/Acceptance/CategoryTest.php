@@ -34,7 +34,6 @@ class CategoryTest extends TestCase
         $this->user = factory(\Easel\Models\User::class)->create();
     }
 
-
     public function test_that_categories_can_be_listed()
     {
         factory(Category::class)->create([
@@ -55,7 +54,7 @@ class CategoryTest extends TestCase
 
     public function test_a_user_can_create_a_category()
     {
-        $this->actingAs( $this->user )
+        $this->actingAs($this->user)
             ->visit('/admin/category/create')
             ->type('Travel', 'name')
             ->type('travel', 'slug')
@@ -69,7 +68,6 @@ class CategoryTest extends TestCase
         $this->seePageIs('admin/category');
     }
 
-
     public function test_a_user_cannot_create_a_category_that_already_exists()
     {
         factory(Category::class)->create([
@@ -77,7 +75,7 @@ class CategoryTest extends TestCase
             'slug' => 'travel',
         ]);
 
-        $this->actingAs( $this->user )
+        $this->actingAs($this->user)
             ->visit('/admin/category/create')
             ->type('Travel', 'name')
             ->type('travel', 'slug')
@@ -85,7 +83,6 @@ class CategoryTest extends TestCase
 
         $this->see('The name has already been taken.');
         $this->see('The slug has already been taken.');
-
     }
 
     public function test_a_category_can_be_edited()
@@ -95,19 +92,19 @@ class CategoryTest extends TestCase
             'slug' => 'travel',
         ]);
 
-        $this->actingAs( $this->user )
-             ->visit('/admin/category/' . $category->id . '/edit')
+        $this->actingAs($this->user)
+             ->visit('/admin/category/'.$category->id.'/edit')
              ->type('Inspiration', 'name')
              ->type('inspiration', 'slug')
              ->press('Save');
 
         $this->seeInDatabase('categories', [
-            'id' => $category->id,
+            'id'   => $category->id,
             'name' => 'Inspiration',
             'slug' => 'inspiration',
         ]);
 
-        $this->seePageIs('/admin/category/' . $category->id . '/edit');
+        $this->seePageIs('/admin/category/'.$category->id.'/edit');
     }
 
     public function test_a_category_can_be_deleted()
@@ -124,5 +121,4 @@ class CategoryTest extends TestCase
         $this->assertSessionHas('_delete-category', trans('easel::messages.delete_success', ['entity' => 'Category']));
         $this->assertRedirectedTo('/admin/category');
     }
-
 }

@@ -8,14 +8,13 @@
 
 namespace Easel\Services;
 
-
 use Easel\Models\Category;
 
 class CategoryManager
 {
     private $fields = [
-        'name' => '',
-        'slug' => '',
+        'name'       => '',
+        'slug'       => '',
         'created_at' => '',
         'updated_at' => '',
     ];
@@ -33,7 +32,7 @@ class CategoryManager
         return $category->save();
     }
 
-        /**
+    /**
      * @param $id
      * @param $data
      *
@@ -46,7 +45,6 @@ class CategoryManager
 
         return $category->save();
     }
-
 
     /**
      * @param $id

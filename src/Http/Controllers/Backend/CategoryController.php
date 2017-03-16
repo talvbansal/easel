@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     private $categoryManager;
 
-    public function __construct( CategoryManager $categoryManager )
+    public function __construct(CategoryManager $categoryManager)
     {
         $this->categoryManager = $categoryManager;
     }
@@ -80,7 +80,7 @@ class CategoryController extends Controller
      * Update the category in storage.
      *
      * @param CategoryUpdateRequest $request
-     * @param int              $id
+     * @param int                   $id
      *
      * @return \Illuminate\Http\RedirectResponse
      */
