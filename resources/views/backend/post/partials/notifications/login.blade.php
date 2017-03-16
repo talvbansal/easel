@@ -1,9 +1,7 @@
-<div id="_login" data-field-id="{{ Session::get('_login') }}"></div>
-
 <script>
     $(document).ready(function(){
         setTimeout(function () {
-            var message = $('#_login').data("field-id");
+            var message = '{{ \Session::get('_login') }}';
             systemNotification(message, 'inverse');
         }, 300);
     });

@@ -1,9 +1,7 @@
-<div id="_delete-post" data-field-id="{{ Session::get('_delete-post') }}"></div>
-
 <script>
     $(document).ready(function () {
         setTimeout(function () {
-            var message = $('#_delete-post').data("field-id");
+            var message = '{{ \Session::get('_delete-post') }}';
             systemNotification(message, 'inverse');
         }, 300);
     });
