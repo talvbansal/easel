@@ -19,13 +19,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::model('user', \Easel\Models\BlogUserInterface::class);
 
         Route::group(['as' => 'admin.'], function () {
+            Route::resource('admin/category', 'CategoryController', ['except' => 'show']);
             Route::resource('admin/post', 'PostController', ['except' => 'show']);
-            Route::resource('admin/tag', 'TagController', ['except' => 'show']);
             Route::resource('admin/search', 'SearchController');
+            Route::resource('admin/tag', 'TagController', ['except' => 'show']);
 
-            Route::get('admin/category', 'CategoryController@index');
-            Route::get('admin/category/create', 'CategoryController@create');
-            Route::post('admin/category', 'CategoryController@store');
         });
 
         // Media Manager Routes

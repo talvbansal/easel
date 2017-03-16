@@ -2,7 +2,7 @@
 
 namespace Easel\Http\Requests;
 
-class CategoryCreateRequest extends Request
+class CategoryUpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class CategoryCreateRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories,name',
-            'slug' => 'required|unique:categories,slug',
+            'name' => 'required',
+            'slug' => 'required',
         ];
     }
 }

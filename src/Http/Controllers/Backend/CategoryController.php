@@ -10,6 +10,7 @@ namespace Easel\Http\Controllers\Backend;
 
 use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\CategoryCreateRequest;
+use Easel\Http\Requests\CategoryUpdateRequest;
 use Easel\Models\Category;
 use Easel\Services\CategoryManager;
 use Session;
@@ -57,6 +58,53 @@ class CategoryController extends Controller
         $this->categoryManager->create($request->except(['_token']));
 
         Session::put('_new-category', trans('easel::messages.create_success', ['entity' => 'Category']));
+
+        return redirect('/admin/category');
+    }
+
+    /**
+     * Show the form for editing a category.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $data = $this->categoryManager->getViewData($id);
+
+        return view('easel::backend.category.edit', compact('data'));
+    }
+
+    /**
+     * Update the category in storage.
+     *
+     * @param CategoryUpdateRequest $request
+     * @param int              $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(CategoryUpdateRequest $request, $id)
+    {
+        $this->categoryManager->edit($id, $request->toArray());
+
+        Session::put('_update-category', trans('easel::messages.update_success', ['entity' => 'Category']));
+
+        return redirect("/admin/category/$id/edit");
+    }
+
+    /**
+     * Delete the category.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $this->categoryManager->delete($id);
+
+        Session::put('_delete-category', trans('easel::messages.delete_success', ['entity' => 'Category']));
 
         return redirect('/admin/category');
     }
