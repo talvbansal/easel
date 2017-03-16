@@ -61,7 +61,7 @@ class AuthenticationTest extends TestCase
          * Create a test route so that the logout redirects properly
          */
         if (!\Route::has('/')) {
-            \Route::get('/', function(){
+            \Route::get('/', function () {
                 return '<h1>Hello World</h1>';
             });
         }
