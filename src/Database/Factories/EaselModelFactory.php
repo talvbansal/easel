@@ -21,8 +21,8 @@
 */
 $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
     return [
-        'title'            => $faker->sentence,
-        'slug'             => str_replace(' ', '-', $faker->sentence),
+        'title'            => $title = $faker->sentence,
+        'slug'             => str_replace(' ', '-', $title),
         'subtitle'         => $faker->sentence,
         'page_image'       => '/storage/placeholder.png',
         'content_raw'      => implode('<br/>', $faker->paragraphs(4)),
