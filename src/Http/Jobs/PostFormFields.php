@@ -3,6 +3,7 @@
 namespace Easel\Http\Jobs;
 
 use Carbon\Carbon;
+use Easel\Models\Category;
 use Easel\Models\Post;
 use Easel\Models\Tag;
 use Easel\Services\Traits\FindBlogLayouts;
@@ -36,6 +37,7 @@ class PostFormFields extends Job
         'updated_at'       => '',
         'layout'           => '',
         'tags'             => [],
+        'category_id'      => '',
     ];
 
     /**
@@ -70,6 +72,7 @@ class PostFormFields extends Job
             $fields,
             [
                 'allTags' => Tag::pluck('tag')->all(),
+                'allCategories' => Category::pluck('name', 'id')->all(),
                 'layouts' => $this->getPostLayouts(),
             ]
         );

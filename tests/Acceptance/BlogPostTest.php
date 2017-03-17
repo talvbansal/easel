@@ -2,6 +2,7 @@
 
 namespace EaselTest\Acceptance;
 
+use Easel\Models\Category;
 use EaselTest\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -37,6 +38,7 @@ class BlogPostTest extends TestCase
      */
     private function createPostData()
     {
+        factory(Category::class)->create();
         return factory(\Easel\Models\Post::class)->make(['content_raw' => 'test content']);
     }
 
@@ -55,6 +57,7 @@ class BlogPostTest extends TestCase
              ->type($post->content_raw, 'content')
              ->type($post->published_at->format('d/m/Y h:i:s'), 'published_at')
              ->select($post->layout, 'layout')
+             ->select($post->category_id, 'category_id')
              ->press('Save');
 
         // Is it there?
@@ -67,6 +70,7 @@ class BlogPostTest extends TestCase
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
             'layout'       => $post->layout,
             'author_id'    => $this->user->id,
+            'category_id'  => 1,
         ]);
 
         //$this->seePageIs('admin/post');
@@ -84,6 +88,7 @@ class BlogPostTest extends TestCase
             'content'      => $post->content_raw,
             'published_at' => $post->published_at->format('d/m/Y h:i:s'),
             'layout'       => $post->layout,
+            'category_id'  => 1,
         ]);
 
         // Is it there?
@@ -96,6 +101,7 @@ class BlogPostTest extends TestCase
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
             'layout'       => $post->layout,
             'author_id'    => $this->user->id,
+            'category_id'  => 1,
         ]);
 
         $this->assertSessionHas('_new-post', trans('easel::messages.create_success', ['entity' => 'Post']));
@@ -120,6 +126,7 @@ class BlogPostTest extends TestCase
             'content'      => $content,
             'published_at' => $post->published_at->format('d/m/Y h:i:s'),
             'layout'       => $post->layout,
+            'category_id'  => 1,
         ]);
 
         // Can we see the changes?
@@ -132,6 +139,7 @@ class BlogPostTest extends TestCase
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
             'layout'       => $post->layout,
             'author_id'    => $this->user->id,
+            'category_id'  => 1,
         ]);
 
         $this->assertSessionHas('_update-post', trans('easel::messages.update_success', ['entity' => 'Post']));

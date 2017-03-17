@@ -24,6 +24,7 @@ use Laravel\Scout\Searchable;
  * @property string layout
  * @property bool is_draft
  * @property int author_id
+ * @property int category_id
  * @property Carbon created_at
  * @property Carbon published_at
  * @property Carbon updated_at

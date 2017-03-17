@@ -28,6 +28,7 @@ class PostCreateRequest extends Request
             'content'      => 'required',
             'published_at' => 'required',
             'layout'       => 'required',
+            'category_id'  => 'required|numeric',
         ];
     }
 
@@ -47,6 +48,7 @@ class PostCreateRequest extends Request
             'published_at'     => Carbon::createFromFormat('d/m/Y H:i:s', $this->published_at)->format('Y-m-d H:i:s'),
             'layout'           => $this->layout,
             'author_id'        => auth()->user()->id,
+            'category_id'      => $this->category_id,
         ];
     }
 }

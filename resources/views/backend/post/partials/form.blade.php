@@ -75,8 +75,20 @@
 
         <div class="form-group">
             <div class="fg-line">
+                <label for="category_id" class="fg-label">Category</label>
+                <select name="category_id" id="category_id" class="form-control">
+                    @foreach ($allCategories as $cat_id => $cat_name )
+                        <option @if ($cat_id == $category_id) selected @endif value="{{ $cat_id }}">{{ $cat_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="fg-line">
                 <label for="tags[]" class="fg-label">Tags</label>
-                <select name="tags[]" id="tags" class="selectpicker" multiple>
+                <select name="tags[]" id="tags" class="form-control selectpicker" multiple>
                     @foreach ($allTags as $tag)
                         <option @if (in_array($tag, $tags)) selected @endif value="{{ $tag }}">{{ $tag }}</option>
                     @endforeach
