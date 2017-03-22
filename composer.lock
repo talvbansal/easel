@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c587b03dbb17d58fc4ff19cf7226f2b4",
-    "content-hash": "cf1d3e2a28f08c32365c4412031081f2",
+    "hash": "d456f34605575b61b6ecad0c025dbcb1",
+    "content-hash": "4ca5fe7841ca2f482831d294c0101846",
     "packages": [
         {
             "name": "bestmomo/scafold",
@@ -1229,26 +1229,26 @@
         },
         {
             "name": "proengsoft/laravel-jsvalidation",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/proengsoft/laravel-jsvalidation.git",
-                "reference": "62a3b44d9e74bc20cb0b68339f6ca8bf0439382c"
+                "url": "https://github.com/reganjohnson/laravel-jsvalidation.git",
+                "reference": "e93419ce53132f8d3d8ffaf32600a68a25e54ae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/proengsoft/laravel-jsvalidation/zipball/62a3b44d9e74bc20cb0b68339f6ca8bf0439382c",
-                "reference": "62a3b44d9e74bc20cb0b68339f6ca8bf0439382c",
+                "url": "https://api.github.com/repos/reganjohnson/laravel-jsvalidation/zipball/e93419ce53132f8d3d8ffaf32600a68a25e54ae8",
+                "reference": "e93419ce53132f8d3d8ffaf32600a68a25e54ae8",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5.0",
-                "illuminate/contracts": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/support": "~5.0",
-                "illuminate/translation": "~5.0",
-                "illuminate/validation": "~5.0",
-                "illuminate/view": "~5.0",
+                "illuminate/config": "~5.4",
+                "illuminate/contracts": "~5.4",
+                "illuminate/http": "~5.4",
+                "illuminate/support": "~5.4",
+                "illuminate/translation": "~5.4",
+                "illuminate/validation": "~5.4",
+                "illuminate/view": "~5.4",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -1262,7 +1262,6 @@
                     "Proengsoft\\JsValidation\\Tests\\": "tests"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1284,7 +1283,10 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-01-22 18:05:33"
+            "support": {
+                "source": "https://github.com/reganjohnson/laravel-jsvalidation/tree/v1.6.0"
+            },
+            "time": "2017-01-31 13:50:57"
         },
         {
             "name": "psr/log",
@@ -4243,12 +4245,13 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "bestmomo/scafold": 20
+        "bestmomo/scafold": 20,
+        "proengsoft/laravel-jsvalidation": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }
