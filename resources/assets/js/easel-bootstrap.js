@@ -85,4 +85,4 @@ global.systemNotification = function(message, type){
             y: 85
         }
     });
-}
+};

@@ -21,7 +21,7 @@
         <div class="form-group">
             <div class="fg-line">
                 <label for="subtitle" class="fg-label">Subtitle</label>
-                <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="subtitle" v-model="subtitle"/>
+                <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="subtitle" v-model="subtitle" maxlength="254"/>
             </div>
         </div>
 

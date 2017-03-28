@@ -29,11 +29,13 @@
 
 // Error Styling
 
-.help-block-error {
+.help-block, .error-help-block {
   display: none !important;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-.has-success{
+.has-success {
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -103,25 +105,25 @@
   height: 0;
 }
 
-#logo{
+#logo {
   color: #2196f3;
 }
 
-#top-link-block{
-  &.affix-top{
+#top-link-block {
+  &.affix-top {
     position: absolute; /* allows it to "slide" up into view */
     bottom: -82px; /* negative of the offset - height of link element */
     right: 10px; /* padding from the left side of the window */
     z-index: 100;
   }
 
-  &.affix{
+  &.affix {
     position: fixed; /* keeps it on the bottom once in view */
     bottom: 18px; /* height of link element */
     right: 10px; /* padding from the left side of the window */
   }
 
-  a.btn{
+  a.btn {
     border-radius: 0;
     font-size: 15px;
     font-weight: 300;
@@ -135,30 +137,30 @@
   align-items: center;
 }
 
-.img-responsive{
+.img-responsive {
   display: block;
   height: auto;
   max-width: 100%;
 }
 
-.post-subtitle{
+.post-subtitle {
   margin-top: -20px;
 }
 
-.easel-post{
-  img{
+.easel-post {
+  img {
     @extend .img-responsive;
   }
 }
 
-.profile-info{
+.profile-info {
 
-  h5{
+  h5 {
     margin-bottom: 0.25rem;
     margin-top: 0.25rem;
   }
-  p{
-    margin:0.5rem 0;
+  p {
+    margin: 0.5rem 0;
   }
 }
 
@@ -166,11 +168,92 @@
   text-align: left;
 }
 
-.breadcrumb{
+.breadcrumb {
   background-color: transparent;
 }
 
-.input-group-addon{
+.input-group-addon {
   background-color: transparent;
 }
 
+// Date Picker overrides...
+
+.datepicker {
+  table {
+    thead {
+      tr {
+        th {
+          border-radius: 0;
+          color: #fff;
+          .glyphicon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            line-height: 29px
+          }
+
+          &.picker-switch {
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: uppercase;
+          }
+
+          &:hover {
+            .glyphicon {
+              background: rgba(0, 0, 0, .2)
+            }
+          }
+
+        }
+
+        &:first-child {
+          th {
+            background: #2196f3; padding: 20px 0;
+            &:hover {
+              background: #2196f3;
+            }
+          }
+        }
+
+        &:last-child{
+          th {
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 11px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.datepicker table thead tr:last-child th:first-child { padding-left: 20px }
+
+.datepicker table thead tr:last-child th:last-child { padding-right: 20px }
+
+.datepicker table thead tr:last-child:not(:only-child) { background: #1d7dcc }
+
+.datepicker table tbody tr:last-child td { padding-bottom: 25px }
+
+.datepicker table tbody tr td:first-child { padding-left: 13px }
+
+.datepicker table tbody tr td:last-child { padding-right: 13px }
+
+.datepicker table td.day { width: 35px; height: 35px; line-height: 20px; color: #333; position: relative; padding: 0; background: 0 0 }
+
+.datepicker table td.day:hover { background: 0 0 }
+
+.datepicker table td.day:before { content: ""; width: 35px; height: 35px; border-radius: 50%; margin-bottom: -33px; display: inline-block; background: 0 0; position: static; text-shadow: none }
+
+.datepicker table td.day.new, .datepicker table td.day.old { color: #cdcdcd }
+
+.datepicker table td:not(.today):not(.active):hover:before { background: #f0f0f0 }
+
+.datepicker table td.today { color: #333 }
+
+.datepicker table td.today:before { background-color: #e2e2e2 }
+
+.datepicker table td.active { color: #fff }
+
+.datepicker table td.active:before { background-color: #2196f3 }
