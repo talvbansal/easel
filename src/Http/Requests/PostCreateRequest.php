@@ -45,7 +45,7 @@ class PostCreateRequest extends Request
             'meta_description' => $this->meta_description,
             'is_draft'         => (bool) $this->is_draft,
             'published_at'     => Carbon::createFromFormat('d/m/Y H:i:s', $this->published_at)->format('Y-m-d H:i:s'),
-            'author_id'        => ($this->author_id)?:auth()->user()->id,
+            'author_id'        => ($this->author_id) ?: auth()->user()->id,
             'category_id'      => $this->category_id,
         ];
     }
