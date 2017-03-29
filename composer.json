@@ -27,7 +27,7 @@
     "proengsoft/laravel-jsvalidation": "^1.6.0-dev",
     "teamtnt/laravel-scout-tntsearch-driver": "2.*",
     "spatie/laravel-backup": "^3.10",
-    "talvbansal/media-manager": "^2.0"
+    "talvbansal/media-manager": "dev-master"
   },
   "require-dev": {
     "symfony/dom-crawler": "3.*",
@@ -55,5 +55,9 @@
       "tests/TestCase.php"
     ]
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "config": {
+    "preferred-install": "source",
+    "sort-packages": true
+  }
 }
