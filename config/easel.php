@@ -60,27 +60,4 @@ return [
         'storage' => 'public',
         'webpath' => '/storage/',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Post Layouts Configuration
-    |--------------------------------------------------------------------------
-    |
-    | These options allow you to configure the views used by Easel.
-    | You can use the inbuilt defaults or use custom views files
-    | to suit the host application. The posts and lists pages
-    | are both configurable. layouts.posts.custom lets you
-    | point to a folder that can contain a varying set
-    | of templates to be used across your posts
-    |
-    */
-    'layouts'             => [
-        'posts' => [
-            'default' => 'vendor.easel.frontend.blog.post',
-            'custom'  => env('BLOG_POST_LAYOUTS', 'layouts.posts'),
-        ],
-
-        'list' => env('BLOG_POST_LIST', 'vendor.easel.frontend.blog.index'),
-    ],
-
 ];

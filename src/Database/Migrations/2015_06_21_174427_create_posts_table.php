@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->string('page_image')->nullable();
             $table->string('meta_description')->nullable();
             $table->boolean('is_draft')->default(false);
-            $table->string('layout')->default('vendor.easel.frontend.blog.post');
             $table->integer('author_id')->nullable();
             $table->integer('category_id')->nullable();
             $table->timestamps();

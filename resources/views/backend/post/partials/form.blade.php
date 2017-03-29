@@ -2,7 +2,6 @@
     <div>
         <div class="form-group">
             <div class="fg-line">
-                <label for="title" class="fg-label">Title</label>
                 <input type="text" class="form-control" name="title" id="title" placeholder="Title" v-model="title" @keyup="slugify()">
             </div>
         </div>
@@ -11,8 +10,7 @@
 
         <div class="form-group">
             <div class="fg-line">
-                <label for="slug" class="fg-label">Slug</label>
-                <input type="text" class="form-control" name="slug" id="slug" placeholder="slug" v-model="slug"/>
+                <input type="text" class="form-control" name="slug" id="slug" placeholder="Slug" v-model="slug"/>
             </div>
         </div>
 
@@ -20,8 +18,7 @@
 
         <div class="form-group">
             <div class="fg-line">
-                <label for="subtitle" class="fg-label">Subtitle</label>
-                <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="subtitle" v-model="subtitle" maxlength="254"/>
+                <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Subtitle" v-model="subtitle" maxlength="254"/>
             </div>
         </div>
 
@@ -56,8 +53,7 @@
 
         <div class="form-group">
             <div class="fg-line">
-                <label for="published_at" class="fg-label">Publish Date / Time</label>
-                <input type="text" class="form-control date-time-picker" name="published_at" id="published_at" placeholder="Page Image" data-mask="00/00/0000 00:00:00" v-model="published_at"/>
+                <input type="text" class="form-control date-time-picker" name="published_at" id="published_at" placeholder="Published At" data-mask="00/00/0000 00:00:00" v-model="published_at"/>
             </div>
         </div>
 
@@ -75,7 +71,6 @@
 
         <div class="form-group">
             <div class="fg-line">
-                <label for="category_id" class="fg-label">Category</label>
                 <select name="category_id" id="category_id" class="form-control">
                     @foreach ($allCategories as $cat_id => $cat_name )
                         <option @if ($cat_id == $category_id) selected @endif value="{{ $cat_id }}">{{ $cat_name }}</option>
@@ -87,27 +82,9 @@
 
         <div class="form-group">
             <div class="fg-line">
-                <label for="tags[]" class="fg-label">Tags</label>
                 <select name="tags[]" id="tags" class="form-control selectpicker" multiple>
                     @foreach ($allTags as $tag)
                         <option @if (in_array($tag, $tags)) selected @endif value="{{ $tag }}">{{ $tag }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="form-group">
-            <div class="fg-line">
-                <label for="layout" class="fg-label">Layout</label>
-                <select name="layout" id="layout" class="form-control">
-                    @foreach($layouts as $key => $value)
-                        @if( $value == $layout)
-                            <option value="{{ $key }}" selected>{{ $value }}</option>
-                        @else
-                            <option value="{{ $key }}">{{ $value }}</option>
-                        @endif
                     @endforeach
                 </select>
             </div>

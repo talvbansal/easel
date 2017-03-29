@@ -57,7 +57,6 @@ class BlogPostTest extends TestCase
              ->type($post->subtitle, 'subtitle')
              ->type($post->content_raw, 'content')
              ->type($post->published_at->format('d/m/Y h:i:s'), 'published_at')
-             ->select($post->layout, 'layout')
              ->select($post->category_id, 'category_id')
              ->press('Save');
 
@@ -69,7 +68,6 @@ class BlogPostTest extends TestCase
             'content_raw'  => $post->content,
             'content_html' => '<p>'.$post->content.'</p>',
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
-            'layout'       => $post->layout,
             'author_id'    => $this->user->id,
             'category_id'  => 1,
         ]);
@@ -88,7 +86,6 @@ class BlogPostTest extends TestCase
             'subtitle'     => $post->subtitle,
             'content'      => $post->content_raw,
             'published_at' => $post->published_at->format('d/m/Y h:i:s'),
-            'layout'       => $post->layout,
             'category_id'  => 1,
         ]);
 
@@ -100,7 +97,6 @@ class BlogPostTest extends TestCase
             'content_raw'  => $post->content,
             'content_html' => '<p>'.$post->content.'</p>',
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
-            'layout'       => $post->layout,
             'author_id'    => $this->user->id,
             'category_id'  => 1,
         ]);
@@ -126,7 +122,6 @@ class BlogPostTest extends TestCase
             'subtitle'     => $post->subtitle,
             'content'      => $content,
             'published_at' => $post->published_at->format('d/m/Y h:i:s'),
-            'layout'       => $post->layout,
             'category_id'  => 1,
         ]);
 
@@ -138,7 +133,6 @@ class BlogPostTest extends TestCase
             'content_raw'  => $content,
             'content_html' => '<p>'.$content.'</p>',
             'published_at' => $post->published_at->format('Y-m-d h:i:s'),
-            'layout'       => $post->layout,
             'author_id'    => $this->user->id,
             'category_id'  => 1,
         ]);
