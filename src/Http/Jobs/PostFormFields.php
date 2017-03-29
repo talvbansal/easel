@@ -38,6 +38,7 @@ class PostFormFields extends Job
         'layout'           => '',
         'tags'             => [],
         'category_id'      => '',
+        'author_id'        => '',
     ];
 
     /**
@@ -73,7 +74,6 @@ class PostFormFields extends Job
             [
                 'allTags'       => Tag::pluck('tag')->all(),
                 'allCategories' => Category::pluck('name', 'id')->all(),
-                'layouts'       => $this->getPostLayouts(),
             ]
         );
     }

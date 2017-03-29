@@ -11,37 +11,10 @@
 
         <section id="content">
             <div class="container">
-                <div class="card">
-                    <div class="card-header">
-                        <ol class="breadcrumb">
-                            <li><a href="{{ url('/admin') }}">Home</a></li>
-                            <li><a href="{{ url('/admin/post') }}">Posts</a></li>
-                            <li class="active">New Post</li>
-                        </ol>
 
-                        @include('easel::shared.errors')
-
-                        @include('easel::shared.success')
-
-                        <h2>Create a New Post</h2>
-                    </div>
-                    <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="frmPost" action="/admin/post/">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="user_id" value="{!! auth()->user()->id !!}">
-                            @include('easel::backend.post.partials.form')
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
-                                &nbsp;
-                                <a href="{{ url('/admin/post') }}">
-                                    <button type="button" class="btn btn-link">Cancel</button>
-                                </a>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
+                    <form class="keyboard-save" role="form" method="POST" id="frmPost" action="{!! route('admin.post.store') !!}">
+                        @include('easel::backend.post.partials.form')
+                    </form>
             </div>
         </section>
     </section>
