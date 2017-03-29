@@ -71,9 +71,9 @@ class PostFormFields extends Job
         return array_merge(
             $fields,
             [
-                'allTags' => Tag::pluck('tag')->all(),
+                'allTags'       => Tag::pluck('tag')->all(),
                 'allCategories' => Category::pluck('name', 'id')->all(),
-                'layouts' => $this->getPostLayouts(),
+                'layouts'       => $this->getPostLayouts(),
             ]
         );
     }
