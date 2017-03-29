@@ -25,9 +25,6 @@
                     {
                         name: 'insertImage',
                         action: function (editor) {
-                            //this.insertIntoEditor = true;
-                            //this.openPicker();
-                            console.log('open media manager');
                             this.openFromEditor();
 
 
@@ -98,10 +95,6 @@
             openFromPageImage: function () {
                 this.showMediaManager = true;
                 this.selectedEventName = 'page-image';
-            },
-
-            created: function () {
-
             }
         }
     });
