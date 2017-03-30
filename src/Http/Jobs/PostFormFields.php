@@ -31,8 +31,6 @@ class PostFormFields extends Job
         'content'          => '',
         'meta_description' => '',
         'is_draft'         => '0',
-        'publish_date'     => '',
-        'publish_time'     => '',
         'published_at'     => '',
         'updated_at'       => '',
         'layout'           => '',
@@ -62,7 +60,7 @@ class PostFormFields extends Job
         if ($this->id) {
             $fields = $this->fieldsFromModel($this->id, $fields);
         } else {
-            $when = Carbon::now()->addHour();
+            $when = Carbon::now()->addHour()->format('d/m/Y H:i:s');
             $fields['published_at'] = $when;
         }
         foreach ($fields as $fieldName => $fieldValue) {
