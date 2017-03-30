@@ -13,6 +13,7 @@
                 published_at: '{{ old('published_at', $published_at) }}'
             };
         },
+
         mounted: function () {
 
             this.simpleMde = new simpleMde({
@@ -36,7 +37,11 @@
                 ]
             });
 
-            $('.publish_date').mask('00/00/0000 00:00:00');
+            $('#published_at').mask('00/00/0000 00:00:00');
+
+            $('#published_at').on("dp.change", function(e) {
+                this.published_at = e.date.format('DD/MM/YYYY LTS');
+            }.bind(this));
 
             window.eventHub.$on('media-manager-selected-page-image', function (file) {
                 this.pageImage = file.relativePath;
