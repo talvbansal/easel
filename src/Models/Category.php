@@ -35,7 +35,8 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug',
+        'name',
+        'slug',
     ];
 
     /**
@@ -50,6 +51,8 @@ class Category extends Model
 
     public function postCount()
     {
-        return $this->posts->count();
+        return $this->posts->where('published_at', '<=', Carbon::now())
+                           ->where('is_draft', 0)
+                           ->count();
     }
 }
