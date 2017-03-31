@@ -18,11 +18,13 @@
                 </div>
             </div>
 
-            <div class="container">
-                <div class="card">
-                    <media-manager></media-manager>
+            <media-uploader inline-template>
+                <div class="container">
+                    <div class="card">
+                        <media-manager></media-manager>
+                    </div>
                 </div>
-            </div>
+            </media-uploader>
         </section>
     </section>
 
@@ -30,6 +32,35 @@
 
 @section('unique-js')
     <script>
+        Vue.component('media-uploader', {
 
+            mounted: function () {
+                window.eventHub.$on('media-manager-notification', function (message, type, time) {
+                    $.notify({
+                        message: message
+                    }, {
+                        type: 'inverse',
+                        allow_dismiss: false,
+                        label: 'Cancel',
+                        className: 'btn-xs btn-inverse',
+                        placement: {
+                            from: 'top',
+                            align: 'right'
+                        },
+                        z_index: 9999,
+                        delay: time,
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        },
+                        offset: {
+                            x: 20,
+                            y: 85
+                        }
+                    });
+                });
+            }
+
+        });
     </script>
 @stop
