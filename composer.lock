@@ -622,12 +622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0e5bf7b8037f4a3fe58bf2402ae6da3ff633fe8d"
+                "reference": "d3c96686c36c0681cb01251c32f2fc3291d49c6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0e5bf7b8037f4a3fe58bf2402ae6da3ff633fe8d",
-                "reference": "0e5bf7b8037f4a3fe58bf2402ae6da3ff633fe8d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d3c96686c36c0681cb01251c32f2fc3291d49c6b",
+                "reference": "d3c96686c36c0681cb01251c32f2fc3291d49c6b",
                 "shasum": ""
             },
             "require": {
@@ -743,7 +743,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-29 16:35:23"
+            "time": "2017-03-30 14:26:45"
         },
         {
             "name": "laravel/scout",
@@ -2645,12 +2645,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/browser-kit-testing.git",
-                "reference": "9d0940d60b83c287e51d8f0e62f96029ef921dd5"
+                "reference": "a8dd525deb1dd9c858757fcc9e06199a71bdda90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/9d0940d60b83c287e51d8f0e62f96029ef921dd5",
-                "reference": "9d0940d60b83c287e51d8f0e62f96029ef921dd5",
+                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/a8dd525deb1dd9c858757fcc9e06199a71bdda90",
+                "reference": "a8dd525deb1dd9c858757fcc9e06199a71bdda90",
                 "shasum": ""
             },
             "require": {
@@ -2684,7 +2684,7 @@
                 "laravel",
                 "testing"
             ],
-            "time": "2017-03-02 22:28:07"
+            "time": "2017-03-30 13:35:44"
         },
         {
             "name": "mockery/mockery",
