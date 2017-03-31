@@ -622,12 +622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d3c96686c36c0681cb01251c32f2fc3291d49c6b"
+                "reference": "ea134ccbdd52797d14ef05bc9467ec1fedfe6b36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d3c96686c36c0681cb01251c32f2fc3291d49c6b",
-                "reference": "d3c96686c36c0681cb01251c32f2fc3291d49c6b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ea134ccbdd52797d14ef05bc9467ec1fedfe6b36",
+                "reference": "ea134ccbdd52797d14ef05bc9467ec1fedfe6b36",
                 "shasum": ""
             },
             "require": {
@@ -743,7 +743,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-30 14:26:45"
+            "time": "2017-03-31 13:05:43"
         },
         {
             "name": "laravel/scout",
@@ -2218,12 +2218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/talvbansal/media-manager.git",
-                "reference": "89e09f1409ddf2ffe7d21f2aef6bef758506b965"
+                "reference": "4ce152953754bf40446a4dc1e8c64f4308dbe2b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/89e09f1409ddf2ffe7d21f2aef6bef758506b965",
-                "reference": "89e09f1409ddf2ffe7d21f2aef6bef758506b965",
+                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/4ce152953754bf40446a4dc1e8c64f4308dbe2b1",
+                "reference": "4ce152953754bf40446a4dc1e8c64f4308dbe2b1",
                 "shasum": ""
             },
             "require": {
@@ -2269,7 +2269,7 @@
                 "minimal",
                 "uploader"
             ],
-            "time": "2017-03-31 12:33:32"
+            "time": "2017-03-31 13:05:34"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
