@@ -2218,12 +2218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/talvbansal/media-manager.git",
-                "reference": "8419a16c9694d62d251690a394404b23e5605112"
+                "reference": "89e09f1409ddf2ffe7d21f2aef6bef758506b965"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/8419a16c9694d62d251690a394404b23e5605112",
-                "reference": "8419a16c9694d62d251690a394404b23e5605112",
+                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/89e09f1409ddf2ffe7d21f2aef6bef758506b965",
+                "reference": "89e09f1409ddf2ffe7d21f2aef6bef758506b965",
                 "shasum": ""
             },
             "require": {
@@ -2269,7 +2269,7 @@
                 "minimal",
                 "uploader"
             ],
-            "time": "2017-03-29 18:48:42"
+            "time": "2017-03-31 12:33:32"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
