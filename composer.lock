@@ -622,12 +622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ea134ccbdd52797d14ef05bc9467ec1fedfe6b36"
+                "reference": "c76bf78660b701cec79ab891d3768b4c8f13fcf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ea134ccbdd52797d14ef05bc9467ec1fedfe6b36",
-                "reference": "ea134ccbdd52797d14ef05bc9467ec1fedfe6b36",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c76bf78660b701cec79ab891d3768b4c8f13fcf5",
+                "reference": "c76bf78660b701cec79ab891d3768b4c8f13fcf5",
                 "shasum": ""
             },
             "require": {
@@ -743,7 +743,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-03-31 13:05:43"
+            "time": "2017-03-31 13:11:28"
         },
         {
             "name": "laravel/scout",
@@ -2218,12 +2218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/talvbansal/media-manager.git",
-                "reference": "4ce152953754bf40446a4dc1e8c64f4308dbe2b1"
+                "reference": "a582ddd5748d2acef00ee5aed5618b4ea4f11e2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/4ce152953754bf40446a4dc1e8c64f4308dbe2b1",
-                "reference": "4ce152953754bf40446a4dc1e8c64f4308dbe2b1",
+                "url": "https://api.github.com/repos/talvbansal/media-manager/zipball/a582ddd5748d2acef00ee5aed5618b4ea4f11e2d",
+                "reference": "a582ddd5748d2acef00ee5aed5618b4ea4f11e2d",
                 "shasum": ""
             },
             "require": {
@@ -2269,7 +2269,7 @@
                 "minimal",
                 "uploader"
             ],
-            "time": "2017-03-31 13:05:34"
+            "time": "2017-03-31 13:21:43"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
@@ -3126,12 +3126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "cb9dd0ea37df29fa3c6ae5ac26c3408a7609cb4f"
+                "reference": "785775520e2c490a79fc92c96995f018789ccb00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/cb9dd0ea37df29fa3c6ae5ac26c3408a7609cb4f",
-                "reference": "cb9dd0ea37df29fa3c6ae5ac26c3408a7609cb4f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/785775520e2c490a79fc92c96995f018789ccb00",
+                "reference": "785775520e2c490a79fc92c96995f018789ccb00",
                 "shasum": ""
             },
             "require": {
@@ -3181,7 +3181,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-07 10:28:00"
+            "time": "2017-03-31 13:20:01"
         },
         {
             "name": "phpunit/php-file-iterator",
