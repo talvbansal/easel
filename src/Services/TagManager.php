@@ -12,10 +12,9 @@ use Easel\Models\Tag;
 
 class TagManager
 {
-
     protected $fields = [
-        'name' => '',
-        'slug' => '',
+        'name'       => '',
+        'slug'       => '',
         'created_at' => '',
         'updated_at' => '',
     ];

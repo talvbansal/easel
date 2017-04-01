@@ -13,9 +13,9 @@ class TagController extends Controller
 {
     protected $fields = [
         'name'               => '',
-        'slug'             => '',
-        'created_at'        => '',
-        'updated_at'        => '',
+        'slug'               => '',
+        'created_at'         => '',
+        'updated_at'         => '',
     ];
     /**
      * @var TagManager
