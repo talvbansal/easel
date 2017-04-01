@@ -18,18 +18,6 @@
                             'Tags' => url('/admin/tag') ,
                             'New Tag' =>'' ,
                         ]])
-                        <ul class="actions">
-                            <li class="dropdown">
-                                <a href="" data-toggle="dropdown">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="">Refresh Tag</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
 
                         @include('easel::shared.errors')
 
