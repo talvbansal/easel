@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="fg-line">
-        <label for="tag" class="fg-label">Name</label>
-        <input type="text" class="form-control" name="tag" id="tag" value="{{ old('Name', $data['name']) }}" placeholder="Name">
+        <label for="name" class="fg-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $data['name']) }}" placeholder="Name">
     </div>
 </div>
 

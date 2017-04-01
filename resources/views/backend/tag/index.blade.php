@@ -31,10 +31,8 @@
                             <thead>
                                 <tr>
                                     <th data-column-id="id" data-type="numeric" data-sortable="false">Id</th>
-                                    <th data-column-id="title" data-order="desc">Title</th>
-                                    <th data-column-id="subtitle">Subtitle</th>
-                                    <th data-column-id="layout">Layout</th>
-                                    <th data-column-id="direction">Direction</th>
+                                    <th data-column-id="name" data-order="desc">Name</th>
+                                    <th data-column-id="slug" data-order="desc">Slug</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>
                             </thead>
@@ -42,16 +40,8 @@
                                 @foreach ($data as $tag)
                                     <tr>
                                         <td>{{ $tag->id }}</td>
-                                        <td>{{ $tag->title }}</td>
-                                        <td class="hidden-sm">{{ $tag->subtitle }}</td>
-                                        <td class="hidden-md">{{ $tag->layout }}</td>
-                                        <td class="hidden-sm">
-                                            @if ($tag->reverse_direction)
-                                                Reverse
-                                            @else
-                                                Normal
-                                            @endif
-                                        </td>
+                                        <td>{{ $tag->name }}</td>
+                                        <td>{{ $tag->slug }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
