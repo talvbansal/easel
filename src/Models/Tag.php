@@ -53,7 +53,7 @@ class Tag extends Model
         if (count($tags) === 0) {
             return;
         }
-        $found = self::whereIn('tag', $tags)->pluck('tag')->all();
+        $found = self::whereIn('id', $tags)->pluck('id')->all();
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
                 'name' => $tag,

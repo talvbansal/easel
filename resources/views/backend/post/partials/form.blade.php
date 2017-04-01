@@ -172,7 +172,7 @@
                             <label for="tags[]">Tags</label>
                             <select name="tags[]" id="tags" class="form-control selectpicker" multiple>
                                 @foreach ($allTags as $tag_id => $tag_name )
-                                    <option @if (in_array($tag_id, $tags)) selected @endif value="{{ $tag_id }}">{{ $tag_name }}</option>
+                                    <option @if (in_array($tag_name, $tags)) selected @endif value="{{ $tag_id }}">{{ $tag_name }}</option>
                                 @endforeach
                             </select>
                         </div>

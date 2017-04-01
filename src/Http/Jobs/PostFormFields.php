@@ -90,7 +90,7 @@ class PostFormFields extends Job
         foreach ($fieldNames as $field) {
             $fields[$field] = $post->{$field};
         }
-        $fields['tags'] = $post->tags()->pluck('tag')->all();
+        $fields['tags'] = $post->tags()->pluck('name', 'tags.id')->all();
         $fields['published_at'] = $post->published_at->format('d/m/Y H:i:s');
 
         return $fields;
