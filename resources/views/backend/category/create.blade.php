@@ -13,11 +13,11 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <ol class="breadcrumb">
-                            <li><a href="{{ url('/admin') }}">Home</a></li>
-                            <li><a href="{{ url('/admin/category') }}">Categories</a></li>
-                            <li class="active">New Category</li>
-                        </ol>
+                        @include('easel::shared.breadcrumbs', ['links' => [
+                            'Home' => url('/admin'),
+                            'Categories' => url('/admin/category'),
+                            'New Category' => '',
+                        ]])
                         <ul class="actions">
                             <li class="dropdown">
                                 <a href="" data-toggle="dropdown">

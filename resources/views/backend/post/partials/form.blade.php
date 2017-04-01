@@ -3,11 +3,11 @@
         <div class="col-xs-12 col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <ol class="breadcrumb">
-                        <li><a href="{{ url('/admin') }}">Home</a></li>
-                        <li><a href="{{ url('/admin/post') }}">Posts</a></li>
-                        <li class="active">{{ (Route::is('admin.post.update'))? 'Edit' : 'Create' }} Post</li>
-                    </ol>
+                    @include('easel::shared.breadcrumbs', ['links' => [
+                        'Home' => url('/admin'),
+                        'Posts' => url('/admin/post'),
+                        ((Route::is('admin.post.update'))? 'Edit' : 'Create') . ' Post' => '',
+                    ]])
 
                     @if( Route::is('admin.post.edit'))
                         <h2>
