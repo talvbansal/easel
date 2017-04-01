@@ -52,20 +52,20 @@ class SearchTest extends TestCase
     {
         //create two posts to show up and one to not show
         $postA = factory(Post::class)->make([
-            'title' => 'here is a test title that contains the word Easel',
-            'slug' => 'test-slug',
+            'title'       => 'here is a test title that contains the word Easel',
+            'slug'        => 'test-slug',
             'content_raw' => 'no content',
         ]);
         $postB = factory(Post::class)->make([
-            'title' => 'easel',
+            'title'       => 'easel',
             'content_raw' => 'here is a test content that contains the word Easel',
         ]);
         $postC = factory(Post::class)->make([
-            'title' => 'this shouldnt show up',
-            'slug' => 'this-shouldnt-show-up-slug',
-            'subtitle' => 'this-shouldnt-show-up',
+            'title'            => 'this shouldnt show up',
+            'slug'             => 'this-shouldnt-show-up-slug',
+            'subtitle'         => 'this-shouldnt-show-up',
             'meta_description' => 'this-shouldnt-show-up',
-            'content_raw' => 'this-shouldnt-show-up',
+            'content_raw'      => 'this-shouldnt-show-up',
         ]);
 
         $postA->save();
@@ -98,7 +98,7 @@ class SearchTest extends TestCase
             'slug' => 'this-shouldnt-show-up',
         ]);
 
-        $tags     = Tag::whereIn('id', [$tagA->id, $tagB->id])->get();
+        $tags = Tag::whereIn('id', [$tagA->id, $tagB->id])->get();
         $response = $this->actingAs($this->user)->call('GET', '/admin/search?search=easel');
 
         $this->assertEquals(200, $response->status());

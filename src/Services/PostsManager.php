@@ -11,7 +11,6 @@ namespace Easel\Services;
 use Carbon\Carbon;
 use Easel\Models\Post;
 use Easel\Models\Tag;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Pagination\Paginator;
 
 /**

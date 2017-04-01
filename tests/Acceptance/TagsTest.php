@@ -71,7 +71,7 @@ class TagsTest extends TestCase
         $title = 'Here is a new tag title that we edited!';
 
         // Save changes
-        $this->actingAs($this->user)->put('admin/tag/' . $tag->id, [
+        $this->actingAs($this->user)->put('admin/tag/'.$tag->id, [
             'name' => $title,
             'slug' => $tag->slug,
         ]);
@@ -83,7 +83,7 @@ class TagsTest extends TestCase
         ]);
 
         $this->assertSessionHas('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
-        $this->assertRedirectedTo('/admin/tag/' . $tag->id . '/edit');
+        $this->assertRedirectedTo('/admin/tag/'.$tag->id.'/edit');
     }
 
     public function test_a_tag_can_be_deleted()
@@ -92,7 +92,7 @@ class TagsTest extends TestCase
         $tag = factory(Tag::class)->create();
 
         // Delete it!
-        $this->actingAs($this->user)->delete('admin/tag/' . $tag->id);
+        $this->actingAs($this->user)->delete('admin/tag/'.$tag->id);
 
         // Is it there?
         $this->assertTrue(Tag::count() === 0);
@@ -104,8 +104,8 @@ class TagsTest extends TestCase
     public function test_duplicate_tags_cannot_be_made()
     {
         $duplicateName = 'duplicate tag';
-        $firstTag      = factory(Tag::class)->create(['name' => $duplicateName]);
-        $secondTag     = factory(Tag::class)->make();
+        $firstTag = factory(Tag::class)->create(['name' => $duplicateName]);
+        $secondTag = factory(Tag::class)->make();
 
         // Create new tag
         $this->actingAs($this->user)->post('admin/tag', [
