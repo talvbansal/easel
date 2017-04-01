@@ -22,8 +22,8 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'tag', 'title', 'subtitle', 'meta_description',
-        'reverse_direction', 'created_at', 'updated_at',
+        'name',
+        'slug',
     ];
 
     /**
@@ -31,7 +31,7 @@ class Tag extends Model
      *
      * @var array
      */
-    public $searchable = ['tag', 'title', 'subtitle', 'meta_description'];
+    public $searchable = ['name', 'slug',];
 
     /**
      * Get the posts relationship.
@@ -56,27 +56,9 @@ class Tag extends Model
         $found = self::whereIn('tag', $tags)->pluck('tag')->all();
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
-                'tag'               => $tag,
-                'title'             => $tag,
-                'subtitle'          => 'Subtitle for '.$tag,
-                'meta_description'  => '',
-                'reverse_direction' => false,
+                'name' => $tag,
+                'slug' => $tag,
             ]);
         }
-    }
-
-    /**
-     * Return the index layout to use for a tag.
-     *
-     * @param string $tag
-     * @param string $default
-     *
-     * @return string
-     */
-    public static function layout($tag, $default = 'easel::blog.layouts.index')
-    {
-        $layout = self::whereTag($tag)->pluck('layout');
-
-        return $layout ?: $default;
     }
 }

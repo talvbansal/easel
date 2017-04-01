@@ -47,17 +47,14 @@ class TagsTest extends TestCase
 
         // Create new tag
         $this->actingAs($this->user)->post('admin/tag', [
-            'tag'      => $tag->tag,
-            'title'    => $tag->title,
-            'subtitle' => $tag->subtitle,
-            'layout'   => $tag->layout,
+            'name' => $tag->name,
+            'slug' => $tag->slug,
         ]);
 
         // Is it there?
         $this->seeInDatabase('tags', [
-            'tag'      => $tag->tag,
-            'title'    => $tag->title,
-            'subtitle' => $tag->subtitle,
+            'name' => $tag->name,
+            'slug' => $tag->slug,
         ]);
 
         $this->assertSessionHas('_new-tag', trans('easel::messages.create_success', ['entity' => 'Tag']));
@@ -74,22 +71,19 @@ class TagsTest extends TestCase
         $title = 'Here is a new tag title that we edited!';
 
         // Save changes
-        $this->actingAs($this->user)->put('admin/tag/'.$tag->id, [
-            'tag'      => $tag->tag,
-            'title'    => $title,
-            'subtitle' => $tag->subtitle,
-            'layout'   => $tag->layout,
+        $this->actingAs($this->user)->put('admin/tag/' . $tag->id, [
+            'name' => $title,
+            'slug' => $tag->slug,
         ]);
 
         // Can we see the changes?
         $this->seeInDatabase('tags', [
-            'tag'      => $tag->tag,
-            'title'    => $title,
-            'subtitle' => $tag->subtitle,
+            'name' => $title,
+            'slug' => $tag->slug,
         ]);
 
         $this->assertSessionHas('_update-tag', trans('easel::messages.update_success', ['entity' => 'Tag']));
-        $this->assertRedirectedTo('/admin/tag/'.$tag->id.'/edit');
+        $this->assertRedirectedTo('/admin/tag/' . $tag->id . '/edit');
     }
 
     public function test_a_tag_can_be_deleted()
@@ -98,7 +92,7 @@ class TagsTest extends TestCase
         $tag = factory(Tag::class)->create();
 
         // Delete it!
-        $this->actingAs($this->user)->delete('admin/tag/'.$tag->id);
+        $this->actingAs($this->user)->delete('admin/tag/' . $tag->id);
 
         // Is it there?
         $this->assertTrue(Tag::count() === 0);
@@ -110,15 +104,13 @@ class TagsTest extends TestCase
     public function test_duplicate_tags_cannot_be_made()
     {
         $duplicateName = 'duplicate tag';
-        $firstTag = factory(Tag::class)->create(['tag' => $duplicateName]);
-        $secondTag = factory(Tag::class)->make();
+        $firstTag      = factory(Tag::class)->create(['name' => $duplicateName]);
+        $secondTag     = factory(Tag::class)->make();
 
         // Create new tag
         $this->actingAs($this->user)->post('admin/tag', [
-            'tag'      => $duplicateName,
-            'title'    => $secondTag->title,
-            'subtitle' => $secondTag->subtitle,
-            'layout'   => $secondTag->layout,
+            'name' => $duplicateName,
+            'slug' => $secondTag->slug,
         ]);
 
         $this->assertSessionHasErrors();

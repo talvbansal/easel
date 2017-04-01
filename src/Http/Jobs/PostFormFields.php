@@ -6,11 +6,9 @@ use Carbon\Carbon;
 use Easel\Models\Category;
 use Easel\Models\Post;
 use Easel\Models\Tag;
-use Easel\Services\Traits\FindBlogLayouts;
 
 class PostFormFields extends Job
 {
-    use FindBlogLayouts;
 
     /**
      * The id (if any) of the Post row.
@@ -70,7 +68,7 @@ class PostFormFields extends Job
         return array_merge(
             $fields,
             [
-                'allTags'       => Tag::pluck('tag')->all(),
+                'allTags'       => Tag::pluck('name', 'id')->all(),
                 'allCategories' => Category::pluck('name', 'id')->all(),
             ]
         );

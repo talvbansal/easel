@@ -14,12 +14,8 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tag')->unique();
-            $table->string('title');
-            $table->string('subtitle');
-            $table->string('meta_description')->nullable();
-            $table->string('layout')->default('vendor.easel.frontend.blog.index');
-            $table->boolean('reverse_direction')->default(0);
+            $table->string('name')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }

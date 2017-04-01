@@ -12,12 +12,8 @@ use Session;
 class TagController extends Controller
 {
     protected $fields = [
-        'tag'               => '',
-        'title'             => '',
-        'subtitle'          => '',
-        'meta_description'  => '',
-        'layout'            => 'vendor.frontend.blog.index',
-        'reverse_direction' => 0,
+        'name'               => '',
+        'slug'             => '',
         'created_at'        => '',
         'updated_at'        => '',
     ];

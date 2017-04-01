@@ -28,10 +28,7 @@ class SearchController extends Controller
                 ->orWhere('meta_description', 'LIKE', '%'.$params.'%')
                 ->get();
 
-            $tags = Tag::where('tag', 'LIKE', '%'.$params.'%')
-                ->orWhere('title', 'LIKE', '%'.$params.'%')
-                ->orWhere('subtitle', 'LIKE', '%'.$params.'%')
-                ->orWhere('meta_description', 'LIKE', '%'.$params.'%')
+            $tags = Tag::where('name', 'LIKE', '%'.$params.'%')
                 ->get();
         }
 

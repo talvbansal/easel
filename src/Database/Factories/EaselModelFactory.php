@@ -44,12 +44,8 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
 */
 $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
     return [
-        'tag'               => $faker->word,
-        'title'             => $faker->title,
-        'subtitle'          => $faker->title,
-        'meta_description'  => $faker->sentence,
-        'layout'            => 'vendor.easel.frontend.blog.index',
-        'reverse_direction' => false,
+        'name'             => $faker->word,
+        'slug'             => $faker->title,
     ];
 });
 

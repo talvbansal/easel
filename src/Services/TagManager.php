@@ -9,21 +9,15 @@
 namespace Easel\Services;
 
 use Easel\Models\Tag;
-use Easel\Services\Traits\FindBlogLayouts;
 
 class TagManager
 {
-    use FindBlogLayouts;
 
     protected $fields = [
-        'tag'               => '',
-        'title'             => '',
-        'subtitle'          => '',
-        'meta_description'  => '',
-        'layout'            => 'vendor.frontend.blog.index',
-        'reverse_direction' => 0,
-        'created_at'        => '',
-        'updated_at'        => '',
+        'name' => '',
+        'slug' => '',
+        'created_at' => '',
+        'updated_at' => '',
     ];
 
     /**
@@ -77,8 +71,6 @@ class TagManager
             $data = $this->fields;
         }
 
-        return array_merge($data, [
-            'layouts' => $this->getPostLayouts(),
-        ]);
+        return $data;
     }
 }

@@ -15,10 +15,8 @@ class TagTableSeeder extends Seeder
         Tag::truncate();
 
         factory(Tag::class, 1)->create([
-            'tag'               => 'Getting Started',
-            'title'             => 'Getting Started',
-            'subtitle'          => 'Getting started with Easel',
-            'meta_description'  => 'Meta content for this tag.',
+            'name' => 'Getting Started',
+            'slug' => 'getting-started',
         ]);
     }
 }

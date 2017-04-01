@@ -146,7 +146,7 @@ class Post extends Model
         Tag::addNeededTags($tags);
         if (count($tags)) {
             $this->tags()->sync(
-                Tag::whereIn('tag', $tags)->pluck('id')->all()
+                Tag::whereIn('id', $tags)->pluck('id')->all()
             );
 
             return;
@@ -181,73 +181,5 @@ class Post extends Model
         }
 
         return $url;
-    }
-
-    /**
-     * Return an array of tag links.
-     *
-     * @param string $base
-     *
-     * @return array
-     */
-    public function tagLinks($base = null)
-    {
-        if ($base === null) {
-            $base = config('easel.blog_base_url').'/?tag=%TAG%';
-        }
-
-        $tags = $this->tags()->pluck('tag');
-        $return = [];
-        foreach ($tags as $tag) {
-            $url = str_replace('%TAG%', urlencode($tag), $base);
-            $return[] = '<a href="'.url($url).'">'.e($tag).'</a>';
-        }
-
-        return $return;
-    }
-
-    /**
-     * Return next post after this one or null.
-     *
-     * @param Tag $tag
-     *
-     * @return Post
-     */
-    public function newerPost(Tag $tag = null)
-    {
-        $query =
-            static::where('published_at', '>', $this->published_at)
-                  ->where('published_at', '<=', Carbon::now())
-                  ->where('is_draft', 0)
-                  ->orderBy('published_at', 'asc');
-        if ($tag) {
-            $query = $query->whereHas('tags', function (Builder $q) use ($tag) {
-                $q->where('tag', '=', $tag->tag);
-            });
-        }
-
-        return $query->first();
-    }
-
-    /**
-     * Return older post before this one or null.
-     *
-     * @param Tag $tag
-     *
-     * @return Post
-     */
-    public function olderPost(Tag $tag = null)
-    {
-        $query =
-            static::where('published_at', '<', $this->published_at)
-                  ->where('is_draft', 0)
-                  ->orderBy('published_at', 'desc');
-        if ($tag) {
-            $query = $query->whereHas('tags', function (Builder $q) use ($tag) {
-                $q->where('tag', '=', $tag->tag);
-            });
-        }
-
-        return $query->first();
     }
 }
