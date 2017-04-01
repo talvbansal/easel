@@ -9,7 +9,6 @@ use Easel\Models\Tag;
 
 class PostFormFields extends Job
 {
-
     /**
      * The id (if any) of the Post row.
      *

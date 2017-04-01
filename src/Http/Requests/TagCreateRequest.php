@@ -21,7 +21,7 @@ class TagCreateRequest extends Request
    */
   public function rules()
   {
-        return [
+      return [
             'name' => 'required|unique:tags,name',
             'slug' => 'required|unique:tags,slug',
         ];

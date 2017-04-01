@@ -7,7 +7,6 @@ use Easel\Services\Parsedowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Query\Builder;
 use Laravel\Scout\Searchable;
 
 /**
