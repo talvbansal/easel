@@ -3,7 +3,6 @@
 namespace Easel\Http\Controllers\Backend;
 
 use Auth;
-use Carbon\Carbon;
 use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\PasswordUpdateRequest;
 use Easel\Http\Requests\ProfileUpdateRequest;
