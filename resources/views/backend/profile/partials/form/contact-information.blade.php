@@ -2,15 +2,6 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Mobile Phone</label>
-      <input type="text" class="form-control" name="phone" id="phone" value="{{ $user->phone }}" placeholder="Mobile Phone">
-    </div>
-</div>
-
-<br>
-
-<div class="form-group">
-    <div class="fg-line">
       <label class="fg-label">Email Address</label>
       <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}" placeholder="Email Address">
     </div>
@@ -49,15 +40,6 @@
     <div class="fg-line">
       <label class="fg-label">Instagram</label>
       <input type="text" class="form-control" name="social_media[instagram]" id="instagram" value="{{ (isset($user->social_media->instagram ))? $user->social_media->instagram : null }}" placeholder="Instagram Url">
-    </div>
-</div>
-
-<br>
-
-<div class="form-group">
-    <div class="fg-line">
-      <label class="fg-label">Address</label>
-      <input type="text" class="form-control" name="address" id="address" value="{{ $user->address }}" placeholder="Address">
     </div>
 </div>
 

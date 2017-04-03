@@ -78,13 +78,11 @@ $factory->define(Easel\Models\User::class, function (Faker\Generator $faker) {
         'last_name'    => $last = $faker->lastName,
         'display_name' => $first.' '.$last,
         'job'          => $faker->jobTitle,
-        'birthday'     => $faker->date('Y-m-d'),
         'email'        => $faker->safeEmail,
         'social_media' => json_encode([
             'twitter'  => 'http://twitter.com/'.$faker->userName,
             'facebook' => 'http://facebook.com/'.$faker->userName,
         ]),
-        'address'  => $faker->streetAddress,
         'city'     => $faker->city,
         'country'  => $faker->countryCode,
         'url'      => $faker->url,

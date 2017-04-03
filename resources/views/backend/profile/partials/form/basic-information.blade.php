@@ -1,26 +1,3 @@
-<?php
-$relationships = [
-    '' => 'Please select one',
-    'Single' =>  'Single',
-    'In a relationship' =>  'In a relationship',
-    'Engaged' =>  'Engaged',
-    'Married' =>  'Married',
-    'It\'s complicated' =>  'It\'s complicated',
-    'In an open relationship' =>  'In an open relationship',
-    'Widowed' => 'Widowed',
-    'Separated' => 'Separated',
-    'Divorced' => 'Divorced',
-    'In a civil union' => 'In a civil union',
-    'In a domestic partnership' => 'In a domestic partnership',
-];
-
-$genders = [
-    'Male' => 'Male',
-    'Female' => 'Female'
-];
-
-?>
-
 <br>
 
 
@@ -59,48 +36,3 @@ $genders = [
 </div>
 
 <br>
-
-<div class="form-group">
-    <div class="fg-line">
-        <label for="gender" class="fg-label">Gender</label>
-        <select name="gender" id="gender" class="selectpicker">
-            @foreach($genders as $key => $gender)
-
-                @if($key == $user->gender)
-                    <option value="{{ $key }}" selected>{{ $gender }}</option>
-                @else
-                    <option value="{{ $key }}">{{ $gender }}</option>
-                @endif
-
-            @endforeach
-        </select>
-    </div>
-</div>
-
-<br>
-
-<div class="form-group">
-    <div class="fg-line">
-      <label for="birthday" class="fg-label">Birthday</label>
-      <input type="text" class="form-control date-picker" name="birthday" id="birthday" value="{{ $user->birthday->format('d/m/Y') }}" placeholder="DD-MM-YYYY" data-mask="00-00-0000">
-    </div>
-</div>
-
-<br>
-
-<div class="form-group">
-    <div class="fg-line">
-        <label for="relationship" class="fg-label">Relationship Status</label>
-        <select name="relationship" id="relationship" class="selectpicker">
-            @foreach($relationships as $key => $relationship)
-
-                @if($key == $user->relationship)
-                    <option value="{{ $key }}" selected>{{ $relationship }}</option>
-                @else
-                    <option value="{{ $key }}">{{ $relationship }}</option>
-                @endif
-
-            @endforeach
-        </select>
-    </div>
-</div>

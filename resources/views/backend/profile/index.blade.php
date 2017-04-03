@@ -26,26 +26,20 @@
                     <dd>{{ $user->first_name . ' ' . $user->last_name}}</dd>
                 </dl>
 
-                @if( !empty($user->gender) )
+                @if( !empty($user->display_name) )
                     <dl class="dl-horizontal">
-                        <dt>Gender</dt>
-                        <dd>{{ $user->gender }}</dd>
+                        <dt>Display Name</dt>
+                        <dd>{{ $user->display_name }}</dd>
                     </dl>
                 @endif
 
-                @if( !empty($user->birthday) )
+                @if( !empty($user->job) )
                     <dl class="dl-horizontal">
-                        <dt>Birthday</dt>
-                        <dd>{{ $user->birthday->format('M d, Y') }}</dd>
+                        <dt>Job</dt>
+                        <dd>{{ $user->job }}</dd>
                     </dl>
                 @endif
 
-                @if( !empty($user->relationship) )
-                    <dl class="dl-horizontal">
-                        <dt>Relationship Status</dt>
-                        <dd>{{ $user->relationship }}</dd>
-                    </dl>
-                @endif
             </div>
         </div>
     </div>
@@ -56,12 +50,6 @@
         </div>
         <div class="pmbb-body p-l-30">
             <div class="pmbb-view">
-                @if( !empty($user->phone) )
-                    <dl class="dl-horizontal">
-                        <dt>Mobile Phone</dt>
-                        <dd>{{ $user->phone }}</dd>
-                    </dl>
-                @endif
 
                 <dl class="dl-horizontal">
                     <dt>Email Address</dt>
@@ -76,13 +64,6 @@
                         @endif
                     </dl>
                 @endforeach
-
-                @if( !empty($user->address) )
-                    <dl class="dl-horizontal">
-                        <dt>Address</dt>
-                        <dd>{{ $user->address }}</dd>
-                    </dl>
-                @endif
 
                 @if( !empty($user->city) )
                     <dl class="dl-horizontal">

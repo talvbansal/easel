@@ -44,12 +44,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request, BlogUserInterface $user)
     {
-        $data = $request->except(['_token', '_method', 'birthday']);
+        $data = $request->except(['_token', '_method']);
         foreach ($data as $key => $value) {
             $user->{$key} = (is_array($value)) ? json_encode($value) : $value;
         }
-
-        $user->birthday = Carbon::createFromFormat('d/m/Y', $request->get('birthday'));
 
         $user->save();
 

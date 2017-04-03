@@ -25,10 +25,6 @@ class UpdateUsersTable extends Migration
         }
 
         Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumn('users', 'name')) {
-                $table->string('name')->nullable()->change();
-            }
-
             if (!Schema::hasColumn('users', 'first_name')) {
                 $table->string('first_name')->nullable();
             }
@@ -42,11 +38,8 @@ class UpdateUsersTable extends Migration
             if (!Schema::hasColumn('users', 'url')) {
                 $table->string('url')->nullable();
             }
-            if (!Schema::hasColumn('users', 'first_name')) {
+            if (!Schema::hasColumn('users', 'social_media')) {
                 $table->json('social_media')->nullable();
-            }
-            if (!Schema::hasColumn('users', 'address')) {
-                $table->string('address')->nullable();
             }
             if (!Schema::hasColumn('users', 'city')) {
                 $table->string('city')->nullable();
@@ -59,18 +52,6 @@ class UpdateUsersTable extends Migration
             }
             if (!Schema::hasColumn('users', 'job')) {
                 $table->string('job')->nullable();
-            }
-            if (!Schema::hasColumn('users', 'phone')) {
-                $table->string('phone')->nullable();
-            }
-            if (!Schema::hasColumn('users', 'gender')) {
-                $table->string('gender', 140)->nullable();
-            }
-            if (!Schema::hasColumn('users', 'relationship')) {
-                $table->string('relationship', 140)->nullable();
-            }
-            if (!Schema::hasColumn('users', 'birthday')) {
-                $table->date('birthday')->nullable();
             }
         });
     }
