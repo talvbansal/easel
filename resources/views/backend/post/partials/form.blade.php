@@ -6,7 +6,7 @@
                     @include('easel::shared.breadcrumbs', ['links' => [
                         'Home' => url('/admin'),
                         'Posts' => url('/admin/post'),
-                        ((Route::is('admin.post.update'))? 'Edit' : 'Create') . ' Post' => '',
+                        ((Route::is('admin.post.edit'))? 'Edit' : 'Create') . ' Post' => '',
                     ]])
 
                     @if( Route::is('admin.post.edit'))
@@ -111,7 +111,7 @@
                             <i class="zmdi zmdi-floppy"></i> Save
                         </button>
 
-                        @if(Route::is('admin.post.update'))
+                        @if(Route::is('admin.post.edit'))
                             <button type="button" class="btn btn-danger btn-icon-text" data-toggle="modal" data-target="#modal-delete">
                                 <i class="zmdi zmdi-delete"></i> Delete
                             </button>
