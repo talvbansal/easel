@@ -9,7 +9,6 @@
 namespace Easel\Http\Requests;
 
 use Easel\Models\User;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
@@ -32,10 +31,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name'   => 'required',
+            'last_name'    => 'required',
             'display_name' => 'required',
-            'email' =>  'required|email',
+            'email'        => 'required|email',
         ];
     }
 }
