@@ -8,7 +8,6 @@
 
 namespace Easel\Http\Controllers\Backend;
 
-
 use Easel\Http\Controllers\Controller;
 use Easel\Http\Requests\UserCreateRequest;
 use Easel\Http\Requests\UserUpdateRequest;
@@ -89,7 +88,7 @@ class UserController extends Controller
         $data->password = bcrypt($request->password);
         $data->save();
 
-        Session::put('_updateUser', trans('easel::messages.update_success', ['entity' => 'User ' . $data->display_name ]));
+        Session::put('_updateUser', trans('easel::messages.update_success', ['entity' => 'User '.$data->display_name]));
 
         return redirect()->route('admin.user.edit', compact('data'));
     }
