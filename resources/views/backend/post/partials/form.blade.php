@@ -30,7 +30,6 @@
 
                     @if( Route::is('admin.post.edit'))
                         <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="author_id" value="{!! $author_id !!}"/>
                     @endif
 
 
@@ -105,6 +104,21 @@
                     </div>
 
                     <br>
+
+                    @if( Route::is('admin.post.edit'))
+                    <div class="form-group">
+                        <div class="fg-line">
+                            <label for="author_id">Author</label>
+                            <select class="form-control" name="author_id" id="author_id">
+                                @foreach (\Easel\Models\User::all() as $user)
+                                    <option @if ($author_id == $user->id) selected @endif value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <br>
+                    @endif
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
