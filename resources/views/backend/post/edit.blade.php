@@ -26,7 +26,7 @@
     {!! JsValidator::formRequest('Easel\Http\Requests\PostUpdateRequest', '#frmPost') !!}
 
     @if(Session::get('_update-post'))
-        @include('easel::backend.post.partials.notifications.update-post')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_update-post'])
         {{ \Session::forget('_update-post') }}
     @endif
 

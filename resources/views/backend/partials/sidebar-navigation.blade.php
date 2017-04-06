@@ -20,5 +20,6 @@
         <li @if (Request::is('admin/category*')) class="active" @endif><a href="{{ url('/admin/category') }}"><i class="zmdi zmdi-collection-plus"></i> Categories <span class="label label-default label-totals">{{ Easel\Models\Category::count() }}</span></a></li>
         <li @if (Request::is('admin/tag*')) class="active" @endif><a href="{{ url('/admin/tag') }}"><i class="zmdi zmdi-tag"></i> Tags <span class="label label-default label-totals">{{ Easel\Models\Tag::count() }}</span></a></li>
         <li @if (Request::is('admin/media*')) class="active" @endif><a href="{{ url('/admin/media') }}"><i class="zmdi zmdi-cloud-upload"></i> Media</a></li>
+        <li @if (Request::is('admin/user*')) class="active" @endif><a href="{{ url('/admin/user') }}"><i class="zmdi zmdi-account-box"></i> Users <span class="label label-default label-totals">{{ Easel\Models\User::count() }}</span></a></li>
     </ul>
 </aside>

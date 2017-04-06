@@ -59,12 +59,12 @@
     @include('easel::backend.category.partials.datatable')
 
     @if(Session::get('_new-category'))
-        @include('easel::backend.category.partials.notifications.create')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_new-category'])
         {{ \Session::forget('_new-category') }}
     @endif
 
     @if(Session::get('_delete-category'))
-        @include('easel::backend.category.partials.notifications.delete')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_delete-category'])
         {{ \Session::forget('_delete-category') }}
     @endif
 @stop

@@ -61,7 +61,7 @@
     {!! JsValidator::formRequest('Easel\Http\Requests\TagUpdateRequest', '#tagUpdate') !!}
 
     @if(Session::get('_update-tag'))
-        @include('easel::backend.tag.partials.notifications.update')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_update-tag'])
         {{ \Session::forget('_update-tag') }}
     @endif
 @stop

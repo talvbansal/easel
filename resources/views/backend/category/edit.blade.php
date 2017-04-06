@@ -61,7 +61,7 @@
     {!! JsValidator::formRequest('Easel\Http\Requests\CategoryUpdateRequest', '#categoryUpdate') !!}
 
     @if(Session::get('_update-category'))
-        @include('easel::backend.category.partials.notifications.update')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_update-category'])
         {{ \Session::forget('_update-category') }}
     @endif
 @stop

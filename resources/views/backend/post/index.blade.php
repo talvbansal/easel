@@ -72,17 +72,17 @@
 
 @section('unique-js')
     @if(Session::get('_login'))
-        @include('easel::backend.post.partials.notifications.login')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_login'])
         {{ \Session::forget('_login') }}
     @endif
 
     @if(Session::get('_new-post'))
-        @include('easel::backend.post.partials.notifications.create-post')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_new-post'])
         {{ \Session::forget('_new-post') }}
     @endif
 
     @if(Session::get('_delete-post'))
-        @include('easel::backend.post.partials.notifications.delete-post')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_delete-post'])
         {{ \Session::forget('_delete-post') }}
     @endif
 

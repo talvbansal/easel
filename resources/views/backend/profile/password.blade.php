@@ -87,7 +87,7 @@
     {!! JsValidator::formRequest(\Easel\Http\Requests\PasswordUpdateRequest::class, '#frmPasswordUpdate') !!}
 
     @if(Session::get('_passwordUpdate'))
-        @include('easel::backend.profile.partials.notifications.update-password')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_passwordUpdate'])
         {{ \Session::forget('_passwordUpdate') }}
     @endif
 @stop

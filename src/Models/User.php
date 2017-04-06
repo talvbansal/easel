@@ -40,4 +40,20 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $dates = ['birthday'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
+    }
+
+    /**
+     * @return int
+     */
+    public function postCount()
+    {
+        return $this->posts()->count();
+    }
 }
