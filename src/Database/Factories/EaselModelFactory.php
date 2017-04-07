@@ -26,7 +26,7 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
         'subtitle'         => $faker->sentence,
         'page_image'       => '/storage/placeholder.png',
         'content_raw'      => implode('<br/>', $faker->paragraphs(4)),
-        'published_at'     => Carbon\Carbon::now(),
+        'published_at'     => (Carbon\Carbon::now())->subWeek(),
         'meta_description' => $faker->sentence,
         'is_draft'         => false,
         'author_id'        => 1,
