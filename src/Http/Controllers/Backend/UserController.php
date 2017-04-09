@@ -88,7 +88,7 @@ class UserController extends Controller
         $data->password = bcrypt($request->password);
         $data->save();
 
-        Session::put('_updateUser', trans('easel::messages.update_success', ['entity' => 'User '.$data->display_name]));
+        Session::put('_update-user', trans('easel::messages.update_success', ['entity' => 'User '.$data->display_name]));
 
         return redirect()->route('admin.user.edit', compact('data'));
     }

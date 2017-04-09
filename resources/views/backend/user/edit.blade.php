@@ -43,13 +43,13 @@
 
     {!! JsValidator::formRequest(\Easel\Http\Requests\UserUpdateRequest::class, '#userUpdate') !!}
 
-    @if(Session::get('_updateUser'))
-        @include('easel::backend.shared.notifications.notify', ['section' => '_updateUser'])
-        {{ \Session::forget('_updateUser') }}
+    @if(Session::get('-update-user'))
+        @include('easel::backend.shared.notifications.notify', ['section' => '-update-user'])
+        {{ \Session::forget('-update-user') }}
     @endif
 
-    @if(Session::get('_updatePassword'))
-        @include('easel::backend.shared.notifications.notify', ['section' => '_updatePassword'])
-        {{ \Session::forget('_updatePassword') }}
+    @if(Session::get('-update-password'))
+        @include('easel::backend.shared.notifications.notify', ['section' => '-update-password'])
+        {{ \Session::forget('-update-password') }}
     @endif
 @stop

@@ -58,13 +58,13 @@
     {!! JsValidator::formRequest('Canvas\Http\Requests\UserUpdateRequest', '#userUpdate') !!}
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 
-    @if(Session::get('_updateUser'))
-        @include('canvas::backend.shared.notifications.notify', ['section' => '_updateUser'])
-        {{ \Session::forget('_updateUser') }}
+    @if(Session::get('-update-user'))
+        @include('canvas::backend.shared.notifications.notify', ['section' => '-update-user'])
+        {{ \Session::forget('-update-user') }}
     @endif
 
-    @if(Session::get('_updatePassword'))
-        @include('canvas::backend.shared.notifications.notify', ['section' => '_updatePassword'])
-        {{ \Session::forget('_updatePassword') }}
+    @if(Session::get('-update-password'))
+        @include('canvas::backend.shared.notifications.notify', ['section' => '-update-password'])
+        {{ \Session::forget('-update-password') }}
     @endif
 @stop

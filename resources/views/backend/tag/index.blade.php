@@ -57,12 +57,12 @@
     @include('easel::backend.tag.partials.datatable')
 
     @if(Session::get('_new-tag'))
-        @include('easel::backend.tag.partials.notifications.create')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_new-tag'])
         {{ \Session::forget('_new-tag') }}
     @endif
 
     @if(Session::get('_delete-tag'))
-        @include('easel::backend.tag.partials.notifications.delete')
+        @include('easel::backend.shared.notifications.notify', ['section' => '_update-tag'])
         {{ \Session::forget('_delete-tag') }}
     @endif
 @stop

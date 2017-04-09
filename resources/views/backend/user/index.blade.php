@@ -58,14 +58,9 @@
 @section('unique-js')
     @include('easel::backend.user.partials.datatable')
 
-    @if(Session::get('_new-tag'))
-        @include('easel::backend.tag.partials.notifications.create')
-        {{ \Session::forget('_new-tag') }}
-    @endif
-
-    @if(Session::get('_delete-tag'))
-        @include('easel::backend.tag.partials.notifications.delete')
-        {{ \Session::forget('_delete-tag') }}
+    @if(Session::get('_new-user'))
+        @include('easel::backend.shared.notifications.notify', ['section' => '_new-user'])
+        {{ \Session::forget('_new-user') }}
     @endif
 
 
