@@ -45,8 +45,14 @@
                                 <tr>
                                     <th data-column-id="id" data-type="numeric" data-sortable="false">Id</th>
                                     <th data-column-id="title">Title</th>
-                                    <th data-column-id="subtitle">Subtitle</th>
-                                    <th data-column-id="slug">Slug</th>
+                                    <th data-column-id="subtitle"
+                                        data-css-class="hidden-xs hidden-sm"
+                                        data-header-css-class="hidden-xs hidden-sm"
+                                    >Subtitle</th>
+                                    <th data-column-id="slug"
+                                        data-css-class="hidden-xs hidden-sm"
+                                        data-header-css-class="hidden-xs hidden-sm"
+                                    >Slug</th>
                                     <th data-column-id="published" data-type="date" data-order="desc">Published</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>

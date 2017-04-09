@@ -43,7 +43,7 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
-                                    <td class="hidden-sm">{{ $category->slug }}</td>
+                                    <td>{{ $category->slug }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
