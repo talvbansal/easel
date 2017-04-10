@@ -33,7 +33,7 @@
                     </div>
                     <div class="card-body card-padding">
                         <form class="keyboard-save" role="form" method="POST" id="categoryUpdate" action="/admin/category/{{ $data['id'] }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            {{ csrf_field() }}
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="id" value="{{ $data['id'] }}">
 
@@ -59,6 +59,7 @@
 
 @section('unique-js')
     {!! JsValidator::formRequest('Easel\Http\Requests\CategoryUpdateRequest', '#categoryUpdate') !!}
+    @include('easel::backend.category.partials.script')
 
     @if(Session::get('_update-category'))
         @include('easel::backend.shared.notifications.notify', ['section' => '_update-category'])
