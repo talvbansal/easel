@@ -33,7 +33,7 @@
                     </div>
                     <div class="card-body card-padding">
                         <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="/admin/tag/{{ $data['id'] }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            {{ csrf_field() }}
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="id" value="{{ $data['id'] }}">
 
@@ -59,6 +59,7 @@
 
 @section('unique-js')
     {!! JsValidator::formRequest('Easel\Http\Requests\TagUpdateRequest', '#tagUpdate') !!}
+    @include('easel::backend.tag.partials.script')
 
     @if(Session::get('_update-tag'))
         @include('easel::backend.shared.notifications.notify', ['section' => '_update-tag'])

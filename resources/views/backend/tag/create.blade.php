@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body card-padding">
                         <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="/admin/tag">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            {{ csrf_field() }}
 
                             @include('easel::backend.tag.partials.form')
 
@@ -48,6 +48,6 @@
 
 @section('unique-js')
     {!! JsValidator::formRequest('Easel\Http\Requests\TagCreateRequest', '#tagUpdate') !!}
-
+    @include('easel::backend.tag.partials.script')
     @include('easel::backend.shared.notifications.protip')
 @stop
