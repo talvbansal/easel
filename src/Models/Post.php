@@ -41,7 +41,7 @@ class Post extends Model
     protected $dates = ['published_at'];
 
     protected $casts = [
-        'is_draft' => 'boolean',
+        'is_draft'      => 'boolean',
         'featured_post' => 'boolean',
     ];
 
