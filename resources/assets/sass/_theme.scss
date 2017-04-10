@@ -103,17 +103,6 @@
   }
 }
 
-.profile-info {
-
-  h5 {
-    margin-bottom: 0.25rem;
-    margin-top: 0.25rem;
-  }
-  p {
-    margin: 0.5rem 0;
-  }
-}
-
 .bootgrid-header .actionBar {
   text-align: left;
 }
@@ -126,6 +115,9 @@
   background-color: transparent;
 }
 
+.main-menu {
+  margin:0;
+}
 .profile-menu>a .profile-info {
   margin-top: 6px;
 }

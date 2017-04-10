@@ -25,10 +25,11 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
         'slug'             => str_replace(' ', '-', $title),
         'subtitle'         => $faker->sentence,
         'page_image'       => '/storage/placeholder.png',
-        'content_raw'      => implode('<br/>', $faker->paragraphs(4)),
+        'content_raw'      => implode('\n', $faker->paragraphs(4)),
         'published_at'     => (Carbon\Carbon::now())->subWeek(),
         'meta_description' => $faker->sentence,
         'is_draft'         => false,
+        'featured_post'    => false,
         'author_id'        => 1,
         'category_id'      => 1,
     ];

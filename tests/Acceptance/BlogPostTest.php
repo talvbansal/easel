@@ -2,6 +2,7 @@
 
 namespace EaselTest\Acceptance;
 
+use App\Post;
 use Easel\Models\Category;
 use EaselTest\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -58,6 +59,8 @@ class BlogPostTest extends TestCase
              ->type($post->content_raw, 'content')
              ->type($post->published_at->format('d/m/Y h:i:s'), 'published_at')
              ->select($post->category_id, 'category_id')
+             ->check('is_draft')
+             ->check('featured_post')
              ->press('Save');
 
         // Is it there?
@@ -71,8 +74,6 @@ class BlogPostTest extends TestCase
             'author_id'    => $this->user->id,
             'category_id'  => 1,
         ]);
-
-        //$this->seePageIs('admin/post');
     }
 
     public function test_a_post_can_be_created()
@@ -86,6 +87,8 @@ class BlogPostTest extends TestCase
             'subtitle'     => $post->subtitle,
             'content'      => $post->content_raw,
             'published_at' => $post->published_at->format('d/m/Y h:i:s'),
+            'is_draft'     => false,
+            'featured_post'=> true,
             'category_id'  => 1,
         ]);
 
@@ -122,6 +125,8 @@ class BlogPostTest extends TestCase
             'subtitle'     => $post->subtitle,
             'content'      => $content,
             'published_at' => $post->published_at->format('d/m/Y h:i:s'),
+            'is_draft'     => false,
+            'featured_post'=> true,
             'category_id'  => 1,
         ]);
 
