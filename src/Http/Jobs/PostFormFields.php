@@ -34,6 +34,7 @@ class PostFormFields extends Job
         'tags'             => [],
         'category_id'      => '',
         'author_id'        => '',
+        'featured_post'    => '0',
     ];
 
     /**

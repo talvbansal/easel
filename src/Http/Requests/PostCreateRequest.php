@@ -26,8 +26,10 @@ class PostCreateRequest extends Request
             'slug'         => 'required',
             'subtitle'     => 'required',
             'content'      => 'required',
-            'published_at' => 'required',
+            'published_at' => 'required|date',
             'category_id'  => 'required|numeric',
+            'is_draft'     => 'required|boolean',
+            'featured_post'=> 'required|boolean',
         ];
     }
 
@@ -47,6 +49,7 @@ class PostCreateRequest extends Request
             'published_at'     => Carbon::createFromFormat('d/m/Y H:i:s', $this->published_at)->format('Y-m-d H:i:s'),
             'author_id'        => ($this->author_id) ?: auth()->user()->id,
             'category_id'      => $this->category_id,
+            'featured_post'    => (bool) $this->featured_post,
         ];
     }
 }

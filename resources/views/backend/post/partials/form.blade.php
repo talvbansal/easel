@@ -98,8 +98,19 @@
                     <div class="form-group">
                         <div class="toggle-switch">
                             <label for="ts1" class="ts-label">Draft?</label>
-                            <input id="ts1" type="checkbox" hidden="hidden" name="is_draft" {{ checked($is_draft) }} >
+                            <input type="hidden" name="is_draft" value="0">
+                            <input type="checkbox" id="ts1" name="is_draft" hidden="hidden" {{ checked($is_draft) }} value="1">
                             <label for="ts1" class="ts-helper"></label>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <label for="featured_post" class="ts-label">Featured Post</label>
+                            <input type="hidden" name="featured_post" value="0">
+                            <input type="checkbox" id="featured_post" name="featured_post" hidden="hidden" {{ checked($featured_post) }} value="1">
+                            <label for="featured_post" class="ts-helper"></label>
                         </div>
                     </div>
 

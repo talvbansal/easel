@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->boolean('is_draft')->default(false);
             $table->integer('author_id')->nullable();
             $table->integer('category_id')->nullable();
+            $table->boolean('featured_post')->default(false);
             $table->timestamps();
             $table->timestamp('published_at')->nullable()->index();
         });

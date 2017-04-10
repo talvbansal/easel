@@ -24,6 +24,7 @@ use Laravel\Scout\Searchable;
  * @property bool is_draft
  * @property int author_id
  * @property int category_id
+ * @property bool featured_post
  * @property Carbon created_at
  * @property Carbon published_at
  * @property Carbon updated_at
@@ -41,6 +42,7 @@ class Post extends Model
 
     protected $casts = [
         'is_draft' => 'boolean',
+        'featured_post' => 'boolean',
     ];
 
     /**
@@ -58,6 +60,7 @@ class Post extends Model
         'meta_description',
         'layout',
         'is_draft',
+        'featured_post',
         'published_at',
         'author_id',
     ];
