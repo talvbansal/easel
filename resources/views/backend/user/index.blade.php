@@ -34,7 +34,11 @@
                                 <th data-column-id="display_name">Name</th>
                                 <th data-column-id="email">Email</th>
                                 <th data-column-id="posts">Posts</th>
-                                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
+                                <th data-column-id="commands"
+                                    data-formatter="commands"
+                                    data-sortable="false"
+                                    data-css-class="text-center"
+                                >Actions</th>
                             </tr>
                             </thead>
                             <tbody>
