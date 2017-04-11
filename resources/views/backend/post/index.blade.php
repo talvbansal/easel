@@ -46,15 +46,20 @@
                                     <th data-column-id="id" data-type="numeric" data-sortable="false">Id</th>
                                     <th data-column-id="title">Title</th>
                                     <th data-column-id="subtitle"
-                                        data-css-class="hidden-xs hidden-sm"
-                                        data-header-css-class="hidden-xs hidden-sm"
+                                        data-css-class="hidden-xs"
+                                        data-header-css-class="hidden-xs"
                                     >Subtitle</th>
                                     <th data-column-id="slug"
-                                        data-css-class="hidden-xs hidden-sm"
-                                        data-header-css-class="hidden-xs hidden-sm"
+                                        data-css-class="hidden-xs"
+                                        data-header-css-class="hidden-xs"
                                     >Slug</th>
-                                    <th data-column-id="published" data-type="date" data-order="desc">Published</th>
-                                    <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
+                                    <th data-column-id="status">Status</th>
+                                    <th data-column-id="published" data-formatter="ukdate" data-type="date" data-order="desc">Published</th>
+                                    <th data-column-id="commands"
+                                        data-formatter="commands"
+                                        data-sortable="false"
+                                        data-css-class="text-center"
+                                    >Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,7 +69,8 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->subtitle }}</td>
                                         <td>{{ $post->slug }}</td>
-                                        <td>{{ $post->published_at->format('M d, Y') }}</td>
+                                        <td>{{ ($post->is_draft)? '<span class="label label-default">Draft</span>' : '<span class="label label-primary">Published</span>' }}</td>
+                                        <td>{{ $post->published_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

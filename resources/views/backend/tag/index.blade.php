@@ -33,7 +33,11 @@
                                     <th data-column-id="id" data-type="numeric" data-sortable="false">Id</th>
                                     <th data-column-id="name" data-order="desc">Name</th>
                                     <th data-column-id="slug" data-order="desc">Slug</th>
-                                    <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
+                                    <th data-column-id="commands"
+                                        data-formatter="commands"
+                                        data-sortable="false"
+                                        data-css-class="text-center"
+                                    >Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
