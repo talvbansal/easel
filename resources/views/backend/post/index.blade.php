@@ -53,7 +53,7 @@
                                         data-css-class="hidden-xs hidden-sm"
                                         data-header-css-class="hidden-xs hidden-sm"
                                     >Slug</th>
-                                    <th data-column-id="published" data-type="date" data-order="desc">Published</th>
+                                    <th data-column-id="published" data-formatter="ukdate" data-type="date" data-order="desc">Published</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>
                             </thead>
@@ -64,7 +64,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->subtitle }}</td>
                                         <td>{{ $post->slug }}</td>
-                                        <td>{{ $post->published_at->format('M d, Y') }}</td>
+                                        <td>{{ $post->published_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
