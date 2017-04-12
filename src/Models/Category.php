@@ -23,7 +23,6 @@ use Laravel\Scout\Searchable;
  */
 class Category extends Model
 {
-
     use Searchable;
     /**
      * The table associated with the model.
@@ -49,7 +48,7 @@ class Category extends Model
      */
     public $searchable = [
         'name',
-        'slug'
+        'slug',
     ];
 
     /**
