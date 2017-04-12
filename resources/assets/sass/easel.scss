@@ -19,7 +19,9 @@
 @import "node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build";
 @import "node_modules/jquery-bootgrid/dist/jquery.bootgrid";
 @import "node_modules/simplemde/dist/simplemde.min";
+@import "node_modules/vue-multiselect/dist/vue-multiselect.min";
 
 // General Styles
+@import "multiselect";
 @import "editor";
 @import "theme";

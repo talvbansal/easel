@@ -1,5 +1,6 @@
 vendor/
 node_modules/
+tests/reports
 .idea/
 
 # Laravel 5 & Lumen specific
@@ -8,3 +9,4 @@ bootstrap/cache/
 .env.php
 .env
 *.map
+phpunit.xml

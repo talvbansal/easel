@@ -47,18 +47,25 @@ class Tag extends Model
      * Add tags from the list.
      *
      * @param array $tags List of tags to check/add
+     *
+     * @return int
      */
-    public static function addNeededTags(array $tags)
+    public static function addNeededTags(array $tags) : int
     {
         if (count($tags) === 0) {
-            return;
+            return 0;
         }
-        $found = self::whereIn('id', $tags)->pluck('id')->all();
+        $found = self::whereIn('name', $tags)->pluck('name')->all();
+        $count = 0;
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
                 'name' => $tag,
-                'slug' => $tag,
+                'slug' => str_slug($tag)
             ]);
+            $count++;
         }
+
+        return $count;
     }
+
 }

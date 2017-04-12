@@ -1,0 +1,26 @@
+.multiselect__tag{
+  background: $brand-primary;
+}
+
+.multiselect__option--highlight {
+  background: $brand-primary;
+}
+
+.multiselect__option--highlight:after{
+  background: $brand-primary;
+}
+
+.multiselect__tag-icon:after {
+  color: darken($brand-primary, 10%);
+}
+
+.multiselect__tag-icon:focus,
+.multiselect__tag-icon:hover {
+  background: $brand-primary;
+}
+
+.multiselect__spinner:before,
+.multiselect__spinner:after {
+
+  border-color: $brand-primary transparent transparent;
+}

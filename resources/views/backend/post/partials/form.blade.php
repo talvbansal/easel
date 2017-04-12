@@ -192,14 +192,9 @@
                         </div>
 
                         <br>
-
                         <div class="fg-line">
                             <label for="tags[]">Tags</label>
-                            <select name="tags[]" id="tags" class="form-control selectpicker" multiple>
-                                @foreach ($allTags as $tag_id => $tag_name )
-                                    <option @if (in_array($tag_name, $tags)) selected @endif value="{{ $tag_id }}">{{ $tag_name }}</option>
-                                @endforeach
-                            </select>
+                            <multi-selector :options="tagOptions" :value="tags" name="tags[]"></multi-selector>
                         </div>
                     </div>
 
@@ -207,11 +202,11 @@
             </div>
         </div>
 
-        <media-modal v-if="showMediaManager" @close="showMediaManager = false">
+        <media-modal v-if="showMediaManager" @media-modal-close="showMediaManager = false">
         <media-manager
                 :is-modal="true"
                 :selected-event-name="selectedEventName"
-        @close="showMediaManager = false"
+                @media-modal-close="showMediaManager = false"
         >
         </media-manager>
         </media-modal>

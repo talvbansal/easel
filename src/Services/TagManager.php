@@ -27,7 +27,8 @@ class TagManager
     public function create(array $data)
     {
         $tag = new Tag();
-        $tag->fill($data)->save();
+        $tag->name = $data['name'];
+        $tag->slug = str_slug($data['slug']);
 
         return $tag->save();
     }
@@ -41,7 +42,8 @@ class TagManager
     public function edit($id, $data)
     {
         $tag = Tag::findOrFail($id);
-        $tag->fill($data);
+        $tag->name = $data['name'];
+        $tag->slug = str_slug($data['slug']);
 
         return $tag->save();
     }
