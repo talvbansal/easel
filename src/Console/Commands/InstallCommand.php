@@ -51,7 +51,6 @@ class InstallCommand extends Command
             Artisan::call('view:clear');
             Artisan::call('route:clear');
             $this->alert('Easel has been installed.');
-
         } catch (\Exception $e) {
             $this->error('An unexpected error occurred during the installation.');
             $this->error("✘ {$e->getMessage()}");
@@ -83,23 +82,23 @@ class InstallCommand extends Command
     {
         $this->warn('Copying config files...');
         if (!\File::exists(config_path('easel.php'))) {
-            copy(EASEL_BASE_PATH . '/config/easel.php', config_path('easel.php'));
+            copy(EASEL_BASE_PATH.'/config/easel.php', config_path('easel.php'));
             $this->line('<info>✔</info> Copying Easel config');
-        }else{
+        } else {
             $this->warn('Easel config already exists.');
         }
 
         if (!\File::exists(config_path('scout.php'))) {
             copy(EASEL_BASE_PATH.'/config/scout.php', config_path('scout.php'));
             $this->line('<info>✔</info> Copying laravel scout config');
-        }else{
+        } else {
             $this->warn('Laravel scout config already exists.');
         }
 
         if (!\File::exists(config_path('laravel-backup.php'))) {
             copy(EASEL_BASE_PATH.'/config/laravel-backup.php', config_path('laravel-backup.php'));
             $this->line('<info>✔</info> Copying laravel-backup config.');
-        }else{
+        } else {
             $this->warn('Laravel-backup config already exists.');
         }
 

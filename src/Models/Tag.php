@@ -33,7 +33,7 @@ class Tag extends Model
      */
     public $searchable = [
         'name',
-        'slug'
+        'slug',
     ];
 
     /**
