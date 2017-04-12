@@ -45,8 +45,8 @@ $factory->define(Easel\Models\Post::class, function (Faker\Generator $faker) {
 */
 $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
     return [
-        'name'             => $tag = $faker->word,
-        'slug'             => str_replace(' ', '-', preg_replace("/[^0-9a-z- ]/", "", strtolower( $tag))),
+        'name' => $tag = $faker->word,
+        'slug' => str_slug($tag),
     ];
 });
 
@@ -60,8 +60,8 @@ $factory->define(Easel\Models\Tag::class, function (Faker\Generator $faker) {
 */
 $factory->define(Easel\Models\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $name = $faker->word,
-        'slug' => str_replace(' ', '_', $name),
+        'name' => $tag = $faker->word,
+        'slug' => str_slug($tag),
     ];
 });
 
