@@ -147,12 +147,12 @@ class Post extends Model
      *
      * @param array $tags
      */
-    public function syncTags(array $tags)
+    public function syncTags(array $tags = [])
     {
         Tag::addNeededTags($tags);
         if (count($tags)) {
             $this->tags()->sync(
-                Tag::whereIn('id', $tags)->pluck('id')->all()
+                Tag::whereIn('name', $tags)->pluck('id')->all()
             );
 
             return;

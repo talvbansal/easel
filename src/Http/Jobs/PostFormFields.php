@@ -58,8 +58,7 @@ class PostFormFields extends Job
         if ($this->id) {
             $fields = $this->fieldsFromModel($this->id, $fields);
         } else {
-            $when = Carbon::now()->addHour()->format('d/m/Y H:i:s');
-            $fields['published_at'] = $when;
+            $fields['published_at'] = Carbon::now()->addHour()->format('d/m/Y H:i:s');
         }
         foreach ($fields as $fieldName => $fieldValue) {
             $fields[$fieldName] = old($fieldName, $fieldValue);
@@ -68,7 +67,11 @@ class PostFormFields extends Job
         return array_merge(
             $fields,
             [
-                'allTags'       => Tag::pluck('name', 'id')->all(),
+                'allTags'       => Tag::all()->reduce(function ($tags, $tag) {
+                    $tags[]['name'] = $tag->name;
+
+                    return $tags;
+                }),
                 'allCategories' => Category::pluck('name', 'id')->all(),
             ]
         );
@@ -90,8 +93,12 @@ class PostFormFields extends Job
         foreach ($fieldNames as $field) {
             $fields[$field] = $post->{$field};
         }
-        $fields['tags'] = $post->tags()->pluck('name', 'tags.id')->all();
         $fields['published_at'] = $post->published_at->format('d/m/Y H:i:s');
+        $fields['tags'] = $post->tags->reduce(function ($tags, $tag) {
+            $tags[]['name'] = $tag->name;
+
+            return $tags;
+        });
 
         return $fields;
     }

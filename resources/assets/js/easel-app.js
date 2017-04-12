@@ -14,6 +14,7 @@ require('./easel-bootstrap');
  */
 
 //Vue.component('example', require('./components/Example.vue'));
+Vue.component('multi-selector', require('./components/MultiSelector.vue'));
 
 // Filters...
 Vue.filter('uk_date', function(value) {

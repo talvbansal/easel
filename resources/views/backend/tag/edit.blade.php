@@ -24,7 +24,7 @@
                         @include('easel::shared.success')
 
                         <h2>
-                            Edit <em>{{ $data['title'] }}</em>
+                            Edit <em>{{ $data['name'] }}</em>
                             <small>
                                 Last edited on {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['updated_at'])->format('M d, Y') }} at {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data['updated_at'])->format('g:i A') }}
                             </small>

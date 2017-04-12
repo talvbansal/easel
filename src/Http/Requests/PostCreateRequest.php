@@ -26,7 +26,7 @@ class PostCreateRequest extends Request
             'slug'         => 'required',
             'subtitle'     => 'required',
             'content'      => 'required',
-            'published_at' => 'required|date',
+            'published_at' => 'required',
             'category_id'  => 'required|numeric',
             'is_draft'     => 'required|boolean',
             'featured_post'=> 'required|boolean',
