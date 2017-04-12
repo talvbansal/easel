@@ -8,7 +8,6 @@
 
 namespace EaselTest\Unit\Model;
 
-
 use Easel\Models\Post;
 use Easel\Models\Tag;
 use EaselTest\TestCase;
@@ -29,19 +28,19 @@ class PostTest extends TestCase
         $post->syncTags($tags);
 
         $tag = Tag::find(1);
-        $this->assertEquals('new tag', $tag->name );
+        $this->assertEquals('new tag', $tag->name);
 
         $this->seeInDatabase('post_tag_pivot', [
             'post_id' => $post->id,
-            'tag_id' => $tag->id,
+            'tag_id'  => $tag->id,
         ]);
 
         $tag = Tag::find(2);
-        $this->assertEquals('tag again', $tag->name );
+        $this->assertEquals('tag again', $tag->name);
 
         $this->seeInDatabase('post_tag_pivot', [
             'post_id' => $post->id,
-            'tag_id' => $tag->id,
+            'tag_id'  => $tag->id,
         ]);
     }
 }

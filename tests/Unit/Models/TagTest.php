@@ -1,4 +1,5 @@
 <?php
+
 namespace EaselTest\Unit\Model;
 
 use Easel\Models\Tag;
@@ -24,7 +25,7 @@ class TagTest extends \EaselTest\TestCase
             'Travel',
         ];
 
-        $response = Tag::addNeededTags( $payload );
+        $response = Tag::addNeededTags($payload);
         $this->assertEquals(2, $response);
 
         $this->seeInDatabase('tags', [
