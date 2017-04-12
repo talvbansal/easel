@@ -29,7 +29,8 @@ class Seed extends Command
 
     public function handle()
     {
+        $this->warn('Seeding database...');
         $this->call('db:seed', ['--class' => EaselDatabaseSeeder::class]);
-        $this->line('Seeding database <info>✔</info>');
+        $this->alert('Database seeded.');
     }
 }

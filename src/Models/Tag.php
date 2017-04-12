@@ -31,7 +31,10 @@ class Tag extends Model
      *
      * @var array
      */
-    public $searchable = ['name', 'slug'];
+    public $searchable = [
+        'name',
+        'slug',
+    ];
 
     /**
      * Get the posts relationship.

@@ -8,6 +8,9 @@
 
 namespace Easel\Console\Commands;
 
+use Easel\Models\Category;
+use Easel\Models\Post;
+use Easel\Models\Tag;
 use Easel\Providers\EaselServiceProvider;
 use Illuminate\Console\Command;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
@@ -33,12 +36,12 @@ class UpdateCommand extends Command
      */
     public function handle()
     {
-        $this->line('Updating Easel <info>✔</info>');
+        $this->alert('Updating Easel.');
 
         $this->publishAssets();
         $this->migrateData();
 
-        $this->comment('You are now running the latest version of Easel. Enjoy!');
+        $this->alert('You are now running the latest version of Easel. Enjoy!');
     }
 
     /**
@@ -46,14 +49,14 @@ class UpdateCommand extends Command
      */
     private function publishAssets()
     {
-        $this->line('Publishing assets...');
+        $this->warn('Publishing assets...');
         \Artisan::call('vendor:publish', ['--provider' => EaselServiceProvider::class, '--force' => true]);
         \Artisan::call('vendor:publish', [
             '--provider' => JsValidationServiceProvider::class,
             '--force'    => true,
             '--tag'      => 'public',
         ]);
-        $this->line('Assets published! <info>✔</info>');
+        $this->line(' <info>✔</info> Assets published.');
     }
 
     /**
@@ -61,13 +64,14 @@ class UpdateCommand extends Command
      */
     private function migrateData()
     {
-        $this->line('Running migrations...');
+        $this->warn('Running migrations...');
 
         \Artisan::call('migrate');
-        $this->line('Database updated! <info>✔</info>');
+        $this->line(' <info>✔</info> Database updated.');
 
-        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
-        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
-        $this->line('Search index files updated <info>✔</info>');
+        \Artisan::call('scout:import', ['model' => Post::class]);
+        \Artisan::call('scout:import', ['model' => Tag::class]);
+        \Artisan::call('scout:import', ['model' => Category::class]);
+        $this->line(' <info>✔</info> Search index files updated.');
     }
 }

@@ -4,8 +4,12 @@
 
 namespace Easel\Console\Commands;
 
+use Easel\Models\Category;
+use Easel\Models\Post;
+use Easel\Models\Tag;
 use Easel\Providers\EaselServiceProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Proengsoft\JsValidation\JsValidationServiceProvider;
 use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 
@@ -33,16 +37,24 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->line('Setting Up Easel <info>✔</info>');
+        try {
+            $this->alert('Setting Up Easel.');
 
-        $this->createConfig();
-        $this->publishAssets();
-        $this->migrateData();
+            $this->createConfig();
+            $this->publishAssets();
+            $this->migrateData();
 
-        $this->createUploadsSymlink();
-        //finally
-        $this->comment('<info>Almost ready! Make sure to make your user model implements Easel\Models\BlogUserInterface!</info>');
-        $this->comment('Easel installed! please run php artisan db:seed to complete the installation');
+            $this->createUploadsSymlink();
+
+            // Clear the caches...
+            Artisan::call('cache:clear');
+            Artisan::call('view:clear');
+            Artisan::call('route:clear');
+            $this->alert('Easel has been installed.');
+        } catch (\Exception $e) {
+            $this->error('An unexpected error occurred during the installation.');
+            $this->error("✘ {$e->getMessage()}");
+        }
     }
 
     /**
@@ -50,14 +62,13 @@ class InstallCommand extends Command
      */
     private function createUploadsSymlink()
     {
-        $this->line('Trying to create public folder symlink...');
+        $this->warn('Trying to create public folder symlink...');
         try {
             symlink(storage_path('app/public'), public_path('storage'));
-            $this->line('Symlink created! <info>✔</info>');
+            $this->line('<info>✔</info> Symlink created.');
         } catch (\Exception $e) {
-            //the symlink creation failed, maybe it already exists
             if ($e->getMessage() == 'symlink(): File exists') {
-                $this->line('Symlink already exists! <info>✔</info>');
+                $this->warn('Symlink already exists.');
             } else {
                 $this->line('<error>Unable to create symlink! Your uploaded files may not be accessible.</error>');
             }
@@ -65,18 +76,33 @@ class InstallCommand extends Command
     }
 
     /**
-     * copy and create config files into the host project.
+     * copy and create config files into the host project if they don't already exist...
      */
     private function createConfig()
     {
-        copy(EASEL_BASE_PATH.'/config/easel.php', config_path('easel.php'));
-        $this->line('Copying Easel Config <info>✔</info>');
-        copy(EASEL_BASE_PATH.'/config/scout.php', config_path('scout.php'));
-        $this->line('Copying Scout Config <info>✔</info>');
-        copy(EASEL_BASE_PATH.'/config/laravel-backup.php', config_path('laravel-backup.php'));
-        $this->line('Copying Laravel-Backup config <info>✔</info>');
+        $this->warn('Copying config files...');
+        if (!\File::exists(config_path('easel.php'))) {
+            copy(EASEL_BASE_PATH.'/config/easel.php', config_path('easel.php'));
+            $this->line('<info>✔</info> Copying Easel config');
+        } else {
+            $this->warn('Easel config already exists.');
+        }
 
-        $this->line('Config files created! <info>✔</info>');
+        if (!\File::exists(config_path('scout.php'))) {
+            copy(EASEL_BASE_PATH.'/config/scout.php', config_path('scout.php'));
+            $this->line('<info>✔</info> Copying laravel scout config');
+        } else {
+            $this->warn('Laravel scout config already exists.');
+        }
+
+        if (!\File::exists(config_path('laravel-backup.php'))) {
+            copy(EASEL_BASE_PATH.'/config/laravel-backup.php', config_path('laravel-backup.php'));
+            $this->line('<info>✔</info> Copying laravel-backup config.');
+        } else {
+            $this->warn('Laravel-backup config already exists.');
+        }
+
+        $this->line('<info>✔</info> Config files copied.');
     }
 
     /**
@@ -84,11 +110,11 @@ class InstallCommand extends Command
      */
     private function publishAssets()
     {
-        $this->line('Publishing assets...');
+        $this->warn('Publishing assets...');
         \Artisan::call('vendor:publish', ['--provider' => EaselServiceProvider::class, '--force' => true]);
         \Artisan::call('vendor:publish', ['--provider' => JsValidationServiceProvider::class, '--force' => true, '--tag' => 'public']);
         \Artisan::call('vendor:publish', ['--provider' => MediaManagerServiceProvider::class, '--force' => true, '--tag' => 'media-manager']);
-        $this->line('Assets published! <info>✔</info>');
+        $this->line('<info>✔</info> Assets published.');
     }
 
     /**
@@ -96,15 +122,15 @@ class InstallCommand extends Command
      */
     private function migrateData()
     {
-        $this->line('Running migrations...');
+        $this->warn('Running migrations...');
         $options = [];
         \Artisan::call('migrate', $options);
-        $this->line('Database updated! <info>✔</info>');
+        $this->line('<info>✔</info> Database updated.');
 
         \Artisan::call('easel:seed', $options);
-
-        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Post']);
-        \Artisan::call('scout:import', ['model' => '\\Easel\\Models\\Tag']);
-        $this->line('Search index files created <info>✔</info>');
+        \Artisan::call('scout:import', ['model' => Post::class]);
+        \Artisan::call('scout:import', ['model' => Tag::class]);
+        \Artisan::call('scout:import', ['model' => Category::class]);
+        $this->line('<info>✔</info> Search index files created.');
     }
 }
