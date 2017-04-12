@@ -149,7 +149,6 @@ class Post extends Model
      */
     public function syncTags(array $tags = [])
     {
-
         Tag::addNeededTags($tags);
         if (count($tags)) {
             $this->tags()->sync(

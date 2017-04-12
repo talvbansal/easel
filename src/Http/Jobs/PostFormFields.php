@@ -67,8 +67,9 @@ class PostFormFields extends Job
         return array_merge(
             $fields,
             [
-                'allTags'       => Tag::all()->reduce(function($tags, $tag){
+                'allTags'       => Tag::all()->reduce(function ($tags, $tag) {
                     $tags[]['name'] = $tag->name;
+
                     return $tags;
                 }),
                 'allCategories' => Category::pluck('name', 'id')->all(),
@@ -93,8 +94,9 @@ class PostFormFields extends Job
             $fields[$field] = $post->{$field};
         }
         $fields['published_at'] = $post->published_at->format('d/m/Y H:i:s');
-        $fields['tags'] = $post->tags->reduce(function($tags, $tag){
+        $fields['tags'] = $post->tags->reduce(function ($tags, $tag) {
             $tags[]['name'] = $tag->name;
+
             return $tags;
         });
 
