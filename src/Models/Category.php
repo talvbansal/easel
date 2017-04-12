@@ -11,6 +11,7 @@ namespace Easel\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Searchable;
 
 /**
  * Class Category.
@@ -22,6 +23,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Category extends Model
 {
+
+    use Searchable;
     /**
      * The table associated with the model.
      *
@@ -37,6 +40,16 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
+    ];
+
+    /**
+     * Searchable items.
+     *
+     * @var array
+     */
+    public $searchable = [
+        'name',
+        'slug'
     ];
 
     /**
