@@ -60,12 +60,11 @@ class Tag extends Model
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
                 'name' => $tag,
-                'slug' => str_slug($tag)
+                'slug' => str_slug($tag),
             ]);
             $count++;
         }
 
         return $count;
     }
-
 }
