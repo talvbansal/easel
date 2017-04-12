@@ -30,37 +30,26 @@ class UsersTableSeeder extends Seeder
         $users->insert([
             /*
             |--------------------------------------------------------------------------
-            | Summary
-            |--------------------------------------------------------------------------
-            */
-            'bio'          => 'A short description of yourself is a great way for people to get to know you!',
-
-            /*
-            |--------------------------------------------------------------------------
             | Basic Information
             |--------------------------------------------------------------------------
             */
+            'name'         => 'Easel',
             'first_name'   => 'Easel',
             'last_name'    => 'Administrator',
             'display_name' => 'Admin',
             'job'          => 'Web Developer',
-            'gender'       => 'Male',
-            'birthday'     => date('Y-m-d'),
-            'relationship' => 'Married',
 
             /*
             |--------------------------------------------------------------------------
             | Contact Information
             |--------------------------------------------------------------------------
             */
-            'phone'        => '(000) 111-0000',
             'email'        => 'admin@'.seoUrl(config('easel.name')).'.com',
             'social_media' => json_encode([
                 'twitter'  => 'https://twitter.com/'.seoUrl(config('easel.name')),
                 'facebook' => 'https://facebook.com/'.seoUrl(config('easel.name')),
                 'github'   => 'https://github.com/'.seoUrl(config('easel.name')),
             ]),
-            'address'      => '1200 Easel Way',
             'city'         => 'Birmingham',
             'country'      => 'UK',
 
