@@ -17,7 +17,7 @@
     "doctrine/dbal": "^2.5",
     "erusev/parsedown": "^1.6",
     "proengsoft/laravel-jsvalidation": "1.0.*",
-    "laravelcollective/html": "^5.3",
+    "laravelcollective/html": "^5.0",
     "teamtnt/laravel-scout-tntsearch-driver": "^1.0",
     "spatie/laravel-backup": "^3.10",
     "talvbansal/media-manager" : "dev-master"
