@@ -76,7 +76,7 @@ A minimal blogging package for Laravel
 	```
     Or alternatively configure Easel to use your own [Custom User Model](#Custom-Model)
 
-6. Sign into Easel using the default credentials:
+6. Sign into Easel at `/login` using the default credentials:
     - Email `admin@easel.com`
     - Password `password`
     
