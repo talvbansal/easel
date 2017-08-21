@@ -68,7 +68,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->subtitle }}</td>
                                         <td>{{ $post->slug }}</td>
-                                        <td>{{ $post->published_at->format('d/m/Y') }}</td>
+                                        <td>{{ $post->published_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
