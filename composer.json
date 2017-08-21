@@ -11,20 +11,13 @@
     }
   ],
 
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/reganjohnson/laravel-jsvalidation"
-    }
-  ],
-
   "require": {
     "php": ">=7.0",
     "bestmomo/scafold": "dev-master",
     "dflydev/apache-mime-types": "^1.0",
-    "doctrine/dbal": "^2.5",
+    "doctrine/dbal": "2.*",
     "erusev/parsedown": "^1.6",
-    "proengsoft/laravel-jsvalidation": "^1.6.0-dev",
+    "proengsoft/laravel-jsvalidation": "2.*",
     "teamtnt/laravel-scout-tntsearch-driver": "2.*",
     "spatie/laravel-backup": "^3.10",
     "talvbansal/media-manager": "~2.5"

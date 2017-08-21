@@ -10,3 +10,5 @@ bootstrap/cache/
 .env
 *.map
 phpunit.xml
+
+composer.lock
