@@ -53,6 +53,7 @@
                                         data-css-class="hidden-xs"
                                         data-header-css-class="hidden-xs"
                                     >Slug</th>
+                                    <th data-column-id="status">Status</th>
                                     <th data-column-id="published" data-formatter="ukdate" data-type="date" data-order="desc">Published</th>
                                     <th data-column-id="commands"
                                         data-formatter="commands"
@@ -68,6 +69,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->subtitle }}</td>
                                         <td>{{ $post->slug }}</td>
+                                        <td>{{ ($post->is_draft)? '<span class="label label-default">Draft</span>' : '<span class="label label-primary">Published</span>' }}</td>
                                         <td>{{ $post->published_at }}</td>
                                     </tr>
                                 @endforeach
