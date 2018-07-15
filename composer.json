@@ -45,6 +45,15 @@
       "tests/TestCase.php"
     ]
   },
+
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Easel\\Providers\\EaselServiceProvider"
+      ]
+    }
+  },
+
   "minimum-stability": "dev",
   "config": {
     "preferred-install": "source",
