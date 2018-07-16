@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('title');
-            $table->string('subtitle');
+            $table->string('subtitle', 2000);
             $table->text('content_raw');
             $table->text('content_html');
             $table->string('page_image')->nullable();
