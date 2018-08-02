@@ -10,7 +10,6 @@
                 simpleMde: null,
                 slug: '{{ old('slug', $slug) }}',
                 title: '{{ old('title', $title) }}',
-                subtitle: '{{ old('subtitle', $subtitle) }}',
                 published_at: '{{ old('published_at', $published_at) }}',
                 tags: {!! json_encode($tags) !!},
                 tagOptions: {!!  json_encode($allTags) !!}

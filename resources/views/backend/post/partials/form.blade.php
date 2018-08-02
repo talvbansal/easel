@@ -53,7 +53,7 @@
 
                         <div class="form-group">
                             <div class="fg-line">
-                                <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Subtitle" v-model="subtitle" maxlength="254"/>
+                                <textarea class="form-control auto-size" id="subtitle" name="subtitle" placeholder="Subtitle">{{ old('subtitle', $subtitle) }}</textarea>
                             </div>
                         </div>
 
